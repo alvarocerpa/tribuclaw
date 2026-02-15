@@ -1,0 +1,116 @@
+:root {
+	--accent: #e94560;
+	--accent-dark: #c23152;
+	--bg: #050505;
+	--bg-secondary: #0a0a0a;
+	--text: #e0e0e0;
+	--text-muted: #888;
+	--border: #1a1a1a;
+}
+@font-face {
+	font-family: "Atkinson";
+	src: url("/fonts/atkinson-regular.woff") format("woff");
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+@font-face {
+	font-family: "Atkinson";
+	src: url("/fonts/atkinson-bold.woff") format("woff");
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+body {
+	font-family: "Atkinson", sans-serif;
+	margin: 0;
+	padding: 0;
+	background: var(--bg);
+	color: var(--text);
+	font-size: 18px;
+	line-height: 1.7;
+	-webkit-font-smoothing: antialiased;
+}
+main {
+	width: 760px;
+	max-width: calc(100% - 2em);
+	margin: auto;
+	padding: 2em 1em;
+}
+h1, h2, h3, h4, h5, h6 {
+	margin: 0 0 0.5rem 0;
+	color: #fff;
+	line-height: 1.25;
+}
+h1 { font-size: 2.4em; }
+h2 { font-size: 1.7em; margin-top: 2rem; }
+h3 { font-size: 1.3em; margin-top: 1.5rem; }
+strong, b { font-weight: 700; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+p { margin-bottom: 1em; }
+.prose p { margin-bottom: 1.5em; }
+img {
+	max-width: 100%;
+	height: auto;
+	border-radius: 8px;
+}
+code {
+	padding: 2px 6px;
+	background: #1a1a1a;
+	border-radius: 4px;
+	font-size: 0.9em;
+}
+pre {
+	padding: 1.5em;
+	border-radius: 8px;
+	background: #0d0d0d;
+	border: 1px solid var(--border);
+	overflow-x: auto;
+}
+pre > code { all: unset; }
+blockquote {
+	border-left: 3px solid var(--accent);
+	padding: 0 0 0 1.25rem;
+	margin: 1.5rem 0;
+	color: var(--text-muted);
+}
+hr {
+	border: none;
+	border-top: 1px solid var(--border);
+	margin: 2rem 0;
+}
+table {
+	width: 100%;
+	border-collapse: collapse;
+	margin: 1.5rem 0;
+}
+th, td {
+	padding: 0.75rem 1rem;
+	border: 1px solid var(--border);
+	text-align: left;
+}
+th {
+	background: #0d0d0d;
+	color: #fff;
+	font-weight: 700;
+}
+ul, ol {
+	padding-left: 1.5rem;
+}
+li {
+	margin-bottom: 0.4rem;
+}
+@media (max-width: 720px) {
+	body { font-size: 16px; }
+	main { padding: 1em; }
+	h1 { font-size: 1.8em; }
+}
+.sr-only {
+	position: absolute !important;
+	height: 1px; width: 1px;
+	overflow: hidden;
+	clip: rect(1px, 1px, 1px, 1px);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}

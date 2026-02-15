@@ -1,0 +1,198 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { getCollection } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import { SITE_DESCRIPTION, SITE_TITLE, WHOP_URL } from '../consts';
+
+const posts = (await getCollection('blog')).sort(
+	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+);
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<style>
+			.hero {
+				text-align: center;
+				padding: 4rem 1rem;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			.hero h1 {
+				font-size: 2.8rem;
+				line-height: 1.15;
+				margin-bottom: 1rem;
+				background: linear-gradient(135deg, #e94560, #ff6b6b);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+			}
+			.hero .subtitle {
+				font-size: 1.25rem;
+				color: #888;
+				margin-bottom: 2rem;
+				line-height: 1.6;
+			}
+			.cta-buttons {
+				display: flex;
+				gap: 1rem;
+				justify-content: center;
+				flex-wrap: wrap;
+			}
+			.btn-primary {
+				background: linear-gradient(135deg, #e94560, #ff6b6b);
+				color: white;
+				padding: 0.85rem 2rem;
+				border-radius: 8px;
+				text-decoration: none;
+				font-weight: 700;
+				font-size: 1.05rem;
+				transition: transform 0.2s, box-shadow 0.2s;
+			}
+			.btn-primary:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+			}
+			.btn-secondary {
+				border: 2px solid #333;
+				color: inherit;
+				padding: 0.85rem 2rem;
+				border-radius: 8px;
+				text-decoration: none;
+				font-weight: 600;
+				font-size: 1.05rem;
+				transition: border-color 0.2s;
+			}
+			.btn-secondary:hover {
+				border-color: #e94560;
+			}
+			.features {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+				gap: 2rem;
+				max-width: 1000px;
+				margin: 3rem auto;
+				padding: 0 1rem;
+			}
+			.feature {
+				padding: 1.5rem;
+				border-radius: 12px;
+				border: 1px solid #222;
+				background: #0a0a0a;
+			}
+			.feature h3 {
+				margin-top: 0.5rem;
+				margin-bottom: 0.5rem;
+			}
+			.feature p {
+				color: #888;
+				font-size: 0.95rem;
+				line-height: 1.6;
+			}
+			.posts-section {
+				max-width: 800px;
+				margin: 3rem auto;
+				padding: 0 1rem;
+			}
+			.posts-section h2 {
+				font-size: 1.8rem;
+				margin-bottom: 1.5rem;
+			}
+			.post-card {
+				padding: 1.25rem 0;
+				border-bottom: 1px solid #1a1a1a;
+			}
+			.post-card:last-child {
+				border-bottom: none;
+			}
+			.post-card a {
+				text-decoration: none;
+				color: inherit;
+			}
+			.post-card h3 {
+				font-size: 1.15rem;
+				margin-bottom: 0.35rem;
+				transition: color 0.2s;
+			}
+			.post-card a:hover h3 {
+				color: #e94560;
+			}
+			.post-card .meta {
+				font-size: 0.85rem;
+				color: #666;
+				margin-bottom: 0.35rem;
+			}
+			.post-card .excerpt {
+				color: #888;
+				font-size: 0.92rem;
+				line-height: 1.5;
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="hero">
+				<h1>Tu propia IA. Tu control. Tu ventaja.</h1>
+				<p class="subtitle">
+					TribuClaw es la comunidad en español que te enseña a crear, configurar y dominar
+					tu agente IA personal. Sin depender de nadie. Sin entregar tus datos.
+				</p>
+				<div class="cta-buttons">
+					<a href={WHOP_URL} class="btn-primary" target="_blank">Unirme a TribuClaw</a>
+					<a href="/blog/" class="btn-secondary">Leer el blog</a>
+				</div>
+			</section>
+
+			<section class="features">
+				<div class="feature">
+					<h3>🤖 Agente IA personal</h3>
+					<p>Una IA que trabaja solo para ti. Conoce tu contexto, tiene memoria permanente y ejecuta tareas de forma autónoma.</p>
+				</div>
+				<div class="feature">
+					<h3>🔒 Tus datos, tu servidor</h3>
+					<p>Todo corre en tu infraestructura. Sin nubes ajenas, sin empresas que lean tus mensajes. Control total.</p>
+				</div>
+				<div class="feature">
+					<h3>⚡ Automatización real</h3>
+					<p>Email, WhatsApp, Telegram, calendario, redes sociales. Tu agente se conecta a todo y actúa solo.</p>
+				</div>
+				<div class="feature">
+					<h3>🇪🇸 En español, sin excusas</h3>
+					<p>Guías, tutoriales y soporte en tu idioma. La primera comunidad hispanoparlante de agentes IA personales.</p>
+				</div>
+				<div class="feature">
+					<h3>💰 De gratis a rentable</h3>
+					<p>Empieza con modelos gratuitos y escala. Aprende a monetizar la IA creando servicios, productos y automatizaciones.</p>
+				</div>
+				<div class="feature">
+					<h3>🧠 Comunidad activa</h3>
+					<p>No estás solo. Preguntas, recetas, casos de uso y gente que comparte lo que funciona. Todos los días.</p>
+				</div>
+			</section>
+
+			<section class="posts-section">
+				<h2>Últimos artículos</h2>
+				{posts.slice(0, 10).map((post) => (
+					<div class="post-card">
+						<a href={`/blog/${post.id}/`}>
+							<div class="meta"><FormattedDate date={post.data.pubDate} /></div>
+							<h3>{post.data.title}</h3>
+							<p class="excerpt">{post.data.description}</p>
+						</a>
+					</div>
+				))}
+				{posts.length > 10 && (
+					<p style="text-align: center; margin-top: 1.5rem;">
+						<a href="/blog/" class="btn-secondary">Ver todos los artículos</a>
+					</p>
+				)}
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
