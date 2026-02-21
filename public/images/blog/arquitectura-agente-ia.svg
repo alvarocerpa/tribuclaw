@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none">
+  <rect width="1200" height="400" fill="#0a0a0a"/>
+  <!-- Layer 1: Brain -->
+  <rect x="100" y="120" width="280" height="160" rx="16" fill="#111" stroke="#e94560" stroke-width="2"/>
+  <text x="240" y="175" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="36">🧠</text>
+  <text x="240" y="210" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="600">Cerebro</text>
+  <text x="240" y="235" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Claude · GPT · DeepSeek</text>
+  <text x="240" y="255" text-anchor="middle" fill="#666" font-family="system-ui" font-size="11">Piensa, razona, decide</text>
+  <!-- Arrow 1 -->
+  <line x1="380" y1="200" x2="440" y2="200" stroke="#e94560" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- Layer 2: Memory -->
+  <rect x="460" y="120" width="280" height="160" rx="16" fill="#111" stroke="#e94560" stroke-width="2"/>
+  <text x="600" y="175" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="36">💾</text>
+  <text x="600" y="210" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="600">Memoria</text>
+  <text x="600" y="235" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Archivos · Contexto · Historial</text>
+  <text x="600" y="255" text-anchor="middle" fill="#666" font-family="system-ui" font-size="11">Recuerda todo sobre ti</text>
+  <!-- Arrow 2 -->
+  <line x1="740" y1="200" x2="800" y2="200" stroke="#e94560" stroke-width="2"/>
+  <!-- Layer 3: Connections -->
+  <rect x="820" y="120" width="280" height="160" rx="16" fill="#111" stroke="#e94560" stroke-width="2"/>
+  <text x="960" y="175" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="36">🔌</text>
+  <text x="960" y="210" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="600">Conexiones</text>
+  <text x="960" y="235" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">WhatsApp · Email · Calendario</text>
+  <text x="960" y="255" text-anchor="middle" fill="#666" font-family="system-ui" font-size="11">Se conecta a tu mundo</text>
+  <!-- Title -->
+  <text x="600" y="60" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="22" font-weight="700">Arquitectura de un agente IA personal</text>
+  <!-- Bottom label -->
+  <text x="600" y="340" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="600">OpenClaw — El runtime que une todo</text>
+  <text x="600" y="365" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#e94560"/>
+    </marker>
+  </defs>
+</svg>

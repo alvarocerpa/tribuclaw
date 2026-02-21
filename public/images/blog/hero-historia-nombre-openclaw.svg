@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080808"/>
+      <stop offset="100%" style="stop-color:#0d0d0d"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="20" y="20" width="1160" height="590" fill="none" stroke="#1a1a1a" rx="12"/>
+
+  <text x="600" y="68" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="32" font-weight="700">LA HISTORIA REAL DE OPENCLAW</text>
+  <text x="600" y="98" text-anchor="middle" fill="#888" font-family="system-ui" font-size="16">De Clawdbot a OpenClaw: la historia que nadie cuenta</text>
+
+  <!-- Timeline horizontal -->
+  <line x1="100" y1="310" x2="1100" y2="310" stroke="#2a2a2a" stroke-width="3"/>
+
+  <!-- Evento 1: Clawdbot viral -->
+  <circle cx="150" cy="310" r="12" fill="#22c55e"/>
+  <rect x="80" y="140" width="180" height="110" fill="#0a1a0a" stroke="#22c55e" stroke-width="1.5" rx="8"/>
+  <text x="170" y="165" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="12" font-weight="700">CLAWDBOT</text>
+  <text x="170" y="183" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="18" font-weight="900">100K</text>
+  <text x="170" y="201" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">estrellas GitHub</text>
+  <text x="170" y="222" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Se viraliza</text>
+  <line x1="170" y1="250" x2="150" y2="298" stroke="#22c55e" stroke-width="1.5"/>
+
+  <!-- Evento 2: Anthropic -->
+  <circle cx="370" cy="310" r="12" fill="#e94560"/>
+  <rect x="300" y="360" width="180" height="100" fill="#1a0808" stroke="#e94560" stroke-width="1.5" rx="8"/>
+  <text x="390" y="385" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="12" font-weight="700">ANTHROPIC</text>
+  <text x="390" y="408" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">Cese y desistimiento</text>
+  <text x="390" y="428" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Marca registrada</text>
+  <text x="390" y="448" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">"Claude" es suyo</text>
+  <line x1="370" y1="322" x2="390" y2="358" stroke="#e94560" stroke-width="1.5"/>
+
+  <!-- Evento 3: Renombrado -->
+  <circle cx="590" cy="310" r="12" fill="#4a9eff"/>
+  <rect x="520" y="140" width="180" height="110" fill="#0a0d1a" stroke="#4a9eff" stroke-width="1.5" rx="8"/>
+  <text x="610" y="165" text-anchor="middle" fill="#4a9eff" font-family="system-ui" font-size="12" font-weight="700">24 HORAS</text>
+  <text x="610" y="187" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="17" font-weight="900">OPENCLAW</text>
+  <text x="610" y="208" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Comunidad actua</text>
+  <text x="610" y="228" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Sin burocracia</text>
+  <line x1="610" y1="250" x2="590" y2="298" stroke="#4a9eff" stroke-width="1.5"/>
+
+  <!-- Evento 4: OpenAI adquiere -->
+  <circle cx="810" cy="310" r="12" fill="#a855f7"/>
+  <rect x="740" y="360" width="180" height="100" fill="#12081a" stroke="#a855f7" stroke-width="1.5" rx="8"/>
+  <text x="830" y="385" text-anchor="middle" fill="#a855f7" font-family="system-ui" font-size="12" font-weight="700">OPENAI</text>
+  <text x="830" y="408" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">Adquiere a Peter</text>
+  <text x="830" y="428" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">El creador de OpenClaw</text>
+  <text x="830" y="448" text-anchor="middle" fill="#22c55e" font-family="system-ui" font-size="11">"Go for it"</text>
+  <line x1="810" y1="322" x2="830" y2="358" stroke="#a855f7" stroke-width="1.5"/>
+
+  <!-- Evento 5: Hoy -->
+  <circle cx="1050" cy="310" r="12" fill="#e94560"/>
+  <rect x="980" y="140" width="180" height="110" fill="#1a0a0a" stroke="#e94560" stroke-width="1.5" rx="8"/>
+  <text x="1070" y="165" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="12" font-weight="700">HOY</text>
+  <text x="1070" y="187" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="17" font-weight="900">167K</text>
+  <text x="1070" y="208" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">estrellas GitHub</text>
+  <text x="1070" y="228" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Sigue creciendo</text>
+  <line x1="1070" y1="250" x2="1050" y2="298" stroke="#e94560" stroke-width="1.5"/>
+
+  <rect x="80" y="490" width="1040" height="50" fill="#e94560" rx="6"/>
+  <text x="600" y="522" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="17" font-weight="700">LA COMUNIDAD ES MAS FUERTE QUE CUALQUIER LAB</text>
+
+  <text x="600" y="580" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>

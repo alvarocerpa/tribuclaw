@@ -1,0 +1,100 @@
+<svg viewBox="0 0 800 450" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="450" fill="#080808"/>
+  <rect x="20" y="20" width="760" height="410" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="2" rx="8"/>
+  
+  <!-- Título -->
+  <text x="400" y="50" text-anchor="middle" fill="#e94560" font-size="16" font-weight="600">FLUJO DE AUTOMATIZACIÓN DE EMAILS</text>
+  
+  <!-- Paso 1: Recepción -->
+  <g>
+    <circle cx="100" cy="120" r="30" fill="#1a1a1a" stroke="#e94560" stroke-width="2"/>
+    <text x="100" y="115" text-anchor="middle" fill="#e94560" font-size="12" font-weight="600">1</text>
+    <text x="100" y="128" text-anchor="middle" fill="#fff" font-size="10">RECIBE</text>
+    <text x="100" y="160" text-anchor="middle" fill="#888" font-size="11">Email llega</text>
+    <text x="100" y="175" text-anchor="middle" fill="#888" font-size="11">a bandeja</text>
+  </g>
+  
+  <!-- Paso 2: Análisis -->
+  <g>
+    <circle cx="250" cy="120" r="30" fill="#1a1a1a" stroke="#e94560" stroke-width="2"/>
+    <text x="250" y="115" text-anchor="middle" fill="#e94560" font-size="12" font-weight="600">2</text>
+    <text x="250" y="128" text-anchor="middle" fill="#fff" font-size="10">ANALIZA</text>
+    <text x="250" y="160" text-anchor="middle" fill="#888" font-size="11">IA procesa</text>
+    <text x="250" y="175" text-anchor="middle" fill="#888" font-size="11">contenido</text>
+  </g>
+  
+  <!-- Paso 3: Decisión -->
+  <g>
+    <polygon points="400,90 430,120 400,150 370,120" fill="#1a1a1a" stroke="#e94560" stroke-width="2"/>
+    <text x="400" y="125" text-anchor="middle" fill="#fff" font-size="10">¿AUTO?</text>
+    <text x="400" y="170" text-anchor="middle" fill="#888" font-size="11">Decide si</text>
+    <text x="400" y="185" text-anchor="middle" fill="#888" font-size="11">automatizar</text>
+  </g>
+  
+  <!-- Rama SÍ: Automatización -->
+  <g>
+    <circle cx="550" cy="120" r="30" fill="#1a1a1a" stroke="#4ade80" stroke-width="2"/>
+    <text x="550" y="115" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="600">4A</text>
+    <text x="550" y="128" text-anchor="middle" fill="#fff" font-size="10">AUTO</text>
+    <text x="550" y="160" text-anchor="middle" fill="#888" font-size="11">Respuesta</text>
+    <text x="550" y="175" text-anchor="middle" fill="#888" font-size="11">automática</text>
+  </g>
+  
+  <!-- Rama NO: Humano -->
+  <g>
+    <circle cx="400" cy="280" r="30" fill="#1a1a1a" stroke="#f59e0b" stroke-width="2"/>
+    <text x="400" y="275" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">4B</text>
+    <text x="400" y="288" text-anchor="middle" fill="#fff" font-size="10">HUMANO</text>
+    <text x="400" y="320" text-anchor="middle" fill="#888" font-size="11">Notifica para</text>
+    <text x="400" y="335" text-anchor="middle" fill="#888" font-size="11">revisión manual</text>
+  </g>
+  
+  <!-- Flechas principales -->
+  <path d="M130 120 L220 120" stroke="#e94560" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M280 120 L370 120" stroke="#e94560" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  <path d="M430 120 L520 120" stroke="#4ade80" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+  <path d="M400 150 L400 250" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrowyellow)"/>
+  
+  <!-- Labels de decisión -->
+  <text x="480" y="110" fill="#4ade80" font-size="11" font-weight="600">SÍ</text>
+  <text x="410" y="200" fill="#f59e0b" font-size="11" font-weight="600">NO</text>
+  
+  <!-- Criterios de decisión -->
+  <rect x="480" y="200" width="280" height="120" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="6"/>
+  <text x="620" y="220" text-anchor="middle" fill="#e94560" font-size="12" font-weight="600">CRITERIOS DE AUTOMATIZACIÓN</text>
+  
+  <text x="500" y="245" fill="#4ade80" font-size="11" font-weight="600">✓ AUTOMATIZAR:</text>
+  <text x="500" y="260" fill="#fff" font-size="10">• Consultas repetitivas</text>
+  <text x="500" y="275" fill="#fff" font-size="10">• Remitente conocido</text>
+  <text x="500" y="290" fill="#fff" font-size="10">• Patrón identificado</text>
+  
+  <text x="640" y="245" fill="#f59e0b" font-size="11" font-weight="600">⚠ REVISAR:</text>
+  <text x="640" y="260" fill="#fff" font-size="10">• Primer contacto VIP</text>
+  <text x="640" y="275" fill="#fff" font-size="10">• Palabras de urgencia</text>
+  <text x="640" y="290" fill="#fff" font-size="10">• Consulta compleja</text>
+  
+  <!-- Métricas -->
+  <rect x="50" y="350" width="170" height="60" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+  <text x="135" y="370" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="600">AUTOMATIZADOS</text>
+  <text x="135" y="390" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">78%</text>
+  <text x="135" y="405" text-anchor="middle" fill="#888" font-size="10">emails procesados</text>
+  
+  <rect x="250" y="350" width="170" height="60" fill="#1a1a1a" stroke="#333" stroke-width="1" rx="4"/>
+  <text x="335" y="370" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">TIEMPO RESPUESTA</text>
+  <text x="335" y="390" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">2.3min</text>
+  <text x="335" y="405" text-anchor="middle" fill="#888" font-size="10">promedio</text>
+  
+  <!-- Definir markers -->
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#e94560"/>
+    </marker>
+    <marker id="arrowgreen" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4ade80"/>
+    </marker>
+    <marker id="arrowyellow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f59e0b"/>
+    </marker>
+  </defs>
+</svg>

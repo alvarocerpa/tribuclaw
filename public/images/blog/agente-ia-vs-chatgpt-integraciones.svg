@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+<rect width="800" height="400" fill="#080808"/>
+<rect x="20" y="20" width="760" height="360" rx="16" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<text x="400" y="55" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="700">INTEGRACIONES DEL AGENTE IA</text>
+
+<!-- Central hub -->
+<circle cx="400" cy="210" r="50" fill="#111" stroke="#e94560" stroke-width="2"/>
+<text x="400" y="205" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="12" font-weight="700">AGENTE</text>
+<text x="400" y="222" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="12" font-weight="700">IA</text>
+
+<!-- Nodes -->
+<!-- WhatsApp -->
+<line x1="350" y1="210" x2="140" y2="120" stroke="#1a1a1a" stroke-width="1.5"/>
+<rect x="60" y="95" width="120" height="50" rx="10" fill="#111" stroke="#e94560" stroke-width="1"/>
+<text x="120" y="118" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">WhatsApp</text>
+<text x="120" y="135" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Responde chats</text>
+
+<!-- Telegram -->
+<line x1="350" y1="220" x2="140" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+<rect x="60" y="195" width="120" height="50" rx="10" fill="#111" stroke="#e94560" stroke-width="1"/>
+<text x="120" y="218" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">Telegram</text>
+<text x="120" y="235" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Comandos + grupos</text>
+
+<!-- Email -->
+<line x1="350" y1="230" x2="140" y2="320" stroke="#1a1a1a" stroke-width="1.5"/>
+<rect x="60" y="295" width="120" height="50" rx="10" fill="#111" stroke="#e94560" stroke-width="1"/>
+<text x="120" y="318" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">Email</text>
+<text x="120" y="335" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Lee y responde</text>
+
+<!-- CRM -->
+<line x1="450" y1="210" x2="660" y2="120" stroke="#1a1a1a" stroke-width="1.5"/>
+<rect x="620" y="95" width="120" height="50" rx="10" fill="#111" stroke="#e94560" stroke-width="1"/>
+<text x="680" y="118" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">CRM</text>
+<text x="680" y="135" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Gestiona clientes</text>
+
+<!-- Calendario -->
+<line x1="450" y1="220" x2="660" y2="220" stroke="#1a1a1a" stroke-width="1.5"/>
+<rect x="620" y="195" width="120" height="50" rx="10" fill="#111" stroke="#e94560" stroke-width="1"/>
+<text x="680" y="218" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">Calendario</text>
+<text x="680" y="235" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Citas y eventos</text>
+
+<!-- Web/Blog -->
+<line x1="450" y1="230" x2="660" y2="320" stroke="#1a1a1a" stroke-width="1.5"/>
+<rect x="620" y="295" width="120" height="50" rx="10" fill="#111" stroke="#e94560" stroke-width="1"/>
+<text x="680" y="318" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">Web / Blog</text>
+<text x="680" y="335" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Publica contenido</text>
+
+<text x="400" y="385" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">tribuclaw.com</text>
+</svg>

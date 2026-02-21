@@ -1,0 +1,40 @@
+---
+import { WHOP_URL } from '../consts';
+interface Props {
+	text?: string;
+	subtitle?: string;
+}
+const { text = '¿Quieres tu propio agente IA?', subtitle = 'Únete a TribuClaw y aprende paso a paso con guías en español y una comunidad activa.' } = Astro.props;
+---
+<div class="inline-cta">
+	<p class="cta-text"><strong>{text}</strong> {subtitle} <a href={WHOP_URL} target="_blank">Entrar a TribuClaw →</a></p>
+</div>
+<style>
+	.inline-cta {
+		margin: 2rem 0;
+		padding: 1.25rem 1.5rem;
+		background: rgba(233, 69, 96, 0.06);
+		border-left: 3px solid #e94560;
+		border-radius: 0 8px 8px 0;
+	}
+	.inline-cta .cta-text {
+		margin: 0;
+		font-size: 0.95rem;
+		line-height: 1.6;
+	}
+	.inline-cta a {
+		color: #e94560;
+		font-weight: 700;
+		white-space: nowrap;
+	}
+
+	@media (max-width: 720px) {
+		.inline-cta {
+			padding: 1rem 1.25rem;
+			margin: 1.5rem 0;
+		}
+		.inline-cta a {
+			white-space: normal;
+		}
+	}
+</style>

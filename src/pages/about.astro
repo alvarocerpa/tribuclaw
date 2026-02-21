@@ -1,63 +1,268 @@
 ---
-import AboutHeroImage from '../assets/blog-placeholder-about.jpg';
-import Layout from '../layouts/BlogPost.astro';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { WHOP_URL } from '../consts';
 ---
 
-<Layout
-	title="About Me"
-	description="Lorem ipsum dolor sit amet"
-	pubDate={new Date('August 08 2021')}
-	heroImage={AboutHeroImage}
->
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-		labore et dolore magna aliqua. Vitae ultricies leo integer malesuada nunc vel risus commodo
-		viverra. Adipiscing enim eu turpis egestas pretium. Euismod elementum nisi quis eleifend quam
-		adipiscing. In hac habitasse platea dictumst vestibulum. Sagittis purus sit amet volutpat. Netus
-		et malesuada fames ac turpis egestas. Eget magna fermentum iaculis eu non diam phasellus
-		vestibulum lorem. Varius sit amet mattis vulputate enim. Habitasse platea dictumst quisque
-		sagittis. Integer quis auctor elit sed vulputate mi. Dictumst quisque sagittis purus sit amet.
-	</p>
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead
+			title="Sobre TribuClaw — La comunidad que te prepara para la era de los agentes IA"
+			description="TribuClaw es donde la gente que va a dominar la próxima década aprende a crear agentes IA autónomos. En español, desde cero, con una comunidad que te acompaña."
+		/>
+		<style>
+			@keyframes fadeUp {
+				from { opacity: 0; transform: translateY(25px); }
+				to { opacity: 1; transform: translateY(0); }
+			}
+			.about-hero {
+				text-align: center;
+				padding: 4rem 1.5rem 3rem;
+				max-width: 750px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.about-hero::before {
+				content: '';
+				position: absolute;
+				top: -100px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 500px;
+				height: 500px;
+				background: radial-gradient(circle, rgba(233,69,96,0.08) 0%, transparent 70%);
+				pointer-events: none;
+			}
+			.about-hero > * { position: relative; }
+			.about-hero .logo-big {
+				width: 80px;
+				height: 80px;
+				margin-bottom: 1.5rem;
+				animation: fadeUp 0.6s ease-out;
+			}
+			.about-hero .logo-big {
+				width: 80px;
+				height: 80px;
+			}
+			.about-hero h1 {
+				font-size: 2.5rem;
+				margin-bottom: 0.75rem;
+				animation: fadeUp 0.6s ease-out 0.1s both;
+			}
+			.about-hero h1 span { color: #e94560; }
+			.about-hero .lead {
+				font-size: 1.15rem;
+				color: #999;
+				line-height: 1.7;
+				animation: fadeUp 0.6s ease-out 0.2s both;
+			}
 
-	<p>
-		Morbi tristique senectus et netus. Id semper risus in hendrerit gravida rutrum quisque non
-		tellus. Habitasse platea dictumst quisque sagittis purus sit amet. Tellus molestie nunc non
-		blandit massa. Cursus vitae congue mauris rhoncus. Accumsan tortor posuere ac ut. Fringilla urna
-		porttitor rhoncus dolor. Elit ullamcorper dignissim cras tincidunt lobortis. In cursus turpis
-		massa tincidunt dui ut ornare lectus. Integer feugiat scelerisque varius morbi enim nunc.
-		Bibendum neque egestas congue quisque egestas diam. Cras ornare arcu dui vivamus arcu felis
-		bibendum. Dignissim suspendisse in est ante in nibh mauris. Sed tempus urna et pharetra pharetra
-		massa massa ultricies mi.
-	</p>
+			.about-content {
+				max-width: 700px;
+				margin: 0 auto;
+				padding: 0 1.5rem 3rem;
+			}
 
-	<p>
-		Mollis nunc sed id semper risus in. Convallis a cras semper auctor neque. Diam sit amet nisl
-		suscipit. Lacus viverra vitae congue eu consequat ac felis donec. Egestas integer eget aliquet
-		nibh praesent tristique magna sit amet. Eget magna fermentum iaculis eu non diam. In vitae
-		turpis massa sed elementum. Tristique et egestas quis ipsum suspendisse ultrices. Eget lorem
-		dolor sed viverra ipsum. Vel turpis nunc eget lorem dolor sed viverra. Posuere ac ut consequat
-		semper viverra nam. Laoreet suspendisse interdum consectetur libero id faucibus. Diam phasellus
-		vestibulum lorem sed risus ultricies tristique. Rhoncus dolor purus non enim praesent elementum
-		facilisis. Ultrices tincidunt arcu non sodales neque. Tempus egestas sed sed risus pretium quam
-		vulputate. Viverra suspendisse potenti nullam ac tortor vitae purus faucibus ornare. Fringilla
-		urna porttitor rhoncus dolor purus non. Amet dictum sit amet justo donec enim.
-	</p>
+			.about-section {
+				margin-bottom: 3rem;
+			}
+			.about-section h2 {
+				font-size: 1.5rem;
+				margin-bottom: 1rem;
+				padding-bottom: 0.5rem;
+				border-bottom: 1px solid #1a1a1a;
+			}
+			.about-section p {
+				color: #aaa;
+				line-height: 1.75;
+				margin-bottom: 1rem;
+			}
+			.about-section strong {
+				color: #e0e0e0;
+			}
 
-	<p>
-		Mattis ullamcorper velit sed ullamcorper morbi tincidunt. Tortor posuere ac ut consequat semper
-		viverra. Tellus mauris a diam maecenas sed enim ut sem viverra. Venenatis urna cursus eget nunc
-		scelerisque viverra mauris in. Arcu ac tortor dignissim convallis aenean et tortor at. Curabitur
-		gravida arcu ac tortor dignissim convallis aenean et tortor. Egestas tellus rutrum tellus
-		pellentesque eu. Fusce ut placerat orci nulla pellentesque dignissim enim sit amet. Ut enim
-		blandit volutpat maecenas volutpat blandit aliquam etiam. Id donec ultrices tincidunt arcu. Id
-		cursus metus aliquam eleifend mi.
-	</p>
+			/* Values grid */
+			.values {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				gap: 1.25rem;
+				margin: 1.5rem 0;
+			}
+			.value-card {
+				padding: 1.5rem;
+				background: #0a0a0a;
+				border: 1px solid #1a1a1a;
+				border-radius: 12px;
+				transition: border-color 0.3s;
+			}
+			.value-card:hover { border-color: rgba(233,69,96,0.25); }
+			.value-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
+			.value-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+			.value-card p { color: #888; font-size: 0.88rem; line-height: 1.5; margin: 0; }
 
-	<p>
-		Tempus quam pellentesque nec nam aliquam sem. Risus at ultrices mi tempus imperdiet. Id porta
-		nibh venenatis cras sed felis eget velit. Ipsum a arcu cursus vitae. Facilisis magna etiam
-		tempor orci eu lobortis elementum. Tincidunt dui ut ornare lectus sit. Quisque non tellus orci
-		ac. Blandit libero volutpat sed cras. Nec tincidunt praesent semper feugiat nibh sed pulvinar
-		proin gravida. Egestas integer eget aliquet nibh praesent tristique magna.
-	</p>
-</Layout>
+			/* Founder */
+			.founder {
+				display: flex;
+				gap: 1.5rem;
+				align-items: flex-start;
+				padding: 2rem;
+				background: #0a0a0a;
+				border: 1px solid #1a1a1a;
+				border-radius: 14px;
+				margin: 1.5rem 0;
+			}
+			.founder-avatar {
+				width: 70px;
+				height: 70px;
+				border-radius: 50%;
+				background: linear-gradient(135deg, #e94560, #d63851);
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				flex-shrink: 0;
+				font-size: 1.8rem;
+			}
+			.founder-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+			.founder-info .role { color: #e94560; font-size: 0.85rem; margin-bottom: 0.5rem; }
+			.founder-info p { color: #888; font-size: 0.92rem; line-height: 1.6; margin: 0; }
+
+			/* CTA */
+			.about-cta {
+				text-align: center;
+				padding: 3rem 1.5rem;
+				max-width: 600px;
+				margin: 0 auto;
+			}
+			.about-cta h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
+			.about-cta p { color: #888; margin-bottom: 1.5rem; }
+			.about-cta a {
+				display: inline-block;
+				background: linear-gradient(135deg, #e94560, #d63851);
+				color: white;
+				padding: 0.85rem 2rem;
+				border-radius: 10px;
+				font-weight: 700;
+				text-decoration: none;
+				transition: transform 0.2s, box-shadow 0.2s;
+				box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+			}
+			.about-cta a:hover {
+				transform: translateY(-2px);
+				box-shadow: 0 6px 25px rgba(233,69,96,0.45);
+				text-decoration: none;
+			}
+			.about-cta a {
+				min-height: 44px;
+				min-width: 44px;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+			}
+
+			@media (max-width: 720px) {
+				.about-hero { padding: 3rem 1.25rem 2rem; }
+				.about-hero h1 { font-size: 1.8rem; }
+				.about-hero .lead { font-size: 1rem; }
+				.about-hero .logo-big { width: 60px; height: 60px; }
+				.about-content { padding: 0 1.25rem 2rem; }
+				.about-section h2 { font-size: 1.25rem; }
+				.about-section p { font-size: 0.92rem; }
+				.about-section { margin-bottom: 2.5rem; }
+				.values { grid-template-columns: 1fr; gap: 1rem; }
+				.value-card { padding: 1.25rem; }
+				.founder { flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; }
+				.about-cta { padding: 2.5rem 1.25rem; }
+				.about-cta h2 { font-size: 1.5rem; }
+				.about-cta p { font-size: 0.92rem; }
+			}
+		</style>
+	</head>
+	<body>
+		<Header />
+		<main id="main-content">
+			<section class="about-hero">
+				<img src="/images/logo-icon.png" alt="TribuClaw" class="logo-big" />
+				<h1>Esto es <span>TribuClaw</span></h1>
+				<p class="lead">
+					No somos un curso. No somos otro grupo de Telegram. Somos el lugar donde la gente
+					que va a dominar la próxima década aprende a hacerlo.
+				</p>
+			</section>
+
+			<div class="about-content">
+				<section class="about-section">
+					<h2>El mundo está cambiando. La mayoría no se ha dado cuenta.</h2>
+					<p>
+						Hay personas que ya tienen una inteligencia artificial trabajando para ellas.
+						No hablamos de pedirle cosas a ChatGPT. Hablamos de un agente autónomo que gestiona
+						su negocio, responde sus clientes, analiza oportunidades y toma decisiones. Solo.
+						Mientras duermen.
+					</p>
+					<p>
+						Esta tecnología ya existe. Ya es accesible. Pero el 99% de la gente no lo sabe
+						porque todo el conocimiento está en inglés, enterrado en repositorios de GitHub
+						y foros técnicos.
+					</p>
+					<p>
+						<strong>TribuClaw nació para romper esa barrera.</strong> Para que cualquier persona,
+						sin importar su nivel técnico, pueda tener su propio agente IA funcionando.
+						En español. Con una comunidad que le acompañe.
+					</p>
+				</section>
+
+				<section class="about-section">
+					<h2>Qué vas a conseguir aquí</h2>
+					<div class="values">
+						<div class="value-card">
+							<span class="icon">🚀</span>
+							<h3>Tu agente IA funcionando</h3>
+							<p>No teoría. Sales de aquí con un agente real, conectado a tu vida y tu negocio, ejecutando tareas por ti.</p>
+						</div>
+						<div class="value-card">
+							<span class="icon">🔥</span>
+							<h3>Ventaja de primer jugador</h3>
+							<p>Los que aprenden esto ahora tendrán años de ventaja. Esta oleada no espera a nadie.</p>
+						</div>
+						<div class="value-card">
+							<span class="icon">🤝</span>
+							<h3>Gente que piensa como tu</h3>
+							<p>Emprendedores, creadores y visionarios que entienden que la IA no es una moda. Es el nuevo estándar.</p>
+						</div>
+						<div class="value-card">
+							<span class="icon">💰</span>
+							<h3>Nuevas formas de generar ingresos</h3>
+							<p>La IA autónoma abre modelos de negocio que hace un año no existían. Aquí aprendes a monetizarlos.</p>
+						</div>
+					</div>
+				</section>
+
+				<section class="about-section">
+					<h2>Quién está detrás</h2>
+					<div class="founder">
+						<div class="founder-avatar">AC</div>
+						<div class="founder-info">
+							<h3>Álvaro Cerpa</h3>
+							<div class="role">Fundador de TribuClaw</div>
+							<p>
+								Emprendedor que lleva años construyendo negocios digitales. Cuando configuró su propio
+								agente IA y vio cómo transformaba por completo su forma de trabajar, supo que
+								esto iba a cambiarlo todo. Creó TribuClaw porque necesitaba existir: un espacio en español,
+								sin humo, donde cualquiera pudiera acceder a esta tecnología y construir su ventaja.
+							</p>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<section class="about-cta">
+				<h2>La oleada no va a esperar</h2>
+				<p>Dentro de un año, desearás haber empezado hoy. Este es el momento.</p>
+				<a href={WHOP_URL} target="_blank">Entrar a TribuClaw</a>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>

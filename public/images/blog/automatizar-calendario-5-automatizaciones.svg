@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" width="800" height="400">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#080808"/>
+  <rect x="12" y="12" width="776" height="376" rx="10" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+
+  <!-- Título -->
+  <text x="400" y="44" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#e94560" text-anchor="middle" letter-spacing="2">5 AUTOMATIZACIONES DE CALENDARIO CON IA</text>
+  <text x="400" y="62" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#666" text-anchor="middle">tiempo ahorrado estimado por semana</text>
+
+  <!-- Card 1 -->
+  <rect x="30" y="82" width="220" height="130" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <rect x="30" y="82" width="220" height="6" rx="4" fill="#e94560"/>
+  <text x="140" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">1. RESUMEN MATUTINO</text>
+  <text x="140" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">Agenda del dia + contexto</text>
+  <text x="140" y="145" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">a las 7:30 en Telegram</text>
+  <text x="140" y="170" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#e94560" text-anchor="middle">75 min</text>
+  <text x="140" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#666" text-anchor="middle">ahorrados / semana</text>
+
+  <!-- Card 2 -->
+  <rect x="270" y="82" width="220" height="130" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <rect x="270" y="82" width="220" height="6" rx="4" fill="#e94560"/>
+  <text x="380" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">2. COORDINACION</text>
+  <text x="380" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">Sin emails para cuadrar</text>
+  <text x="380" y="145" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">horarios de reunion</text>
+  <text x="380" y="170" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#e94560" text-anchor="middle">2-4h</text>
+  <text x="380" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#666" text-anchor="middle">ahorradas / semana</text>
+
+  <!-- Card 3 -->
+  <rect x="550" y="82" width="218" height="130" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <rect x="550" y="82" width="218" height="6" rx="4" fill="#e94560"/>
+  <text x="659" y="110" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">3. TIEMPO DE FOCO</text>
+  <text x="659" y="128" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">Bloqueo automatico</text>
+  <text x="659" y="145" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">segun tus reglas</text>
+  <text x="659" y="170" font-family="system-ui, -apple-system, sans-serif" font-size="22" font-weight="700" fill="#e94560" text-anchor="middle">+3h foco</text>
+  <text x="659" y="188" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#666" text-anchor="middle">sin interrupciones</text>
+
+  <!-- Card 4 -->
+  <rect x="30" y="232" width="360" height="120" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <rect x="30" y="232" width="360" height="6" rx="4" fill="#e94560"/>
+  <text x="210" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">4. RECORDATORIOS CONTEXTUALES</text>
+  <text x="210" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">No solo "reunion con Ana" sino por que, que hay pendiente</text>
+  <text x="210" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">y cuando fue el ultimo contacto</text>
+  <text x="210" y="322" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#e94560" text-anchor="middle">Siempre preparado</text>
+  <text x="210" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#666" text-anchor="middle">100% de las reuniones con contexto completo</text>
+
+  <!-- Card 5 -->
+  <rect x="408" y="232" width="360" height="120" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <rect x="408" y="232" width="360" height="6" rx="4" fill="#e94560"/>
+  <text x="588" y="260" font-family="system-ui, -apple-system, sans-serif" font-size="11" font-weight="700" fill="#fff" text-anchor="middle">5. LIMPIEZA SEMANAL</text>
+  <text x="588" y="278" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">Cada viernes: revision de proxima semana</text>
+  <text x="588" y="295" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#888" text-anchor="middle">Duplicados, conflictos, huecos sin confirmar</text>
+  <text x="588" y="322" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#e94560" text-anchor="middle">30 min/semana</text>
+  <text x="588" y="340" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#666" text-anchor="middle">de gestion manual eliminada</text>
+
+  <!-- Branding -->
+  <text x="400" y="385" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#444" text-anchor="middle">tribuclaw.com</text>
+</svg>

@@ -1,0 +1,175 @@
+---
+title: 'OpenClaw + WhatsApp: tutorial completo para conectarlos en 2026'
+description: 'Tutorial paso a paso para conectar OpenClaw a WhatsApp. Escanea el QR, configura tu agente IA y empieza a automatizar mensajes en menos de 20 minutos.'
+heroImage: "/images/blog/hero-openclaw-whatsapp-tutorial.svg"
+pubDate: 2026-02-21
+author: 'Alvaro Cerpa'
+pillar: 'openclaw'
+tags: ['openclaw', 'whatsapp', 'tutorial', 'agente ia', 'automatizacion']
+keywords: ['openclaw whatsapp tutorial', 'conectar openclaw whatsapp', 'openclaw whatsapp configuracion', 'agente ia whatsapp openclaw', 'whatsapp agente inteligente']
+faq:
+  - q: 'Necesito una API de pago para conectar OpenClaw a WhatsApp?'
+    a: 'No. OpenClaw usa whatsapp-web.js, que se conecta como un cliente normal de WhatsApp Web. Solo necesitas escanear un codigo QR con tu telefono, igual que haces con WhatsApp Web en el navegador.'
+  - q: 'Mi numero de WhatsApp puede quedar baneado?'
+    a: 'El riesgo es muy bajo si usas OpenClaw de forma normal: responder mensajes entrantes, no enviar spam masivo. Miles de personas lo usan con su numero principal sin problemas. Evita envios masivos no solicitados.'
+  - q: 'Puedo tener OpenClaw conectado a WhatsApp todo el dia?'
+    a: 'Si. Al correr en un VPS, OpenClaw esta activo 24/7. Tu telefono puede estar apagado; la sesion de WhatsApp se mantiene activa en el servidor igual que WhatsApp Web.'
+  - q: 'Cuanto tarda en configurarse?'
+    a: 'Entre 10 y 20 minutos si ya tienes OpenClaw instalado en un VPS. Si partes de cero (VPS + OpenClaw + WhatsApp), cuenta una hora total.'
+  - q: 'Funciona con WhatsApp Business?'
+    a: 'Si. OpenClaw funciona tanto con WhatsApp personal como con WhatsApp Business. El proceso de conexion por QR es identico en ambos casos.'
+---
+
+import CTA from '../../components/CTA.astro';
+
+La mayoría de tutoriales de "WhatsApp + IA" empiezan pidiéndote que te registres en la API oficial de Meta, pases una verificación de empresa, esperes días y pongas la tarjeta. OpenClaw no. En 20 minutos puedes tener tu número de WhatsApp respondiendo con IA, sin pagar APIs, sin burocracia.
+
+Este es ese tutorial.
+
+## Por que OpenClaw y no la API oficial de WhatsApp
+
+Antes de entrar en pasos, toca aclarar algo: hay tres formas de conectar IA a WhatsApp, y no son iguales.
+
+La **API oficial de WhatsApp Business de Meta** requiere cuenta verificada como empresa, aprobación manual, una plantilla de mensajes aprobada para cada tipo de mensaje que envíes, y un proveedor intermediario como Twilio o 360dialog que te cobra por mensaje. El proceso de registro puede tardar semanas. Para un solopreneur o equipo pequeño, es overkill.
+
+**Twilio, 360dialog y similares** son más rápidos pero siguen requiriendo cuenta Business y tienen costes por mensaje (entre 0,004€ y 0,08€ según el tipo de conversación). Para volúmenes altos tiene sentido. Para gestionar tu WhatsApp personal o de un negocio pequeño, es dinero que no necesitas gastar.
+
+**OpenClaw con whatsapp-web.js** se conecta a WhatsApp exactamente como lo hace WhatsApp Web en tu navegador: simulando una sesión de cliente oficial. Sin verificaciones, sin esperas, sin coste por mensaje. Tu número de WhatsApp actual, conectado a tu agente IA en minutos.
+
+![Comparativa de metodos para conectar WhatsApp a IA](/images/blog/openclaw-whatsapp-tutorial-comparativa.svg)
+
+El enfoque tiene una limitación: si usas ese número para spam masivo, Meta puede cerrarte la cuenta. Pero si lo usas como lo que es, un asistente que responde a las personas que te escriben, el riesgo es mínimo. Miles de personas llevan años usando whatsapp-web.js sin incidentes.
+
+<CTA />
+
+## Requisitos previos
+
+Antes de empezar necesitas tener tres cosas:
+
+**1. OpenClaw instalado en un VPS** (o en tu máquina local si solo quieres probarlo). Si aún no lo tienes, sigue primero la guía de [instalación de OpenClaw en VPS](/blog/instalar-openclaw-en-vps-paso-a-paso/) y vuelve aquí cuando esté corriendo.
+
+**2. Un número de WhatsApp activo** en tu teléfono. Personal o Business, da igual. Necesitas tener acceso al teléfono para escanear el QR durante la configuración inicial.
+
+**3. El gateway de OpenClaw corriendo**. Puedes verificarlo con `openclaw gateway status`. Si no está corriendo, `openclaw gateway start`.
+
+Eso es todo. No necesitas instalar nada más, no necesitas claves de API externas, no necesitas abrir ninguna cuenta.
+
+## Paso 1 — Activar el channel de WhatsApp en OpenClaw
+
+OpenClaw gestiona los canales de comunicación desde su configuración. WhatsApp es un canal que viene disponible pero que hay que activar explícitamente.
+
+Abre tu archivo de configuración de OpenClaw (normalmente en `~/.openclaw/openclaw.json` o el directorio que hayas configurado) y añade o verifica que el canal de WhatsApp esté en la lista de canales habilitados.
+
+Desde la terminal del VPS, puedes hacer:
+
+```bash
+openclaw channel list
+```
+
+Esto te muestra los canales disponibles y su estado. Si WhatsApp aparece como `disabled`, actívalo:
+
+```bash
+openclaw channel enable whatsapp
+```
+
+Si el comando no está disponible en tu versión, edita directamente `openclaw.json` y añade `"whatsapp": true` en la sección de channels, luego reinicia el gateway:
+
+```bash
+openclaw gateway restart
+```
+
+Una vez reiniciado, OpenClaw iniciará el proceso de autenticación de WhatsApp y generará un código QR en el log del gateway.
+
+## Paso 2 — Escanear el codigo QR
+
+Cuando OpenClaw inicia el canal de WhatsApp, genera un QR que aparece en el log del gateway. Para verlo en tiempo real:
+
+```bash
+openclaw gateway logs --follow
+```
+
+O si tienes el gateway corriendo como servicio del sistema:
+
+```bash
+journalctl -u openclaw -f
+```
+
+Verás algo así en la terminal, un QR en ASCII que puedes escanear directamente desde la pantalla.
+
+**Cómo escanear desde el teléfono:**
+
+1. Abre WhatsApp en tu teléfono
+2. Ve a **Configuración** (icono de tres puntos o tuerca)
+3. Toca **Dispositivos vinculados**
+4. Toca **Vincular un dispositivo**
+5. Apunta la cámara al QR que aparece en tu terminal
+
+El QR expira en aproximadamente 60 segundos. Si expira antes de que puedas escanearlo, OpenClaw generará uno nuevo automáticamente en el siguiente ciclo del log.
+
+Una vez escaneado, verás en la terminal el mensaje `WhatsApp connected` o similar, y en tu teléfono aparecerá OpenClaw (o el nombre del servidor) en la lista de dispositivos vinculados, igual que aparece "Chrome en Windows" cuando usas WhatsApp Web.
+
+![Flujo de vinculacion QR de OpenClaw con WhatsApp](/images/blog/openclaw-whatsapp-tutorial-flujo.svg)
+
+La sesión se mantiene activa de forma indefinida mientras el gateway esté corriendo. Si reinicias el servidor, OpenClaw restaura la sesión automáticamente sin necesidad de escanear el QR de nuevo. Solo necesitarás repetir el proceso si cierras manualmente la sesión desde tu teléfono.
+
+<CTA />
+
+## Paso 3 — Configurar como responde tu agente
+
+Una vez conectado, cada mensaje que recibas en ese número de WhatsApp llegará a OpenClaw. El agente procesará el mensaje y responderá usando el modelo de IA y el contexto que tengas configurado.
+
+El comportamiento de respuesta depende de lo que hayas definido en tu configuración de OpenClaw, especialmente en los archivos de contexto del agente. Algunos puntos a personalizar para WhatsApp:
+
+**Prompt de sistema**: OpenClaw usa el contexto del agente (SOUL.md en la configuración por defecto) para saber cómo comportarse. Puedes añadir instrucciones específicas para WhatsApp: "En WhatsApp, los mensajes deben ser más cortos y conversacionales. Sin listas largas. Respuestas de máximo 3-4 frases."
+
+**Política de respuesta automática**: Por defecto, OpenClaw puede responder a todos los mensajes entrantes. Si quieres que solo responda a ciertos contactos o grupos, puedes configurar filtros en la política de acceso del canal.
+
+**Memoria de conversación**: OpenClaw mantiene el historial de cada conversación por contacto. Tu agente recuerda lo que hablasteis la última vez. Exactamente lo que explico en [qué es un agente IA personal](/blog/que-es-un-agente-ia-personal/) y por qué cambia todo.
+
+## Que puede hacer tu agente en WhatsApp
+
+Una vez conectado, las posibilidades dependen de qué skills tengas configurados en OpenClaw. Algunas de las más comunes:
+
+**Responder preguntas sobre tu negocio**: FAQs, precios, horarios, cómo contratar. El agente accede a tu base de conocimiento y responde como si fueras tú.
+
+**Gestionar citas y recordatorios**: Si tienes integrado el calendario, el agente puede ver tu disponibilidad y proponer horas. Alguien escribe "quiero reservar una sesión" y el agente mira el calendario, propone horas libres y confirma.
+
+**Soporte inicial de clientes**: Filtrar y resolver las consultas más simples antes de que lleguen a ti. El 70% de los mensajes de soporte suelen ser variaciones de las mismas 10 preguntas.
+
+**Notificaciones proactivas**: OpenClaw puede enviarte mensajes de WhatsApp cuando ocurren eventos: una venta, una tarea completada, una alerta de monitorización.
+
+Si quieres ver más casos de uso detallados, en [automatizar WhatsApp con IA: guía completa](/blog/automatizar-whatsapp-con-ia-guia-completa/) tienes una visión más amplia de lo que es posible y cómo estructurarlo para un negocio.
+
+## Problemas comunes y como resolverlos
+
+**El QR no aparece en los logs**: Verifica que el canal de WhatsApp esté habilitado en la configuración y que el gateway se haya reiniciado después del cambio. `openclaw gateway restart` y luego `openclaw gateway logs --follow`.
+
+**El QR expira antes de poder escanearlo**: Es normal si el log tiene mucho output y el QR sube rápido. Filtra los logs: `openclaw gateway logs --follow | grep -A 30 "QR"` para ver solo la zona del QR.
+
+**La sesión se desconecta frecuentemente**: Suele pasar si hay otro dispositivo intentando conectarse con el mismo número, o si el teléfono tiene mala conexión. Asegúrate de que no tienes WhatsApp Web abierto en el navegador al mismo tiempo. Si el problema persiste, limpia la sesión guardada y vuelve a escanear:
+
+```bash
+# La ruta exacta depende de tu instalación
+rm -rf ~/.local/share/openclaw/whatsapp/
+openclaw gateway restart
+```
+
+**El agente responde tarde o con errores**: Verifica que el modelo de IA configurado en OpenClaw responde bien. Puedes probarlo en Telegram o en el chat local para descartar que el problema sea WhatsApp en sí.
+
+**WhatsApp no muestra el dispositivo en "Dispositivos vinculados"**: El escaneo funcionó pero el teléfono no lo registró. Vuelve a intentarlo; a veces WhatsApp tarda unos segundos en procesar la vinculación.
+
+<CTA />
+
+## Siguiente nivel — Skills para WhatsApp
+
+La conexión básica ya es útil. Pero OpenClaw tiene un sistema de skills que permite ampliar lo que tu agente puede hacer cuando responde por WhatsApp.
+
+Algunos examples: skills de CRM que buscan el historial del cliente antes de responder, skills de calendario que muestran disponibilidad en tiempo real, skills de resumen que compactan conversaciones largas antes de pasártelas.
+
+Lo interesante de OpenClaw es que los skills funcionan igual independientemente del canal. El mismo skill que hace algo en Telegram lo hace en WhatsApp. Configuras una vez, funciona en todos tus canales. Si quieres entender bien cómo funciona la arquitectura completa, la [guía de OpenClaw en español](/blog/openclaw-que-es-guia-completa-espanol/) te da el mapa completo.
+
+## Conclusion
+
+Ya tienes WhatsApp conectado a IA. Sin APIs de pago, sin burocracia, sin esperas. Tu número actual, respondiendo con inteligencia, 24 horas al día.
+
+Lo que parece magia es simplemente una herramienta bien configurada. El siguiente paso es ajustar cómo responde tu agente y qué skills tiene acceso. Ahí es donde pasa lo interesante.

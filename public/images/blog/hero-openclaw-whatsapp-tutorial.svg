@@ -1,0 +1,88 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#080808"/>
+  <rect x="30" y="30" width="1140" height="570" rx="16" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Title area -->
+  <text x="600" y="80" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="15" font-weight="700" letter-spacing="3">TUTORIAL PASO A PASO</text>
+
+  <!-- Main title -->
+  <text x="600" y="125" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="32" font-weight="700">OpenClaw + WhatsApp</text>
+  <text x="600" y="165" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="18">Conectalos en 20 minutos, sin APIs de pago</text>
+
+  <!-- Step flow - 5 steps with arrows -->
+  <!-- Step 1 -->
+  <rect x="60" y="220" width="180" height="130" rx="12" fill="#111111" stroke="#e94560" stroke-width="2"/>
+  <circle cx="150" cy="255" r="18" fill="#e94560"/>
+  <text x="150" y="261" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="16" font-weight="700">1</text>
+  <text x="150" y="295" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Instalar</text>
+  <text x="150" y="313" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="11">OpenClaw en VPS</text>
+  <text x="150" y="333" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">Ubuntu 22.04+</text>
+
+  <!-- Arrow 1 -->
+  <line x1="242" y1="285" x2="280" y2="285" stroke="#333333" stroke-width="2"/>
+  <polygon points="280,279 292,285 280,291" fill="#333333"/>
+
+  <!-- Step 2 -->
+  <rect x="294" y="220" width="180" height="130" rx="12" fill="#111111" stroke="#333333" stroke-width="1.5"/>
+  <circle cx="384" cy="255" r="18" fill="#222222" stroke="#e94560" stroke-width="2"/>
+  <text x="384" y="261" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="16" font-weight="700">2</text>
+  <text x="384" y="295" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Activar channel</text>
+  <text x="384" y="313" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="11">openclaw channel</text>
+  <text x="384" y="333" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">enable whatsapp</text>
+
+  <!-- Arrow 2 -->
+  <line x1="476" y1="285" x2="514" y2="285" stroke="#333333" stroke-width="2"/>
+  <polygon points="514,279 526,285 514,291" fill="#333333"/>
+
+  <!-- Step 3 -->
+  <rect x="528" y="220" width="180" height="130" rx="12" fill="#111111" stroke="#333333" stroke-width="1.5"/>
+  <circle cx="618" cy="255" r="18" fill="#222222" stroke="#e94560" stroke-width="2"/>
+  <text x="618" y="261" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="16" font-weight="700">3</text>
+  <text x="618" y="295" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Escanear QR</text>
+  <text x="618" y="313" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="11">WhatsApp movil</text>
+  <text x="618" y="333" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">Dispositivos vinculados</text>
+
+  <!-- Arrow 3 -->
+  <line x1="710" y1="285" x2="748" y2="285" stroke="#333333" stroke-width="2"/>
+  <polygon points="748,279 760,285 748,291" fill="#333333"/>
+
+  <!-- Step 4 -->
+  <rect x="762" y="220" width="180" height="130" rx="12" fill="#111111" stroke="#333333" stroke-width="1.5"/>
+  <circle cx="852" cy="255" r="18" fill="#222222" stroke="#e94560" stroke-width="2"/>
+  <text x="852" y="261" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="16" font-weight="700">4</text>
+  <text x="852" y="295" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Configurar agente</text>
+  <text x="852" y="313" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="11">Prompt, skills</text>
+  <text x="852" y="333" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">tono y respuestas</text>
+
+  <!-- Arrow 4 -->
+  <line x1="944" y1="285" x2="982" y2="285" stroke="#333333" stroke-width="2"/>
+  <polygon points="982,279 994,285 982,291" fill="#333333"/>
+
+  <!-- Step 5 - result -->
+  <rect x="996" y="220" width="164" height="130" rx="12" fill="#0d1f0d" stroke="#27ae60" stroke-width="2"/>
+  <circle cx="1078" cy="255" r="18" fill="#27ae60"/>
+  <text x="1078" y="261" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="14" font-weight="700">OK</text>
+  <text x="1078" y="295" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13" font-weight="600">Agente activo</text>
+  <text x="1078" y="313" text-anchor="middle" fill="#27ae60" font-family="system-ui, sans-serif" font-size="11">24/7 respondiendo</text>
+  <text x="1078" y="333" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">sin coste por mensaje</text>
+
+  <!-- Benefits row -->
+  <rect x="60" y="390" width="330" height="90" rx="10" fill="#111111" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="225" y="420" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="12" font-weight="700">SIN API DE PAGO</text>
+  <text x="225" y="445" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13">whatsapp-web.js</text>
+  <text x="225" y="465" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="11">El mismo protocolo que WhatsApp Web</text>
+
+  <rect x="435" y="390" width="330" height="90" rx="10" fill="#111111" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="600" y="420" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="12" font-weight="700">TU NUMERO ACTUAL</text>
+  <text x="600" y="445" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13">Personal o Business</text>
+  <text x="600" y="465" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="11">Sin crear nuevas cuentas</text>
+
+  <rect x="810" y="390" width="330" height="90" rx="10" fill="#111111" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="975" y="420" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="12" font-weight="700">LISTO EN 20 MIN</text>
+  <text x="975" y="445" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="13">QR → conectado</text>
+  <text x="975" y="465" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="11">Sin esperas ni verificaciones</text>
+
+  <!-- Bottom title -->
+  <text x="600" y="530" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="24" font-weight="700">OpenClaw + WhatsApp: Tutorial Completo 2026</text>
+  <text x="600" y="560" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="12">tribuclaw.com</text>
+</svg>

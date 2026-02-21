@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 350" fill="none">
+<rect width="1200" height="350" fill="#0a0a0a"/>
+<text x="600" y="40" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="18" font-weight="700">Tiempo recuperado al dia</text>
+<!-- Horizontal bar chart -->
+<text x="140" y="95" text-anchor="end" fill="#ccc" font-family="system-ui" font-size="13">Email</text>
+<rect x="160" y="80" width="337" height="28" rx="6" fill="#e94560" opacity="0.7"/>
+<text x="507" y="99" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">45 min</text>
+
+<text x="140" y="140" text-anchor="end" fill="#ccc" font-family="system-ui" font-size="13">Lectura</text>
+<rect x="160" y="125" width="225" height="28" rx="6" fill="#e94560" opacity="0.6"/>
+<text x="395" y="144" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">30 min</text>
+
+<text x="140" y="185" text-anchor="end" fill="#ccc" font-family="system-ui" font-size="13">WhatsApp</text>
+<rect x="160" y="170" width="450" height="28" rx="6" fill="#e94560" opacity="0.8"/>
+<text x="620" y="189" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">60 min</text>
+
+<text x="140" y="230" text-anchor="end" fill="#ccc" font-family="system-ui" font-size="13">Negocio</text>
+<rect x="160" y="215" width="150" height="28" rx="6" fill="#e94560" opacity="0.5"/>
+<text x="320" y="234" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">20 min</text>
+
+<text x="140" y="275" text-anchor="end" fill="#ccc" font-family="system-ui" font-size="13">Contenido</text>
+<rect x="160" y="260" width="450" height="28" rx="6" fill="#e94560" opacity="0.8"/>
+<text x="620" y="279" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">60 min</text>
+
+<text x="600" y="325" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="800">TOTAL: 3h 35min recuperadas cada dia</text>
+</svg>

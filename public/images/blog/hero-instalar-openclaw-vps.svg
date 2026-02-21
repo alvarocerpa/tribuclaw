@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+<rect width="1200" height="630" fill="#080808"/>
+<rect x="40" y="40" width="1120" height="550" rx="20" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<text x="600" y="90" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="18" font-weight="700">GUIA DE INSTALACION EN VPS</text>
+
+<!-- Step 1 -->
+<rect x="80" y="115" width="320" height="110" rx="12" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="110" cy="148" r="18" fill="#e94560"/>
+<text x="110" y="154" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">1</text>
+<text x="140" y="150" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">Contratar VPS</text>
+<text x="90" y="175" fill="#888" font-family="system-ui" font-size="11">Hetzner CX22 - 5,49 EUR/mes</text>
+<text x="90" y="193" fill="#888" font-family="system-ui" font-size="11">Ubuntu 24.04 - 2 vCPU - 4 GB RAM</text>
+
+<!-- Step 2 -->
+<rect x="440" y="115" width="320" height="110" rx="12" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="470" cy="148" r="18" fill="#e94560"/>
+<text x="470" y="154" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">2</text>
+<text x="500" y="150" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">Conectar SSH</text>
+<text x="450" y="175" fill="#888" font-family="system-ui" font-size="11">ssh root@IP_SERVIDOR</text>
+<text x="450" y="193" fill="#888" font-family="system-ui" font-size="11">apt update and apt upgrade</text>
+
+<!-- Step 3 -->
+<rect x="800" y="115" width="320" height="110" rx="12" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="830" cy="148" r="18" fill="#e94560"/>
+<text x="830" y="154" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">3</text>
+<text x="860" y="150" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">Instalar Node.js</text>
+<text x="810" y="175" fill="#888" font-family="system-ui" font-size="11">NodeSource setup 22.x</text>
+<text x="810" y="193" fill="#888" font-family="system-ui" font-size="11">Node.js 22 LTS + npm 10</text>
+
+<!-- Arrows row 1 -->
+<line x1="400" y1="170" x2="430" y2="170" stroke="#e94560" stroke-width="2" stroke-dasharray="4"/>
+<line x1="760" y1="170" x2="790" y2="170" stroke="#e94560" stroke-width="2" stroke-dasharray="4"/>
+
+<!-- Arrow down -->
+<line x1="960" y1="225" x2="960" y2="260" stroke="#e94560" stroke-width="2" stroke-dasharray="4"/>
+
+<!-- Step 4 -->
+<rect x="80" y="260" width="320" height="110" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<circle cx="110" cy="293" r="18" fill="#e94560"/>
+<text x="110" y="299" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">4</text>
+<text x="140" y="296" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">Instalar OpenClaw</text>
+<text x="90" y="321" fill="#e94560" font-family="system-ui" font-size="12" font-weight="600">npm install -g openclaw</text>
+<text x="90" y="339" fill="#888" font-family="system-ui" font-size="11">openclaw init - configurar modelo</text>
+
+<!-- Step 5 -->
+<rect x="440" y="260" width="320" height="110" rx="12" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="470" cy="293" r="18" fill="#e94560"/>
+<text x="470" y="299" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">5</text>
+<text x="500" y="296" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">Conectar Telegram</text>
+<text x="450" y="321" fill="#888" font-family="system-ui" font-size="11">@BotFather - /newbot - token</text>
+<text x="450" y="339" fill="#888" font-family="system-ui" font-size="11">O WhatsApp via codigo QR</text>
+
+<!-- Step 6 -->
+<rect x="800" y="260" width="320" height="110" rx="12" fill="#111" stroke="#1a1a1a" stroke-width="1"/>
+<circle cx="830" cy="293" r="18" fill="#e94560"/>
+<text x="830" y="299" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">6</text>
+<text x="860" y="296" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">Arrancar 24/7</text>
+<text x="810" y="321" fill="#888" font-family="system-ui" font-size="11">systemd service + auto-restart</text>
+<text x="810" y="339" fill="#888" font-family="system-ui" font-size="11">openclaw gateway start</text>
+
+<!-- Arrows row 2 -->
+<line x1="400" y1="315" x2="430" y2="315" stroke="#e94560" stroke-width="2" stroke-dasharray="4"/>
+<line x1="760" y1="315" x2="790" y2="315" stroke="#e94560" stroke-width="2" stroke-dasharray="4"/>
+
+<!-- Result box -->
+<rect x="300" y="410" width="600" height="80" rx="12" fill="#111" stroke="#e94560" stroke-width="2"/>
+<text x="600" y="445" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="22" font-weight="800">Tu agente IA en menos de 1 hora</text>
+<text x="600" y="470" text-anchor="middle" fill="#888" font-family="system-ui" font-size="13">Desde 9 EUR/mes - Sin programar - Tu servidor, tus datos</text>
+
+<!-- Title bottom -->
+<text x="600" y="535" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="22" font-weight="700">Instalar OpenClaw en un VPS paso a paso</text>
+<text x="600" y="560" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>

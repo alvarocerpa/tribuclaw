@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080808"/>
+      <stop offset="100%" style="stop-color:#0d0d0d"/>
+    </linearGradient>
+    <linearGradient id="growLine" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:0.3"/>
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="20" y="20" width="1160" height="590" fill="none" stroke="#1a1a1a" rx="12"/>
+
+  <text x="600" y="68" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="30" font-weight="700">POR QUE TU AGENTE MEJORA Y CHATGPT NO</text>
+  <text x="600" y="96" text-anchor="middle" fill="#888" font-family="system-ui" font-size="15">La diferencia esta en la memoria, no en la inteligencia</text>
+
+  <!-- Grafico izquierdo: ChatGPT (linea plana) -->
+  <rect x="60" y="120" width="480" height="340" fill="#0d0d0d" stroke="#1a1a1a" rx="10"/>
+  <text x="300" y="150" text-anchor="middle" fill="#888" font-family="system-ui" font-size="16" font-weight="600">ChatGPT</text>
+
+  <!-- Eje Y -->
+  <line x1="110" y1="170" x2="110" y2="420" stroke="#2a2a2a" stroke-width="1.5"/>
+  <!-- Eje X -->
+  <line x1="110" y1="420" x2="510" y2="420" stroke="#2a2a2a" stroke-width="1.5"/>
+
+  <!-- Labels eje X -->
+  <text x="150" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Sem 1</text>
+  <text x="250" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Mes 1</text>
+  <text x="370" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Mes 3</text>
+  <text x="490" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Mes 6</text>
+
+  <!-- Label eje Y -->
+  <text x="88" y="295" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11" transform="rotate(-90, 88, 295)">Utilidad</text>
+
+  <!-- Linea plana ChatGPT -->
+  <polyline points="130,310 200,312 310,309 430,311 500,310" fill="none" stroke="#555" stroke-width="3" stroke-dasharray="8,4"/>
+  <text x="310" y="295" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Sin mejora acumulada</text>
+  <text x="310" y="312" text-anchor="middle" fill="#444" font-family="system-ui" font-size="11">Cada sesion empieza de cero</text>
+
+  <!-- Etiqueta -->
+  <rect x="120" y="340" width="360" height="56" fill="#0a0a0a" stroke="#2a2a2a" rx="6"/>
+  <text x="300" y="362" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Memoria de sesion unicamente</text>
+  <text x="300" y="382" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">No recuerda decisiones ni preferencias</text>
+
+  <!-- Grafico derecho: Agente propio (curva exponencial) -->
+  <rect x="660" y="120" width="480" height="340" fill="#0d0d0d" stroke="#e94560" stroke-width="1.5" rx="10"/>
+  <text x="900" y="150" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="700">Agente IA Propio</text>
+
+  <!-- Eje Y -->
+  <line x1="710" y1="170" x2="710" y2="420" stroke="#2a2a2a" stroke-width="1.5"/>
+  <!-- Eje X -->
+  <line x1="710" y1="420" x2="1110" y2="420" stroke="#2a2a2a" stroke-width="1.5"/>
+
+  <!-- Labels eje X -->
+  <text x="750" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Sem 1</text>
+  <text x="850" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Mes 1</text>
+  <text x="970" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Mes 3</text>
+  <text x="1090" y="440" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Mes 6</text>
+
+  <text x="688" y="295" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11" transform="rotate(-90, 688, 295)">Utilidad</text>
+
+  <!-- Curva creciente del agente -->
+  <polyline points="730,390 810,360 930,300 1060,210 1100,180" fill="none" stroke="url(#growLine)" stroke-width="3.5"/>
+
+  <!-- Puntos de referencia -->
+  <circle cx="730" cy="390" r="5" fill="#e94560"/>
+  <circle cx="810" cy="360" r="5" fill="#e94560"/>
+  <circle cx="930" cy="300" r="5" fill="#e94560"/>
+  <circle cx="1060" cy="210" r="5" fill="#e94560"/>
+
+  <!-- Labels en la curva -->
+  <text x="760" y="352" fill="#888" font-family="system-ui" font-size="10">Aprende tus proyectos</text>
+  <text x="875" y="282" fill="#888" font-family="system-ui" font-size="10">Anticipa necesidades</text>
+  <text x="970" y="193" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">Inteligencia compuesta</text>
+
+  <!-- Etiqueta -->
+  <rect x="720" y="340" width="360" height="56" fill="#1a0808" stroke="#e94560" rx="6"/>
+  <text x="900" y="362" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="12" font-weight="600">Memoria persistente y estructurada</text>
+  <text x="900" y="382" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Aprende de cada interaccion</text>
+
+  <rect x="80" y="490" width="1040" height="50" fill="#e94560" rx="6"/>
+  <text x="600" y="522" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="17" font-weight="700">TU AGENTE MEJORA CADA DIA - EMPIEZA EN TRIBUCLAW.COM</text>
+
+  <text x="600" y="580" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>

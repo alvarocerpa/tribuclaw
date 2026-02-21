@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 310">
+  <rect width="800" height="310" fill="#080808"/>
+  <rect x="16" y="16" width="768" height="278" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+
+  <!-- Title -->
+  <text x="400" y="48" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="12" font-weight="600" letter-spacing="2">PROCESO DE VINCULACION QR</text>
+
+  <!-- Step 1 -->
+  <rect x="30" y="68" width="130" height="150" rx="10" fill="#111111" stroke="#333333" stroke-width="1.5"/>
+  <rect x="30" y="68" width="130" height="4" rx="2" fill="#e94560"/>
+  <text x="95" y="115" text-anchor="middle" fill="#e94560" font-family="system-ui, sans-serif" font-size="28" font-weight="700">QR</text>
+  <text x="95" y="148" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">OpenClaw</text>
+  <text x="95" y="163" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">genera QR</text>
+  <text x="95" y="200" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">ver en: openclaw</text>
+  <text x="95" y="214" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">gateway logs</text>
+
+  <!-- Arrow -->
+  <line x1="162" y1="143" x2="192" y2="143" stroke="#333333" stroke-width="2"/>
+  <polygon points="192,137 204,143 192,149" fill="#333333"/>
+
+  <!-- Step 2 -->
+  <rect x="206" y="68" width="130" height="150" rx="10" fill="#111111" stroke="#333333" stroke-width="1.5"/>
+  <rect x="206" y="68" width="130" height="4" rx="2" fill="#e94560"/>
+  <text x="271" y="110" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="10">en tu movil</text>
+  <text x="271" y="135" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Abre WhatsApp</text>
+  <text x="271" y="155" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="10">Configuracion</text>
+  <text x="271" y="175" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">3 puntos o tuerca</text>
+  <text x="271" y="200" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">WhatsApp movil</text>
+
+  <!-- Arrow -->
+  <line x1="338" y1="143" x2="368" y2="143" stroke="#333333" stroke-width="2"/>
+  <polygon points="368,137 380,143 368,149" fill="#333333"/>
+
+  <!-- Step 3 -->
+  <rect x="382" y="68" width="130" height="150" rx="10" fill="#111111" stroke="#333333" stroke-width="1.5"/>
+  <rect x="382" y="68" width="130" height="4" rx="2" fill="#e94560"/>
+  <text x="447" y="110" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="10">toca en el menu</text>
+  <text x="447" y="135" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Dispositivos</text>
+  <text x="447" y="152" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">vinculados</text>
+  <text x="447" y="175" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">Vincular dispositivo</text>
+  <text x="447" y="200" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">nuevo</text>
+
+  <!-- Arrow -->
+  <line x1="514" y1="143" x2="544" y2="143" stroke="#333333" stroke-width="2"/>
+  <polygon points="544,137 556,143 544,149" fill="#333333"/>
+
+  <!-- Step 4 -->
+  <rect x="558" y="68" width="130" height="150" rx="10" fill="#111111" stroke="#333333" stroke-width="1.5"/>
+  <rect x="558" y="68" width="130" height="4" rx="2" fill="#e94560"/>
+  <text x="623" y="110" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="10">menos de 60 seg</text>
+  <text x="623" y="135" text-anchor="middle" fill="#ffffff" font-family="system-ui, sans-serif" font-size="11" font-weight="600">Escaneas el QR</text>
+  <text x="623" y="152" text-anchor="middle" fill="#888888" font-family="system-ui, sans-serif" font-size="10">con la camara</text>
+  <text x="623" y="175" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">apuntar al terminal</text>
+  <text x="623" y="200" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">del VPS</text>
+
+  <!-- Final result row -->
+  <rect x="120" y="245" width="560" height="40" rx="8" fill="#0d1f0d" stroke="#27ae60" stroke-width="1.5"/>
+  <text x="400" y="261" text-anchor="middle" fill="#27ae60" font-family="system-ui, sans-serif" font-size="11" font-weight="700">CONECTADO — sesion activa 24/7, telefono puede estar apagado</text>
+  <text x="400" y="277" text-anchor="middle" fill="#555555" font-family="system-ui, sans-serif" font-size="10">OpenClaw recibe y responde mensajes de WhatsApp automaticamente</text>
+</svg>

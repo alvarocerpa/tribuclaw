@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 450">
+  <rect width="800" height="450" fill="#0a0a0a"/>
+  <text x="400" y="40" text-anchor="middle" fill="#e94560" font-family="Arial,sans-serif" font-size="20" font-weight="bold">10 formas de ganar dinero con IA en 2026</text>
+  <g font-family="Arial,sans-serif" font-size="13" fill="#aaa">
+    <g transform="translate(50,70)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">01</text><text x="40" y="30">Agencia automatizacion</text></g>
+    <g transform="translate(290,70)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">02</text><text x="40" y="30">Servicios IA</text></g>
+    <g transform="translate(530,70)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">03</text><text x="40" y="30">Comunidad de pago</text></g>
+    <g transform="translate(50,140)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">04</text><text x="40" y="30">Wrapper en espanol</text></g>
+    <g transform="translate(290,140)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">05</text><text x="40" y="30">SEO automatizado</text></g>
+    <g transform="translate(530,140)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">06</text><text x="40" y="30">Outreach automatizado</text></g>
+    <g transform="translate(50,210)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">07</text><text x="40" y="30">Creacion contenido</text></g>
+    <g transform="translate(290,210)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">08</text><text x="40" y="30">Transcripcion</text></g>
+    <g transform="translate(530,210)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">09</text><text x="40" y="30">Consultoria IA</text></g>
+    <g transform="translate(290,280)"><rect width="200" height="50" rx="6" fill="none" stroke="#e94560" stroke-width="1.5"/><text x="15" y="30" fill="#e94560">10</text><text x="40" y="30">Infoproductos</text></g>
+  </g>
+  <text x="400" y="420" text-anchor="middle" fill="#e94560" font-family="Arial,sans-serif" font-size="11">tribuclaw.com</text>
+</svg>

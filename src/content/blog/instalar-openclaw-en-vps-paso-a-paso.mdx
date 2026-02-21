@@ -1,0 +1,385 @@
+---
+title: 'Instalar OpenClaw en un VPS paso a paso (guia completa 2026)'
+description: 'Guia completa para instalar OpenClaw en un VPS desde cero. Elige servidor, conecta Telegram o WhatsApp y ten tu agente IA funcionando en menos de una hora.'
+heroImage: "/images/blog/hero-instalar-openclaw-vps.svg"
+pubDate: 2026-02-17
+author: 'Alvaro Cerpa'
+pillar: 'openclaw'
+tags: ['openclaw', 'vps', 'tutorial', 'instalacion', 'agente ia']
+keywords: ['instalar openclaw vps', 'openclaw tutorial instalacion', 'openclaw servidor vps', 'como instalar agente ia en vps', 'openclaw paso a paso']
+faq:
+  - q: 'Que VPS necesito para instalar OpenClaw?'
+    a: 'Un VPS con 1 vCPU, 1 GB de RAM y 20 GB de disco es suficiente. Ubuntu 22.04 o 24.04 recomendado. Desde 4-5 euros al mes en Hetzner, Contabo o DigitalOcean.'
+  - q: 'Puedo instalar OpenClaw sin saber programar?'
+    a: 'Si. Solo necesitas copiar y pegar unos comandos en la terminal. La guia te lleva de la mano paso a paso. Si sabes usar un ordenador, puedes hacerlo.'
+  - q: 'Cuanto tarda la instalacion de OpenClaw?'
+    a: 'Entre 15 y 30 minutos si sigues esta guia. La parte mas lenta es crear la cuenta del VPS y esperar a que se aprovisione el servidor.'
+  - q: 'OpenClaw funciona en cualquier VPS?'
+    a: 'Si. Funciona en cualquier VPS con Linux (Ubuntu, Debian, Fedora). Tambien en Raspberry Pi, Mac o WSL en Windows. Solo necesita Node.js 20+.'
+  - q: 'Cuanto cuesta tener OpenClaw funcionando?'
+    a: 'El software es gratis. Pagas el VPS (4-10 euros/mes) y el modelo de IA que uses (5-20 euros/mes segun uso). Total: desde 9 euros al mes.'
+---
+
+import CTA from '../../components/CTA.astro';
+
+Tienes claro que quieres un agente IA personal. Has leído [qué es OpenClaw](/blog/openclaw-que-es-guia-completa-espanol/) y [cómo crear tu propio agente IA](/blog/como-crear-tu-propio-agente-ia-desde-cero/). Ahora necesitas lo práctico: instalarlo en un servidor y que funcione.
+
+Esta guía es exactamente eso. Sin teoría innecesaria. Desde cero hasta tu agente funcionando en Telegram o WhatsApp. En menos de una hora.
+
+## Que necesitas antes de empezar
+
+Vamos a dejar claro lo que hace falta. No es mucho.
+
+**Hardware (VPS):**
+- 1 vCPU
+- 1 GB de RAM (2 GB recomendado)
+- 20 GB de disco SSD
+- Ubuntu 22.04 o 24.04 LTS
+
+**Cuentas:**
+- Una cuenta en un proveedor de VPS (Hetzner, Contabo, DigitalOcean, Vultr)
+- Una API key de un modelo de IA (Anthropic, OpenAI, Google, DeepSeek)
+- Un bot de Telegram (opcional pero recomendado para empezar)
+
+**En tu ordenador:**
+- Un cliente SSH (Terminal en Mac/Linux, PowerShell o PuTTY en Windows)
+- 30 minutos de tu tiempo
+
+Eso es todo. No necesitas Docker, no necesitas Kubernetes, no necesitas saber Python. Node.js y unos comandos.
+
+## Paso 1: elegir y contratar tu VPS
+
+El VPS es donde vivirá tu agente. Funciona 24/7, no depende de que tu ordenador esté encendido, y cuesta menos que un café al mes.
+
+### Proveedores recomendados (probados)
+
+**Hetzner** es nuestra primera opción. Servidores en Europa (Alemania y Finlandia), precios imbatibles y rendimiento excelente. Su plan CX22 (2 vCPU, 4 GB RAM) cuesta 5,49 euros al mes. Para OpenClaw, incluso el CX11 (1 vCPU, 2 GB) por 3,49 euros funciona bien.
+
+**Contabo** ofrece más recursos por menos dinero. Su VPS S con 4 vCPU y 8 GB de RAM cuesta 6,99 euros al mes. El problema: la red es más lenta y el soporte es básico. Para un agente IA que no necesita ancho de banda masivo, funciona perfectamente.
+
+**DigitalOcean** y **Vultr** son opciones sólidas si prefieres servidores en América. Cuestan un poco más (6-12 dólares/mes) pero tienen mejor documentación y comunidad.
+
+### Como contratar (ejemplo con Hetzner)
+
+1. Ve a [hetzner.com/cloud](https://hetzner.com/cloud) y crea una cuenta
+2. Crea un nuevo proyecto
+3. Pulsa "Add Server"
+4. Elige la ubicación más cercana a ti (Falkenstein o Helsinki para Europa)
+5. Selecciona Ubuntu 24.04 como imagen
+6. Elige el plan CX22 (o CX11 si quieres gastar menos)
+7. Añade tu clave SSH pública (o usa contraseña, aunque SSH key es más seguro)
+8. Dale un nombre al servidor (por ejemplo: "agente-ia")
+9. Pulsa "Create & Buy Now"
+
+En 30 segundos tendrás tu servidor listo con una IP pública.
+
+![Comparativa de proveedores VPS para OpenClaw](/images/blog/instalar-openclaw-vps-comparativa.svg)
+
+<CTA />
+
+## Paso 2: conectar al servidor por SSH
+
+Abre tu terminal y conecta al servidor:
+
+```bash
+ssh root@TU_IP_DEL_SERVIDOR
+```
+
+Si usaste contraseña en vez de SSH key, te la pedirá. Escríbela (no se ve mientras la tecleas, es normal) y pulsa Enter.
+
+Una vez dentro, lo primero es actualizar el sistema:
+
+```bash
+apt update && apt upgrade -y
+```
+
+### Crear un usuario (recomendado)
+
+Trabajar como root no es buena práctica. Crea un usuario dedicado:
+
+```bash
+adduser claw
+usermod -aG sudo claw
+su - claw
+```
+
+A partir de aquí, todos los comandos los ejecutas como el usuario `claw`.
+
+## Paso 3: instalar Node.js
+
+OpenClaw necesita Node.js 20 o superior. La forma más limpia de instalarlo:
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_22.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+Verifica que se instaló correctamente:
+
+```bash
+node --version
+# Debería mostrar v22.x.x
+
+npm --version
+# Debería mostrar 10.x.x
+```
+
+Si ves los números de versión, perfecto. Siguiente paso.
+
+## Paso 4: instalar OpenClaw
+
+Aquí es donde ocurre la magia. Un solo comando:
+
+```bash
+npm install -g openclaw
+```
+
+Eso es todo. OpenClaw está instalado. Verificalo:
+
+```bash
+openclaw --version
+```
+
+### Inicializar OpenClaw
+
+Ahora configura tu instancia:
+
+```bash
+openclaw init
+```
+
+Este comando interactivo te preguntará:
+- **Modelo de IA**: elige Claude (Anthropic) si quieres lo mejor, o DeepSeek si quieres gastar menos
+- **API Key**: pega la key del proveedor que elegiste
+- **Canal**: Telegram es el más fácil para empezar
+
+OpenClaw crea automáticamente la estructura de archivos en `~/.openclaw/`.
+
+![Flujo de instalación de OpenClaw](/images/blog/instalar-openclaw-vps-flujo.svg)
+
+## Paso 5: conectar Telegram
+
+Telegram es el canal más rápido de configurar. Necesitas crear un bot:
+
+1. Abre Telegram y busca `@BotFather`
+2. Envíale `/newbot`
+3. Elige un nombre para tu bot (ejemplo: "Mi Agente IA")
+4. Elige un username (ejemplo: `mi_agente_ia_bot`)
+5. BotFather te dará un token. Cópialo.
+
+Ahora configura OpenClaw para usar ese bot:
+
+```bash
+openclaw config
+```
+
+En la sección de canales, añade Telegram y pega el token del bot.
+
+### Alternativa: conectar WhatsApp
+
+Si prefieres WhatsApp, OpenClaw usa la conexión mediante código QR:
+
+```bash
+openclaw gateway start
+```
+
+Escanea el código QR que aparece con tu WhatsApp (Ajustes → Dispositivos vinculados → Vincular dispositivo).
+
+Para más detalles sobre WhatsApp, tenemos una [guía completa de automatización de WhatsApp con IA](/blog/automatizar-whatsapp-con-ia-guia-completa/).
+
+<CTA />
+
+## Paso 6: arrancar el agente
+
+Todo configurado. Hora de arrancar:
+
+```bash
+openclaw gateway start
+```
+
+Si todo está bien, verás algo como:
+
+```
+[Gateway] Starting...
+[Gateway] Connected to Anthropic API ✓
+[Gateway] Telegram bot online ✓
+[Gateway] Ready. Waiting for messages...
+```
+
+Abre Telegram, busca tu bot y envíale un mensaje. Debería responderte.
+
+**Ese es tu agente IA personal. Funcionando en tu servidor. Bajo tu control.**
+
+### Ejecutar como servicio (que no se apague)
+
+Si cierras la terminal, el proceso se detiene. Para que funcione 24/7, crea un servicio de systemd:
+
+```bash
+sudo nano /etc/systemd/system/openclaw.service
+```
+
+Pega esto:
+
+```ini
+[Unit]
+Description=OpenClaw Gateway
+After=network.target
+
+[Service]
+Type=simple
+User=claw
+WorkingDirectory=/home/claw/.openclaw
+ExecStart=/usr/bin/openclaw gateway start
+Restart=always
+RestartSec=10
+
+[Install]
+WantedBy=multi-user.target
+```
+
+Guarda (Ctrl+X, Y, Enter) y activa el servicio:
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable openclaw
+sudo systemctl start openclaw
+```
+
+Ahora OpenClaw arranca automáticamente con el servidor y se reinicia si falla.
+
+### Comandos utiles del servicio
+
+```bash
+# Ver estado
+sudo systemctl status openclaw
+
+# Ver logs en tiempo real
+sudo journalctl -u openclaw -f
+
+# Reiniciar
+sudo systemctl restart openclaw
+
+# Parar
+sudo systemctl stop openclaw
+```
+
+## Paso 7: personalizar tu agente
+
+Tu agente funciona, pero es genérico. Aquí es donde lo haces tuyo.
+
+Edita el archivo de personalidad:
+
+```bash
+nano ~/.openclaw/workspace/SOUL.md
+```
+
+Aquí defines quién es tu agente: su nombre, su forma de hablar, sus prioridades. Piénsalo como escribirle una carta a alguien explicándole quién debe ser.
+
+Ejemplo básico:
+
+```markdown
+# SOUL.md
+Eres Aria, asistente personal de [tu nombre].
+Hablas en español, eres directa y eficiente.
+Usas humor cuando encaja pero priorizas ser útil.
+Nunca inventas información. Si no sabes algo, lo dices.
+```
+
+### Archivo de usuario
+
+```bash
+nano ~/.openclaw/workspace/USER.md
+```
+
+Aquí le cuentas a tu agente sobre ti: tu trabajo, tus herramientas, tus preferencias. Cuanto más contexto le des, mejor te ayudará.
+
+### Memoria
+
+OpenClaw tiene memoria permanente. Tu agente recuerda conversaciones, decisiones y contexto entre sesiones. Los archivos de memoria están en `~/.openclaw/workspace/memory/`.
+
+No necesitas configurar nada. La memoria funciona desde el primer momento.
+
+![Arquitectura de personalización de OpenClaw](/images/blog/instalar-openclaw-vps-arquitectura.svg)
+
+<CTA />
+
+## Seguridad basica del VPS
+
+Tu agente maneja información personal. Protege el servidor.
+
+### Firewall
+
+```bash
+sudo ufw allow ssh
+sudo ufw allow 443/tcp
+sudo ufw enable
+```
+
+### Fail2ban (proteccion contra ataques de fuerza bruta)
+
+```bash
+sudo apt install fail2ban -y
+sudo systemctl enable fail2ban
+```
+
+### Actualizaciones automaticas
+
+```bash
+sudo apt install unattended-upgrades -y
+sudo dpkg-reconfigure --priority=low unattended-upgrades
+```
+
+### Deshabilitar acceso root por SSH
+
+```bash
+sudo nano /etc/ssh/sshd_config
+# Cambia: PermitRootLogin yes → PermitRootLogin no
+sudo systemctl restart sshd
+```
+
+Con estas cuatro cosas tu servidor está razonablemente protegido. No es Fort Knox, pero para un agente personal es más que suficiente.
+
+## Cuanto cuesta todo esto al mes
+
+Hagamos números reales:
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| VPS (Hetzner CX22) | 5,49 euros |
+| API Claude Sonnet (uso moderado) | 5-15 euros |
+| Dominio (opcional) | ~1 euro/mes |
+| **Total** | **11-21 euros/mes** |
+
+Si usas modelos más baratos como DeepSeek o Qwen, puedes bajar a 7-8 euros al mes en total.
+
+Compáralo con lo que cobran las plataformas SaaS de agentes IA: 30-100 dólares al mes por algo que controlas menos.
+
+## Problemas comunes y como solucionarlos
+
+**"openclaw: command not found"**
+Node.js no añadió npm al PATH. Ejecuta: `export PATH=$PATH:$(npm config get prefix)/bin` y añádelo a tu `~/.bashrc`.
+
+**"Error: API key invalid"**
+Revisa que copiaste la API key completa. Sin espacios al inicio ni al final. Muchos proveedores tienen keys que empiezan por `sk-`.
+
+**"Telegram bot no responde"**
+Asegúrate de que el token es correcto y que el bot no está siendo usado por otra instancia. Un token de Telegram solo puede tener una conexión activa.
+
+**"El proceso se detiene al cerrar la terminal"**
+Configura el servicio systemd como se explica en el Paso 6. Es la forma correcta de mantener procesos 24/7.
+
+**"Se queda sin memoria (RAM)"**
+Si tienes 1 GB de RAM, crea un archivo swap: `sudo fallocate -l 2G /swapfile && sudo chmod 600 /swapfile && sudo mkswap /swapfile && sudo swapon /swapfile`. Añádelo a `/etc/fstab` para que persista.
+
+## Siguientes pasos
+
+Tu agente ya está funcionando. Ahora puedes:
+
+- **Conectar más canales**: WhatsApp, Discord, email. OpenClaw soporta más de 10 plataformas simultáneamente.
+- **Instalar skills**: Habilidades adicionales como control de calendario, navegación web, gestión de archivos.
+- **Configurar heartbeats**: Tu agente puede revisar cosas periódicamente (emails, calendario, noticias) sin que tú se lo pidas.
+- **Unirte a TribuClaw**: La comunidad donde compartimos configuraciones, skills y resolvemos dudas entre todos.
+
+Lo difícil ya está hecho. A partir de aquí es ir añadiendo piezas.
+
+<CTA />

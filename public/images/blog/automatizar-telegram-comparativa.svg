@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+<rect width="800" height="400" fill="#080808"/>
+<rect x="20" y="20" width="760" height="360" rx="16" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<text x="400" y="60" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="700">BOT TRADICIONAL vs AGENTE IA</text>
+
+<!-- Bot column -->
+<rect x="50" y="80" width="330" height="280" rx="12" fill="#111" stroke="#333" stroke-width="1.5"/>
+<text x="215" y="115" text-anchor="middle" fill="#888" font-family="system-ui" font-size="28">🤖</text>
+<text x="215" y="140" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14" font-weight="600">Bot Tradicional</text>
+
+<text x="70" y="175" fill="#555" font-family="system-ui" font-size="12">❌ Comandos fijos (/start, /help)</text>
+<text x="70" y="200" fill="#555" font-family="system-ui" font-size="12">❌ Sin memoria entre mensajes</text>
+<text x="70" y="225" fill="#555" font-family="system-ui" font-size="12">❌ No entiende lenguaje natural</text>
+<text x="70" y="250" fill="#555" font-family="system-ui" font-size="12">❌ Respuestas rigidas y frias</text>
+<text x="70" y="275" fill="#555" font-family="system-ui" font-size="12">❌ No ejecuta acciones externas</text>
+<text x="70" y="300" fill="#555" font-family="system-ui" font-size="12">❌ Requiere programar cada caso</text>
+<text x="70" y="330" fill="#666" font-family="system-ui" font-size="11" font-style="italic">"No entiendo tu mensaje"</text>
+
+<!-- Agent column -->
+<rect x="420" y="80" width="330" height="280" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="585" y="115" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="28">🧠</text>
+<text x="585" y="140" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="14" font-weight="600">Agente IA</text>
+
+<text x="440" y="175" fill="#fff" font-family="system-ui" font-size="12">✅ Lenguaje natural, sin comandos</text>
+<text x="440" y="200" fill="#fff" font-family="system-ui" font-size="12">✅ Memoria persistente</text>
+<text x="440" y="225" fill="#fff" font-family="system-ui" font-size="12">✅ Entiende contexto y matices</text>
+<text x="440" y="250" fill="#fff" font-family="system-ui" font-size="12">✅ Personalidad y tono humano</text>
+<text x="440" y="275" fill="#fff" font-family="system-ui" font-size="12">✅ Busca en web, ejecuta tareas</text>
+<text x="440" y="300" fill="#fff" font-family="system-ui" font-size="12">✅ Se adapta solo a nuevos casos</text>
+<text x="440" y="330" fill="#e94560" font-family="system-ui" font-size="11" font-style="italic">"Claro, deja que lo busque"</text>
+
+<!-- VS badge -->
+<rect x="370" y="195" width="60" height="30" rx="15" fill="#e94560"/>
+<text x="400" y="215" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="700">VS</text>
+</svg>

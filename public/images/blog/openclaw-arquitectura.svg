@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#0a0a0a"/>
+  <text x="400" y="40" text-anchor="middle" fill="#e94560" font-family="Arial,sans-serif" font-size="22" font-weight="bold">Arquitectura OpenClaw</text>
+  <!-- Gateway -->
+  <rect x="300" y="70" width="200" height="60" rx="10" fill="none" stroke="#e94560" stroke-width="2"/>
+  <text x="400" y="105" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16">Gateway</text>
+  <!-- Agent -->
+  <rect x="300" y="180" width="200" height="60" rx="10" fill="none" stroke="#e94560" stroke-width="2"/>
+  <text x="400" y="215" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="16">Agent (LLM)</text>
+  <!-- Arrow -->
+  <line x1="400" y1="130" x2="400" y2="180" stroke="#e94560" stroke-width="2" marker-end="url(#arrow)"/>
+  <!-- Channels -->
+  <rect x="50" y="70" width="140" height="60" rx="10" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="120" y="100" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="13">Telegram</text>
+  <rect x="50" y="150" width="140" height="60" rx="10" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="120" y="180" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="13">WhatsApp</text>
+  <rect x="50" y="230" width="140" height="60" rx="10" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="120" y="260" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="13">Discord</text>
+  <!-- Tools -->
+  <rect x="610" y="70" width="140" height="60" rx="10" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="680" y="100" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="13">Navegador</text>
+  <rect x="610" y="150" width="140" height="60" rx="10" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="680" y="180" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="13">Terminal</text>
+  <rect x="610" y="230" width="140" height="60" rx="10" fill="none" stroke="#555" stroke-width="1.5"/>
+  <text x="680" y="260" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="13">Archivos</text>
+  <!-- Connecting lines -->
+  <line x1="190" y1="100" x2="300" y2="100" stroke="#555" stroke-width="1.5"/>
+  <line x1="190" y1="180" x2="300" y2="180" stroke="#555" stroke-width="1.5"/>
+  <line x1="190" y1="260" x2="350" y2="210" stroke="#555" stroke-width="1.5"/>
+  <line x1="500" y1="100" x2="610" y2="100" stroke="#555" stroke-width="1.5"/>
+  <line x1="500" y1="200" x2="610" y2="180" stroke="#555" stroke-width="1.5"/>
+  <line x1="450" y1="210" x2="610" y2="260" stroke="#555" stroke-width="1.5"/>
+  <!-- Labels -->
+  <text x="400" y="320" text-anchor="middle" fill="#666" font-family="Arial,sans-serif" font-size="12">Canales de mensajeria</text>
+  <text x="120" y="320" text-anchor="middle" fill="#666" font-family="Arial,sans-serif" font-size="11">INPUT</text>
+  <text x="680" y="320" text-anchor="middle" fill="#666" font-family="Arial,sans-serif" font-size="11">HERRAMIENTAS</text>
+  <text x="400" y="350" text-anchor="middle" fill="#e94560" font-family="Arial,sans-serif" font-size="11">tribuclaw.com</text>
+  <defs><marker id="arrow" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto"><polygon points="0 0, 10 3.5, 0 7" fill="#e94560"/></marker></defs>
+</svg>

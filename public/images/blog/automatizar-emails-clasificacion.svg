@@ -1,0 +1,79 @@
+<svg viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Fondo -->
+  <rect width="800" height="400" fill="#080808"/>
+  <rect x="20" y="20" width="760" height="360" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="2" rx="8"/>
+  
+  <!-- Título -->
+  <text x="400" y="50" text-anchor="middle" fill="#e94560" font-size="16" font-weight="600">CLASIFICACIÓN AUTOMÁTICA DE EMAILS</text>
+  
+  <!-- Email entrante central -->
+  <g>
+    <rect x="350" y="80" width="100" height="60" fill="#1a1a1a" stroke="#e94560" stroke-width="2" rx="6"/>
+    <text x="400" y="105" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">EMAIL</text>
+    <text x="400" y="120" text-anchor="middle" fill="#888" font-size="10">ENTRANTE</text>
+  </g>
+  
+  <!-- Categorías de salida -->
+  <!-- Automatizable -->
+  <g>
+    <rect x="80" y="200" width="140" height="80" fill="#1a1a1a" stroke="#4ade80" stroke-width="2" rx="6"/>
+    <text x="150" y="220" text-anchor="middle" fill="#4ade80" font-size="12" font-weight="600">AUTOMATIZABLE</text>
+    <text x="150" y="240" text-anchor="middle" fill="#fff" font-size="10">• Consultas de precios</text>
+    <text x="150" y="255" text-anchor="middle" fill="#fff" font-size="10">• Confirmaciones</text>
+    <text x="150" y="270" text-anchor="middle" fill="#fff" font-size="10">• Info básica</text>
+  </g>
+  
+  <!-- Revisión humana -->
+  <g>
+    <rect x="280" y="200" width="140" height="80" fill="#1a1a1a" stroke="#f59e0b" stroke-width="2" rx="6"/>
+    <text x="350" y="220" text-anchor="middle" fill="#f59e0b" font-size="12" font-weight="600">REVISIÓN HUMANA</text>
+    <text x="350" y="240" text-anchor="middle" fill="#fff" font-size="10">• Nuevos clientes VIP</text>
+    <text x="350" y="255" text-anchor="middle" fill="#fff" font-size="10">• Dudas complejas</text>
+    <text x="350" y="270" text-anchor="middle" fill="#fff" font-size="10">• Seguimientos críticos</text>
+  </g>
+  
+  <!-- Solo humano -->
+  <g>
+    <rect x="480" y="200" width="140" height="80" fill="#1a1a1a" stroke="#ef4444" stroke-width="2" rx="6"/>
+    <text x="550" y="220" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="600">SOLO HUMANO</text>
+    <text x="550" y="240" text-anchor="middle" fill="#fff" font-size="10">• Negociaciones</text>
+    <text x="550" y="255" text-anchor="middle" fill="#fff" font-size="10">• Conflictos</text>
+    <text x="550" y="270" text-anchor="middle" fill="#fff" font-size="10">• Decisiones críticas</text>
+  </g>
+  
+  <!-- Flechas -->
+  <path d="M380 140 L170 190" stroke="#4ade80" stroke-width="2" fill="none" marker-end="url(#arrowgreen)"/>
+  <path d="M400 140 L350 190" stroke="#f59e0b" stroke-width="2" fill="none" marker-end="url(#arrowyellow)"/>
+  <path d="M420 140 L530 190" stroke="#ef4444" stroke-width="2" fill="none" marker-end="url(#arrowred)"/>
+  
+  <!-- Porcentajes -->
+  <text x="150" y="300" text-anchor="middle" fill="#4ade80" font-size="14" font-weight="700">70%</text>
+  <text x="150" y="315" text-anchor="middle" fill="#888" font-size="10">automatizable</text>
+  
+  <text x="350" y="300" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="700">22%</text>
+  <text x="350" y="315" text-anchor="middle" fill="#888" font-size="10">revisión IA + humano</text>
+  
+  <text x="550" y="300" text-anchor="middle" fill="#ef4444" font-size="14" font-weight="700">8%</text>
+  <text x="550" y="315" text-anchor="middle" fill="#888" font-size="10">solo humano</text>
+  
+  <!-- Criterios de clasificación -->
+  <text x="50" y="350" fill="#e94560" font-size="12" font-weight="600">CRITERIOS IA:</text>
+  <text x="170" y="350" fill="#fff" font-size="11">Remitente conocido</text>
+  <text x="290" y="350" fill="#fff" font-size="11">Palabras clave</text>
+  <text x="390" y="350" fill="#fff" font-size="11">Urgencia</text>
+  <text x="460" y="350" fill="#fff" font-size="11">Historial</text>
+  <text x="520" y="350" fill="#fff" font-size="11">Complejidad</text>
+  
+  <!-- Markers para flechas -->
+  <defs>
+    <marker id="arrowgreen" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#4ade80"/>
+    </marker>
+    <marker id="arrowyellow" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#f59e0b"/>
+    </marker>
+    <marker id="arrowred" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#ef4444"/>
+    </marker>
+  </defs>
+</svg>

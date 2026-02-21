@@ -1,20 +1,39 @@
 ---
-import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
 import FormattedDate from '../components/FormattedDate.astro';
 import Header from '../components/Header.astro';
-import { WHOP_URL } from '../consts';
+import { WHOP_URL, SITE_URL } from '../consts';
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, description, pubDate, updatedDate, heroImage, author, tags, faq } = Astro.props;
+const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
 <html lang="es">
 	<head>
-		<BaseHead title={`${title} | TribuClaw`} description={description} />
+		<BaseHead title={`${title} | TribuClaw`} description={description} type="article" />
+		<!-- Article Schema -->
+		<script type="application/ld+json" set:html={JSON.stringify({
+			"@context": "https://schema.org",
+			"@type": "Article",
+			"headline": title,
+			"description": description,
+			"author": { "@type": "Person", "name": author || "Álvaro Cerpa" },
+			"publisher": {
+				"@type": "Organization",
+				"name": "TribuClaw",
+				"logo": { "@type": "ImageObject", "url": SITE_URL + "/images/logo-icon.png" }
+			},
+			"datePublished": pubDate.toISOString(),
+			"dateModified": (updatedDate || pubDate).toISOString(),
+			"mainEntityOfPage": articleUrl,
+			"image": SITE_URL + "/images/og-default.jpg",
+			"inLanguage": "es"
+		})} />
+		<!-- FAQ Schema -->
 		{faq && faq.length > 0 && (
 			<script type="application/ld+json" set:html={JSON.stringify({
 				"@context": "https://schema.org",
@@ -26,134 +45,93 @@ const { title, description, pubDate, updatedDate, heroImage, author, tags, faq }
 				}))
 			})} />
 		)}
+		<!-- BreadcrumbList Schema -->
 		<script type="application/ld+json" set:html={JSON.stringify({
 			"@context": "https://schema.org",
-			"@type": "Article",
-			"headline": title,
-			"description": description,
-			"author": { "@type": "Person", "name": author || "Álvaro Cerpa" },
-			"datePublished": pubDate,
-			"dateModified": updatedDate || pubDate,
-			"publisher": { "@type": "Organization", "name": "TribuClaw" }
+			"@type": "BreadcrumbList",
+			"itemListElement": [
+				{ "@type": "ListItem", "position": 1, "name": "Inicio", "item": SITE_URL },
+				{ "@type": "ListItem", "position": 2, "name": "Blog", "item": SITE_URL + "/blog/" },
+				{ "@type": "ListItem", "position": 3, "name": title, "item": articleUrl }
+			]
 		})} />
 		<style>
-			.hero-image { width: 100%; }
-			.hero-image img {
-				display: block;
-				margin: 0 auto;
-				border-radius: 12px;
-			}
 			.prose {
 				width: 720px;
 				max-width: calc(100% - 2em);
 				margin: auto;
 				padding: 1em;
 			}
-			.title {
-				margin-bottom: 1.5em;
-				padding: 1em 0;
-			}
-			.title h1 {
-				margin: 0 0 0.5em 0;
-				font-size: 2.2rem;
-				line-height: 1.2;
-			}
-			.meta {
-				color: #666;
-				font-size: 0.9rem;
-				margin-bottom: 0.5rem;
-			}
-			.tags {
-				display: flex;
-				gap: 0.5rem;
-				flex-wrap: wrap;
-				margin-top: 0.75rem;
-			}
-			.tag {
-				background: #1a1a1a;
-				color: #aaa;
-				padding: 0.2rem 0.65rem;
-				border-radius: 4px;
-				font-size: 0.8rem;
-			}
-			.faq-section {
-				margin-top: 3rem;
-				padding-top: 2rem;
-				border-top: 1px solid #1a1a1a;
-			}
-			.faq-section h2 {
-				font-size: 1.5rem;
-				margin-bottom: 1.5rem;
-			}
-			.faq-item {
-				margin-bottom: 1.5rem;
-			}
-			.faq-item h3 {
-				font-size: 1.05rem;
-				color: #fff;
-				margin-bottom: 0.4rem;
-			}
-			.faq-item p {
-				color: #aaa;
-				font-size: 0.95rem;
-			}
+			.title { margin-bottom: 1.5em; padding: 1em 0; }
+			.title h1 { margin: 0 0 0.5em 0; font-size: 2.2rem; line-height: 1.2; }
+			.meta { color: #666; font-size: 0.9rem; margin-bottom: 0.5rem; }
+			.breadcrumb { font-size: 0.85rem; color: #555; margin-bottom: 1rem; }
+			.breadcrumb a { color: #888; }
+			.breadcrumb a:hover { color: #e94560; }
+			.tags { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.75rem; }
+			.tag { background: #1a1a1a; color: #aaa; padding: 0.2rem 0.65rem; border-radius: 4px; font-size: 0.8rem; }
+			.faq-section { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid #1a1a1a; }
+			.faq-section h2 { font-size: 1.5rem; margin-bottom: 1.5rem; }
+			.faq-item { margin-bottom: 1.5rem; }
+			.faq-item h3 { font-size: 1.05rem; color: #fff; margin-bottom: 0.4rem; }
+			.faq-item p { color: #aaa; font-size: 0.95rem; }
 			.cta-box {
-				margin-top: 3rem;
-				padding: 2rem;
+				margin-top: 3rem; padding: 2rem;
 				background: linear-gradient(135deg, rgba(233,69,96,0.1), rgba(233,69,96,0.05));
-				border: 1px solid rgba(233,69,96,0.2);
-				border-radius: 12px;
-				text-align: center;
+				border: 1px solid rgba(233,69,96,0.2); border-radius: 12px; text-align: center;
 			}
-			.cta-box h3 {
-				color: #fff;
-				margin-bottom: 0.5rem;
-			}
-			.cta-box p {
-				color: #aaa;
-				margin-bottom: 1rem;
-			}
+			.cta-box h3 { color: #fff; margin-bottom: 0.5rem; }
+			.cta-box p { color: #aaa; margin-bottom: 1rem; }
 			.cta-box a {
-				background: #e94560;
-				color: white;
-				padding: 0.7rem 1.8rem;
-				border-radius: 8px;
-				font-weight: 700;
-				text-decoration: none;
-				display: inline-block;
-				transition: background 0.2s;
+				background: #e94560; color: white; padding: 0.7rem 1.8rem;
+				border-radius: 8px; font-weight: 700; text-decoration: none;
+				display: inline-block; transition: background 0.2s;
 			}
-			.cta-box a:hover {
-				background: #c23152;
-				text-decoration: none;
+			.cta-box a:hover { background: #c23152; text-decoration: none; }
+			.cta-box a { min-height: 44px; min-width: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+			@media (max-width: 720px) {
+				.title h1 { font-size: 1.6rem; }
+				.prose { padding: 1em 1.25em; }
+				.cta-box { padding: 1.5rem; }
+				.cta-box h3 { font-size: 1.1rem; }
+				.cta-box a { max-width: 280px; margin: 0 auto; }
+				.faq-section h2 { font-size: 1.25rem; }
 			}
 		</style>
 	</head>
 
 	<body>
 		<Header />
-		<main>
+		<main id="main-content">
 			<article>
-				<div class="hero-image">
-					{heroImage && <Image width={1020} height={510} src={heroImage} alt="" />}
-				</div>
 				<div class="prose">
+					<!-- Breadcrumbs -->
+					<nav class="breadcrumb" aria-label="Breadcrumb">
+						<a href="/">Inicio</a> &rsaquo; <a href="/blog/">Blog</a> &rsaquo; <span>{title}</span>
+					</nav>
 					<div class="title">
 						<div class="meta">
-							<FormattedDate date={pubDate} /> · {author || 'Álvaro Cerpa'}
+							<FormattedDate date={pubDate} /> &middot; {author || 'Álvaro Cerpa'}
 							{updatedDate && (
-								<span> · Actualizado: <FormattedDate date={updatedDate} /></span>
+								<span> &middot; Actualizado: <FormattedDate date={updatedDate} /></span>
 							)}
 						</div>
 						<h1>{title}</h1>
+						{heroImage && (
+							<img src={heroImage} alt={title} width="720" height="378" style="width:100%;height:auto;border-radius:12px;margin-top:1rem;" fetchpriority="high" />
+						)}
 						{tags && tags.length > 0 && (
 							<div class="tags">
 								{tags.map((tag: string) => <span class="tag">{tag}</span>)}
 							</div>
 						)}
 					</div>
+
+					<!-- Article content (H2, H3 structure from MDX) -->
 					<slot />
 
+					<!-- FAQ section -->
 					{faq && faq.length > 0 && (
 						<section class="faq-section">
 							<h2>Preguntas frecuentes</h2>
@@ -166,6 +144,7 @@ const { title, description, pubDate, updatedDate, heroImage, author, tags, faq }
 						</section>
 					)}
 
+					<!-- Bottom CTA -->
 					<div class="cta-box">
 						<h3>¿Listo para tener tu propio agente IA?</h3>
 						<p>Únete a TribuClaw y aprende paso a paso, con guías en español y una comunidad que te ayuda.</p>

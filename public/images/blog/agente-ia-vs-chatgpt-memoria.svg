@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+<rect width="800" height="400" fill="#080808"/>
+<rect x="20" y="20" width="760" height="360" rx="16" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<text x="400" y="55" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="700">MEMORIA: ChatGPT vs Agente IA</text>
+
+<!-- ChatGPT side -->
+<rect x="50" y="75" width="330" height="280" rx="12" fill="#111" stroke="#555"/>
+<text x="215" y="105" text-anchor="middle" fill="#888" font-family="system-ui" font-size="15" font-weight="700">ChatGPT</text>
+
+<rect x="75" y="120" width="280" height="40" rx="8" fill="#1a1a1a"/>
+<text x="215" y="145" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Conversacion 1 (olvidada)</text>
+
+<rect x="75" y="170" width="280" height="40" rx="8" fill="#1a1a1a"/>
+<text x="215" y="195" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Conversacion 2 (olvidada)</text>
+
+<rect x="75" y="220" width="280" height="40" rx="8" fill="#1a1a1a"/>
+<text x="215" y="245" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">Conversacion 3 (olvidada)</text>
+
+<rect x="75" y="270" width="280" height="40" rx="8" fill="#1a1a1a" stroke="#555" stroke-dasharray="4"/>
+<text x="215" y="295" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Conversacion actual (unica visible)</text>
+
+<text x="215" y="340" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Cada sesion empieza de cero</text>
+
+<!-- Agent side -->
+<rect x="420" y="75" width="330" height="280" rx="12" fill="#111" stroke="#e94560"/>
+<text x="585" y="105" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="15" font-weight="700">Agente IA Personal</text>
+
+<rect x="445" y="120" width="280" height="30" rx="6" fill="#1a1a1a" stroke="#e94560" stroke-width="0.5"/>
+<text x="585" y="140" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11">MEMORY.md - Conocimiento permanente</text>
+
+<rect x="445" y="158" width="280" height="30" rx="6" fill="#1a1a1a" stroke="#e94560" stroke-width="0.5"/>
+<text x="585" y="178" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11">NOW.md - Estado actual en tiempo real</text>
+
+<rect x="445" y="196" width="280" height="30" rx="6" fill="#1a1a1a" stroke="#e94560" stroke-width="0.5"/>
+<text x="585" y="216" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11">Diarios - Historial dia a dia</text>
+
+<rect x="445" y="234" width="280" height="30" rx="6" fill="#1a1a1a" stroke="#e94560" stroke-width="0.5"/>
+<text x="585" y="254" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11">Decisiones - Por que se hizo cada cosa</text>
+
+<rect x="445" y="272" width="280" height="30" rx="6" fill="#1a1a1a" stroke="#e94560" stroke-width="0.5"/>
+<text x="585" y="292" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11">Tareas + Proyectos - Todo rastreado</text>
+
+<text x="585" y="340" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">Acumula conocimiento con el tiempo</text>
+
+<text x="400" y="385" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">tribuclaw.com</text>
+</svg>

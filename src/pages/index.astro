@@ -9,188 +9,441 @@ import { SITE_DESCRIPTION, SITE_TITLE, WHOP_URL } from '../consts';
 const posts = (await getCollection('blog')).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
+
+const heroImages = {
+	'que-es-un-agente-ia-personal': '/images/blog/agente-ia-personal-hero.svg',
+	'openclaw-que-es-guia-completa-espanol': '/images/blog/hero-openclaw.svg',
+	'5-cosas-que-mi-agente-ia-hace-por-mi': '/images/blog/hero-5-cosas.svg',
+	'automatizar-whatsapp-con-ia-guia-completa': '/images/blog/hero-whatsapp.svg',
+	'ganar-dinero-con-ia-formas-reales': '/images/blog/hero-ganar-dinero.svg',
+	'como-crear-tu-propio-agente-ia-desde-cero': '/images/blog/hero-crear-agente.svg',
+	'automatizar-telegram-con-agente-ia': '/images/blog/hero-automatizar-telegram.svg',
+	'instalar-openclaw-en-vps-paso-a-paso': '/images/blog/hero-instalar-openclaw-vps.svg',
+	'agente-ia-personal-vs-chatgpt-diferencias': '/images/blog/hero-agente-ia-personal-vs-chatgpt-diferencias.svg',
+	'herramientas-ia-para-emprendedores-2026': '/images/blog/hero-herramientas-ia-para-emprendedores-2026.svg',
+} as Record<string, string>;
 ---
 
 <!doctype html>
 <html lang="es">
 	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+		<BaseHead title={`${SITE_TITLE} — La revolución de los agentes IA empieza aquí`} description="La IA ya no es del futuro. Aprende a crear tu agente IA autónomo y toma ventaja antes que el resto. La primera comunidad en español." />
 		<style>
+			/* Hero */
 			.hero {
+				position: relative;
 				text-align: center;
-				padding: 4rem 1rem;
-				max-width: 800px;
+				padding: 6rem 1.5rem 4rem;
+				max-width: 900px;
 				margin: 0 auto;
+				overflow: hidden;
+			}
+			.hero::before {
+				content: '';
+				position: absolute;
+				top: -200px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 700px;
+				height: 700px;
+				background: radial-gradient(circle, rgba(233,69,96,0.10) 0%, transparent 70%);
+				pointer-events: none;
+				z-index: 0;
+			}
+			.hero > * { position: relative; z-index: 1; }
+			.hero-badge {
+				display: inline-block;
+				background: rgba(233,69,96,0.1);
+				border: 1px solid rgba(233,69,96,0.25);
+				color: #e94560;
+				padding: 0.35rem 1rem;
+				border-radius: 20px;
+				font-size: 0.8rem;
+				font-weight: 600;
+				margin-bottom: 1.5rem;
+				letter-spacing: 0.5px;
+				text-align: center;
+				width: auto;
+				max-width: 90%;
 			}
 			.hero h1 {
-				font-size: 2.8rem;
-				line-height: 1.15;
-				margin-bottom: 1rem;
-				background: linear-gradient(135deg, #e94560, #ff6b6b);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
+				font-size: 3.2rem;
+				line-height: 1.1;
+				margin-bottom: 1.25rem;
+				color: #fff;
+			}
+			.hero h1 span {
+				color: #e94560;
 			}
 			.hero .subtitle {
-				font-size: 1.25rem;
-				color: #888;
-				margin-bottom: 2rem;
+				font-size: 1.2rem;
+				color: #999;
+				margin-bottom: 2.5rem;
 				line-height: 1.6;
+				max-width: 650px;
+				margin-left: auto;
+				margin-right: auto;
+				padding: 0 0.5rem;
 			}
 			.cta-buttons {
 				display: flex;
 				gap: 1rem;
 				justify-content: center;
 				flex-wrap: wrap;
+				margin-bottom: 3rem;
+				padding: 0 1rem;
+				box-sizing: border-box;
 			}
 			.btn-primary {
-				background: linear-gradient(135deg, #e94560, #ff6b6b);
+				background: #e94560;
 				color: white;
-				padding: 0.85rem 2rem;
-				border-radius: 8px;
+				padding: 0.9rem 2.2rem;
+				border-radius: 10px;
 				text-decoration: none;
 				font-weight: 700;
 				font-size: 1.05rem;
-				transition: transform 0.2s, box-shadow 0.2s;
+				transition: background 0.2s;
+				box-shadow: 0 4px 15px rgba(233,69,96,0.3);
 			}
 			.btn-primary:hover {
-				transform: translateY(-2px);
-				box-shadow: 0 4px 20px rgba(233, 69, 96, 0.4);
+				background: #d63851;
+				text-decoration: none;
 			}
 			.btn-secondary {
-				border: 2px solid #333;
-				color: inherit;
-				padding: 0.85rem 2rem;
-				border-radius: 8px;
+				border: 1.5px solid #333;
+				color: #ccc;
+				padding: 0.9rem 2.2rem;
+				border-radius: 10px;
 				text-decoration: none;
 				font-weight: 600;
 				font-size: 1.05rem;
-				transition: border-color 0.2s;
+				transition: border-color 0.2s, color 0.2s;
 			}
 			.btn-secondary:hover {
 				border-color: #e94560;
+				color: #fff;
+				text-decoration: none;
+			}
+
+			/* Stats bar */
+			.stats {
+				display: flex;
+				justify-content: center;
+				gap: 2rem;
+				flex-wrap: wrap;
+				padding: 2rem 1rem;
+				border-top: 1px solid #1a1a1a;
+				border-bottom: 1px solid #1a1a1a;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+			.stat {
+				text-align: center;
+				flex: 1 1 140px;
+				min-width: 100px;
+			}
+			.stat-number {
+				font-size: 2rem;
+				font-weight: 800;
+				color: #e94560;
+				display: block;
+			}
+			.stat-label {
+				font-size: 0.8rem;
+				color: #666;
+				margin-top: 0.2rem;
+			}
+
+			/* Features */
+			.section-title {
+				text-align: center;
+				max-width: 800px;
+				margin: 4rem auto 2.5rem;
+				padding: 0 1rem;
+			}
+			.section-title h2 {
+				font-size: 2rem;
+				margin-bottom: 0.5rem;
+			}
+			.section-title p {
+				color: #888;
+				font-size: 1.05rem;
 			}
 			.features {
 				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-				gap: 2rem;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
 				max-width: 1000px;
-				margin: 3rem auto;
+				margin: 0 auto 3rem;
 				padding: 0 1rem;
 			}
 			.feature {
-				padding: 1.5rem;
-				border-radius: 12px;
-				border: 1px solid #222;
+				padding: 1.75rem;
+				border-radius: 14px;
+				border: 1px solid #1a1a1a;
 				background: #0a0a0a;
+				transition: border-color 0.2s;
+			}
+			.feature:hover {
+				border-color: rgba(233,69,96,0.35);
+			}
+			.feature-icon {
+				font-size: 2rem;
+				margin-bottom: 0.75rem;
+				display: block;
 			}
 			.feature h3 {
-				margin-top: 0.5rem;
+				font-size: 1.1rem;
 				margin-bottom: 0.5rem;
 			}
 			.feature p {
 				color: #888;
-				font-size: 0.95rem;
+				font-size: 0.92rem;
 				line-height: 1.6;
+				margin: 0;
 			}
+
+			/* Blog section */
 			.posts-section {
-				max-width: 800px;
-				margin: 3rem auto;
+				max-width: 1000px;
+				margin: 2rem auto 4rem;
 				padding: 0 1rem;
 			}
-			.posts-section h2 {
-				font-size: 1.8rem;
-				margin-bottom: 1.5rem;
+			.posts-grid {
+				display: grid;
+				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+				gap: 1.5rem;
 			}
 			.post-card {
-				padding: 1.25rem 0;
-				border-bottom: 1px solid #1a1a1a;
+				border: 1px solid #1a1a1a;
+				border-radius: 14px;
+				overflow: hidden;
+				background: #0a0a0a;
+				transition: border-color 0.2s;
 			}
-			.post-card:last-child {
-				border-bottom: none;
+			.post-card:hover {
+				border-color: rgba(233,69,96,0.3);
 			}
 			.post-card a {
 				text-decoration: none;
 				color: inherit;
+				display: block;
 			}
-			.post-card h3 {
-				font-size: 1.15rem;
-				margin-bottom: 0.35rem;
-				transition: color 0.2s;
+			.post-card-img {
+				width: 100%;
+				height: 180px;
+				aspect-ratio: 16/9;
+				background: #111;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				border-bottom: 1px solid #1a1a1a;
+				overflow: hidden;
 			}
-			.post-card a:hover h3 {
-				color: #e94560;
+			.post-card-img img {
+				width: 100%;
+				height: 100%;
+				object-fit: cover;
+			}
+			.post-card-body {
+				padding: 1.25rem;
 			}
 			.post-card .meta {
-				font-size: 0.85rem;
-				color: #666;
-				margin-bottom: 0.35rem;
+				font-size: 0.8rem;
+				color: #555;
+				margin-bottom: 0.4rem;
 			}
+			.post-card h3 {
+				font-size: 1.05rem;
+				margin-bottom: 0.4rem;
+				line-height: 1.35;
+				transition: color 0.2s;
+			}
+			.post-card a:hover h3 { color: #e94560; }
 			.post-card .excerpt {
-				color: #888;
-				font-size: 0.92rem;
+				color: #777;
+				font-size: 0.85rem;
 				line-height: 1.5;
+				display: -webkit-box;
+				-webkit-line-clamp: 3;
+				-webkit-box-orient: vertical;
+				overflow: hidden;
+			}
+			.view-all {
+				text-align: center;
+				margin-top: 2rem;
+			}
+
+			/* Final CTA */
+			.final-cta {
+				text-align: center;
+				padding: 4rem 1.5rem;
+				max-width: 700px;
+				margin: 0 auto;
+				position: relative;
+				overflow: hidden;
+			}
+			.final-cta::before {
+				content: '';
+				position: absolute;
+				top: 0;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 500px;
+				height: 400px;
+				background: radial-gradient(circle, rgba(233,69,96,0.08) 0%, transparent 70%);
+				pointer-events: none;
+			}
+			.final-cta > * { position: relative; }
+			.final-cta h2 {
+				font-size: 2.2rem;
+				margin-bottom: 0.75rem;
+			}
+			.final-cta p {
+				color: #888;
+				font-size: 1.1rem;
+				margin-bottom: 2rem;
+			}
+
+			@media (max-width: 720px) {
+				.hero { padding: 4rem 1rem 3rem; overflow-x: hidden; }
+				.hero h1 { font-size: 2rem; }
+				.hero .subtitle { font-size: 1rem; margin-bottom: 2rem; padding: 0 0.25rem; }
+				.hero-badge { font-size: 0.72rem; padding: 0.3rem 0.8rem; display: inline-flex; justify-content: center; }
+				.cta-buttons { flex-direction: column; align-items: center; gap: 0.75rem; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
+				.btn-primary, .btn-secondary { width: 100%; max-width: 320px; text-align: center; padding: 1rem 1.5rem; min-height: 48px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+				.stats { gap: 1.5rem; padding: 1.5rem 0.5rem; }
+				.stat { flex: 1 1 90px; }
+				.stat-number { font-size: 1.5rem; }
+				.stat-label { font-size: 0.7rem; }
+				.section-title { margin: 3rem auto 1.5rem; padding: 0 1.25rem; }
+				.section-title h2 { font-size: 1.5rem; }
+				.section-title p { font-size: 0.92rem; }
+				.features { grid-template-columns: 1fr; gap: 1rem; padding: 0 1.25rem; margin-bottom: 2rem; }
+				.feature { padding: 1.25rem; }
+				.posts-section { padding: 0 1.25rem; }
+				.posts-grid { grid-template-columns: 1fr; }
+				.post-card-img { height: 160px; aspect-ratio: auto; }
+				.final-cta h2 { font-size: 1.6rem; }
+				.final-cta p { font-size: 0.95rem; }
+			}
+			@media (max-width: 400px) {
+				.hero h1 { font-size: 1.7rem; }
+				.stats { gap: 1.2rem; }
+				.stat-number { font-size: 1.4rem; }
+				.stat-label { font-size: 0.65rem; }
 			}
 		</style>
 	</head>
 	<body>
 		<Header />
-		<main>
+		<main id="main-content">
+			<!-- Hero -->
 			<section class="hero">
-				<h1>Tu propia IA. Tu control. Tu ventaja.</h1>
+				<span class="hero-badge">La revolución ya empezó. No te quedes fuera.</span>
+				<h1>La IA ya no es del futuro. <span>Es de quien actúa hoy.</span></h1>
 				<p class="subtitle">
-					TribuClaw es la comunidad en español que te enseña a crear, configurar y dominar
-					tu agente IA personal. Sin depender de nadie. Sin entregar tus datos.
+					Mientras la mayoría sigue usando ChatGPT para hacer resúmenes, una nueva generación ya tiene
+					agentes autónomos que trabajan para ellos 24/7. Gestionan su negocio, responden sus mensajes,
+					toman decisiones. Y lo aprendieron aquí.
 				</p>
 				<div class="cta-buttons">
-					<a href={WHOP_URL} class="btn-primary" target="_blank">Unirme a TribuClaw</a>
-					<a href="/blog/" class="btn-secondary">Leer el blog</a>
+					<a href={WHOP_URL} class="btn-primary" target="_blank">Quiero mi agente IA</a>
+					<a href="/blog/" class="btn-secondary">Ver cómo funciona</a>
 				</div>
 			</section>
 
+			<!-- Stats -->
+			<section class="stats">
+				<div class="stat">
+					<span class="stat-number">167K+</span>
+					<span class="stat-label">personas ya construyen agentes IA</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">∞</span>
+					<span class="stat-label">plataformas que tu agente controla</span>
+				</div>
+				<div class="stat">
+					<span class="stat-number">24/7</span>
+					<span class="stat-label">trabaja mientras tú duermes</span>
+				</div>
+			</section>
+
+			<!-- Features -->
+			<section class="section-title">
+				<h2>Esto no es un chatbot. Es tu ventaja competitiva.</h2>
+				<p>Los que entienden esto ahora van a dominar los próximos 10 años.</p>
+			</section>
 			<section class="features">
 				<div class="feature">
-					<h3>🤖 Agente IA personal</h3>
-					<p>Una IA que trabaja solo para ti. Conoce tu contexto, tiene memoria permanente y ejecuta tareas de forma autónoma.</p>
+					<span class="feature-icon">🧠</span>
+					<h3>Un cerebro que solo trabaja para ti</h3>
+					<p>Conoce tu negocio, recuerda cada conversación, aprende de tus decisiones. No es genérico. Es tuyo.</p>
 				</div>
 				<div class="feature">
-					<h3>🔒 Tus datos, tu servidor</h3>
-					<p>Todo corre en tu infraestructura. Sin nubes ajenas, sin empresas que lean tus mensajes. Control total.</p>
+					<span class="feature-icon">⚡</span>
+					<h3>Mientras tú duermes, él ejecuta</h3>
+					<p>Responde clientes, organiza tu agenda, monitoriza oportunidades. Tu agente no descansa, no se distrae, no falla.</p>
 				</div>
 				<div class="feature">
-					<h3>⚡ Automatización real</h3>
-					<p>Email, WhatsApp, Telegram, calendario, redes sociales. Tu agente se conecta a todo y actúa solo.</p>
+					<span class="feature-icon">🔗</span>
+					<h3>Conectado a toda tu vida digital</h3>
+					<p>WhatsApp, email, calendario, CRM, redes sociales. Un solo agente que lo controla todo desde un punto.</p>
 				</div>
 				<div class="feature">
-					<h3>🇪🇸 En español, sin excusas</h3>
-					<p>Guías, tutoriales y soporte en tu idioma. La primera comunidad hispanoparlante de agentes IA personales.</p>
+					<span class="feature-icon">🔒</span>
+					<h3>Tus datos, tu control total</h3>
+					<p>Sin intermediarios. Sin empresas que lean tus mensajes. Tu agente vive en tu servidor, bajo tus reglas.</p>
 				</div>
 				<div class="feature">
-					<h3>💰 De gratis a rentable</h3>
-					<p>Empieza con modelos gratuitos y escala. Aprende a monetizar la IA creando servicios, productos y automatizaciones.</p>
+					<span class="feature-icon">💰</span>
+					<h3>Accesible para cualquiera</h3>
+					<p>5 euros al mes. No necesitas saber programar. No necesitas ser técnico. Solo necesitas empezar.</p>
 				</div>
 				<div class="feature">
-					<h3>🧠 Comunidad activa</h3>
-					<p>No estás solo. Preguntas, recetas, casos de uso y gente que comparte lo que funciona. Todos los días.</p>
+					<span class="feature-icon">🇪🇸</span>
+					<h3>La primera comunidad en español</h3>
+					<p>Todo el conocimiento que estaba solo en inglés, ahora en tu idioma. Guías, soporte y gente como tú.</p>
 				</div>
 			</section>
 
+			<!-- Blog posts -->
+			<section class="section-title">
+				<h2>Aprende lo que el 99% aún no sabe</h2>
+				<p>Guías prácticas, estrategias reales y todo lo que necesitas para construir tu agente IA.</p>
+			</section>
 			<section class="posts-section">
-				<h2>Últimos artículos</h2>
-				{posts.slice(0, 10).map((post) => (
-					<div class="post-card">
-						<a href={`/blog/${post.id}/`}>
-							<div class="meta"><FormattedDate date={post.data.pubDate} /></div>
-							<h3>{post.data.title}</h3>
-							<p class="excerpt">{post.data.description}</p>
-						</a>
-					</div>
-				))}
-				{posts.length > 10 && (
-					<p style="text-align: center; margin-top: 1.5rem;">
+				<div class="posts-grid">
+					{posts.slice(0, 6).map((post) => {
+						const heroImg = heroImages[post.id] || post.data.heroImage || '/images/og-default.jpg';
+						return (
+							<div class="post-card">
+								<a href={`/blog/${post.id}/`}>
+									<div class="post-card-img">
+										<img src={heroImg} alt={post.data.title} loading="lazy" decoding="async" width="300" height="169" />
+									</div>
+									<div class="post-card-body">
+										<div class="meta"><FormattedDate date={post.data.pubDate} /></div>
+										<h3>{post.data.title}</h3>
+										<p class="excerpt">{post.data.description}</p>
+									</div>
+								</a>
+							</div>
+						);
+					})}
+				</div>
+				{posts.length > 6 && (
+					<div class="view-all">
 						<a href="/blog/" class="btn-secondary">Ver todos los artículos</a>
-					</p>
+					</div>
 				)}
+			</section>
+
+			<!-- Final CTA -->
+			<section class="final-cta">
+				<h2>La pregunta no es si vas a tener un agente IA. Es cuándo.</h2>
+				<p>Los que empiecen hoy tendrán años de ventaja sobre los que esperen. Tú decides de qué lado quieres estar.</p>
+				<a href={WHOP_URL} class="btn-primary" target="_blank">Entrar a TribuClaw ahora</a>
 			</section>
 		</main>
 		<Footer />

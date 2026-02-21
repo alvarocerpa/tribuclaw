@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <rect width="800" height="400" fill="#0a0a0a"/>
+  <text x="400" y="40" text-anchor="middle" fill="#e94560" font-family="Arial,sans-serif" font-size="20" font-weight="bold">5 tareas que tu agente IA automatiza</text>
+  <g transform="translate(80,70)"><rect width="120" height="80" rx="8" fill="none" stroke="#e94560" stroke-width="2"/><text x="60" y="35" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="24">📧</text><text x="60" y="60" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="11">Email</text></g>
+  <g transform="translate(220,70)"><rect width="120" height="80" rx="8" fill="none" stroke="#e94560" stroke-width="2"/><text x="60" y="35" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="24">📰</text><text x="60" y="60" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="11">Resumenes</text></g>
+  <g transform="translate(360,70)"><rect width="120" height="80" rx="8" fill="none" stroke="#e94560" stroke-width="2"/><text x="60" y="35" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="24">💬</text><text x="60" y="60" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="11">WhatsApp</text></g>
+  <g transform="translate(500,70)"><rect width="120" height="80" rx="8" fill="none" stroke="#e94560" stroke-width="2"/><text x="60" y="35" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="24">🔍</text><text x="60" y="60" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="11">Monitorizacion</text></g>
+  <g transform="translate(640,70)"><rect width="120" height="80" rx="8" fill="none" stroke="#e94560" stroke-width="2"/><text x="60" y="35" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="24">📝</text><text x="60" y="60" text-anchor="middle" fill="#aaa" font-family="Arial,sans-serif" font-size="11">Contenido</text></g>
+  <!-- Center agent -->
+  <circle cx="400" cy="260" r="50" fill="none" stroke="#e94560" stroke-width="2"/>
+  <text x="400" y="255" text-anchor="middle" fill="#fff" font-family="Arial,sans-serif" font-size="14">Agente</text>
+  <text x="400" y="275" text-anchor="middle" fill="#e94560" font-family="Arial,sans-serif" font-size="14">IA</text>
+  <!-- Lines to agent -->
+  <line x1="140" y1="150" x2="370" y2="230" stroke="#555" stroke-width="1"/><line x1="280" y1="150" x2="385" y2="220" stroke="#555" stroke-width="1"/><line x1="420" y1="150" x2="400" y2="210" stroke="#555" stroke-width="1"/><line x1="560" y1="150" x2="415" y2="220" stroke="#555" stroke-width="1"/><line x1="700" y1="150" x2="430" y2="230" stroke="#555" stroke-width="1"/>
+  <text x="400" y="370" text-anchor="middle" fill="#e94560" font-family="Arial,sans-serif" font-size="11">tribuclaw.com</text>
+</svg>

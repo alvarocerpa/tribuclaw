@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+<rect width="800" height="400" rx="12" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<!-- Central hub -->
+<circle cx="400" cy="200" r="60" fill="#111" stroke="#e94560" stroke-width="2.5"/>
+<text x="400" y="190" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="700">Tu Agente</text>
+<text x="400" y="210" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11">OpenClaw</text>
+
+<!-- Satellites -->
+<circle cx="140" cy="100" r="38" fill="#111" stroke="#25D366" stroke-width="1.5"/>
+<text x="140" y="95" text-anchor="middle" fill="#25D366" font-family="system-ui" font-size="24">💬</text>
+<text x="140" y="115" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">WhatsApp</text>
+<line x1="178" y1="120" x2="345" y2="175" stroke="#25D366" stroke-width="1" opacity="0.35"/>
+
+<circle cx="140" cy="300" r="38" fill="#111" stroke="#0088cc" stroke-width="1.5"/>
+<text x="140" y="295" text-anchor="middle" fill="#0088cc" font-family="system-ui" font-size="24">✈️</text>
+<text x="140" y="315" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Telegram</text>
+<line x1="178" y1="280" x2="345" y2="225" stroke="#0088cc" stroke-width="1" opacity="0.35"/>
+
+<circle cx="660" cy="100" r="38" fill="#111" stroke="#EA4335" stroke-width="1.5"/>
+<text x="660" y="95" text-anchor="middle" fill="#EA4335" font-family="system-ui" font-size="24">📧</text>
+<text x="660" y="115" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Email</text>
+<line x1="622" y1="120" x2="455" y2="175" stroke="#EA4335" stroke-width="1" opacity="0.35"/>
+
+<circle cx="660" cy="300" r="38" fill="#111" stroke="#4285F4" stroke-width="1.5"/>
+<text x="660" y="295" text-anchor="middle" fill="#4285F4" font-family="system-ui" font-size="24">📅</text>
+<text x="660" y="315" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Calendario</text>
+<line x1="622" y1="280" x2="455" y2="225" stroke="#4285F4" stroke-width="1" opacity="0.35"/>
+
+<circle cx="400" cy="60" r="34" fill="#111" stroke="#F4B400" stroke-width="1.5"/>
+<text x="400" y="57" text-anchor="middle" fill="#F4B400" font-family="system-ui" font-size="22">🌐</text>
+<text x="400" y="73" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Web/APIs</text>
+<line x1="400" y1="94" x2="400" y2="140" stroke="#F4B400" stroke-width="1" opacity="0.35"/>
+
+<circle cx="400" cy="345" r="34" fill="#111" stroke="#9B59B6" stroke-width="1.5"/>
+<text x="400" y="342" text-anchor="middle" fill="#9B59B6" font-family="system-ui" font-size="22">📊</text>
+<text x="400" y="358" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">CRM</text>
+<line x1="400" y1="311" x2="400" y2="260" stroke="#9B59B6" stroke-width="1" opacity="0.35"/>
+
+<!-- Label -->
+<text x="400" y="390" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Un agente, todas tus herramientas conectadas</text>
+</svg>

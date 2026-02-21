@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+<rect width="800" height="400" rx="12" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<!-- 3 requirement cards -->
+<rect x="30" y="50" width="230" height="300" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="145" y="120" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="48">🖥️</text>
+<text x="145" y="160" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">Servidor</text>
+<text x="145" y="185" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">VPS desde 5€/mes</text>
+<text x="145" y="205" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">o PC viejo en casa</text>
+<rect x="75" y="230" width="140" height="30" rx="6" fill="#e94560" opacity="0.15"/>
+<text x="145" y="250" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">Hetzner CX22</text>
+<circle x="145" y="310" r="18" cx="145" cy="310" fill="#e94560" opacity="0.2"/>
+<text x="145" y="315" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="800">1</text>
+
+<rect x="285" y="50" width="230" height="300" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="400" y="120" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="48">🧠</text>
+<text x="400" y="160" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">Modelo IA</text>
+<text x="400" y="185" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Claude, GPT-4o</text>
+<text x="400" y="205" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">o DeepSeek (gratis)</text>
+<rect x="330" y="230" width="140" height="30" rx="6" fill="#e94560" opacity="0.15"/>
+<text x="400" y="250" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">Claude recomendado</text>
+<circle cx="400" cy="310" r="18" fill="#e94560" opacity="0.2"/>
+<text x="400" y="315" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="800">2</text>
+
+<rect x="540" y="50" width="230" height="300" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="655" y="120" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="48">⚡</text>
+<text x="655" y="160" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">Plataforma</text>
+<text x="655" y="185" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">OpenClaw: gratuito</text>
+<text x="655" y="205" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">open source</text>
+<rect x="585" y="230" width="140" height="30" rx="6" fill="#e94560" opacity="0.15"/>
+<text x="655" y="250" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">Sin programar</text>
+<circle cx="655" cy="310" r="18" fill="#e94560" opacity="0.2"/>
+<text x="655" y="315" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="800">3</text>
+
+<!-- Title -->
+<text x="400" y="30" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Lo que necesitas para crear tu agente IA</text>
+</svg>

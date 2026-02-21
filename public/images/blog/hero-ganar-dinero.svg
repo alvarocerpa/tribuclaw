@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+<rect width="1200" height="630" fill="#080808"/>
+<rect x="40" y="40" width="1120" height="550" rx="20" fill="#0d0d0d" stroke="#1a1a1a"/>
+<!-- Revenue bars chart -->
+<rect x="120" y="380" width="80" height="40" rx="4" fill="#e94560" opacity="0.3"/>
+<text x="160" y="410" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">500</text>
+<rect x="230" y="330" width="80" height="90" rx="4" fill="#e94560" opacity="0.4"/>
+<text x="270" y="375" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">2K</text>
+<rect x="340" y="260" width="80" height="160" rx="4" fill="#e94560" opacity="0.5"/>
+<text x="380" y="340" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">5K</text>
+<rect x="450" y="200" width="80" height="220" rx="4" fill="#e94560" opacity="0.6"/>
+<text x="490" y="310" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">10K</text>
+<rect x="560" y="150" width="80" height="270" rx="4" fill="#e94560" opacity="0.7"/>
+<text x="600" y="280" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">15K</text>
+<rect x="670" y="120" width="80" height="300" rx="4" fill="#e94560" opacity="0.8"/>
+<text x="710" y="260" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">25K</text>
+<rect x="780" y="100" width="80" height="320" rx="4" fill="#e94560" opacity="0.9"/>
+<text x="820" y="250" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="9">30K</text>
+<rect x="890" y="80" width="80" height="340" rx="4" fill="#e94560"/>
+<text x="930" y="240" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="9">50K</text>
+<!-- Axis line -->
+<line x1="100" y1="420" x2="990" y2="420" stroke="#333" stroke-width="1"/>
+<text x="545" y="450" text-anchor="middle" fill="#666" font-family="system-ui" font-size="11">EUR/mes con diferentes modelos de negocio IA</text>
+<!-- Labels -->
+<text x="160" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">Freelance</text>
+<text x="270" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">Servicios</text>
+<text x="380" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">Consultoria</text>
+<text x="490" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">Comunidad</text>
+<text x="600" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">Prompts</text>
+<text x="710" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">SEO+IA</text>
+<text x="820" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">Agencia</text>
+<text x="930" y="470" text-anchor="middle" fill="#555" font-family="system-ui" font-size="8">Wrappers</text>
+<!-- Title -->
+<text x="600" y="540" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="24" font-weight="700">10 formas reales de ganar dinero con IA</text>
+<text x="600" y="565" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>

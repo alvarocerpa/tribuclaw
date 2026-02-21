@@ -1,0 +1,144 @@
+---
+title: 'Automatizar clips virales con OpenClaw: de 45 min a 5 min por clip'
+description: 'El equipo de This Week in AI redujo la produccion de clips de 45 a 5 minutos con un sistema de 3 agentes OpenClaw. Te cuento exactamente como funciona y como replicarlo.'
+pubDate: '2026-02-20'
+author: 'Alvaro Cerpa'
+pillar: 'automatizacion-ia'
+tags: ['automatizacion contenido', 'clips virales', 'openclaw', 'agentes ia', 'contenido ia']
+keywords: ['automatizar clips virales ia', 'openclaw contenido automatico', 'clips tiktok ia', 'automatizar video ia', 'agente ia contenido']
+heroImage: '/images/blog/hero-automatizar-clips-virales-openclaw.svg'
+faq:
+  - q: 'Cuanto tiempo ahorra automatizar la creacion de clips?'
+    a: 'El equipo de This Week in AI paso de 45 minutos por clip a 5 minutos. El ahorro es de 40 minutos por clip, y al publicar 5+ clips al dia el tiempo recuperado supera las 3 horas diarias.'
+  - q: 'Que herramientas necesito para automatizar clips con IA?'
+    a: 'El stack minimo: OpenClaw (gratis), yt-dlp para descargar videos, ffmpeg para edicion, y Groq Whisper API para transcripcion. Todo open source o con planes gratuitos.'
+  - q: 'Los clips generados con IA llegan a muchas vistas?'
+    a: 'This Week in AI reporta clips alcanzando 60.000 vistas o mas. La IA no garantiza viralidad, pero permite publicar mucho mas volumen, y a mayor volumen mayor probabilidad de que un clip despegue.'
+  - q: 'Necesito saber editar video para implementar este sistema?'
+    a: 'No. El sistema automatiza la edicion. Solo necesitas revisar el clip final (5 minutos) y decidir si publicar. La seleccion del momento, el recorte y los subtitulos los genera la IA.'
+---
+
+import CTA from '../../components/CTA.astro';
+
+El equipo de This Week in AI produce cinco podcasts a la semana. Horas de contenido que hay que convertir en clips para X, TikTok y YouTube.
+
+Antes: 45 minutos por clip. Entre encontrar el momento, editar, añadir subtítulos y preparar para publicar.
+
+Ahora: 5 minutos. Solo revisión final y publicar.
+
+La diferencia es un sistema de tres agentes con OpenClaw que trabaja de noche y entrega los clips listos en Slack por la mañana.
+
+Nadie ve un segundo de metraje. Todo automatizado.
+
+Te cuento exactamente cómo funciona y cómo puedes replicarlo.
+
+## Por qué el contenido corto es la palanca más poderosa ahora mismo
+
+Antes de entrar en el sistema, el contexto importa.
+
+Los clips de 60-90 segundos son el formato con mayor alcance orgánico en todas las plataformas ahora mismo: TikTok, Reels de Instagram, Shorts de YouTube, clips en X. El algoritmo favorece el contenido nativo y corto.
+
+El problema: producir clips de calidad a volumen es brutalmente intensivo en tiempo. Un creador que produce cinco podcasts a la semana no puede también editar veinte clips diarios.
+
+Aquí entra la automatización.
+
+## Los 3 agentes del sistema
+
+Cada agente tiene su propio archivo SKILL.md con instrucciones específicas: qué cuentas vigilar, cómo puntuar el contenido, qué filtrar y cómo crear el clip final.
+
+| Agente | Función | Fuente de datos |
+|---|---|---|
+| **X Clippy** | Escanea cuentas de X seleccionadas | Feed de X/Twitter |
+| **YT Clippy** | Busca entrevistas largas relevantes | YouTube (via proxies residenciales) |
+| **TribuClaw Archivist** | Busca en el archivo propio de contenido | Base de datos interna |
+
+### X Clippy — el cazador de tendencias
+
+Monitoriza una lista de cuentas curadas. Para cada post con vídeo, calcula un score de viralidad usando la ratio seguidores/engagement. Filtra únicamente contenido de "talking head" (persona hablando a cámara, sin edición compleja) publicado en las últimas 48 horas.
+
+¿Por qué solo talking head? Porque es el contenido más fácil de recortar sin que pierda contexto. Un plano de una persona hablando se puede cortar en cualquier punto.
+
+### YT Clippy — el buscador de profundidad
+
+Busca entrevistas largas en YouTube usando palabras clave específicas del nicho. Usa proxies residenciales para evitar los bloqueos que YouTube aplica a IPs de servidor.
+
+El pipeline es audio-first: descarga el audio (no el vídeo completo), transcribe con Whisper, identifica los momentos más densos en valor y solo entonces descarga el fragmento de vídeo correspondiente.
+
+Esto ahorra tiempo y almacenamiento.
+
+### TribuClaw Archivist — el minero del archivo propio
+
+El más interesante de los tres. Busca en el archivo histórico de contenido propio: episodios antiguos, entrevistas enterradas, momentos de alta calidad que nunca se recortaron.
+
+El criterio: "en este día hace X años, ¿qué dijo alguien famoso que sea relevante ahora mismo?" o "¿qué fragmento tiene el mismo nivel de vigencia hoy que cuando se grabó?"
+
+Este agente recupera valor de contenido que de otra forma nunca se publicaría.
+
+<CTA text="¿Quieres automatizar tu produccion de contenido?" subtitle="En TribuClaw te ensenamos a configurar este tipo de sistemas paso a paso. Comunidad activa con casos de uso reales." />
+
+## El pipeline de 6 pasos
+
+Una vez que los agentes encuentran el momento correcto, el pipeline de producción se ejecuta automáticamente:
+
+**Paso 1: Detección** — el agente encuentra un momento candidato basado en sus criterios de puntuación.
+
+**Paso 2: Descarga** — `yt-dlp` descarga el fragmento de vídeo. Solo el fragmento, no el contenido completo.
+
+**Paso 3: Transcripción** — Groq Whisper API transcribe el audio en segundos. La transcripción sirve para dos cosas: identificar el punto exacto de inicio/fin y generar los subtítulos quemados.
+
+**Paso 4: Recorte inteligente** — `ffmpeg` corta el clip en el punto exacto donde empieza y termina la idea completa. El agente usa la transcripción para identificar el corte limpio (antes de que el hablante empiece una frase nueva, no en mitad de una).
+
+**Paso 5: Subtítulos** — se queman los subtítulos en el vídeo. Formato configurado: tipografía grande, color de fondo, posición central.
+
+**Paso 6: Entrega** — el clip terminado llega a Slack con la transcripción, el score de viralidad estimado y el link a la fuente original.
+
+## El stack técnico (todo open source o barato)
+
+| Herramienta | Uso | Coste |
+|---|---|---|
+| **OpenClaw** | Orquestación de los 3 agentes | Gratis |
+| **yt-dlp** | Descarga de vídeos/audio | Gratis |
+| **ffmpeg** | Edición y recorte | Gratis |
+| **Groq Whisper API** | Transcripción de audio | ~$0.036/hora de audio |
+| **Proxies residenciales** | Evitar bloqueos en YouTube | 15-50€/mes |
+| **Servidor VPS** | Ejecutar todo | 4-20€/mes |
+
+El coste total del sistema para publicar 5 clips al día: **menos de 100€ al mes**.
+
+Comparado con contratar a alguien para hacer esto manualmente (mínimo 800€/mes), el ROI es inmediato.
+
+## Cómo adaptar este sistema a tu negocio
+
+El sistema de This Week in AI está optimizado para un podcast de alta frecuencia. Pero el patrón aplica a cualquier creador de contenido:
+
+**Si tienes un podcast o canal de YouTube**: el TribuClaw Archivist (renómbralo como quieras) es tu primer agente. Busca en tu propio archivo histórico los momentos más valiosos que nunca se recortaron.
+
+**Si tienes un negocio de servicios**: X Clippy puede monitorizar a tus competidores y a los líderes de opinión de tu sector. Cuando alguien diga algo relevante sobre un problema que tu servicio resuelve, tienes el clip antes que nadie.
+
+**Si tienes una agencia de marketing**: este sistema es un servicio que puedes ofrecer a clientes. Montas el pipeline una vez para cada cliente y cobras mensualidad.
+
+## Los resultados reales
+
+This Week in AI reporta clips individuales llegando a **60.000+ vistas** después de implementar el sistema.
+
+El volumen de publicación pasó de 2-3 clips semanales a 5-10 clips diarios. A mayor volumen, mayor probabilidad de que un clip despegue.
+
+Pero más allá de las métricas, el cambio real es de atención. Los editores del equipo ya no pasan horas viendo metraje para encontrar el momento bueno. Ese tiempo lo dedican a cosas que mueven la aguja: estrategia de contenido, relaciones con invitados, monetización.
+
+<CTA text="Empieza a automatizar tu contenido hoy" subtitle="TribuClaw te da el sistema, las guias y la comunidad para implementarlo sin complicaciones tecnicas." />
+
+## El primer paso si quieres implementarlo
+
+No intentes montar los tres agentes a la vez el primer día.
+
+El orden recomendado:
+
+1. **Empieza con el Archivist** — busca en tu propio contenido. Sin proxies, sin APIs externas, solo tus archivos locales y Whisper. Es el más simple de implementar y el que da resultados más inmediatos.
+
+2. **Añade el YT Clippy** — una vez que el pipeline de producción funciona, conéctalo a YouTube. Aquí necesitas los proxies para evitar bloqueos.
+
+3. **Añade el X Clippy** — el más avanzado porque requiere monitorización continua y una lista curada de cuentas.
+
+Con el Archivist solo ya vas a recuperar clips que valen la pena de tu contenido antiguo. Y van a llegar a gente que nunca los vio la primera vez.
+
+Para [instalar OpenClaw y empezar a configurar tu primer agente](/blog/instalar-openclaw-en-vps-paso-a-paso/), tenemos una guía completa en el blog. El sistema de clips viene después — pero el primer paso es siempre tener el agente corriendo.

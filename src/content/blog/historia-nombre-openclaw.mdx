@@ -1,0 +1,127 @@
+---
+title: 'La historia real del nombre OpenClaw que nadie cuenta'
+description: 'De Clawdbot a OpenClaw en 24 horas: la historia de como Anthropic forzó el cambio de nombre y OpenAI rescató el proyecto. El origen que muy pocos conocen.'
+pubDate: '2026-02-20'
+author: 'Alvaro Cerpa'
+pillar: 'emprender-con-ia'
+tags: ['openclaw', 'historia', 'anthropic', 'openai', 'agentes ia']
+keywords: ['historia openclaw', 'openclaw nombre', 'clawdbot openclaw', 'peter openclaw', 'openclaw anthropic']
+heroImage: '/images/blog/hero-historia-nombre-openclaw.svg'
+faq:
+  - q: 'Por que OpenClaw se llama OpenClaw y no Clawdbot?'
+    a: 'Anthropic envió una notificación de cese y desistimiento al proyecto original llamado Clawdbot porque usaba referencias a "Claude" en el nombre. La comunidad respondió renombrando el proyecto a OpenClaw en menos de 24 horas.'
+  - q: 'Quien creo OpenClaw?'
+    a: 'OpenClaw fue creado por Peter Steinberger, conocido desarrollador de software y fundador de PSPDFKit. Poco después del renombrado, Peter fue adquirido por OpenAI.'
+  - q: 'OpenAI adquirio OpenClaw?'
+    a: 'OpenAI adquirió a Peter Steinberger, el creador de OpenClaw, aproximadamente una semana y media después de que Anthropic bloqueara el uso de OAuth. El proyecto sigue siendo open source.'
+  - q: 'Puede Anthropic volver a actuar contra OpenClaw?'
+    a: 'Desde el renombrado a OpenClaw, el proyecto no tiene dependencias de nombre con Anthropic. Soporta más de 10 proveedores de modelos incluyendo OpenAI, Gemini, Kimi y otros, por lo que no depende de Claude para funcionar.'
+---
+
+import CTA from '../../components/CTA.astro';
+
+Detrás del nombre que todo el mundo usa hay una historia que muy poca gente conoce.
+
+Una historia de presión corporativa, comunidad open source, y el movimiento estratégico más rápido que hemos visto en el ecosistema IA en 2026.
+
+Te la cuento entera.
+
+## Todo empieza con un nombre
+
+El proyecto original se llamaba **Clawdbot**.
+
+Era una referencia directa a Claude, el modelo de Anthropic. Tenía sentido: en sus primeras versiones, el agente usaba Claude casi exclusivamente. El nombre era intuitivo, descriptivo y pegaba bien.
+
+En pocos meses, Clawdbot acumuló más de 100.000 estrellas en GitHub. Se volvió viral en X. Los medios especializados lo cubrieron. Era el proyecto open source de más rápido crecimiento en el ecosistema de agentes IA.
+
+Y entonces llegó la carta de Anthropic.
+
+## El ban hammer
+
+Anthropic tiene la marca registrada "Claude". Y tienen toda la razón legal del mundo en defenderla.
+
+La notificación fue clara: el proyecto debía dejar de usar el nombre en cualquier forma que pudiera confundirse con la marca de Anthropic.
+
+No era un ataque al proyecto. Era un movimiento legal estándar de protección de marca. Cualquier empresa con marca registrada hace esto.
+
+Pero el timing era significativo.
+
+## Lo que pasó en las horas siguientes
+
+La respuesta de la comunidad fue inmediata.
+
+En lugar de paralizarse o generar drama, el equipo y los contributors del proyecto se pusieron manos a la obra. En menos de 24 horas tenían el nuevo nombre: **OpenClaw**.
+
+La lógica era impecable. "Open" porque es open source. "Claw" para mantener la identidad visual del proyecto (el logo de la langosta 🦞 se quedó). Nada de referencias a modelos propietarios.
+
+El renombrado fue quirúrgico: documentación, repositorios, configuraciones, todo actualizado. Y la comunidad siguió creciendo como si nada hubiera pasado.
+
+| Cronología | Evento |
+|---|---|
+| Meses antes | Clawdbot se viraliza (100K+ estrellas GitHub) |
+| Dia X | Anthropic envía notificación de cese y desistimiento |
+| 24 horas después | Proyecto renombrado a OpenClaw |
+| Semana siguiente | Peter vuela a San Francisco, se reúne con los labs |
+| ~10 días después | OpenAI adquiere a Peter Steinberger |
+| Mismo día | Anthropic bloquea OAuth de OpenClaw |
+| Días después | OpenAI dice "go for it" — permite suscripción Codex con OpenClaw |
+
+<CTA text="Aprende OpenClaw desde cero" subtitle="TribuClaw es la comunidad en español de referencia para OpenClaw. Guías, soporte y casos de uso reales." />
+
+## El giro de OpenAI
+
+Aquí es donde la historia se pone interesante.
+
+Peter Steinberger, el creador de OpenClaw, hizo un viaje a San Francisco. Se reunió con los equipos de los principales labs de IA. Y aproximadamente una semana y media después del renombrado, **OpenAI anunció que adquiría a Peter**.
+
+Ese mismo día, Anthropic bloqueó el uso de tokens OAuth de sus suscripciones en OpenClaw.
+
+La política fue explícita: *"El uso de tokens OAuth obtenidos a través de cuentas de Claude Free, Pro o Max en cualquier otro producto, herramienta o servicio, incluyendo el Agent SDK, no está permitido."*
+
+La diferencia de coste entre usar la suscripción y usar la API directa es brutal. Matthew Berman, uno de los creadores de contenido más seguidos en el ecosistema, calculó en vídeo que solo decir "hola" a Claude Opus 4.6 por API directa cuesta 25 céntimos — porque el modelo requiere como mínimo 50.000 tokens de contexto. Con la suscripción, pagabas un 90% menos.
+
+OpenAI respondió exactamente al contrario: anunció que **permitía usar la suscripción de Codex (ChatGPT) con OpenClaw**. "Go for it."
+
+## Lo que esto revela sobre el ecosistema
+
+No hace falta ser conspiranoico para leer lo que está pasando.
+
+Anthropic ve en OpenClaw un competidor a su propio ecosistema de herramientas. OpenAI ve en OpenClaw una forma de meter su stack de modelos en millones de flujos de trabajo de desarrolladores y emprendedores.
+
+Son dos estrategias completamente distintas ante el mismo fenómeno.
+
+Para ti, como usuario, el mensaje es práctico: **no dependas de un solo proveedor de modelos**. OpenClaw ya soporta más de 10 proveedores — Claude, GPT, Gemini, Kimi, MiniMax, Grok, DeepSeek, Mistral — precisamente porque la dependencia de uno solo es un riesgo real.
+
+Si mañana Anthropic endurece más sus términos o sube precios de API, puedes cambiar de modelo en tu configuración en 5 minutos. Si tienes un sistema propietario construido sobre Claude, no tienes esa flexibilidad.
+
+## Por qué la comunidad importa más que el lab
+
+La parte más interesante de esta historia no es el movimiento corporativo. Es lo que hizo la comunidad.
+
+En menos de 24 horas, miles de personas que no se conocían de nada coordinaron el renombrado más rápido de un proyecto open source de alto impacto que yo recuerde. Sin burocracia. Sin drama. Sin esperar instrucciones de nadie.
+
+Esa velocidad de respuesta no es accidental. Es la naturaleza de los proyectos open source con comunidad comprometida.
+
+Y eso es lo que distingue a OpenClaw de cualquier alternativa cloud que Hyperagent u otros puedan construir: la comunidad no es un activo que se puede comprar. Se construye durante años.
+
+## Qué significa esto para ti hoy
+
+Si estás considerando construir sobre OpenClaw, esta historia debería darte confianza, no miedo.
+
+Un proyecto que sobrevivió presión directa de uno de los labs más importantes del mundo, que fue adquirido parcialmente por OpenAI, y que siguió creciendo sin perder momentum, tiene más resiliencia que la mayoría de SaaS de pago que usas cada día.
+
+El hecho de que los grandes estén mirando a OpenClaw — ya sea para limitarlo, adquirirlo o lanzar competidores — dice todo sobre el potencial del espacio.
+
+Si quieres [instalar tu propio agente IA](/blog/instalar-openclaw-en-vps-paso-a-paso/) y entender cómo funciona OpenClaw por dentro, el momento es ahora. La tecnología está madura, la comunidad está activa y los costes son mínimos.
+
+Y el nombre, como ves, tiene su propia historia.
+
+<CTA text="Entra a TribuClaw" subtitle="La comunidad en español de OpenClaw. Aprende, comparte y construye con gente que ya lo está usando." />
+
+---
+
+## El resumen para los que leen en diagonal
+
+- Clawdbot se volvió viral → Anthropic forzó el cambio de nombre → la comunidad respondió en 24 horas con el nombre OpenClaw
+- Peter (el creador) fue a San Francisco → OpenAI lo adquirió → Anthropic bloqueó OAuth → OpenAI dijo "go for it"
+- Moraleja: no dependas de un solo lab, apuesta por open source con comunidad fuerte

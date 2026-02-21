@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" fill="none">
+<rect width="1200" height="400" fill="#0a0a0a"/>
+<text x="600" y="45" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="18" font-weight="700">Modelos de IA compatibles con OpenClaw</text>
+<!-- Premium row -->
+<text x="80" y="95" fill="#e94560" font-family="system-ui" font-size="12" font-weight="600">PREMIUM</text>
+<rect x="180" y="70" width="140" height="50" rx="8" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="250" y="100" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">Claude</text>
+<rect x="340" y="70" width="140" height="50" rx="8" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="410" y="100" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">GPT-5</text>
+<rect x="500" y="70" width="140" height="50" rx="8" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="570" y="100" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">Gemini</text>
+<!-- Cheap row -->
+<text x="80" y="175" fill="#888" font-family="system-ui" font-size="12" font-weight="600">ECONOMICO</text>
+<rect x="180" y="150" width="140" height="50" rx="8" fill="#111" stroke="#555" stroke-width="1"/>
+<text x="250" y="180" text-anchor="middle" fill="#ccc" font-family="system-ui" font-size="13">DeepSeek v3</text>
+<rect x="340" y="150" width="140" height="50" rx="8" fill="#111" stroke="#555" stroke-width="1"/>
+<text x="410" y="180" text-anchor="middle" fill="#ccc" font-family="system-ui" font-size="13">MiniMax</text>
+<rect x="500" y="150" width="140" height="50" rx="8" fill="#111" stroke="#555" stroke-width="1"/>
+<text x="570" y="180" text-anchor="middle" fill="#ccc" font-family="system-ui" font-size="13">Mistral</text>
+<!-- Free row -->
+<text x="80" y="255" fill="#25D366" font-family="system-ui" font-size="12" font-weight="600">GRATIS</text>
+<rect x="180" y="230" width="140" height="50" rx="8" fill="#111" stroke="#25D366" stroke-width="1"/>
+<text x="250" y="260" text-anchor="middle" fill="#25D366" font-family="system-ui" font-size="13">Qwen3 235B</text>
+<rect x="340" y="230" width="140" height="50" rx="8" fill="#111" stroke="#25D366" stroke-width="1"/>
+<text x="410" y="260" text-anchor="middle" fill="#25D366" font-family="system-ui" font-size="13">Llama 3.3</text>
+<rect x="500" y="230" width="140" height="50" rx="8" fill="#111" stroke="#25D366" stroke-width="1"/>
+<text x="570" y="260" text-anchor="middle" fill="#25D366" font-family="system-ui" font-size="13">DeepSeek R1</text>
+<!-- Price labels -->
+<text x="800" y="100" fill="#e94560" font-family="system-ui" font-size="20" font-weight="700">5-25 EUR/mes</text>
+<text x="800" y="180" fill="#888" font-family="system-ui" font-size="20" font-weight="700">0.5-3 EUR/mes</text>
+<text x="800" y="260" fill="#25D366" font-family="system-ui" font-size="20" font-weight="700">0 EUR/mes</text>
+<text x="600" y="340" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Puedes combinar modelos: uno potente para tareas complejas, uno barato para lo rutinario</text>
+</svg>

@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <!-- Fondo -->
+  <rect width="1200" height="630" fill="#080808"/>
+  <rect x="20" y="20" width="1160" height="590" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1.5"/>
+
+  <!-- Header -->
+  <text x="600" y="68" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="600" fill="#e94560" text-anchor="middle" letter-spacing="3">AUTOMATIZACION IA</text>
+  <text x="600" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="30" font-weight="700" fill="#ffffff" text-anchor="middle">Tu agente IA gestiona el calendario por ti</text>
+  <text x="600" y="130" font-family="system-ui, -apple-system, sans-serif" font-size="15" fill="#888" text-anchor="middle">5+ horas/semana recuperadas · 0 emails de coordinacion · Agenda en piloto automatico</text>
+
+  <!-- Nodo central -->
+  <rect x="490" y="200" width="220" height="90" rx="10" fill="#111" stroke="#e94560" stroke-width="2"/>
+  <text x="600" y="236" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="700" fill="#e94560" text-anchor="middle">AGENTE IA</text>
+  <text x="600" y="256" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#fff" text-anchor="middle">Google Calendar API</text>
+  <text x="600" y="273" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#666" text-anchor="middle">acceso OAuth controlado</text>
+
+  <!-- Lineas de conexion -->
+  <line x1="490" y1="245" x2="340" y2="192" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="490" y1="245" x2="340" y2="308" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="710" y1="245" x2="860" y2="192" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="710" y1="245" x2="860" y2="308" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+  <line x1="600" y1="290" x2="600" y2="360" stroke="#333" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+  <!-- Card izquierda superior -->
+  <rect x="140" y="148" width="200" height="90" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <text x="240" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e94560" text-anchor="middle">PROGRAMA REUNIONES</text>
+  <text x="240" y="195" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#aaa" text-anchor="middle">Sin emails de ida y vuelta</text>
+  <text x="240" y="213" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">-2h / semana</text>
+  <text x="240" y="229" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#555" text-anchor="middle">coordinacion eliminada</text>
+
+  <!-- Card izquierda inferior -->
+  <rect x="140" y="262" width="200" height="90" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <text x="240" y="289" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e94560" text-anchor="middle">BLOQUEA TIEMPO</text>
+  <text x="240" y="309" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#aaa" text-anchor="middle">Trabajo profundo protegido</text>
+  <text x="240" y="327" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">+3h foco/semana</text>
+  <text x="240" y="343" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#555" text-anchor="middle">sin interrupciones</text>
+
+  <!-- Card derecha superior -->
+  <rect x="860" y="148" width="200" height="90" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <text x="960" y="175" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e94560" text-anchor="middle">RESUME AGENDA</text>
+  <text x="960" y="195" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#aaa" text-anchor="middle">Briefing a las 7:30 cada dia</text>
+  <text x="960" y="213" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">75 min / semana</text>
+  <text x="960" y="229" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#555" text-anchor="middle">de revision manual ahorrados</text>
+
+  <!-- Card derecha inferior -->
+  <rect x="860" y="262" width="200" height="90" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <text x="960" y="289" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e94560" text-anchor="middle">DETECTA CONFLICTOS</text>
+  <text x="960" y="309" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#aaa" text-anchor="middle">Solapamientos y ajustes auto</text>
+  <text x="960" y="327" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">0 errores de agenda</text>
+  <text x="960" y="343" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#555" text-anchor="middle">resueltos proactivamente</text>
+
+  <!-- Card inferior central -->
+  <rect x="465" y="360" width="270" height="90" rx="8" fill="#111" stroke="#1e1e1e" stroke-width="1.5"/>
+  <text x="600" y="387" font-family="system-ui, -apple-system, sans-serif" font-size="12" font-weight="700" fill="#e94560" text-anchor="middle">RECORDATORIOS CONTEXTUALES</text>
+  <text x="600" y="407" font-family="system-ui, -apple-system, sans-serif" font-size="11" fill="#aaa" text-anchor="middle">Con historial de cada persona</text>
+  <text x="600" y="427" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#fff" text-anchor="middle">Siempre preparado</text>
+  <text x="600" y="443" font-family="system-ui, -apple-system, sans-serif" font-size="10" fill="#555" text-anchor="middle">contexto automatico en cada reunion</text>
+
+  <!-- Resultado total -->
+  <rect x="370" y="475" width="460" height="60" rx="8" fill="#1a0810" stroke="#e94560" stroke-width="1.5"/>
+  <text x="600" y="502" font-family="system-ui, -apple-system, sans-serif" font-size="13" font-weight="700" fill="#e94560" text-anchor="middle">RESULTADO TOTAL</text>
+  <text x="600" y="523" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="700" fill="#fff" text-anchor="middle">5+ horas/semana recuperadas · Agenda en piloto automatico</text>
+
+  <!-- Título artículo -->
+  <text x="600" y="567" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="700" fill="#ddd" text-anchor="middle">Automatizar el calendario con IA: recupera 5 horas a la semana</text>
+  <!-- Branding -->
+  <text x="600" y="592" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#555" text-anchor="middle">tribuclaw.com</text>
+</svg>
