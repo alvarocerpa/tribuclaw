@@ -141,13 +141,13 @@ def send_digest(items):
         return
 
     lines = ["📊 *DIGEST TRENDS IA — HOY*\n"]
-    for i, item in enumerate(items[:5], 1):
+    for i, item in enumerate(items[:10], 1):
         emoji = "🚨" if item["priority"] >= 9 else "⚡" if item["priority"] >= 7 else "📌"
         lines.append(f"{emoji} *{i}. {item['source']}*")
         lines.append(f"{item['title'][:90]}")
         lines.append(f"🔗 {item['link']}\n")
 
-    lines.append("💬 ¿Escribo alguno de estos para el blog? Respóndeme con el número.")
+    lines.append("💬 ¿Escribo alguno para el blog? Respóndeme con el número (puedes decir varios, ej: 1 y 3).")
 
     msg = "\n".join(lines)
     url = f"https://api.telegram.org/bot{KIMO_BOT_TOKEN}/sendMessage"
@@ -182,7 +182,7 @@ def main():
         items = parse_feed(xml)
         log(f"  {len(items)} items")
 
-        for item in items[:5]:
+        for item in items[:8]:
             iid = item_id(item["link"])
             if iid in seen:
                 continue
@@ -206,7 +206,7 @@ def main():
 
     # Ordenar por prioridad y limitar a 5
     candidates.sort(key=lambda x: x["priority"], reverse=True)
-    top = candidates[:5]
+    top = candidates[:10]
     log(f"Trends nuevos relevantes: {len(candidates)} → enviando top {len(top)}")
 
     ok = send_digest(top)
