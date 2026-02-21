@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#050505"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+    <radialGradient id="glow1" cx="35%" cy="50%" r="40%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:0.12"/>
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="75%" cy="45%" r="35%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:0.07"/>
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow1)"/>
+  <rect width="1200" height="630" fill="url(#glow2)"/>
+
+  <!-- Grid lines -->
+  <g opacity="0.04" stroke="#fff" stroke-width="1">
+    <line x1="0" y1="105" x2="1200" y2="105"/>
+    <line x1="0" y1="210" x2="1200" y2="210"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="420" x2="1200" y2="420"/>
+    <line x1="0" y1="525" x2="1200" y2="525"/>
+    <line x1="200" y1="0" x2="200" y2="630"/>
+    <line x1="400" y1="0" x2="400" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="800" y1="0" x2="800" y2="630"/>
+    <line x1="1000" y1="0" x2="1000" y2="630"/>
+  </g>
+
+  <!-- Apple Watch shape (right side) -->
+  <g transform="translate(820, 115)">
+    <!-- Watch band top -->
+    <rect x="58" y="-30" width="64" height="40" rx="8" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <!-- Watch body -->
+    <rect x="20" y="10" width="140" height="170" rx="38" fill="#111" stroke="#e94560" stroke-width="2"/>
+    <!-- Watch screen -->
+    <rect x="32" y="22" width="116" height="146" rx="28" fill="#0d0d0d"/>
+    <!-- Screen content: message notification -->
+    <rect x="42" y="45" width="96" height="12" rx="4" fill="#e94560" opacity="0.9"/>
+    <rect x="42" y="64" width="80" height="8" rx="3" fill="#333"/>
+    <rect x="42" y="78" width="68" height="8" rx="3" fill="#333"/>
+    <rect x="42" y="100" width="96" height="30" rx="6" fill="#1a1a1a" stroke="#2a2a2a" stroke-width="1"/>
+    <rect x="50" y="108" width="50" height="6" rx="2" fill="#888"/>
+    <rect x="50" y="118" width="35" height="5" rx="2" fill="#555"/>
+    <!-- Crown button -->
+    <rect x="162" y="70" width="8" height="30" rx="4" fill="#222" stroke="#333" stroke-width="1"/>
+    <!-- Watch band bottom -->
+    <rect x="58" y="182" width="64" height="40" rx="8" fill="#1a1a1a" stroke="#333" stroke-width="1.5"/>
+    <!-- Ping dot -->
+    <circle cx="138" cy="32" r="5" fill="#e94560"/>
+    <circle cx="138" cy="32" r="9" fill="none" stroke="#e94560" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="138" cy="32" r="14" fill="none" stroke="#e94560" stroke-width="1" opacity="0.2"/>
+  </g>
+
+  <!-- Connection line -->
+  <path d="M 680 315 Q 750 315 820 230" stroke="#e94560" stroke-width="1.5" fill="none" stroke-dasharray="6,4" opacity="0.4"/>
+
+  <!-- Main headline -->
+  <text x="80" y="220" font-family="system-ui,-apple-system,sans-serif" font-size="62" font-weight="800" fill="#ffffff" letter-spacing="-2">
+    Tu agente IA
+  </text>
+  <text x="80" y="295" font-family="system-ui,-apple-system,sans-serif" font-size="62" font-weight="800" fill="#ffffff" letter-spacing="-2">
+    en tu <tspan fill="#e94560">muñeca</tspan>
+  </text>
+
+  <!-- Subtitle -->
+  <text x="80" y="355" font-family="system-ui,-apple-system,sans-serif" font-size="26" fill="#888" letter-spacing="-0.5">
+    OpenClaw v2026.2.19 — Apple Watch companion
+  </text>
+
+  <!-- Tag -->
+  <rect x="80" y="400" width="180" height="38" rx="8" fill="#e94560" opacity="0.15" stroke="#e94560" stroke-width="1" stroke-opacity="0.3"/>
+  <text x="170" y="424" font-family="system-ui,-apple-system,sans-serif" font-size="15" fill="#e94560" text-anchor="middle" font-weight="600">NUEVA RELEASE</text>
+
+  <!-- TribuClaw tag bottom right -->
+  <text x="1120" y="600" font-family="system-ui,-apple-system,sans-serif" font-size="18" fill="#333" text-anchor="end" font-weight="600">TribuClaw</text>
+</svg>
