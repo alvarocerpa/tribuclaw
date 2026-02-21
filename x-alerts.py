@@ -62,6 +62,13 @@ SOURCES = [
         "priority": 4,
         "keywords": ["agent", "openclaw", "claude", "anthropic", "openai", "llm", "release"]
     },
+    # Google Alerts (añadir más URLs aquí cuando Álvaro cree más alertas)
+    {
+        "name": "Google Alert · OpenClaw",
+        "url": "https://www.google.com/alerts/feeds/11694749136647075663/2169383205889071736",
+        "priority": 9,
+        "keywords": []
+    },
 ]
 
 # ── Helpers ─────────────────────────────────────────────────────────────────
@@ -97,6 +104,16 @@ def fetch_feed(url):
     except: pass
     return None
 
+def extract_real_url(url):
+    """Google Alerts wraps URLs en google.com/url?...&url=<real> — extraer la real."""
+    import urllib.parse
+    if "google.com/url" in url:
+        qs = urllib.parse.urlparse(url).query
+        params = urllib.parse.parse_qs(qs)
+        real = params.get("url", [url])[0]
+        return real
+    return url
+
 def parse_feed(xml_bytes):
     try:
         root = ET.fromstring(xml_bytes)
@@ -108,7 +125,7 @@ def parse_feed(xml_bytes):
                 t = (e.findtext("a:title", namespaces=ns) or "").strip()
                 l_el = e.find("a:link", ns)
                 link = l_el.get("href", "") if l_el is not None else ""
-                if t and link: items.append({"title": t, "link": link})
+                if t and link: items.append({"title": t, "link": extract_real_url(link)})
         # RSS
         else:
             for i in root.findall(".//item")[:8]:
