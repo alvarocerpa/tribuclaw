@@ -1,0 +1,113 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accentGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow3">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050505" />
+
+  <!-- Grid pattern -->
+  <pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid3)" opacity="0.3" />
+
+  <!-- Accent left bar -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#accentGrad3)" />
+
+  <!-- Top right accent -->
+  <path d="M 1200 0 L 1000 0 L 1200 200 Z" fill="#e94560" opacity="0.08" />
+
+  <!-- Content area -->
+  <g transform="translate(80, 160)">
+    <!-- Person + AI agents illustration -->
+    <g transform="translate(30, 10)">
+      <!-- Central person (silhouette) -->
+      <g transform="translate(90, 0)">
+        <!-- Head -->
+        <circle cx="0" cy="40" r="25" fill="none" stroke="#e94560" stroke-width="3" />
+        <!-- Body -->
+        <path d="M -25 75 Q -30 90 -30 120 L 30 120 Q 30 90 25 75 Q 15 65 0 65 Q -15 65 -25 75" fill="none" stroke="#e94560" stroke-width="3" />
+
+        <!-- Orbiting agents -->
+        <g transform="translate(0, 80)">
+          <!-- Top agent -->
+          <g transform="translate(0, -60)">
+            <circle cx="0" cy="0" r="18" fill="#0a0a0a" stroke="#e94560" stroke-width="2" />
+            <rect x="-8" y="-8" width="16" height="16" rx="4" fill="none" stroke="#e94560" stroke-width="1.5" />
+            <circle cx="-4" cy="0" r="2" fill="#e94560" />
+            <circle cx="4" cy="0" r="2" fill="#e94560" />
+            <line x1="-8" y1="8" x2="8" y2="8" stroke="#e94560" stroke-width="1" />
+          </g>
+
+          <!-- Left agent -->
+          <g transform="translate(-55, 0)">
+            <circle cx="0" cy="0" r="18" fill="#0a0a0a" stroke="#e94560" stroke-width="2" />
+            <path d="M -5 -3 L 0 3 L 5 -3" fill="none" stroke="#e94560" stroke-width="2" stroke-linecap="round" />
+          </g>
+
+          <!-- Right agent -->
+          <g transform="translate(55, 0)">
+            <circle cx="0" cy="0" r="18" fill="#0a0a0a" stroke="#e94560" stroke-width="2" />
+            <rect x="-5" y="-5" width="10" height="10" fill="none" stroke="#e94560" stroke-width="1.5" />
+          </g>
+
+          <!-- Bottom agent -->
+          <g transform="translate(0, 60)">
+            <circle cx="0" cy="0" r="18" fill="#0a0a0a" stroke="#e94560" stroke-width="2" />
+            <text x="0" y="5" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#e94560" text-anchor="middle">AI</text>
+          </g>
+
+          <!-- Connection lines -->
+          <circle cx="0" cy="0" r="40" fill="none" stroke="#e94560" stroke-width="0.5" stroke-dasharray="3,3" opacity="0.4" />
+        </g>
+
+        <!-- Connection to person -->
+        <line x1="0" y1="120" x2="0" y2="140" stroke="#e94560" stroke-width="1.5" />
+        <circle cx="0" cy="140" r="3" fill="#e94560" />
+      </g>
+    </g>
+
+    <!-- Title -->
+    <text x="280" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="38" fill="#e0e0e0" font-weight="700">One Person</text>
+    <text x="280" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="38" fill="#e94560" font-weight="700">Dev Team</text>
+
+    <!-- Subtitle -->
+    <text x="280" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#888">
+      Cómo agentes IA multiplican tu capacidad de producción
+    </text>
+
+    <!-- Category tag -->
+    <rect x="280" y="165" width="140" height="30" rx="4" fill="#e94560" opacity="0.2" />
+    <text x="350" y="186" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560" text-anchor="middle" font-weight="600">AUTOMATIZACIÓN</text>
+
+    <!-- Highlight bullets -->
+    <g transform="translate(280, 220)">
+      <circle cx="0" cy="0" r="3" fill="#e94560" />
+      <text x="15" y="4" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Equipo virtual 24/7</text>
+
+      <circle cx="0" cy="25" r="3" fill="#e94560" />
+      <text x="15" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Reduce costes x10</text>
+
+      <circle cx="0" cy="50" r="3" fill="#e94560" />
+      <text x="15" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Escalabilidad infinita</text>
+    </g>
+  </g>
+
+  <!-- Bottom decoration -->
+  <line x1="0" y1="600" x2="1200" y2="600" stroke="#1a1a1a" stroke-width="1" />
+  <rect x="0" y="620" width="1200" height="10" fill="#0a0a0a" />
+  <circle cx="1150" cy="580" r="4" fill="#e94560" opacity="0.6" />
+  <circle cx="1165" cy="580" r="3" fill="#e94560" opacity="0.4" />
+  <circle cx="1178" cy="580" r="2" fill="#e94560" opacity="0.3" />
+</svg>

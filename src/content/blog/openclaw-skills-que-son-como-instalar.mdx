@@ -1,0 +1,251 @@
+---
+title: 'OpenClaw Skills: Que Son y Como Instalarlas en 2026'
+description: 'Guia completa sobre las skills de OpenClaw: que son, como instalarlas, donde encontrarlas y como crear las tuyas propias paso a paso.'
+pubDate: 2026-03-04
+author: 'Alvaro Cerpa'
+heroImage: '/images/blog/hero-openclaw-skills-que-son-como-instalar.svg'
+pillar: 'openclaw'
+tags: ['openclaw', 'skills', 'tutorial', 'automatizacion']
+keywords: ['openclaw skills', 'instalar skills openclaw', 'clawhub skills', 'skills agente ia', 'openclaw tutorial skills']
+faq:
+  - q: 'Que son las skills de OpenClaw?'
+    a: 'Son carpetas con instrucciones en Markdown que ensenan al agente a usar herramientas especificas. Cada skill contiene un SKILL.md con frontmatter YAML y las instrucciones detalladas.'
+  - q: 'Como instalo una skill en OpenClaw?'
+    a: 'La forma mas facil es usar ClawHub con el comando clawhub install nombre-de-la-skill. Tambien puedes copiar manualmente la carpeta de la skill a ~/.openclaw/skills/ o a tu workspace/skills/.'
+  - q: 'Puedo crear mis propias skills para OpenClaw?'
+    a: 'Si. Solo necesitas crear una carpeta con un archivo SKILL.md que tenga frontmatter YAML con nombre y descripcion, y las instrucciones en Markdown. OpenClaw la detecta automaticamente.'
+  - q: 'Las skills de OpenClaw son seguras?'
+    a: 'OpenClaw trata las skills de terceros como codigo no confiable. Revisa siempre el contenido de una skill antes de habilitarla y usa entornos sandboxed para skills que no conozcas.'
+  - q: 'Donde encuentro skills para OpenClaw?'
+    a: 'En ClawHub (clawhub.com), el registro publico de skills. Puedes buscar, instalar y actualizar skills directamente desde la CLI con el comando clawhub.'
+---
+
+import CTA from '../../components/CTA.astro';
+
+Las skills son el sistema nervioso de OpenClaw. Sin ellas, tu agente es un cerebro flotando en el vacío; con ellas, sabe hacer cosas concretas. Desde generar imágenes hasta controlar tu navegador, pasando por analizar repositorios de GitHub. Aquí te explico qué son exactamente, cómo funcionan por dentro y cómo instalarlas en menos de dos minutos.
+
+## Qué son las skills de OpenClaw (y por qué importan)
+
+Una skill es, en esencia, una carpeta con un archivo `SKILL.md` dentro. Ese archivo contiene dos cosas: un frontmatter YAML con metadatos (nombre, descripción, requisitos) y las instrucciones en Markdown que le dicen al agente cómo usar una herramienta específica.
+
+No es código ejecutable. No es un plugin binario. Son instrucciones en texto plano que el modelo de lenguaje lee y sigue. Esto tiene una ventaja brutal: puedes leer, entender y modificar cualquier skill sin saber programar.
+
+OpenClaw carga estas skills al inicio de cada sesión y las filtra según el entorno. Si una skill necesita un binario que no tienes instalado, simplemente no aparece. Si necesita una API key que no has configurado, lo mismo. Todo automático.
+
+El resultado es un agente que sabe exactamente qué herramientas tiene disponibles y cómo usarlas. Nada de "invéntate cómo hacer esto". Instrucciones precisas, resultados consistentes.
+
+Si vienes de [usar ChatGPT y quieres entender las diferencias](/blog/agente-ia-personal-vs-chatgpt-diferencias/), este es uno de los puntos clave: ChatGPT tiene plugins genéricos; OpenClaw tiene skills que tú controlas.
+
+![Arquitectura de skills en OpenClaw](/images/blog/openclaw-skills-que-son-como-instalar-arquitectura.svg)
+
+## Dónde viven las skills: las tres capas
+
+OpenClaw busca skills en tres ubicaciones, con un orden de prioridad claro:
+
+**1. Skills del workspace** (prioridad máxima): viven en `<tu-workspace>/skills/`. Son específicas de un agente o proyecto. Si tienes varios agentes, cada uno puede tener sus propias skills aquí.
+
+**2. Skills locales/gestionadas**: en `~/.openclaw/skills/`. Visibles para todos los agentes de la misma máquina. Aquí es donde ClawHub instala por defecto.
+
+**3. Skills incluidas**: vienen con la instalación de OpenClaw. Las básicas: weather, GitHub, tmux, generación de imágenes, etc.
+
+Si hay conflicto de nombres, gana la de mayor prioridad. Esto significa que puedes "sobreescribir" una skill incluida creando una con el mismo nombre en tu workspace. Útil para personalizar comportamientos sin tocar los archivos originales.
+
+También puedes añadir carpetas extra con `skills.load.extraDirs` en tu `openclaw.json`. Prioridad más baja que todo lo demás, pero perfecto para packs compartidos entre equipos.
+
+<CTA />
+
+## Cómo instalar skills con ClawHub
+
+[ClawHub](https://clawhub.com) es el registro público de skills para OpenClaw. Piensa en él como el npm de las skills de agentes IA.
+
+### Instalación básica
+
+```bash
+clawhub install nombre-de-la-skill
+```
+
+Eso es todo. ClawHub descarga la skill a tu carpeta `./skills/` y OpenClaw la detecta en la siguiente sesión.
+
+### Actualizar skills
+
+```bash
+# Actualizar una skill específica
+clawhub update nombre-de-la-skill
+
+# Actualizar todas
+clawhub update --all
+```
+
+### Buscar skills disponibles
+
+```bash
+clawhub search "weather"
+clawhub search "github"
+```
+
+O directamente navega [clawhub.com](https://clawhub.com) para explorar el catálogo completo con descripciones, valoraciones y ejemplos de uso.
+
+### Sincronizar todo
+
+```bash
+clawhub sync --all
+```
+
+Esto escanea tus skills locales, comprueba actualizaciones y sincroniza. Útil para mantener todo al día sin pensar.
+
+## Anatomía de una skill: el SKILL.md por dentro
+
+Vamos a destripar una skill real para que entiendas cada pieza:
+
+```markdown
+---
+name: nano-banana-pro
+description: Generate or edit images via Gemini 3 Pro Image
+metadata: {"openclaw": {"requires": {"env": ["GEMINI_API_KEY"]}, "primaryEnv": "GEMINI_API_KEY"}}
+---
+
+# Instrucciones para el agente
+
+1. Cuando el usuario pida generar una imagen...
+2. Usa la API de Gemini con estos parámetros...
+3. Guarda el resultado en...
+```
+
+### Frontmatter obligatorio
+
+- **name**: identificador único de la skill
+- **description**: qué hace, en una línea. OpenClaw la usa para decidir cuándo activarla
+
+### Frontmatter opcional
+
+- **metadata**: objeto JSON con configuración de gating
+- **user-invocable**: si se expone como comando slash (`true` por defecto)
+- **disable-model-invocation**: si se excluye del prompt del modelo
+- **command-dispatch**: `tool` para ejecución directa sin pasar por el modelo
+
+### El sistema de gating
+
+Esto es lo potente. El campo `metadata.openclaw.requires` define condiciones que deben cumplirse para que la skill se cargue:
+
+- **bins**: binarios que deben existir en PATH (`["uv", "ffmpeg"]`)
+- **anyBins**: al menos uno debe existir (`["brew", "apt"]`)
+- **env**: variables de entorno necesarias (`["GEMINI_API_KEY"]`)
+- **config**: rutas en `openclaw.json` que deben ser truthy
+
+Si alguna condición falla, la skill no se carga. Silenciosamente. Sin errores. Tu agente simplemente no la ve.
+
+![Ciclo de vida de una skill](/images/blog/openclaw-skills-que-son-como-instalar-ciclo.svg)
+
+<CTA />
+
+## Las skills incluidas que ya tienes
+
+Si [instalaste OpenClaw en tu VPS](/blog/instalar-openclaw-en-vps-paso-a-paso/), ya tienes un arsenal de skills listas para usar. Las principales:
+
+| Skill | Qué hace |
+|-------|----------|
+| **weather** | Tiempo y pronósticos vía wttr.in y Open-Meteo |
+| **github** | Issues, PRs, CI con gh CLI |
+| **tmux** | Control remoto de sesiones tmux |
+| **nano-banana-pro** | Generación de imágenes con Gemini |
+| **video-frames** | Extracción de frames de vídeo |
+| **clawhub** | Gestión del registro de skills |
+| **skill-creator** | Crear y empaquetar nuevas skills |
+| **healthcheck** | Auditoría de seguridad del host |
+| **mcporter** | Gestión de servidores MCP |
+
+Estas se cargan automáticamente si los requisitos se cumplen. Por ejemplo, `github` necesita que tengas `gh` instalado. `video-frames` necesita `ffmpeg`. Si no los tienes, esas skills no aparecen; sin dramas.
+
+## Cómo crear tu propia skill desde cero
+
+Aquí es donde la cosa se pone interesante. Crear una skill custom es ridículamente sencillo.
+
+### Paso 1: crea la carpeta
+
+```bash
+mkdir -p ~/.openclaw/skills/mi-skill-custom
+```
+
+### Paso 2: crea el SKILL.md
+
+```markdown
+---
+name: mi-skill-custom
+description: Describe aquí qué hace tu skill en una línea
+---
+
+# Mi Skill Custom
+
+## Cuándo usar esta skill
+Usa esta skill cuando el usuario pida [descripción del caso de uso].
+
+## Instrucciones
+1. Primero, haz X
+2. Luego, comprueba Y
+3. Finalmente, entrega Z
+
+## Ejemplo
+Usuario: "Haz la cosa"
+Agente: [ejecuta los pasos 1-3]
+```
+
+### Paso 3: reinicia la sesión
+
+OpenClaw carga las skills al inicio. Abre una nueva sesión y tu skill estará disponible.
+
+### Consejos para skills efectivas
+
+- **Sé específico en la descripción**. OpenClaw decide si activar la skill basándose en ella
+- **Incluye ejemplos concretos**. El modelo funciona mejor con ejemplos que con instrucciones abstractas
+- **Usa gating si necesitas dependencias**. Mejor que la skill no cargue a que falle en ejecución
+- **Mantén las instrucciones concisas**. Cada token cuenta. No repitas lo obvio
+
+![Creando una skill custom paso a paso](/images/blog/openclaw-skills-que-son-como-instalar-crear.svg)
+
+## Skills vs plugins vs servidores MCP: aclarando conceptos
+
+En 2026, hay tres capas principales de extensión para agentes IA. No son lo mismo y es fácil confundirlas.
+
+**Skills** son instrucciones en texto. Le dicen al agente *cómo* usar algo. Son declarativas, legibles, modificables. No ejecutan código por sí mismas.
+
+**Plugins** son paquetes de código que extienden las capacidades del runtime. Pueden incluir skills propias, pero también añaden funcionalidad real al sistema. Son más potentes pero menos transparentes.
+
+**Servidores MCP** (Model Context Protocol) son servicios externos que exponen herramientas a través de un protocolo estándar. Son la forma de conectar agentes con APIs y servicios de terceros de forma interoperable.
+
+OpenClaw soporta las tres capas y pueden complementarse. Una skill puede enseñar al agente a usar un servidor MCP. Un plugin puede incluir skills. El ecosistema es modular por diseño.
+
+Lo importante: si necesitas algo rápido y no quieres complicarte, una skill es la respuesta. Si necesitas lógica compleja o integraciones profundas, necesitas plugins o MCP.
+
+<CTA />
+
+## Seguridad: lo que debes saber
+
+Esto es serio. Las skills son texto, pero ese texto guía las acciones de tu agente. Una skill maliciosa podría instruir al agente para hacer cosas que no quieres.
+
+**Reglas de oro:**
+
+1. **Lee siempre una skill antes de instalarla**. Son texto plano, puedes leerlas en 2 minutos
+2. **Usa sandboxing** para skills de terceros que no conozcas. OpenClaw permite ejecutar agentes en contenedores aislados
+3. **No compartas API keys** en skills públicas. Usa `requires.env` para que cada usuario configure las suyas
+4. **Revisa las actualizaciones**. Cuando hagas `clawhub update`, comprueba qué cambió antes de confiar ciegamente
+
+El sistema de gating ayuda: una skill no puede activarse si no tiene los permisos que declara necesitar. Pero la seguridad final siempre depende de ti revisando lo que instalas.
+
+Si quieres profundizar en cómo montar tu [agente en un servidor propio con todas las medidas de seguridad](/blog/instalar-openclaw-en-vps-paso-a-paso/), tenemos una guía completa.
+
+## Publicar tus skills en ClawHub
+
+Si has creado algo útil, compártelo. El proceso es directo:
+
+```bash
+# Desde la carpeta de tu skill
+clawhub publish
+```
+
+ClawHub valida el formato, sube la skill y la hace disponible para toda la comunidad. Puedes actualizar versiones, añadir documentación y recibir feedback de otros usuarios.
+
+Esto es lo que hace que el ecosistema crezca: cada skill que alguien publica es una capacidad nueva que cualquier agente puede aprender. Y como son texto plano, la barrera de entrada para contribuir es prácticamente cero.
+
+Para entender mejor cómo [OpenClaw funciona como plataforma completa](/blog/openclaw-que-es-guia-completa-espanol/), revisa nuestra guía introductoria que cubre la arquitectura general.
+
+<CTA />

@@ -1,0 +1,2323 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import { WHOP_URL } from '../consts';
+---
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <BaseHead
+    title="Únete a TribuClaw — Tu agente IA en 8 minutos"
+    description="La comunidad en español que te enseña a instalar, configurar y dominar tu propio agente de IA. Un comando. 8 minutos. Bajo tu control."
+  />
+  <link rel="preconnect" href="https://assets-2-prod.whop.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════ HEADER ═══════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link">
+      <img src="/images/logo-icon.png" width="32" height="32" alt="TribuClaw logo" fetchpriority="high" />
+      <span class="logo-text">Tribu<span class="accent">Claw</span></span>
+    </a>
+    <nav class="header-nav">
+      <a href="#que-es" class="nav-link">¿Qué es?</a>
+      <a href="#incluye" class="nav-link">Qué incluye</a>
+      <a href="#precio" class="nav-link">Precio</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+    </nav>
+    <div class="cta-wrap cta-wrap-sm">
+      <a href={WHOP_URL} class="cta-btn header-cta" target="_blank" rel="noopener">
+        Prueba gratis →
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════ HERO ════════════════════════════════════ -->
+<section class="hero">
+  <!-- Capa 1: Star field -->
+  <!-- via ::before CSS -->
+  <!-- Capa 2: Dot pattern -->
+  <div class="hero-dots"></div>
+  <!-- Capa 3: Glow top -->
+  <div class="hero-glow-top"></div>
+  <!-- Capa 4: Glow bottom -->
+  <div class="hero-glow-bottom"></div>
+  <!-- Capa 5: Water distortion -->
+  <div class="hero-water"></div>
+  <!-- Capa 6: Particles -->
+  <div class="hero-particles">
+    <div class="bubble b1"></div>
+    <div class="bubble b2"></div>
+    <div class="bubble b3"></div>
+    <div class="bubble b4"></div>
+    <div class="bubble b5"></div>
+    <div class="bubble b6"></div>
+  </div>
+
+  <div class="container hero-content">
+    <div class="hero-badge">🦞 +95 miembros ya dentro</div>
+    <h1 class="hero-headline">
+      Tu agente de IA.<br/>
+      <span class="accent glow-text">En 8 minutos.</span><br/>
+      En tu servidor. Bajo tu control.
+    </h1>
+    <p class="hero-sub">
+      OpenClaw instalado automáticamente en tu VPS. Sin configuraciones complejas, sin inglés, sin horas perdidas. Tu agente trabajando para ti desde el primer día.
+    </p>
+    <div class="cta-wrap">
+      <a href={WHOP_URL} class="cta-btn cta-large" target="_blank" rel="noopener">
+        <span class="cta-main">🚀 Empieza gratis</span>
+        <span class="cta-sub-line">1 día de prueba gratis · Después 35€/mes</span>
+      </a>
+    </div>
+    <div class="social-proof">
+      <span class="stars-row">★★★★★</span>
+      <span class="proof-text">emprendedores, freelancers y solopreneurs ya con agentes IA</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ VÍDEO ════════════════════════════════════ -->
+<section class="section-video reveal">
+  <div class="container">
+    <h2 class="section-title">Míralo en acción</h2>
+    <p class="section-lead">Un vídeo vale más que mil palabras. Esto es lo que consigues en 8 minutos.</p>
+    <div class="video-wrap">
+      <video
+        controls
+        playsinline
+        preload="metadata"
+        poster="/images/video-poster.jpg"
+        style="width:100%;border-radius:12px;display:block;"
+      >
+        <source src="https://assets-2-prod.whop.com/uploads/user_9023883/video/bots/2026-02-19/932b070b-9cc8-4980-a20a-de5a1b9a9eac.mp4" type="video/mp4" />
+      </video>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ QUÉ ES OPENCLAW ════════════════════════ -->
+<section class="section-openclaw reveal" id="que-es">
+  <div class="container text-center">
+    <div class="badge badge-accent">🦞 Esto es OpenClaw</div>
+    <h2 class="section-title">El proyecto de IA más viral de la historia</h2>
+    <p class="section-lead" style="max-width:640px;margin:0 auto 2.5rem;">
+      OpenClaw no es un chatbot. Es un sistema de agentes autónomos de código abierto que vive en tu servidor y trabaja para ti 24/7.
+    </p>
+
+    <div class="oc-stats-row">
+      <div class="oc-stat">
+        <span class="oc-stat-number">247K</span>
+        <span class="oc-stat-label">GitHub Stars</span>
+      </div>
+      <div class="oc-stat-divider"></div>
+      <div class="oc-stat">
+        <span class="oc-stat-number">10 días</span>
+        <span class="oc-stat-label">de 0 a 210K stars</span>
+      </div>
+      <div class="oc-stat-divider"></div>
+      <div class="oc-stat">
+        <span class="oc-stat-number">47.7K</span>
+        <span class="oc-stat-label">Forks</span>
+      </div>
+    </div>
+
+    <div class="oc-timeline">
+      <div class="oc-event reveal">
+        <div class="oc-event-date">Nov 2025</div>
+        <div class="oc-event-text">Peter Steinberger crea el proyecto como código abierto</div>
+      </div>
+      <div class="oc-event reveal">
+        <div class="oc-event-date">Ene 2026</div>
+        <div class="oc-event-text">Explota viralmente: 100K GitHub stars en menos de un mes</div>
+      </div>
+      <div class="oc-event reveal">
+        <div class="oc-event-date">Feb 2026</div>
+        <div class="oc-event-text">OpenAI contrata al fundador. Sam Altman anuncia: "OpenClaw vivirá en una fundación como proyecto open source que OpenAI apoyará"</div>
+      </div>
+      <div class="oc-event highlight reveal">
+        <div class="oc-event-date">Ahora</div>
+        <div class="oc-event-text">247K stars, fundación independiente, respaldado por OpenAI. El futuro de los agentes personales de IA.</div>
+      </div>
+    </div>
+
+    <div class="oc-pillars">
+      <div class="oc-pillar reveal">
+        <div class="oc-pillar-icon" style="animation-delay:0s">🧠</div>
+        <h3>No chatea. Ejecuta.</h3>
+        <p>A diferencia de ChatGPT, OpenClaw tiene "manos": navega la web, gestiona archivos, envía emails, organiza tu calendario. Actúa, no solo responde.</p>
+      </div>
+      <div class="oc-pillar reveal">
+        <div class="oc-pillar-icon" style="animation-delay:0.3s">🏠</div>
+        <h3>Vive en tu servidor</h3>
+        <p>Tu agente corre en tu VPS. Tus datos nunca salen de ahí. Si OpenClaw desaparece mañana, tu agente sigue funcionando. Es tuyo.</p>
+      </div>
+      <div class="oc-pillar reveal">
+        <div class="oc-pillar-icon" style="animation-delay:0.6s">👥</div>
+        <h3>Multi-agente</h3>
+        <p>No solo un agente: un equipo entero. Agente de ventas, de soporte, personal, de contenido... cada uno con su personalidad y memoria aislada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ PROBLEMA ═════════════════════════════════ -->
+<section class="section-problem reveal">
+  <div class="container text-center">
+    <div class="badge badge-warn">⚠️ El problema</div>
+    <h2 class="section-title" style="max-width:640px;margin:0 auto 1rem;">
+      La IA promete mucho. Pero la realidad es más dura.
+    </h2>
+    <p class="section-lead" style="max-width:640px;margin:0 auto 2rem;">
+      Llevas meses viendo demos increíbles de agentes IA. Pero cuando intentas montarlo tú solo...
+    </p>
+    <div class="problem-list">
+      <div class="problem-item">
+        <span class="problem-icon">❌</span>
+        <div>
+          <strong>Tutoriales en inglés, desactualizados o rotos</strong>
+          <p>Empiezas a seguir uno y a los 20 minutos ya hay algo que no funciona igual en tu máquina.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-icon">❌</span>
+        <div>
+          <strong>Horas perdidas en configuraciones que no arrancan</strong>
+          <p>Docker, VPS, SSH, puertos, APIs... cada cosa que tocas abre tres problemas nuevos.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-icon">❌</span>
+        <div>
+          <strong>Nadie que te ayude cuando te atascas</strong>
+          <p>Preguntas en Reddit o Discord y o no te responden o te tratan como si supieras lo mismo que ellos.</p>
+        </div>
+      </div>
+      <div class="problem-item">
+        <span class="problem-icon">❌</span>
+        <div>
+          <strong>Miedo a que tus datos acaben en servidores de terceros</strong>
+          <p>ChatGPT, Claude, Notion AI... todo pasa por sus servidores. Tus datos, tus conversaciones, tu negocio.</p>
+        </div>
+      </div>
+    </div>
+    <div class="problem-close">
+      <p>El resultado: <strong>pasas semanas intentándolo sin llegar a ningún lado</strong>, o directamente lo abandonas.</p>
+      <p>Nosotros hemos pasado por eso. Por eso existe TribuClaw.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ SOLUCIÓN ═════════════════════════════════ -->
+<section class="section-solution reveal" style="background:#161b22;">
+  <div class="container text-center">
+    <div class="badge badge-green">✅ La solución</div>
+    <h2 class="section-title" style="max-width:640px;margin:0 auto 1rem;">
+      Un comando. 8 minutos. Tu agente listo.
+    </h2>
+    <p class="section-lead" style="max-width:600px;margin:0 auto 2.5rem;">
+      TribuClaw te da el instalador, el curso, la comunidad y el soporte para que <strong>nunca te quedes atascado</strong>.
+    </p>
+    <div class="pillars">
+      <div class="pillar-card">
+        <div class="pillar-icon">⚡</div>
+        <h3>Instalación automática</h3>
+        <p>Un script instala todo: servidor seguro, OpenClaw, firewall, memoria persistente y bot de Telegram. Sin tocar nada a mano.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🇪🇸</div>
+        <h3>Comunidad en español</h3>
+        <p>Directos semanales, soporte 24/7 con TribuBot, y yo (Álvaro) respondiendo personalmente. Sin barreras de idioma.</p>
+      </div>
+      <div class="pillar-card">
+        <div class="pillar-icon">🔐</div>
+        <h3>100% tus datos</h3>
+        <p>Tu agente corre en tu VPS. Tus datos nunca salen de tu servidor. Control total desde el minuto uno.</p>
+      </div>
+    </div>
+    <div style="margin-top:2.5rem;">
+      <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">
+        <span class="cta-main">Quiero mi agente →</span>
+        <span class="cta-sub-line">Prueba gratis 1 día</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ TELEGRAM MOCKUP ══════════════════════════ -->
+<section class="section-telegram reveal">
+  <div class="container">
+    <div class="tg-layout">
+      <div class="tg-text">
+        <div class="badge badge-green">🤖 Tu agente en acción</div>
+        <h2 class="section-title" style="text-align:left;">
+          Habla con tu agente<br/>como con un humano
+        </h2>
+        <p class="section-lead" style="text-align:left;">
+          Tu agente entiende el contexto, recuerda lo anterior y actúa de forma autónoma. No es un chatbot: es tu asistente personal que trabaja 24/7.
+        </p>
+        <ul class="tg-features">
+          <li>✅ Gestiona emails y respuestas</li>
+          <li>✅ Prepara briefings diarios</li>
+          <li>✅ Recuerda todo lo que le cuentas</li>
+          <li>✅ Ejecuta tareas sin que se las repitas</li>
+        </ul>
+      </div>
+      <div class="tg-phone-wrap">
+        <div class="tg-phone-glow">
+          <div class="tg-phone">
+            <!-- Status bar -->
+            <div class="tg-status-bar">
+              <span class="tg-time">9:41</span>
+              <div class="tg-status-right">
+                <div class="tg-signal">
+                  <span></span><span></span><span></span><span></span>
+                </div>
+                <span class="tg-network">5G</span>
+                <div class="tg-battery">
+                  <div class="tg-battery-fill"></div>
+                </div>
+              </div>
+            </div>
+            <!-- Chat header -->
+            <div class="tg-chat-header">
+              <span class="tg-back">‹</span>
+              <div class="tg-avatar">
+                <img src="/images/logo-icon.png" width="32" height="32" alt="Agente" style="border-radius:50%;object-fit:cover;" />
+              </div>
+              <div class="tg-contact">
+                <span class="tg-contact-name">Mi Agente IA</span>
+                <span class="tg-contact-status">online</span>
+              </div>
+              <div class="tg-header-icons">
+                <svg width="18" height="18" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013 5.18 2 2 0 014.98 3h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.91 10.91a16 16 0 006.18 6.18l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 18z"/></svg>
+                <svg width="18" height="18" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="5" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="12" cy="19" r="1"/></svg>
+              </div>
+            </div>
+            <!-- Messages -->
+            <div class="tg-messages">
+              <!-- Mensaje 1: agente -->
+              <div class="tg-msg tg-msg-in" style="animation-delay:0.5s;">
+                <div class="tg-bubble tg-bubble-in">
+                  Buenos días 👋 Aquí tu briefing: 3 emails nuevos, 1 propuesta urgente de cliente. Tu reunión de las 15:00 está confirmada. ¿Quieres que prepare notas?
+                  <span class="tg-msg-time">9:41</span>
+                </div>
+              </div>
+              <!-- Mensaje 2: usuario -->
+              <div class="tg-msg tg-msg-out" style="animation-delay:2s;">
+                <div class="tg-bubble tg-bubble-out">
+                  Sí, prepara notas y borradores de respuesta para los emails
+                  <span class="tg-msg-time">9:42</span>
+                </div>
+              </div>
+              <!-- Typing dots -->
+              <div class="tg-msg tg-msg-in typing-wrap" style="animation-delay:2.8s;">
+                <div class="tg-bubble tg-bubble-in typing-bubble">
+                  <div class="typing-dots">
+                    <span></span><span></span><span></span>
+                  </div>
+                </div>
+              </div>
+              <!-- Mensaje 3: agente -->
+              <div class="tg-msg tg-msg-in" style="animation-delay:3.5s;">
+                <div class="tg-bubble tg-bubble-in">
+                  Hecho ✅ Notas en tu workspace y 3 borradores listos para revisar. ¿Los envío o los ajusto primero?
+                  <span class="tg-msg-time">9:42</span>
+                </div>
+              </div>
+            </div>
+            <!-- Input bar -->
+            <div class="tg-input-bar">
+              <div class="tg-input-field">
+                <span class="tg-input-placeholder">Escribe un mensaje...</span>
+              </div>
+              <div class="tg-send-btn">
+                <svg width="16" height="16" fill="white" viewBox="0 0 24 24"><path d="M22 2L11 13M22 2L15 22l-4-9-9-4 20-7z"/></svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ QUÉ INCLUYE ══════════════════════════════ -->
+<section class="section-includes reveal" id="incluye" style="background:#161b22;">
+  <div class="container text-center">
+    <div class="badge badge-accent">📦 Todo lo que obtienes</div>
+    <h2 class="section-title">Una membresía. Todo lo que necesitas.</h2>
+    <p class="section-lead" style="max-width:560px;margin:0 auto 2.5rem;">
+      No vendemos solo acceso. Vendemos resultados.
+    </p>
+    <div class="includes-grid">
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:0s;">⚡</div>
+        <h3>Instalador de primer agente</h3>
+        <p>Un comando instala servidor seguro, OpenClaw, firewall, fail2ban, memoria y servicio automático. 8 minutos.</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:0.3s;">➕</div>
+        <h3>Instalador de agentes adicionales</h3>
+        <p>¿Quieres un agente de ventas, otro de soporte, otro personal? 30 segundos para añadir uno nuevo.</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:0.6s;">🎓</div>
+        <h3>Curso actualizado con vídeos</h3>
+        <p>Lecciones de apoyo en vídeo. Actualizado constantemente con las últimas novedades de OpenClaw.</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:0.9s;">📡</div>
+        <h3>Directos cada miércoles 19:00</h3>
+        <p>Q&amp;A en vivo conmigo. Troubleshooting, estrategia, casos de uso. Todas las semanas.</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:1.2s;">🤖</div>
+        <h3>TribuBot 24/7</h3>
+        <p>Bot de soporte IA entrenado para TribuClaw. Resuelve tus dudas a cualquier hora, cualquier día.</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:1.5s;">👨‍💻</div>
+        <h3>Soporte personal de Álvaro</h3>
+        <p>No estás solo. Yo estoy en la comunidad respondiendo personalmente.</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:1.8s;">📋</div>
+        <h3>Casos de uso semanales</h3>
+        <p>Cada semana, nuevos workflows para diferentes sectores. Coaching, e-commerce, freelance, SaaS...</p>
+      </div>
+      <div class="include-card">
+        <div class="include-icon" style="animation-delay:2.1s;">🔐</div>
+        <h3>Seguridad enterprise incluida</h3>
+        <p>Firewall, fail2ban, hardening SSH. Tu agente protegido desde el minuto uno.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ COMPARATIVA ══════════════════════════════ -->
+<section class="section-compare reveal">
+  <div class="container text-center">
+    <div class="badge badge-accent">📊 Comparativa</div>
+    <h2 class="section-title">TribuClaw vs las alternativas</h2>
+    <div class="compare-table-wrap">
+      <table class="compare-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th class="col-highlight">TribuClaw</th>
+            <th>Hacerlo solo</th>
+            <th>Managed</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Instalación</td>
+            <td class="col-highlight accent-text">8 min (auto)</td>
+            <td>Horas/días</td>
+            <td>Lo hacen ellos</td>
+          </tr>
+          <tr>
+            <td>Precio</td>
+            <td class="col-highlight accent-text">35€/mes</td>
+            <td>Tu tiempo</td>
+            <td>100-200€/mes</td>
+          </tr>
+          <tr>
+            <td>Idioma</td>
+            <td class="col-highlight accent-text">🇪🇸 Español</td>
+            <td>🇬🇧 Inglés</td>
+            <td>🇬🇧 Inglés</td>
+          </tr>
+          <tr>
+            <td>Control datos</td>
+            <td class="col-highlight accent-text">100% tuyo</td>
+            <td>100% tuyo</td>
+            <td>Sus servidores</td>
+          </tr>
+          <tr>
+            <td>Soporte</td>
+            <td class="col-highlight accent-text">24/7 bot + humano</td>
+            <td>Stack Overflow</td>
+            <td>Email</td>
+          </tr>
+          <tr>
+            <td>Más agentes</td>
+            <td class="col-highlight accent-text">30 segundos</td>
+            <td>Config manual</td>
+            <td>Extra $$</td>
+          </tr>
+          <tr>
+            <td>Si te vas</td>
+            <td class="col-highlight accent-text">Tu agente sigue</td>
+            <td>Tu agente sigue</td>
+            <td>Pierdes todo</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Mobile cards -->
+    <div class="compare-mobile">
+      <div class="compare-row">
+        <span class="compare-feature">Instalación</span>
+        <div class="compare-vals">
+          <span><strong class="accent-text">TribuClaw:</strong> 8 min (auto)</span>
+          <span><strong>Solo:</strong> Horas/días</span>
+          <span><strong>Managed:</strong> Lo hacen ellos</span>
+        </div>
+      </div>
+      <div class="compare-row">
+        <span class="compare-feature">Precio</span>
+        <div class="compare-vals">
+          <span><strong class="accent-text">TribuClaw:</strong> 35€/mes</span>
+          <span><strong>Solo:</strong> Tu tiempo</span>
+          <span><strong>Managed:</strong> 100-200€/mes</span>
+        </div>
+      </div>
+      <div class="compare-row">
+        <span class="compare-feature">Idioma</span>
+        <div class="compare-vals">
+          <span><strong class="accent-text">TribuClaw:</strong> 🇪🇸 Español</span>
+          <span><strong>Solo:</strong> 🇬🇧 Inglés</span>
+          <span><strong>Managed:</strong> 🇬🇧 Inglés</span>
+        </div>
+      </div>
+      <div class="compare-row">
+        <span class="compare-feature">Control datos</span>
+        <div class="compare-vals">
+          <span><strong class="accent-text">TribuClaw:</strong> 100% tuyo</span>
+          <span><strong>Solo:</strong> 100% tuyo</span>
+          <span><strong>Managed:</strong> Sus servidores</span>
+        </div>
+      </div>
+      <div class="compare-row">
+        <span class="compare-feature">Soporte</span>
+        <div class="compare-vals">
+          <span><strong class="accent-text">TribuClaw:</strong> 24/7 bot + humano</span>
+          <span><strong>Solo:</strong> Stack Overflow</span>
+          <span><strong>Managed:</strong> Email</span>
+        </div>
+      </div>
+      <div class="compare-row">
+        <span class="compare-feature">Si te vas</span>
+        <div class="compare-vals">
+          <span><strong class="accent-text">TribuClaw:</strong> Tu agente sigue</span>
+          <span><strong>Solo:</strong> Tu agente sigue</span>
+          <span><strong>Managed:</strong> Pierdes todo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ REVIEWS ═══════════════════════════════════ -->
+<section class="section-reviews reveal" style="background:#161b22;">
+  <div class="container text-center">
+    <div class="badge badge-accent">⭐ 4.8/5 en Whop</div>
+    <h2 class="section-title">Lo que dicen los miembros</h2>
+    <!-- Testimonial destacado -->
+    <div class="review-featured">
+      <div class="review-quote">
+        <span class="review-quote-mark">"</span>
+        Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw
+      </div>
+      <div class="review-author-featured">
+        <div class="review-avatar">AB</div>
+        <div>
+          <span class="review-name">Alberto Batlle</span>
+          <span class="review-stars-sm">★★★★★</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating strip -->
+    <div class="ratings-strip">
+      <div class="rating-chip">
+        <div class="chip-avatar">AR</div>
+        <span class="chip-name">Alvaro Rodriguez</span>
+        <span class="chip-stars">★★★★★</span>
+      </div>
+      <div class="rating-chip">
+        <div class="chip-avatar">M</div>
+        <span class="chip-name">Maria</span>
+        <span class="chip-stars">★★★★★</span>
+      </div>
+      <div class="rating-chip">
+        <div class="chip-avatar">R</div>
+        <span class="chip-name">Raul</span>
+        <span class="chip-stars">★★★★★</span>
+      </div>
+    </div>
+    <div class="member-counter">
+      <span class="counter-number">98</span>
+      <span class="counter-label">miembros y creciendo</span>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ COSTE REAL ════════════════════════════════ -->
+<section class="section-cost reveal" id="precio">
+  <div class="container text-center">
+    <div class="badge badge-accent">💶 El coste real</div>
+    <h2 class="section-title">¿Cuánto cuesta realmente?</h2>
+    <div class="cost-wrap">
+      <div class="cost-table">
+        <div class="cost-row">
+          <span>VPS (Hetzner)</span>
+          <span>~4€/mes</span>
+        </div>
+        <div class="cost-row">
+          <span>IA (OpenRouter)</span>
+          <span>1-5€/mes</span>
+        </div>
+        <div class="cost-row">
+          <span>OpenClaw</span>
+          <span class="cost-free">Gratis</span>
+        </div>
+        <div class="cost-row">
+          <span>Telegram</span>
+          <span class="cost-free">Gratis</span>
+        </div>
+        <div class="cost-row">
+          <span>TribuClaw</span>
+          <span>35€/mes</span>
+        </div>
+        <div class="cost-row cost-total">
+          <span>TOTAL</span>
+          <span class="accent-text">desde ~40€/mes</span>
+        </div>
+      </div>
+      <div class="cost-vs">
+        <div class="cost-compare-item">
+          <span class="cost-compare-label">VA humano</span>
+          <span class="cost-compare-val muted">800-2.000€/mes</span>
+        </div>
+        <div class="cost-compare-item">
+          <span class="cost-compare-label">Empleado</span>
+          <span class="cost-compare-val muted">3.500€+/mes</span>
+        </div>
+        <div class="cost-compare-item highlight-item">
+          <span class="cost-compare-label">Tu agente IA</span>
+          <span class="cost-day">1,30€/día</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ PARA QUIÉN ═══════════════════════════════ -->
+<section class="section-for reveal" style="background:#161b22;">
+  <div class="container text-center">
+    <h2 class="section-title">¿Es para ti?</h2>
+    <div class="for-grid">
+      <div class="for-card for-yes">
+        <h3>✅ Para ti si...</h3>
+        <ul>
+          <li>Quieres un agente IA propio, no otro chatbot</li>
+          <li>Valoras ser dueño de tus datos</li>
+          <li>Eres emprendedor, freelancer o solopreneur</li>
+          <li>Quieres automatizar tareas repetitivas</li>
+          <li>Buscas una comunidad activa en español</li>
+        </ul>
+      </div>
+      <div class="for-card for-no">
+        <h3>❌ No es para ti si...</h3>
+        <ul>
+          <li>Buscas que alguien lo haga todo por ti sin aprender nada</li>
+          <li>No estás dispuesto a invertir 8 minutos en la instalación</li>
+          <li>Quieres un chatbot, no un agente autónomo</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ FAQ ══════════════════════════════════════ -->
+<section class="section-faq reveal" id="faq">
+  <div class="container">
+    <div class="text-center">
+      <div class="badge badge-accent">❓ Preguntas frecuentes</div>
+      <h2 class="section-title">Todo lo que necesitas saber</h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>¿Qué es OpenClaw?</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>OpenClaw es un sistema de agentes IA autónomos de código abierto. A diferencia de ChatGPT, tu agente no solo chatea: ejecuta tareas, gestiona emails, organiza tu calendario, navega la web y recuerda todo lo que le cuentas. Es como tener un empleado digital que trabaja 24/7.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>¿Necesito experiencia técnica?</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>No. El instalador de TribuClaw hace todo automáticamente. Solo necesitas copiar y pegar un comando. Si sabes enviar un mensaje por Telegram, sabes usar tu agente.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>¿Qué incluye la membresía?</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Instaladores automatizados, curso con vídeos actualizado, comunidad activa, soporte 24/7 con TribuBot, directos semanales con Álvaro, y casos de uso nuevos cada semana.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>¿Puedo tener más de un agente?</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sí. Con nuestro instalador de agentes adicionales, puedes añadir un nuevo agente en 30 segundos. Cada uno con su personalidad, memoria y bot de Telegram propio.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>¿Mis datos están seguros?</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tus datos nunca salen de tu servidor. No pasan por nuestros servidores ni por terceros. El instalador configura firewall, protección anti-intrusos y hardening SSH automáticamente.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>¿Qué pasa si cancelo?</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Tu agente sigue funcionando. TribuClaw te da las herramientas y la comunidad, pero el agente es 100% tuyo. Si cancelas, pierdes acceso a la comunidad y actualizaciones, pero tu agente no se apaga.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-question">
+          <span>¿Puedo ganar dinero con esto?</span>
+          <span class="faq-arrow">▾</span>
+        </button>
+        <div class="faq-answer">
+          <p>Sí. Dentro de la comunidad enseñamos a rentabilizar agentes: ofrecer servicios de configuración, crear negocios unipersonales con IA, automatizar procesos para clientes.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ CTA FINAL ════════════════════════════════ -->
+<section class="section-cta-final reveal">
+  <div class="hero-glow-top"></div>
+  <div class="container text-center">
+    <h2 class="section-title final-title">¿Listo para tener tu agente?</h2>
+    <p class="section-lead" style="max-width:480px;margin:0 auto 2rem;">
+      8 minutos. Un comando. Tu agente trabajando para ti 24/7.
+    </p>
+    <div class="cta-wrap">
+      <a href={WHOP_URL} class="cta-btn cta-large" target="_blank" rel="noopener">
+        <span class="cta-main">🚀 Empieza tu prueba gratis</span>
+        <span class="cta-sub-line">1 día gratis · Después 35€/mes · Cancela cuando quieras</span>
+      </a>
+    </div>
+    <p class="cta-sub">+95 miembros · 4.8/5 en Whop · Sin permanencia</p>
+  </div>
+</section>
+
+<Footer />
+
+<script>
+  // ─── FAQ Accordion ───
+  document.querySelectorAll('.faq-question').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item') as HTMLElement;
+      const answer = item.querySelector('.faq-answer') as HTMLElement;
+      const arrow = btn.querySelector('.faq-arrow') as HTMLElement;
+      const isOpen = item.classList.contains('open');
+      // Close all
+      document.querySelectorAll('.faq-item').forEach(i => {
+        i.classList.remove('open');
+        const a = i.querySelector('.faq-answer') as HTMLElement;
+        const ar = i.querySelector('.faq-arrow') as HTMLElement;
+        if (a) a.style.maxHeight = '0';
+        if (ar) ar.style.transform = 'rotate(0deg)';
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        arrow.style.transform = 'rotate(180deg)';
+      }
+    });
+  });
+
+  // ─── Scroll Reveal ───
+  const revealEls = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '-50px' });
+  revealEls.forEach(el => observer.observe(el));
+</script>
+
+<style>
+  /* ─── SMOOTH SCROLL ─── */
+  html { scroll-behavior: smooth; }
+
+  /* ─── RESET & BASE ─── */
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0d1117;
+    color: #ffffff;
+    line-height: 1.7;
+    font-size: 1rem;
+    font-weight: 400;
+    overflow-x: hidden;
+  }
+
+  .container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+  }
+
+  .text-center { text-align: center; }
+  .accent { color: #e94560; }
+  .accent-text { color: #e94560; }
+  .muted { color: #8b949e; }
+
+  /* ─── TYPOGRAPHY ─── */
+  .section-title {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+  .section-lead {
+    color: #8b949e;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* ─── BADGE ─── */
+  .badge {
+    display: inline-block;
+    padding: 0.35rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    margin-bottom: 1.25rem;
+    text-transform: uppercase;
+  }
+  .badge-accent { background: rgba(233,69,96,0.12); color: #e94560; border: 1px solid rgba(233,69,96,0.25); }
+  .badge-warn { background: rgba(255,140,0,0.12); color: #ff8c00; border: 1px solid rgba(255,140,0,0.25); }
+  .badge-green { background: rgba(20,184,166,0.12); color: #14b8a6; border: 1px solid rgba(20,184,166,0.25); }
+
+  /* ─── CTA SYSTEM ─── */
+  .cta-wrap {
+    background: #0d1117;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 14px;
+    padding: 4px;
+    display: inline-flex;
+    position: relative;
+    overflow: hidden;
+  }
+  .cta-wrap::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: max(200%, 200vh);
+    height: max(200%, 200vh);
+    background: conic-gradient(transparent 0deg, transparent 280deg, #e94560 330deg, #ff6b6b 360deg);
+    animation: cta-border-spin 3s linear infinite;
+    z-index: 0;
+  }
+  .cta-wrap::after {
+    content: '';
+    position: absolute;
+    inset: 2px;
+    background: #0d1117;
+    border-radius: 12px;
+    z-index: 0;
+  }
+  .cta-wrap > * { position: relative; z-index: 1; }
+  @keyframes cta-border-spin { 100% { rotate: 360deg; } }
+
+  .cta-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #e94560;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    padding: 0.85rem 2rem;
+    border-radius: 10px;
+    border: none;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    text-decoration: none;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s ease-out;
+    animation: cta-pulse 2s ease-in-out infinite;
+    white-space: nowrap;
+  }
+  .cta-btn:hover { transform: translateY(-2px); }
+
+  @keyframes cta-pulse {
+    0%, 100% { box-shadow: 0 4px 20px rgba(233,69,96,0.5), 0 8px 40px rgba(233,69,96,0.2); }
+    50% { box-shadow: 0 6px 30px rgba(233,69,96,0.7), 0 12px 60px rgba(233,69,96,0.3); }
+  }
+  .cta-btn::before {
+    content: '';
+    position: absolute;
+    bottom: -40%;
+    left: 50%;
+    width: 120%;
+    height: 120%;
+    background: radial-gradient(#ff6b6b, rgba(255,107,107,0.5) 30%, transparent 60%);
+    filter: blur(10px);
+    animation: cta-breathe 2.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: -1;
+    transform: translateX(-50%);
+  }
+  @keyframes cta-breathe {
+    0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.7); }
+    50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
+  }
+  .cta-btn::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-image:
+      radial-gradient(1.5px 1.5px at 10% 100%, rgba(255,255,255,0.6), transparent),
+      radial-gradient(1px 1px at 30% 95%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1.5px 1.5px at 50% 100%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 70% 92%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 90% 100%, rgba(255,255,255,0.6), transparent);
+    background-repeat: no-repeat;
+    mask-image: linear-gradient(transparent 20%, white 100%);
+    animation: cta-particles 2s linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  @keyframes cta-particles {
+    0% { opacity: 1; background-position: 10% 100%, 30% 95%, 50% 100%, 70% 92%, 90% 100%; }
+    100% { opacity: 0.3; background-position: 10% 20%, 30% 10%, 50% 25%, 70% 5%, 90% 15%; }
+  }
+
+  .cta-large {
+    font-size: 1rem;
+    padding: 1rem 2.5rem;
+  }
+  .cta-sub {
+    color: #484f58;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+  }
+
+  /* ─── HEADER ─── */
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: rgba(13,17,23,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .header-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 0 1.25rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: white;
+    font-weight: 800;
+    font-size: 1.1rem;
+    letter-spacing: -0.02em;
+  }
+  .logo-text { color: white; }
+  .header-cta {
+    font-size: 0.75rem;
+    padding: 0.6rem 1.25rem;
+    animation: cta-pulse 2s ease-in-out infinite;
+  }
+
+  /* ─── HEADER NAV ─── */
+  .header-nav { display: flex; align-items: center; gap: 1.5rem; }
+  .nav-link {
+    color: #8b949e;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: #fff; }
+  .cta-wrap-sm { padding: 2px; border-radius: 10px; }
+  .cta-wrap-sm .header-cta { font-size: 0.75rem; padding: 0.5rem 1rem; }
+  @media (max-width: 720px) {
+    .header-nav { display: none; }
+    /* Header CTA sin animación giratoria en móvil */
+    .cta-wrap-sm::before, .cta-wrap-sm::after { display: none; }
+    .cta-wrap-sm { border: 1.5px solid rgba(233,69,96,0.5); background: #0d1117; width: auto !important; flex: 0 0 auto; }
+    .header-cta { animation: none; box-shadow: 0 2px 10px rgba(233,69,96,0.4); width: auto !important; }
+  }
+
+  /* ─── CTA SUB-LINE ─── */
+  .cta-btn { flex-direction: column; text-align: center; }
+  .cta-main { display: block; }
+  .cta-sub-line {
+    display: block;
+    font-size: 0.65rem;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: 0;
+    opacity: 0.75;
+    margin-top: 0.2rem;
+  }
+
+  /* ─── HERO ─── */
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 7rem 0 5rem;
+    overflow: hidden;
+    background: #0d1117;
+  }
+  /* Capa 1: star field */
+  .hero::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(1px 1px at 10% 20%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 30% 70%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 50% 40%, rgba(255,255,255,0.5), transparent),
+      radial-gradient(1px 1px at 70% 10%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1px 1px at 90% 60%, rgba(255,255,255,0.4), transparent),
+      radial-gradient(1px 1px at 15% 90%, rgba(255,255,255,0.2), transparent),
+      radial-gradient(1px 1px at 85% 30%, rgba(255,255,255,0.3), transparent),
+      radial-gradient(1.5px 1.5px at 25% 50%, rgba(233,69,96,0.5), transparent),
+      radial-gradient(1.5px 1.5px at 75% 80%, rgba(233,69,96,0.4), transparent),
+      radial-gradient(1px 1px at 42% 85%, rgba(255,255,255,0.25), transparent),
+      radial-gradient(1px 1px at 60% 25%, rgba(255,255,255,0.35), transparent),
+      radial-gradient(1px 1px at 5% 55%, rgba(255,255,255,0.2), transparent);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Capa 2: dot pattern */
+  .hero-dots {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle, rgba(255,255,255,0.024) 0%, rgba(255,255,255,0.024) 1.5px, transparent 1.5px);
+    background-size: 15px 15px;
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Capa 3: glow top */
+  .hero-glow-top {
+    position: absolute;
+    top: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1400px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(233,69,96,0.15) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Capa 4: glow bottom */
+  .hero-glow-bottom {
+    position: absolute;
+    bottom: -200px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1400px;
+    height: 600px;
+    background: radial-gradient(ellipse at center, rgba(100,20,40,0.3) 0%, transparent 60%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  /* Capa 5: water */
+  .hero-water {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 200px;
+    filter: blur(4px);
+    background:
+      repeating-linear-gradient(0deg, rgba(233,69,96,0.08) 0px, transparent 2px, transparent 6px),
+      linear-gradient(90deg, rgba(233,69,96,0.04) 0%, rgba(255,107,107,0.06) 25%, rgba(100,20,40,0.04) 50%, rgba(255,107,107,0.06) 75%, rgba(233,69,96,0.04) 100%);
+    background-size: 100% 100%, 200% 100%;
+    animation: water-shift 8s ease-in-out infinite;
+    mask-image: linear-gradient(transparent, black);
+    pointer-events: none;
+    z-index: 0;
+  }
+  @keyframes water-shift {
+    0%, 100% { background-position: 0 0, 0% 0; }
+    50% { background-position: 0 0, 100% 0; }
+  }
+  /* Capa 6: particles / bubbles */
+  .hero-particles {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .bubble {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle at 30% 30%, rgba(233,69,96,0.3), rgba(233,69,96,0.05));
+    box-shadow: 0 0 20px rgba(233,69,96,0.1);
+    animation: bubbleFloat linear infinite;
+  }
+  .b1 { width: 80px; height: 80px; left: 5%; top: 20%; animation-duration: 18s; animation-delay: 0s; }
+  .b2 { width: 120px; height: 120px; left: 80%; top: 10%; animation-duration: 22s; animation-delay: -5s; }
+  .b3 { width: 60px; height: 60px; left: 60%; top: 60%; animation-duration: 15s; animation-delay: -8s; }
+  .b4 { width: 40px; height: 40px; left: 20%; top: 70%; animation-duration: 20s; animation-delay: -3s; }
+  .b5 { width: 100px; height: 100px; left: 40%; top: 80%; animation-duration: 25s; animation-delay: -12s; }
+  .b6 { width: 50px; height: 50px; left: 90%; top: 50%; animation-duration: 17s; animation-delay: -7s; }
+  @keyframes bubbleFloat {
+    0% { transform: translateY(0) rotate(0deg); opacity: 0.6; }
+    50% { opacity: 0.3; }
+    100% { transform: translateY(-80px) rotate(180deg); opacity: 0.6; }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: rgba(233,69,96,0.1);
+    border: 1px solid rgba(233,69,96,0.25);
+    color: #e94560;
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+  }
+  .hero-headline {
+    font-size: clamp(2.2rem, 6vw, 4rem);
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.25rem;
+  }
+  .glow-text {
+    animation: glowText 3s ease-in-out infinite;
+    display: inline-block;
+  }
+  @keyframes glowText {
+    0%, 100% { text-shadow: 0 0 40px rgba(233,69,96,0.4); }
+    50% { text-shadow: 0 0 80px rgba(233,69,96,0.7), 0 0 120px rgba(233,69,96,0.3); }
+  }
+  .hero-sub {
+    max-width: 560px;
+    margin: 0 auto 2rem;
+    color: #8b949e;
+    font-size: 1.05rem;
+  }
+  .social-proof {
+    margin-top: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    animation: textDrift 4s ease-in-out infinite;
+  }
+  .stars-row { color: #e94560; font-size: 1rem; letter-spacing: 2px; }
+  .proof-text { color: #484f58; font-size: 0.8rem; }
+  @keyframes textDrift {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-2px); }
+  }
+
+  /* ─── SECTION DIVIDER ─── */
+  .section-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(233,69,96,0.3), transparent);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* ─── REVEAL ANIMATION ─── */
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  }
+  .reveal.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ─── SECTIONS COMMON ─── */
+  section { padding: 5rem 0; }
+
+  /* ─── VIDEO ─── */
+  .section-video { background: #161b22; text-align: center; }
+  .section-video .section-title { margin-bottom: 0.75rem; }
+  .video-wrap {
+    max-width: 720px;
+    margin: 2rem auto 0;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 0 0 1px rgba(233,69,96,0.2), 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(233,69,96,0.1);
+    animation: videoBorderPulse 3s ease-in-out infinite;
+  }
+  @keyframes videoBorderPulse {
+    0%, 100% { box-shadow: 0 0 0 1px rgba(233,69,96,0.2), 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(233,69,96,0.1); }
+    50% { box-shadow: 0 0 0 2px rgba(233,69,96,0.4), 0 20px 60px rgba(0,0,0,0.5), 0 0 60px rgba(233,69,96,0.2); }
+  }
+
+  /* ─── VIDEO PLAY OVERLAY ─── */
+  /* Video nativo — sin overlay custom */
+
+  /* ─── SECTION OPENCLAW ─── */
+  .section-openclaw { padding: 5rem 0; background: #161b22; }
+  .oc-stats-row {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    flex-wrap: wrap;
+  }
+  .oc-stat { text-align: center; }
+  .oc-stat-number {
+    display: block;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 900;
+    color: #e94560;
+    line-height: 1.1;
+  }
+  .oc-stat-label {
+    display: block;
+    font-size: 0.85rem;
+    color: #8b949e;
+    margin-top: 0.25rem;
+  }
+  .oc-stat-divider {
+    width: 1px;
+    height: 40px;
+    background: rgba(255,255,255,0.08);
+  }
+
+  .oc-timeline {
+    max-width: 600px;
+    margin: 0 auto 3rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    position: relative;
+    padding-left: 2rem;
+    border-left: 2px solid rgba(233,69,96,0.2);
+  }
+  .oc-event {
+    position: relative;
+    padding: 1rem 0 1rem 1.5rem;
+  }
+  .oc-event::before {
+    content: '';
+    position: absolute;
+    left: -2rem;
+    top: 1.35rem;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #484f58;
+    border: 2px solid #0d1117;
+    transform: translateX(-50%);
+    margin-left: -1px;
+  }
+  .oc-event.highlight::before {
+    background: #e94560;
+    box-shadow: 0 0 12px rgba(233,69,96,0.5);
+  }
+  .oc-event-date {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: #e94560;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 0.3rem;
+  }
+  .oc-event-text {
+    font-size: 0.95rem;
+    color: #c9d1d9;
+    line-height: 1.6;
+    text-align: left;
+  }
+  .oc-event.highlight .oc-event-text { color: #fff; font-weight: 600; }
+
+  .oc-pillars {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .oc-pillar {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 16px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .oc-pillar:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233,69,96,0.2);
+    box-shadow: 0 8px 30px rgba(233,69,96,0.08);
+  }
+  .oc-pillar-icon {
+    font-size: 2.2rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: floatSlow 4s ease-in-out infinite;
+  }
+  .oc-pillar h3 {
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #fff;
+    margin: 0 0 0.75rem;
+  }
+  .oc-pillar p {
+    font-size: 0.9rem;
+    color: #8b949e;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  @media (max-width: 720px) {
+    .oc-pillars { grid-template-columns: 1fr; }
+    .oc-stats-row { gap: 1.5rem; }
+    .oc-stat-divider { display: none; }
+    .oc-timeline { padding-left: 1.5rem; }
+  }
+
+  /* ─── PROBLEM ─── */
+  .section-problem { background: #0d1117; }
+  .problem-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto 2rem;
+    text-align: left;
+  }
+  .problem-item {
+    display: flex;
+    gap: 1rem;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .problem-item:hover { border-color: rgba(233,69,96,0.3); }
+  .problem-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
+  .problem-item strong { display: block; margin-bottom: 0.25rem; font-weight: 700; }
+  .problem-item p { color: #8b949e; font-size: 0.9rem; margin: 0; }
+  .problem-close {
+    max-width: 640px;
+    margin: 0 auto;
+    background: rgba(233,69,96,0.04);
+    border: 1px solid rgba(233,69,96,0.15);
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    color: #8b949e;
+  }
+  .problem-close p:first-child { margin-bottom: 0.5rem; }
+
+  /* ─── SOLUTION ─── */
+  .section-solution { background: #161b22; }
+  .pillars {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+  }
+  .pillar-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: left;
+    transition: transform 0.3s, border-color 0.3s;
+    position: relative;
+    overflow: hidden;
+  }
+  .pillar-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(233,69,96,0.3);
+  }
+  .pillar-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    display: block;
+    animation: floatSlow 4s ease-in-out infinite;
+  }
+  .pillar-card h3 { font-weight: 700; font-size: 1rem; margin-bottom: 0.5rem; }
+  .pillar-card p { color: #8b949e; font-size: 0.9rem; }
+  @keyframes floatSlow { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes floatMed { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4px); } }
+
+  /* ─── TELEGRAM MOCKUP ─── */
+  .section-telegram { background: #0d1117; }
+  .tg-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+  }
+  .tg-text .section-title { margin-bottom: 1rem; }
+  .tg-features {
+    list-style: none;
+    margin-top: 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .tg-features li { color: #8b949e; font-size: 0.95rem; }
+  .tg-phone-wrap {
+    display: flex;
+    justify-content: center;
+  }
+  .tg-phone-glow {
+    background: linear-gradient(rgba(0,255,65,0.6), rgba(0,255,65,0.1) 30%, transparent 60%);
+    border-radius: 43px;
+    padding: 3px;
+    position: relative;
+    box-shadow: 0 -8px 40px -10px rgba(0,255,65,0.25);
+  }
+  .tg-phone {
+    width: 280px;
+    min-height: 560px;
+    background: #0e1621;
+    border: 3px solid #2a2a2e;
+    border-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.08),
+      0 30px 80px rgba(0,0,0,0.6);
+    position: relative;
+  }
+  /* Status bar */
+  .tg-status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px 4px;
+    font-size: 10px;
+    font-weight: 700;
+    color: white;
+  }
+  .tg-status-right { display: flex; align-items: center; gap: 4px; }
+  .tg-signal { display: flex; align-items: flex-end; gap: 1px; }
+  .tg-signal span {
+    width: 3px;
+    background: white;
+    border-radius: 1px;
+  }
+  .tg-signal span:nth-child(1) { height: 4px; }
+  .tg-signal span:nth-child(2) { height: 6px; }
+  .tg-signal span:nth-child(3) { height: 9px; }
+  .tg-signal span:nth-child(4) { height: 12px; }
+  .tg-network { font-size: 9px; font-weight: 700; }
+  .tg-battery {
+    width: 20px; height: 10px;
+    border: 1.5px solid white;
+    border-radius: 2px;
+    padding: 1px;
+    position: relative;
+  }
+  .tg-battery::after {
+    content: '';
+    position: absolute;
+    right: -4px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 5px;
+    background: white;
+    border-radius: 0 1px 1px 0;
+  }
+  .tg-battery-fill {
+    width: 75%;
+    height: 100%;
+    background: white;
+    border-radius: 1px;
+  }
+  /* Chat header */
+  .tg-chat-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px 10px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .tg-back { color: #4dabf7; font-size: 18px; cursor: pointer; }
+  .tg-avatar { flex-shrink: 0; }
+  .tg-contact { flex: 1; }
+  .tg-contact-name { display: block; font-size: 12px; font-weight: 700; color: white; }
+  .tg-contact-status { font-size: 10px; color: #14b8a6; }
+  .tg-header-icons { display: flex; gap: 10px; }
+  /* Messages area */
+  .tg-messages {
+    flex: 1;
+    padding: 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    overflow: hidden;
+  }
+  @keyframes telegram-msg-in {
+    from { opacity: 0; transform: translateY(8px) scale(0.97); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
+  }
+  .tg-msg {
+    display: flex;
+    animation: telegram-msg-in 0.3s ease-out both;
+    opacity: 0;
+  }
+  .tg-msg-in { justify-content: flex-start; }
+  .tg-msg-out { justify-content: flex-end; }
+  .tg-bubble {
+    max-width: 85%;
+    padding: 7px 10px;
+    border-radius: 12px;
+    font-size: 11px;
+    line-height: 1.45;
+    position: relative;
+  }
+  .tg-bubble-in {
+    background: #182533;
+    color: rgba(255,255,255,0.9);
+    border-bottom-left-radius: 4px;
+  }
+  .tg-bubble-out {
+    background: #2b5278;
+    color: white;
+    border-bottom-right-radius: 4px;
+  }
+  .tg-msg-time {
+    display: block;
+    font-size: 9px;
+    color: rgba(255,255,255,0.35);
+    text-align: right;
+    margin-top: 3px;
+  }
+  /* Typing */
+  .typing-bubble { padding: 10px 14px; }
+  .typing-dots { display: flex; gap: 4px; align-items: center; }
+  .typing-dots span {
+    width: 6px;
+    height: 6px;
+    background: rgba(255,255,255,0.4);
+    border-radius: 50%;
+    display: inline-block;
+    animation: typingBounce 1.4s ease-in-out infinite;
+  }
+  .typing-dots span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-dots span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes typingBounce {
+    0%, 60%, 100% { transform: translateY(0); }
+    30% { transform: translateY(-4px); }
+  }
+  /* Input */
+  .tg-input-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 12px 12px;
+    background: #17212b;
+  }
+  .tg-input-field {
+    flex: 1;
+    background: #242f3d;
+    border-radius: 16px;
+    padding: 7px 12px;
+  }
+  .tg-input-placeholder { color: rgba(255,255,255,0.3); font-size: 11px; }
+  .tg-send-btn {
+    width: 32px;
+    height: 32px;
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+
+  /* ─── INCLUDES ─── */
+  .section-includes { background: #161b22; }
+  .includes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+  }
+  .include-card {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    padding: 1.5rem 1.25rem;
+    text-align: left;
+    transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+  }
+  .include-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233,69,96,0.3);
+    box-shadow: 0 8px 30px rgba(233,69,96,0.1);
+  }
+  .include-icon {
+    font-size: 2rem;
+    display: block;
+    margin-bottom: 0.75rem;
+    animation: floatSlow 4s ease-in-out infinite;
+  }
+  .include-card:nth-child(2) .include-icon { animation-name: floatMed; animation-delay: 0.5s; }
+  .include-card:nth-child(3) .include-icon { animation-delay: 1s; }
+  .include-card:nth-child(4) .include-icon { animation-name: floatMed; animation-delay: 1.5s; }
+  .include-card:nth-child(5) .include-icon { animation-delay: 0.3s; }
+  .include-card:nth-child(6) .include-icon { animation-name: floatMed; animation-delay: 0.8s; }
+  .include-card:nth-child(7) .include-icon { animation-delay: 1.3s; }
+  .include-card:nth-child(8) .include-icon { animation-name: floatMed; animation-delay: 1.8s; }
+  .include-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
+  .include-card p { color: #8b949e; font-size: 0.82rem; line-height: 1.5; }
+
+  /* ─── COMPARE ─── */
+  .section-compare { background: #0d1117; }
+  .compare-table-wrap {
+    overflow-x: auto;
+    max-width: 700px;
+    margin: 2.5rem auto 0;
+    display: flex;
+    justify-content: center;
+  }
+  .compare-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    margin: 0 auto;
+  }
+  .compare-table th, .compare-table td {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .compare-table th {
+    font-weight: 700;
+    color: #8b949e;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .col-highlight {
+    background: rgba(233,69,96,0.05);
+    border-left: 1px solid rgba(233,69,96,0.15);
+    border-right: 1px solid rgba(233,69,96,0.15);
+  }
+  th.col-highlight {
+    color: #e94560 !important;
+    border-top: 1px solid rgba(233,69,96,0.15);
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+  .compare-table td:first-child { color: #8b949e; }
+  .compare-mobile { display: none; }
+
+  /* ─── REVIEWS ─── */
+  .section-reviews { background: #161b22; }
+  /* ─── Testimonial destacado ─── */
+  .review-featured {
+    max-width: 580px;
+    margin: 2rem auto;
+    background: rgba(233,69,96,0.04);
+    border: 1px solid rgba(233,69,96,0.15);
+    border-radius: 16px;
+    padding: 2rem 2.5rem;
+    text-align: center;
+  }
+  .review-quote {
+    font-size: 1.1rem;
+    color: #c9d1d9;
+    font-style: italic;
+    line-height: 1.7;
+    position: relative;
+  }
+  .review-quote-mark {
+    font-size: 3rem;
+    color: #e94560;
+    line-height: 0;
+    vertical-align: -0.4em;
+    margin-right: 0.1rem;
+    font-style: normal;
+  }
+  .review-author-featured {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+  .review-name {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .review-stars-sm { color: #e94560; font-size: 0.8rem; }
+  .review-avatar {
+    width: 36px; height: 36px;
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  /* ─── Rating strip ─── */
+  .ratings-strip {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-top: 1.5rem;
+  }
+  .rating-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 100px;
+    padding: 0.4rem 1rem 0.4rem 0.4rem;
+  }
+  .chip-avatar {
+    width: 28px; height: 28px;
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .chip-name { font-size: 0.8rem; font-weight: 600; color: #c9d1d9; }
+  .chip-stars { font-size: 0.7rem; color: #e94560; }
+  .member-counter {
+    margin-top: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .counter-number {
+    font-size: 4rem;
+    font-weight: 900;
+    color: #e94560;
+    letter-spacing: -0.04em;
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(233,69,96,0.4);
+  }
+  .counter-label { color: #8b949e; font-size: 1rem; }
+
+  /* ─── COST ─── */
+  .section-cost { background: #0d1117; }
+  .cost-wrap {
+    max-width: 520px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .cost-table {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .cost-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.9rem;
+  }
+  .cost-row:last-child { border-bottom: none; }
+  .cost-total {
+    background: rgba(233,69,96,0.05);
+    font-weight: 700;
+    border-top: 1px solid rgba(233,69,96,0.15) !important;
+  }
+  .cost-free { color: #14b8a6; font-weight: 600; }
+  .cost-vs {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 12px;
+    overflow: hidden;
+  }
+  .cost-compare-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+    font-size: 0.9rem;
+  }
+  .cost-compare-item:last-child { border-bottom: none; }
+  .cost-compare-label { color: #8b949e; }
+  .highlight-item {
+    background: rgba(233,69,96,0.05);
+    border-top: 1px solid rgba(233,69,96,0.15) !important;
+  }
+  .highlight-item .cost-compare-label { color: white; font-weight: 600; }
+  .cost-day {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: #e94560;
+    text-shadow: 0 0 20px rgba(233,69,96,0.4);
+  }
+
+  /* ─── FOR WHOM ─── */
+  .section-for { background: #161b22; }
+  .for-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 2rem;
+  }
+  .for-card {
+    background: rgba(255,255,255,0.02);
+    border-radius: 12px;
+    padding: 1.75rem;
+    text-align: left;
+  }
+  .for-yes {
+    border: 1px solid rgba(20,184,166,0.25);
+    background: rgba(20,184,166,0.03);
+  }
+  .for-no {
+    border: 1px solid rgba(233,69,96,0.2);
+    background: rgba(233,69,96,0.03);
+  }
+  .for-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1rem; }
+  .for-card ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .for-card li { color: #8b949e; font-size: 0.9rem; line-height: 1.5; }
+
+  /* ─── FAQ ─── */
+  .section-faq { background: #0d1117; }
+  .faq-list {
+    max-width: 720px;
+    margin: 2rem auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .faq-item {
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+  .faq-item.open { border-color: rgba(233,69,96,0.2); }
+  .faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 0.95rem;
+    padding: 1rem 1.25rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    text-align: left;
+    gap: 1rem;
+  }
+  .faq-arrow {
+    color: #e94560;
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+  }
+  .faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+  .faq-answer p {
+    padding: 0 1.25rem 1.25rem;
+    color: #8b949e;
+    font-size: 0.9rem;
+    line-height: 1.7;
+  }
+
+  /* ─── CTA FINAL ─── */
+  .section-cta-final {
+    background: #0d1117;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+  }
+  .final-title { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 1rem; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: #0d1117 !important;
+    border-top: 1px solid rgba(255,255,255,0.06) !important;
+    color: #484f58 !important;
+  }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE - MÓVIL PEQUEÑO (≤375px)
+     ═══════════════════════════════════════════════════ */
+
+  @media (max-width: 375px) {
+    /* Container más estrecho */
+    .container { padding: 0 1rem; }
+
+    /* Header compacto */
+    .header-inner { padding: 0 1rem; height: 54px; }
+    .logo-link img { width: 26px; height: 26px; }
+    .logo-text { font-size: 1rem; }
+    /* Header CTA: anular width:100% del CTA general y simplificar animación */
+    .cta-wrap-sm { padding: 2px; width: auto !important; flex: 0 0 auto; }
+    .cta-wrap-sm::before, .cta-wrap-sm::after { display: none; }
+    .cta-wrap-sm { border: 1.5px solid rgba(233,69,96,0.5); background: #0d1117; }
+    .header-cta {
+      font-size: 0.65rem;
+      padding: 0.4rem 0.8rem;
+      width: auto !important;
+      animation: none;
+      box-shadow: 0 2px 10px rgba(233,69,96,0.4);
+    }
+
+    /* Telegram mockup: 1 columna */
+    .tg-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .tg-phone-wrap { order: -1; }
+    .tg-text .section-title { text-align: center; }
+    .tg-text .section-lead { text-align: center; }
+    .tg-features { align-items: center; }
+
+    /* Hero ajustado */
+    .hero { padding: 4.5rem 0 2.5rem; min-height: auto; }
+    .hero-badge { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
+    .hero-headline { font-size: 1.75rem; line-height: 1.15; }
+    .hero-sub { font-size: 0.9rem; }
+
+    /* CTAs full-width con padding generoso */
+    .cta-wrap {
+      width: 100%;
+      display: flex;
+      border-radius: 12px;
+    }
+    .cta-btn {
+      width: 100%;
+      justify-content: center;
+      padding: 1rem 1.5rem;
+      font-size: 0.85rem;
+    }
+    .cta-btn.cta-large { font-size: 0.9rem; padding: 1rem 1.5rem; }
+    .cta-sub-line { font-size: 0.55rem; }
+    .cta-main { font-size: 0.9rem; }
+
+    /* Section titles más pequeños */
+    .section-title { font-size: 1.4rem; }
+    .section-lead { font-size: 0.9rem; }
+
+    /* Badges compactos */
+    .badge { font-size: 0.7rem; padding: 0.3rem 0.75rem; }
+
+    /* OpenClaw stats compactos */
+    .oc-stat-number { font-size: 1.75rem; }
+    .oc-stat-label { font-size: 0.75rem; }
+    .oc-timeline { padding-left: 1rem; }
+    .oc-event { padding-left: 1rem; }
+    .oc-event-text { font-size: 0.85rem; }
+
+    /* Telegram mockup muy compacto */
+    .tg-phone { width: 220px; min-height: 440px; }
+    .tg-bubble { font-size: 10px; padding: 5px 8px; }
+    .tg-messages { padding: 8px; gap: 6px; }
+
+    /* Includes grid 1 columna */
+    .includes-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+    .include-card { padding: 1.25rem 1rem; }
+    .include-icon { font-size: 1.5rem; }
+    .include-card h3 { font-size: 0.85rem; }
+    .include-card p { font-size: 0.78rem; }
+
+    /* Solution pillars 1 columna */
+    .pillars { grid-template-columns: 1fr; }
+    .pillar-card { padding: 1.25rem 1rem; }
+    .pillar-icon { font-size: 1.5rem; }
+
+    /* Comparativa mobile cards */
+    .compare-row { padding: 0.85rem; }
+    .compare-feature { font-size: 0.8rem; }
+    .compare-vals { font-size: 0.8rem; }
+
+    /* Reviews compacto */
+    .review-featured {
+      padding: 1.25rem 1rem;
+      margin: 1.5rem auto;
+    }
+    .review-quote { font-size: 0.95rem; }
+    .review-quote-mark { font-size: 2rem; }
+    .review-author-featured { gap: 0.5rem; }
+    .review-name { font-size: 0.8rem; }
+    .review-stars-sm { font-size: 0.7rem; }
+    .review-avatar { width: 30px; height: 30px; font-size: 0.65rem; }
+
+    /* Rating chips en columna */
+    .ratings-strip {
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .rating-chip {
+      width: 100%;
+      max-width: 200px;
+      justify-content: flex-start;
+      padding: 0.35rem 0.75rem 0.35rem 0.35rem;
+    }
+    .chip-name { font-size: 0.75rem; }
+    .chip-stars { font-size: 0.65rem; }
+    .chip-avatar { width: 24px; height: 24px; font-size: 0.6rem; }
+
+    /* Counter más pequeño */
+    .member-counter { margin-top: 2rem; }
+    .counter-number { font-size: 2.5rem; }
+    .counter-label { font-size: 0.85rem; }
+
+    /* Coste tabla compacta */
+    .cost-row { padding: 0.6rem 1rem; font-size: 0.85rem; }
+    .cost-day { font-size: 1.25rem; }
+
+    /* Para quién 1 columna */
+    .for-grid { grid-template-columns: 1fr; gap: 1rem; }
+    .for-card { padding: 1.25rem 1rem; }
+    .for-card h3 { font-size: 0.9rem; }
+    .for-card li { font-size: 0.85rem; }
+
+    /* FAQ compacto */
+    .faq-question { padding: 0.85rem 1rem; font-size: 0.85rem; }
+    .faq-answer p { padding: 0 1rem 1rem; font-size: 0.85rem; }
+
+    /* CTA final */
+    .section-cta-final .cta-wrap { width: 100%; }
+    .final-title { font-size: 1.5rem; }
+
+    /* Problem items */
+    .problem-item { padding: 0.85rem 1rem; }
+    .problem-item strong { font-size: 0.85rem; }
+    .problem-item p { font-size: 0.8rem; }
+    .problem-close { padding: 1rem; }
+
+    /* Video wrap */
+    .video-wrap { border-radius: 10px; }
+
+    /* Sections menos padding */
+    section { padding: 2.5rem 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE - MÓVIL (376px - 480px)
+     ═══════════════════════════════════════════════════ */
+
+  @media (min-width: 376px) and (max-width: 480px) {
+    /* Container */
+    .container { padding: 0 1rem; }
+
+    /* Header compacto */
+    .header-inner { padding: 0 1rem; height: 56px; }
+    .logo-link img { width: 28px; height: 28px; }
+    /* Header CTA: anular width:100% del CTA general y simplificar animación */
+    .cta-wrap-sm { width: auto !important; flex: 0 0 auto; }
+    .cta-wrap-sm::before, .cta-wrap-sm::after { display: none; }
+    .cta-wrap-sm { border: 1.5px solid rgba(233,69,96,0.5); background: #0d1117; }
+    .header-cta {
+      font-size: 0.7rem;
+      padding: 0.45rem 0.9rem;
+      width: auto !important;
+      animation: none;
+      box-shadow: 0 2px 10px rgba(233,69,96,0.4);
+    }
+
+    /* Telegram mockup: 1 columna */
+    .tg-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .tg-phone-wrap { order: -1; }
+    .tg-text .section-title { text-align: center; }
+    .tg-text .section-lead { text-align: center; }
+    .tg-features { align-items: center; }
+
+    /* Hero */
+    .hero { padding: 4.75rem 0 2.75rem; min-height: auto; }
+    .hero-headline { font-size: 1.9rem; }
+    .hero-sub { font-size: 0.95rem; }
+
+    /* CTAs full-width */
+    .cta-wrap { width: 100%; display: flex; }
+    .cta-btn { width: 100%; justify-content: center; padding: 1rem 1.5rem; }
+    .cta-btn.cta-large { font-size: 0.95rem; }
+    .cta-sub-line { font-size: 0.6rem; }
+
+    /* Section titles */
+    .section-title { font-size: 1.5rem; }
+
+    /* OpenClaw timeline */
+    .oc-timeline { padding-left: 1.25rem; }
+    .oc-event { padding-left: 1.25rem; }
+
+    /* Telegram mockup */
+    .tg-phone { width: 240px; min-height: 480px; }
+    .tg-bubble { font-size: 10px; }
+
+    /* Includes 1 columna */
+    .includes-grid { grid-template-columns: 1fr; }
+
+    /* Solution pillars 1 columna */
+    .pillars { grid-template-columns: 1fr; }
+
+    /* Reviews */
+    .review-featured { padding: 1.5rem 1.25rem; }
+    .ratings-strip { flex-wrap: wrap; gap: 0.5rem; }
+    .rating-chip { flex: 1 1 45%; min-width: 0; }
+    .counter-number { font-size: 3rem; }
+
+    /* Para quién 1 columna */
+    .for-grid { grid-template-columns: 1fr; }
+
+    /* CTA final */
+    .section-cta-final .cta-wrap { width: 100%; }
+
+    /* Sections */
+    section { padding: 2.75rem 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE - MÓVIL GRANDE / TABLET PEQUEÑA (481px - 767px)
+     ═══════════════════════════════════════════════════ */
+
+  @media (min-width: 481px) and (max-width: 767px) {
+    .container { padding: 0 1.25rem; }
+
+    /* Hero */
+    .hero { min-height: auto; padding: 5rem 0 3rem; }
+    .hero-headline { font-size: clamp(2rem, 7vw, 2.4rem); }
+
+    /* CTAs */
+    .cta-wrap { width: 100%; display: flex; }
+    .cta-btn { width: 100%; justify-content: center; }
+    .cta-btn.cta-large { font-size: 0.95rem; padding: 0.95rem 2rem; }
+
+    /* Telegram layout */
+    .tg-layout { grid-template-columns: 1fr; gap: 2rem; }
+    .tg-phone-wrap { order: -1; }
+    .tg-phone { width: 260px; }
+    .tg-text .section-title { text-align: center; }
+    .tg-text .section-lead { text-align: center; }
+    .tg-features { align-items: center; }
+
+    /* Includes 1 columna en móvil grande */
+    .includes-grid { grid-template-columns: 1fr; }
+
+    /* Solution pillars */
+    .pillars { grid-template-columns: 1fr; }
+
+    /* Comparativa - ocultar tabla, mostrar cards */
+    .compare-table-wrap { display: none; }
+    .compare-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .compare-row {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+    .compare-feature {
+      display: block;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      font-size: 0.85rem;
+    }
+    .compare-vals {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      font-size: 0.85rem;
+      color: #8b949e;
+    }
+
+    /* Rating chips 2 en fila */
+    .ratings-strip { flex-wrap: wrap; gap: 0.75rem; }
+    .rating-chip { flex: 1 1 45%; }
+
+    /* Counter */
+    .counter-number { font-size: 3.5rem; }
+
+    /* Para quién 1 columna */
+    .for-grid { grid-template-columns: 1fr; }
+
+    /* CTA final */
+    .section-cta-final .cta-wrap { width: 100%; }
+
+    section { padding: 3rem 0; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE - TABLET (768px - 1023px)
+     ═══════════════════════════════════════════════════ */
+
+  @media (min-width: 768px) and (max-width: 1023px) {
+    /* Includes 2 columnas */
+    .includes-grid { grid-template-columns: repeat(2, 1fr); }
+
+    /* Para quién 2 columnas */
+    .for-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Comparativa - mostrar tabla en tablet */
+    .compare-table-wrap { display: flex; }
+    .compare-mobile { display: none; }
+
+    /* Telegram layout 2 columnas */
+    .tg-layout { grid-template-columns: 1fr 1fr; gap: 2rem; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     RESPONSIVE - DESKTOP (≥1024px)
+     ═══════════════════════════════════════════════════ */
+
+  @media (min-width: 1024px) {
+    /* Includes 4 columnas (2x2 visual) */
+    .includes-grid { grid-template-columns: repeat(4, 1fr); }
+
+    /* Comparativa - tabla visible */
+    .compare-mobile { display: none; }
+  }
+
+  /* ═══════════════════════════════════════════════════
+     HEADER RESPONSIVE - Nav oculto en móvil
+     ═══════════════════════════════════════════════════ */
+
+  @media (max-width: 720px) {
+    .header-nav { display: none; }
+    /* Simplificar header CTA: sin animación giratoria en móvil */
+    .cta-wrap-sm::before, .cta-wrap-sm::after { display: none; }
+    .cta-wrap-sm { border: 1.5px solid rgba(233,69,96,0.5); background: #0d1117; width: auto !important; flex: 0 0 auto; }
+    .header-cta { animation: none; box-shadow: 0 2px 10px rgba(233,69,96,0.4); width: auto !important; }
+  }
+
+  @media (max-width: 480px) {
+    .header-inner {
+      padding: 0 1rem;
+      height: 56px;
+    }
+    .logo-link {
+      gap: 0.4rem;
+    }
+    .logo-link img {
+      width: 28px;
+      height: 28px;
+    }
+    .logo-text {
+      font-size: 1rem;
+    }
+    .cta-wrap-sm {
+      padding: 2px;
+      border-radius: 10px;
+    }
+    .header-cta {
+      font-size: 0.7rem;
+      padding: 0.45rem 0.9rem;
+    }
+  }
+</style>
+
+</body>
+</html>

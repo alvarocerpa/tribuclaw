@@ -1,15 +1,66 @@
 ---
 const today = new Date();
 ---
-<footer>
-	<p>&copy; {today.getFullYear()} TribuClaw. La comunidad de agentes IA en español.</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="/images/logo-icon.png" width="28" height="28" alt="TribuClaw" />
+      <span class="footer-logo">Tribu<span class="accent">Claw</span></span>
+    </div>
+    <p class="footer-copy">&copy; {today.getFullYear()} TribuClaw. La comunidad de agentes IA en español.</p>
+    <nav class="footer-links">
+      <a href="/blog/">Blog</a>
+      <a href="/about/">Sobre</a>
+      <a href="/membresia/">Membresía</a>
+    </nav>
+  </div>
 </footer>
 <style>
-	footer {
-		border-top: 1px solid #1a1a1a;
-		padding: 2rem 1rem;
-		text-align: center;
-		color: #555;
-		font-size: 0.85rem;
-	}
+  .site-footer {
+    background: #0d1117;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    padding: 2rem 1.25rem;
+  }
+  .footer-inner {
+    max-width: 1000px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+  .footer-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .footer-logo {
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    color: #fff;
+  }
+  .accent { color: #e94560; }
+  .footer-copy {
+    color: #484f58;
+    font-size: 0.82rem;
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+  }
+  .footer-links {
+    display: flex;
+    gap: 1.25rem;
+  }
+  .footer-links a {
+    color: #484f58;
+    font-size: 0.82rem;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: #8b949e; }
+  @media (max-width: 600px) {
+    .footer-inner { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+  }
 </style>

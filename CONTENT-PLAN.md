@@ -76,12 +76,12 @@
 
 | # | Título propuesto | Keyword principal | Cluster | Estado |
 |---|-----------------|-------------------|---------|--------|
-| 1 | Automatizar LinkedIn con IA: guía completa 2026 | automatizar linkedin con ia | Automatización | ⬜ |
-| 2 | OpenClaw vs n8n: ¿cuál elegir en 2026? | openclaw vs n8n | Comparativa | ⬜ |
-| 3 | IA para infoproductores: 7 automatizaciones que cambian tu negocio | ia para infoproductores | Nicho | ⬜ |
+| 1 | Automatizar LinkedIn con IA: guía completa 2026 | automatizar linkedin con ia | Automatización | ✅ |
+| 2 | OpenClaw vs n8n: ¿cuál elegir en 2026? | openclaw vs n8n | Comparativa | ✅ |
+| 3 | IA para infoproductores: 7 automatizaciones que cambian tu negocio | ia para infoproductores | Nicho | ✅ |
 | 4 | Automatizar Instagram con IA sin perder autenticidad | automatizar instagram con ia | Automatización | ⬜ |
 | 5 | OpenClaw vs Make (ex Integromat): la comparativa honesta | openclaw vs make | Comparativa | ⬜ |
-| 6 | IA para coaches: cómo automatizar sin perder el trato personal | ia para coaches | Nicho | ⬜ |
+| 6 | IA para coaches: cómo automatizar sin perder el trato personal | ia para coaches | Nicho | ✅ |
 | 7 | Cómo reducir el coste de tu agente IA un 90% con OpenRouter | reducir coste agente ia | How-to | ⬜ |
 | 8 | Automatizar atención al cliente con IA: guía práctica | automatizar atención al cliente ia | Automatización | ⬜ |
 | 9 | OpenClaw tutorial en español: configuración completa paso a paso | openclaw tutorial español | Brand | ⬜ |
@@ -101,7 +101,7 @@
 | 23 | Automatizar Discord con IA: comunidades en piloto automático | automatizar discord con ia | Automatización | ⬜ |
 | 24 | OpenClaw en VPS Linux: la guía que te faltaba | openclaw vps linux | How-to | ⬜ |
 | 25 | IA para creadores de contenido: del guión al clip en 10 minutos | ia para creadores contenido | Nicho | ⬜ |
-| 26 | Cuánto cuesta tener un agente IA propio: la guía honesta | cuanto cuesta agente ia | Honesto | ⬜ |
+| 26 | Cuánto cuesta tener un agente IA propio: la guía honesta | cuanto cuesta agente ia | Honesto | ✅ |
 | 27 | OpenClaw modelos IA: cuál elegir según tu presupuesto | openclaw modelos ia | Brand | ⬜ |
 | 28 | Automatizar YouTube con IA: de la idea al vídeo publicado | automatizar youtube con ia | Automatización | ⬜ |
 | 29 | Mi stack de IA en 2026: lo que uso, lo que descarté | stack ia 2026 | Inspiración | ⬜ |

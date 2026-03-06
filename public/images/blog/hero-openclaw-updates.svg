@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect fill="#0a0a0a" width="1200" height="630"/>
+  <text x="600" y="280" text-anchor="middle" font-family="system-ui" font-size="72" font-weight="bold" fill="#ffffff">OpenClaw</text>
+  <text x="600" y="370" text-anchor="middle" font-family="system-ui" font-size="42" fill="#ff4d4d">2026.2.21</text>
+  <text x="600" y="450" text-anchor="middle" font-family="system-ui" font-size="28" fill="#888888">Novedades y mejoras</text>
+  <circle cx="600" cy="530" r="40" fill="#ff4d4d"/>
+  <text x="600" y="545" text-anchor="middle" font-family="system-ui" font-size="36" fill="#ffffff">🦞</text>
+</svg>

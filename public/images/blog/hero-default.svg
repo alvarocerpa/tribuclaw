@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <rect fill="#0a0a0a" width="1200" height="630"/>
+  <text x="600" y="280" text-anchor="middle" font-family="system-ui" font-size="56" font-weight="bold" fill="#ffffff">Inteligencia Artificial</text>
+  <text x="600" y="360" text-anchor="middle" font-family="system-ui" font-size="32" fill="#ff4d4d">Agentes IA Personales</text>
+  <text x="600" y="420" text-anchor="middle" font-family="system-ui" font-size="24" fill="#888888">Automatiza tu negocio con tu propio agente</text>
+  <circle cx="600" cy="520" r="40" fill="#ff4d4d"/>
+  <text x="600" y="535" text-anchor="middle" font-family="system-ui" font-size="36" fill="#ffffff">🦞</text>
+</svg>

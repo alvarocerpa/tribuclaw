@@ -127,10 +127,14 @@ import CTA from '../../components/CTA.astro';
 ```bash
 cd /home/claw1/.openclaw/workspace/tribuclaw-web
 npx astro build
-CLOUDFLARE_API_TOKEN=Rwy9HMLLqCcq95BSSQ8-8SyAjkQJKa0RDtan52Z0 CLOUDFLARE_ACCOUNT_ID=014162b37ae770253f6e43c0ba038fdb npx wrangler pages deploy dist --project-name tribuclaw --branch master --commit-dirty=true
+CLOUDFLARE_API_TOKEN=4fZu4AsXIRUwWWuHJjw2bas66OyHOSNO_aC4wuyh CLOUDFLARE_ACCOUNT_ID=014162b37ae770253f6e43c0ba038fdb npx wrangler pages deploy dist --project-name tribuclaw --branch master --commit-dirty=true
 ```
 
-8. **Verificar**: Confirmar que el build fue exitoso y el deploy completó sin errores.
+8. **Verificar build correcto**: Antes de deploy, comprobar que el HTML generado es valido:
+```bash
+# Verificar que el archivo existe y tiene estructura correcta (debe tener <title>)
+head -20 dist/blog/SLUG/index.html | grep -q "<title>" && echo "OK" || echo "ERROR: HTML mal generado"
+```
 
 9. **Indexación forzada**: Ejecutar el script de indexación para que los motores lo descubran rápido:
 ```bash

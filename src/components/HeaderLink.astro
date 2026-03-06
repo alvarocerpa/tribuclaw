@@ -16,9 +16,18 @@ const isActive = href === pathname || href === '/' + (subpath?.[0] || '');
 	a {
 		display: inline-block;
 		text-decoration: none;
+		color: #8b949e;
+		font-family: 'Inter', sans-serif;
+		font-size: 0.95rem;
+		transition: color 0.2s;
+	}
+	a:hover {
+		color: #fff;
+		text-decoration: none;
 	}
 	a.active {
-		font-weight: bolder;
-		text-decoration: underline;
+		color: #fff;
+		font-weight: 600;
+		text-decoration: none;
 	}
 </style>

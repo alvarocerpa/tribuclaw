@@ -1,0 +1,102 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accentGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow4">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050505" />
+
+  <!-- Grid pattern -->
+  <pattern id="grid4" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid4)" opacity="0.3" />
+
+  <!-- Accent left bar -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#accentGrad4)" />
+
+  <!-- Top right accent -->
+  <path d="M 1200 0 L 1000 0 L 1200 200 Z" fill="#e94560" opacity="0.08" />
+
+  <!-- Content area -->
+  <g transform="translate(80, 160)">
+    <!-- WhatsApp phone + AI agent illustration -->
+    <g transform="translate(30, 10)">
+      <!-- Phone -->
+      <g transform="translate(60, 0)">
+        <rect x="0" y="0" width="100" height="180" rx="15" fill="none" stroke="#e94560" stroke-width="3" />
+        <rect x="5" y="10" width="90" height="20" rx="8" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="1" />
+        <circle cx="15" cy="20" r="3" fill="#e94560" opacity="0.5" />
+        <circle cx="25" cy="20" r="3" fill="#e94560" opacity="0.3" />
+
+        <!-- Chat messages -->
+        <g transform="translate(8, 45)">
+          <!-- Incoming messages (left) -->
+          <rect x="0" y="0" width="55" height="18" rx="9" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="1" />
+          <rect x="0" y="25" width="45" height="18" rx="9" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="1" />
+          <rect x="0" y="50" width="60" height="18" rx="9" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="1" />
+
+          <!-- Outgoing messages (right) -->
+          <rect x="30" y="75" width="55" height="18" rx="9" fill="#e94560" opacity="0.3" />
+          <rect x="30" y="100" width="45" height="18" rx="9" fill="#e94560" opacity="0.3" />
+        </g>
+      </g>
+
+      <!-- AI agent bubble -->
+      <g transform="translate(85, 195)">
+        <ellipse cx="25" cy="15" rx="25" ry="15" fill="#0a0a0a" stroke="#e94560" stroke-width="2" />
+        <circle cx="20" cy="12" r="4" fill="#e94560" filter="url(#glow4)" />
+        <circle cx="30" cy="12" r="4" fill="#e94560" filter="url(#glow4)" />
+        <path d="M 18 20 Q 25 25 32 20" fill="none" stroke="#e94560" stroke-width="2" stroke-linecap="round" />
+        <!-- Sparkles -->
+        <circle cx="55" cy="5" r="2" fill="#e94560" opacity="0.6" />
+        <circle cx="50" cy="25" r="1.5" fill="#e94560" opacity="0.4" />
+      </g>
+
+      <!-- Connection arrow -->
+      <path d="M 110 190 Q 100 180 100 170" fill="none" stroke="#e94560" stroke-width="1.5" stroke-dasharray="3,2" opacity="0.5" marker-end="url(#arrow4)" />
+    </g>
+
+    <!-- Title -->
+    <text x="280" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="38" fill="#e0e0e0" font-weight="700">Automatizar</text>
+    <text x="280" y="95" font-family="system-ui, -apple-system, sans-serif" font-size="38" fill="#e94560" font-weight="700">WhatsApp con IA</text>
+
+    <!-- Subtitle -->
+    <text x="280" y="140" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#888">
+      Agente IA que responde, gestiona y convierte 24/7
+    </text>
+
+    <!-- Category tag -->
+    <rect x="280" y="165" width="140" height="30" rx="4" fill="#e94560" opacity="0.2" />
+    <text x="350" y="186" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560" text-anchor="middle" font-weight="600">AGENTES IA</text>
+
+    <!-- Highlight bullets -->
+    <g transform="translate(280, 220)">
+      <circle cx="0" cy="0" r="3" fill="#e94560" />
+      <text x="15" y="4" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Respuestas automáticas</text>
+
+      <circle cx="0" cy="25" r="3" fill="#e94560" />
+      <text x="15" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Gestión de citas</text>
+
+      <circle cx="0" cy="50" r="3" fill="#e94560" />
+      <text x="15" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Calificación de leads</text>
+    </g>
+  </g>
+
+  <!-- Bottom decoration -->
+  <line x1="0" y1="600" x2="1200" y2="600" stroke="#1a1a1a" stroke-width="1" />
+  <rect x="0" y="620" width="1200" height="10" fill="#0a0a0a" />
+  <circle cx="1150" cy="580" r="4" fill="#e94560" opacity="0.6" />
+  <circle cx="1165" cy="580" r="3" fill="#e94560" opacity="0.4" />
+  <circle cx="1178" cy="580" r="2" fill="#e94560" opacity="0.3" />
+</svg>

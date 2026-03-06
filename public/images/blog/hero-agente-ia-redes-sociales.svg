@@ -1,0 +1,95 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="subtleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#e94560;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050505" />
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.3" />
+
+  <!-- Accent left bar -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#accentGradient)" />
+
+  <!-- Decorative tech elements -->
+  <!-- Top right corner accent -->
+  <path d="M 1200 0 L 1000 0 L 1200 200 Z" fill="#e94560" opacity="0.1" />
+  <circle cx="1120" cy="80" r="3" fill="#e94560" opacity="0.5" />
+  <circle cx="1140" cy="60" r="2" fill="#e94560" opacity="0.4" />
+  <circle cx="1100" cy="100" r="1.5" fill="#e94560" opacity="0.3" />
+
+  <!-- Bottom decorative line -->
+  <line x1="0" y1="600" x2="1200" y2="600" stroke="#1a1a1a" stroke-width="1" />
+  <rect x="0" y="620" width="1200" height="10" fill="#0a0a0a" />
+
+  <!-- Content area -->
+  <g transform="translate(80, 180)">
+    <!-- Social media icons illustration -->
+    <g transform="translate(10, 10)">
+      <!-- Instagram icon -->
+      <rect x="10" y="10" width="50" height="50" rx="12" fill="#0a0a0a" stroke="#e94560" stroke-width="2"/>
+      <circle cx="35" cy="35" r="12" fill="none" stroke="#e94560" stroke-width="2"/>
+      <circle cx="48" cy="22" r="4" fill="#e94560"/>
+
+      <!-- LinkedIn icon -->
+      <rect x="10" y="75" width="50" height="50" rx="12" fill="#0a0a0a" stroke="#e94560" stroke-width="2"/>
+      <text x="35" y="108" font-family="system-ui, sans-serif" font-size="28" fill="#e94560" text-anchor="middle" font-weight="bold">in</text>
+
+      <!-- X icon -->
+      <rect x="10" y="140" width="50" height="50" rx="12" fill="#0a0a0a" stroke="#e94560" stroke-width="2"/>
+      <path d="M 20 155 L 45 165 L 20 175 M 50 155 L 25 165 L 50 175" stroke="#e94560" stroke-width="2" fill="none"/>
+
+      <!-- Central AI Agent icon -->
+      <circle cx="135" cy="100" r="45" fill="url(#accentGradient)" opacity="0.2"/>
+      <circle cx="135" cy="100" r="35" fill="#0a0a0a" stroke="#e94560" stroke-width="2"/>
+      <circle cx="135" cy="95" r="10" fill="#e94560"/>
+      <rect x="120" y="115" width="30" height="8" rx="2" fill="#e94560"/>
+
+      <!-- Connection arrows -->
+      <path d="M 60 35 Q 90 35 90 70" stroke="#e94560" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+      <path d="M 60 100 Q 90 100 90 85" stroke="#e94560" stroke-width="2" fill="none"/>
+      <path d="M 60 165 Q 90 165 90 130" stroke="#e94560" stroke-width="2" fill="none"/>
+
+      <!-- Auto-publish arrows -->
+      <path d="M 180 70 L 180 130" stroke="#e94560" stroke-width="2" fill="none" opacity="0.6"/>
+      <polygon points="180,135 175,125 185,125" fill="#e94560" opacity="0.6"/>
+
+      <!-- Metrics indicators -->
+      <rect x="170" y="30" width="40" height="20" rx="4" fill="#e94560" opacity="0.3"/>
+      <text x="190" y="44" font-family="system-ui, sans-serif" font-size="10" fill="#e94560" text-anchor="middle">+850%</text>
+
+      <rect x="170" y="150" width="40" height="20" rx="4" fill="#e94560" opacity="0.3"/>
+      <text x="190" y="164" font-family="system-ui, sans-serif" font-size="10" fill="#e94560" text-anchor="middle">2.4K</text>
+    </g>
+
+    <!-- Title -->
+    <text x="280" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#e0e0e0" font-weight="600">Agente IA Redes Sociales</text>
+
+    <!-- Subtitle -->
+    <text x="280" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#e94560" font-weight="500">Gestiona Todo Automáticamente</text>
+
+    <!-- Description -->
+    <text x="280" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Postea, analiza y crece sin levantar un dedo</text>
+
+    <!-- Category tag -->
+    <rect x="280" y="115" width="140" height="28" rx="4" fill="#e94560" opacity="0.2" />
+    <text x="350" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560" text-anchor="middle" font-weight="500">AUTOMATIZACIÓN</text>
+  </g>
+
+  <!-- Bottom right accent dots -->
+  <circle cx="1150" cy="580" r="4" fill="#e94560" opacity="0.6" />
+  <circle cx="1165" cy="580" r="3" fill="#e94560" opacity="0.4" />
+  <circle cx="1178" cy="580" r="2" fill="#e94560" opacity="0.3" />
+</svg>

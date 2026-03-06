@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400" fill="none">
+<rect width="800" height="400" fill="#080808"/>
+<rect x="20" y="20" width="760" height="360" rx="16" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<!-- Title -->
+<text x="400" y="60" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="18" font-weight="700">Curso online vs Comunidad de pago</text>
+
+<!-- Curso column -->
+<rect x="50" y="85" width="330" height="270" rx="12" fill="#111" stroke="#333"/>
+<text x="215" y="115" text-anchor="middle" fill="#888" font-family="system-ui" font-size="16" font-weight="700">CURSO</text>
+
+<text x="70" y="150" fill="#555" font-family="system-ui" font-size="13">Ingresos</text>
+<text x="360" y="150" text-anchor="end" fill="#888" font-family="system-ui" font-size="13">Pago unico</text>
+
+<text x="70" y="180" fill="#555" font-family="system-ui" font-size="13">Contenido</text>
+<text x="360" y="180" text-anchor="end" fill="#888" font-family="system-ui" font-size="13">Se queda obsoleto</text>
+
+<text x="70" y="210" fill="#555" font-family="system-ui" font-size="13">Soporte</text>
+<text x="360" y="210" text-anchor="end" fill="#888" font-family="system-ui" font-size="13">Limitado o nulo</text>
+
+<text x="70" y="240" fill="#555" font-family="system-ui" font-size="13">Comunidad</text>
+<text x="360" y="240" text-anchor="end" fill="#888" font-family="system-ui" font-size="13">No incluida</text>
+
+<text x="70" y="270" fill="#555" font-family="system-ui" font-size="13">Retencion</text>
+<text x="360" y="270" text-anchor="end" fill="#888" font-family="system-ui" font-size="13">0% (compra unica)</text>
+
+<text x="215" y="330" text-anchor="middle" fill="#888" font-family="system-ui" font-size="22" font-weight="700">200-500 EUR</text>
+<text x="215" y="348" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">una vez</text>
+
+<!-- Comunidad column -->
+<rect x="420" y="85" width="330" height="270" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="585" y="115" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="700">COMUNIDAD</text>
+
+<text x="440" y="150" fill="#555" font-family="system-ui" font-size="13">Ingresos</text>
+<text x="730" y="150" text-anchor="end" fill="#fff" font-family="system-ui" font-size="13">Recurrentes/mes</text>
+
+<text x="440" y="180" fill="#555" font-family="system-ui" font-size="13">Contenido</text>
+<text x="730" y="180" text-anchor="end" fill="#fff" font-family="system-ui" font-size="13">Siempre actualizado</text>
+
+<text x="440" y="210" fill="#555" font-family="system-ui" font-size="13">Soporte</text>
+<text x="730" y="210" text-anchor="end" fill="#fff" font-family="system-ui" font-size="13">Directo + comunidad</text>
+
+<text x="440" y="240" fill="#555" font-family="system-ui" font-size="13">Comunidad</text>
+<text x="730" y="240" text-anchor="end" fill="#fff" font-family="system-ui" font-size="13">Core del producto</text>
+
+<text x="440" y="270" fill="#555" font-family="system-ui" font-size="13">Retencion</text>
+<text x="730" y="270" text-anchor="end" fill="#fff" font-family="system-ui" font-size="13">85%+ a 6 meses</text>
+
+<text x="585" y="330" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="22" font-weight="700">29 EUR/mes</text>
+<text x="585" y="348" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">x 100 miembros = 2.900 EUR/mes</text>
+</svg>

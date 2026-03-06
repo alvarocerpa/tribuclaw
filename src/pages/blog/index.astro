@@ -6,7 +6,8 @@ import FormattedDate from '../../components/FormattedDate.astro';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, WHOP_URL } from '../../consts';
 
-const posts = (await getCollection('blog')).sort(
+const now = new Date();
+const posts = (await getCollection('blog')).filter(p => new Date(p.data.pubDate) <= now).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
@@ -21,6 +22,7 @@ const heroImages: Record<string, string> = {
 	'instalar-openclaw-en-vps-paso-a-paso': '/images/blog/hero-instalar-openclaw-vps.svg',
 	'agente-ia-personal-vs-chatgpt-diferencias': '/images/blog/hero-agente-ia-personal-vs-chatgpt-diferencias.svg',
 	'herramientas-ia-para-emprendedores-2026': '/images/blog/hero-herramientas-ia-para-emprendedores-2026.svg',
+	'agente-ia-que-gestiona-tu-whatsapp': '/images/blog/hero-agente-ia-que-gestiona-tu-whatsapp.svg',
 };
 
 const featured = posts[0];
@@ -37,16 +39,32 @@ const rest = posts.slice(1);
 		<style>
 			.blog-hero {
 				text-align: center;
-				padding: 3rem 1rem 2rem;
+				padding: 5rem 1rem 3rem;
 				max-width: 700px;
 				margin: 0 auto;
+				position: relative;
 			}
+			.blog-hero::before {
+				content: '';
+				position: absolute;
+				top: -120px;
+				left: 50%;
+				transform: translateX(-50%);
+				width: 800px;
+				height: 500px;
+				background: radial-gradient(ellipse at center, rgba(233,69,96,0.1) 0%, transparent 65%);
+				pointer-events: none;
+				z-index: 0;
+			}
+			.blog-hero > * { position: relative; z-index: 1; }
 			.blog-hero h1 {
-				font-size: 2.5rem;
-				margin-bottom: 0.5rem;
+				font-size: clamp(2rem, 5vw, 3rem);
+				font-weight: 900;
+				letter-spacing: -0.03em;
+				margin-bottom: 0.75rem;
 			}
 			.blog-hero p {
-				color: #888;
+				color: #8b949e;
 				font-size: 1.05rem;
 			}
 
@@ -60,16 +78,16 @@ const rest = posts.slice(1);
 				display: grid;
 				grid-template-columns: 1fr 1fr;
 				gap: 0;
-				border: 1px solid #1a1a1a;
+				border: 1px solid rgba(255,255,255,0.06);
 				border-radius: 16px;
 				overflow: hidden;
-				background: #0a0a0a;
+				background: rgba(255,255,255,0.02);
 				transition: border-color 0.3s;
 			}
 			.featured-card:hover { border-color: rgba(233,69,96,0.3); }
 			.featured-card a { text-decoration: none; color: inherit; display: contents; }
 			.featured-img {
-				background: #111;
+				background: #161b22;
 				display: flex;
 				align-items: center;
 				justify-content: center;
@@ -107,13 +125,13 @@ const rest = posts.slice(1);
 			}
 			.featured-card a:hover .featured-body h2 { color: #e94560; }
 			.featured-body .excerpt {
-				color: #888;
+				color: #8b949e;
 				font-size: 0.95rem;
 				line-height: 1.6;
 				margin-bottom: 1rem;
 			}
 			.featured-body .meta {
-				color: #555;
+				color: #484f58;
 				font-size: 0.85rem;
 			}
 
@@ -127,7 +145,7 @@ const rest = posts.slice(1);
 				font-size: 1.5rem;
 				margin-bottom: 1.5rem;
 				padding-bottom: 0.75rem;
-				border-bottom: 1px solid #1a1a1a;
+				border-bottom: 1px solid rgba(255,255,255,0.06);
 			}
 			.posts-grid {
 				display: grid;
@@ -135,15 +153,16 @@ const rest = posts.slice(1);
 				gap: 1.5rem;
 			}
 			.post-card {
-				border: 1px solid #1a1a1a;
+				border: 1px solid rgba(255,255,255,0.06);
 				border-radius: 14px;
 				overflow: hidden;
-				background: #0a0a0a;
+				background: rgba(255,255,255,0.02);
 				transition: border-color 0.3s, transform 0.2s;
 			}
 			.post-card:hover {
 				border-color: rgba(233,69,96,0.3);
 				transform: translateY(-3px);
+				box-shadow: 0 8px 30px rgba(233,69,96,0.08);
 			}
 			.post-card a {
 				text-decoration: none;
@@ -154,9 +173,9 @@ const rest = posts.slice(1);
 				width: 100%;
 				height: 180px;
 				aspect-ratio: 16/9;
-				background: #111;
+				background: #161b22;
 				overflow: hidden;
-				border-bottom: 1px solid #1a1a1a;
+				border-bottom: 1px solid rgba(255,255,255,0.06);
 			}
 			.post-card-img img {
 				width: 100%;
@@ -168,7 +187,7 @@ const rest = posts.slice(1);
 			}
 			.post-card .meta {
 				font-size: 0.8rem;
-				color: #555;
+				color: #484f58;
 				margin-bottom: 0.4rem;
 			}
 			.post-card .tags {
@@ -178,8 +197,8 @@ const rest = posts.slice(1);
 				margin-bottom: 0.6rem;
 			}
 			.post-card .tag {
-				background: #141414;
-				color: #888;
+				background: rgba(255,255,255,0.04);
+				color: #8b949e;
 				padding: 0.2rem 0.6rem;
 				border-radius: 3px;
 				font-size: 0.7rem;
@@ -193,7 +212,7 @@ const rest = posts.slice(1);
 			}
 			.post-card a:hover h3 { color: #e94560; }
 			.post-card .excerpt {
-				color: #777;
+				color: #8b949e;
 				font-size: 0.85rem;
 				line-height: 1.5;
 				display: -webkit-box;
@@ -224,7 +243,7 @@ const rest = posts.slice(1);
 				margin-bottom: 0.3rem;
 			}
 			.cta-banner-text p {
-				color: #888;
+				color: #8b949e;
 				margin: 0;
 			}
 			.cta-banner a {
@@ -235,18 +254,22 @@ const rest = posts.slice(1);
 				font-weight: 700;
 				text-decoration: none;
 				white-space: nowrap;
-				transition: background 0.2s;
-			}
-			.cta-banner a:hover {
-				background: #c23152;
-				text-decoration: none;
-			}
-			.cta-banner a {
+				transition: all 0.2s;
+				box-shadow: 0 4px 20px rgba(233,69,96,0.4);
+				animation: ctaPulse 2s ease-in-out infinite;
 				min-height: 44px;
 				min-width: 44px;
 				display: inline-flex;
 				align-items: center;
 				justify-content: center;
+			}
+			.cta-banner a:hover {
+				background: #c23152;
+				text-decoration: none;
+			}
+			@keyframes ctaPulse {
+				0%, 100% { box-shadow: 0 4px 20px rgba(233,69,96,0.4); }
+				50% { box-shadow: 0 6px 30px rgba(233,69,96,0.65); }
 			}
 
 			@media (max-width: 720px) {
@@ -268,10 +291,11 @@ const rest = posts.slice(1);
 			}
 		</style>
 	</head>
-	<body>
+	<body class="dot-bg">
 		<Header />
 		<main id="main-content">
 			<section class="blog-hero">
+				<span class="badge-pill">📝 Blog TribuClaw</span>
 				<h1>Blog</h1>
 				<p>Guías, tutoriales y estrategias sobre agentes IA personales, automatización y emprendimiento con IA.</p>
 			</section>
@@ -279,7 +303,7 @@ const rest = posts.slice(1);
 			<!-- Featured post -->
 			{featured && (
 				<section class="featured">
-					<div class="featured-card">
+					<div class="featured-card reveal">
 						<a href={`/blog/${featured.id}/`}>
 							<div class="featured-img">
 								<img src={heroImages[featured.id] || featured.data.heroImage || '/images/og-default.jpg'} alt={featured.data.title} width="600" height="338" fetchpriority="high" />
@@ -311,7 +335,7 @@ const rest = posts.slice(1);
 				<h2>Todos los artículos</h2>
 				<div class="posts-grid">
 					{rest.map((post) => (
-						<div class="post-card">
+						<div class="post-card reveal">
 							<a href={`/blog/${post.id}/`}>
 								<div class="post-card-img">
 									<img src={heroImages[post.id] || post.data.heroImage || '/images/og-default.jpg'} alt={post.data.title} loading="lazy" decoding="async" width="300" height="169" />
@@ -333,5 +357,17 @@ const rest = posts.slice(1);
 			</section>
 		</main>
 		<Footer />
+		<script>
+			const revealEls = document.querySelectorAll('.reveal');
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.1 });
+			revealEls.forEach(el => observer.observe(el));
+		</script>
 	</body>
 </html>

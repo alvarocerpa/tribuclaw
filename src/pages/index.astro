@@ -6,7 +6,8 @@ import { getCollection } from 'astro:content';
 import FormattedDate from '../components/FormattedDate.astro';
 import { SITE_DESCRIPTION, SITE_TITLE, WHOP_URL } from '../consts';
 
-const posts = (await getCollection('blog')).sort(
+const now = new Date();
+const posts = (await getCollection('blog')).filter(p => new Date(p.data.pubDate) <= now).sort(
 	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
 );
 
@@ -21,6 +22,7 @@ const heroImages = {
 	'instalar-openclaw-en-vps-paso-a-paso': '/images/blog/hero-instalar-openclaw-vps.svg',
 	'agente-ia-personal-vs-chatgpt-diferencias': '/images/blog/hero-agente-ia-personal-vs-chatgpt-diferencias.svg',
 	'herramientas-ia-para-emprendedores-2026': '/images/blog/hero-herramientas-ia-para-emprendedores-2026.svg',
+	'agente-ia-que-gestiona-tu-whatsapp': '/images/blog/hero-agente-ia-que-gestiona-tu-whatsapp.svg',
 } as Record<string, string>;
 ---
 
@@ -77,7 +79,7 @@ const heroImages = {
 			}
 			.hero .subtitle {
 				font-size: 1.2rem;
-				color: #999;
+				color: #8b949e;
 				margin-bottom: 2.5rem;
 				line-height: 1.6;
 				max-width: 650px;
@@ -94,20 +96,82 @@ const heroImages = {
 				padding: 0 1rem;
 				box-sizing: border-box;
 			}
+			/* ─── CTA WRAP (spinning border) ─── */
+			.cta-wrap {
+				background: #0d1117;
+				border: 1px solid rgba(255,255,255,0.1);
+				border-radius: 14px;
+				padding: 4px;
+				display: inline-flex;
+				position: relative;
+				overflow: hidden;
+			}
+			.cta-wrap::before {
+				content: '';
+				position: absolute;
+				top: 50%; left: 50%;
+				translate: -50% -50%;
+				width: max(200%, 200vh);
+				height: max(200%, 200vh);
+				background: conic-gradient(transparent 0deg, transparent 280deg, #e94560 330deg, #ff6b6b 360deg);
+				animation: ctaBorderSpin 3s linear infinite;
+				z-index: 0;
+			}
+			.cta-wrap::after {
+				content: '';
+				position: absolute;
+				inset: 2px;
+				background: #0d1117;
+				border-radius: 12px;
+				z-index: 0;
+			}
+			.cta-wrap > * { position: relative; z-index: 1; }
+			@keyframes ctaBorderSpin { 100% { rotate: 360deg; } }
+
 			.btn-primary {
+				display: inline-flex;
+				flex-direction: column;
+				align-items: center;
+				gap: 0.2rem;
 				background: #e94560;
 				color: white;
 				padding: 0.9rem 2.2rem;
 				border-radius: 10px;
+				border-top: 1px solid rgba(255,255,255,0.2);
 				text-decoration: none;
-				font-weight: 700;
+				font-weight: 800;
 				font-size: 1.05rem;
-				transition: background 0.2s;
-				box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+				letter-spacing: 0.01em;
+				position: relative;
+				overflow: hidden;
+				cursor: pointer;
+				transition: transform 0.2s ease-out;
+				animation: ctaPulse 2s ease-in-out infinite;
+				white-space: nowrap;
 			}
 			.btn-primary:hover {
-				background: #d63851;
+				transform: translateY(-2px);
 				text-decoration: none;
+			}
+			@keyframes ctaPulse {
+				0%, 100% { box-shadow: 0 4px 20px rgba(233,69,96,0.5), 0 8px 40px rgba(233,69,96,0.2); }
+				50% { box-shadow: 0 6px 30px rgba(233,69,96,0.7), 0 12px 60px rgba(233,69,96,0.3); }
+			}
+			.btn-primary::before {
+				content: '';
+				position: absolute;
+				bottom: -40%; left: 50%;
+				width: 120%; height: 120%;
+				background: radial-gradient(#ff6b6b, rgba(255,107,107,0.5) 30%, transparent 60%);
+				filter: blur(10px);
+				animation: ctaBreathe 2.5s ease-in-out infinite;
+				pointer-events: none;
+				z-index: -1;
+				transform: translateX(-50%);
+			}
+			@keyframes ctaBreathe {
+				0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.7); }
+				50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
 			}
 			.btn-secondary {
 				border: 1.5px solid #333;
@@ -132,8 +196,8 @@ const heroImages = {
 				gap: 2rem;
 				flex-wrap: wrap;
 				padding: 2rem 1rem;
-				border-top: 1px solid #1a1a1a;
-				border-bottom: 1px solid #1a1a1a;
+				border-top: 1px solid rgba(255,255,255,0.06);
+				border-bottom: 1px solid rgba(255,255,255,0.06);
 				max-width: 800px;
 				margin: 0 auto;
 			}
@@ -150,7 +214,7 @@ const heroImages = {
 			}
 			.stat-label {
 				font-size: 0.8rem;
-				color: #666;
+				color: #484f58;
 				margin-top: 0.2rem;
 			}
 
@@ -166,7 +230,7 @@ const heroImages = {
 				margin-bottom: 0.5rem;
 			}
 			.section-title p {
-				color: #888;
+				color: #8b949e;
 				font-size: 1.05rem;
 			}
 			.features {
@@ -180,8 +244,8 @@ const heroImages = {
 			.feature {
 				padding: 1.75rem;
 				border-radius: 14px;
-				border: 1px solid #1a1a1a;
-				background: #0a0a0a;
+				border: 1px solid rgba(255,255,255,0.06);
+				background: rgba(255,255,255,0.02);
 				transition: border-color 0.2s;
 			}
 			.feature:hover {
@@ -197,7 +261,7 @@ const heroImages = {
 				margin-bottom: 0.5rem;
 			}
 			.feature p {
-				color: #888;
+				color: #8b949e;
 				font-size: 0.92rem;
 				line-height: 1.6;
 				margin: 0;
@@ -215,10 +279,10 @@ const heroImages = {
 				gap: 1.5rem;
 			}
 			.post-card {
-				border: 1px solid #1a1a1a;
+				border: 1px solid rgba(255,255,255,0.06);
 				border-radius: 14px;
 				overflow: hidden;
-				background: #0a0a0a;
+				background: rgba(255,255,255,0.02);
 				transition: border-color 0.2s;
 			}
 			.post-card:hover {
@@ -233,11 +297,11 @@ const heroImages = {
 				width: 100%;
 				height: 180px;
 				aspect-ratio: 16/9;
-				background: #111;
+				background: #161b22;
 				display: flex;
 				align-items: center;
 				justify-content: center;
-				border-bottom: 1px solid #1a1a1a;
+				border-bottom: 1px solid rgba(255,255,255,0.06);
 				overflow: hidden;
 			}
 			.post-card-img img {
@@ -250,7 +314,7 @@ const heroImages = {
 			}
 			.post-card .meta {
 				font-size: 0.8rem;
-				color: #555;
+				color: #484f58;
 				margin-bottom: 0.4rem;
 			}
 			.post-card h3 {
@@ -261,7 +325,7 @@ const heroImages = {
 			}
 			.post-card a:hover h3 { color: #e94560; }
 			.post-card .excerpt {
-				color: #777;
+				color: #8b949e;
 				font-size: 0.85rem;
 				line-height: 1.5;
 				display: -webkit-box;
@@ -300,7 +364,7 @@ const heroImages = {
 				margin-bottom: 0.75rem;
 			}
 			.final-cta p {
-				color: #888;
+				color: #8b949e;
 				font-size: 1.1rem;
 				margin-bottom: 2rem;
 			}
@@ -311,7 +375,8 @@ const heroImages = {
 				.hero .subtitle { font-size: 1rem; margin-bottom: 2rem; padding: 0 0.25rem; }
 				.hero-badge { font-size: 0.72rem; padding: 0.3rem 0.8rem; display: inline-flex; justify-content: center; }
 				.cta-buttons { flex-direction: column; align-items: center; gap: 0.75rem; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
-				.btn-primary, .btn-secondary { width: 100%; max-width: 320px; text-align: center; padding: 1rem 1.5rem; min-height: 48px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
+				.cta-wrap { width: 100%; max-width: 320px; display: flex; }
+				.btn-primary, .btn-secondary { width: 100%; text-align: center; padding: 1rem 1.5rem; min-height: 48px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
 				.stats { gap: 1.5rem; padding: 1.5rem 0.5rem; }
 				.stat { flex: 1 1 90px; }
 				.stat-number { font-size: 1.5rem; }
@@ -341,15 +406,16 @@ const heroImages = {
 			<!-- Hero -->
 			<section class="hero">
 				<span class="hero-badge">La revolución ya empezó. No te quedes fuera.</span>
-				<h1>La IA ya no es del futuro. <span>Es de quien actúa hoy.</span></h1>
+				<h1>La mayoría usa la IA para preguntar cosas. <span>En TribuClaw la ponemos a trabajar.</span></h1>
 				<p class="subtitle">
-					Mientras la mayoría sigue usando ChatGPT para hacer resúmenes, una nueva generación ya tiene
-					agentes autónomos que trabajan para ellos 24/7. Gestionan su negocio, responden sus mensajes,
-					toman decisiones. Y lo aprendieron aquí.
+					Somos la comunidad donde aprendes a montar agentes reales con OpenClaw, sin código, sin necesitar conocimientos técnicos.
+					Da igual si quieres automatizar tu trabajo, vender servicios o montar algo propio.
+					Aquí te enseñamos a construir tu propio ejército de agentes que trabajan por ti.
 				</p>
 				<div class="cta-buttons">
-					<a href={WHOP_URL} class="btn-primary" target="_blank">Quiero mi agente IA</a>
-					<a href="/blog/" class="btn-secondary">Ver cómo funciona</a>
+					<div class="cta-wrap">
+						<a href={WHOP_URL} class="btn-primary" target="_blank">Quiero mi agente IA</a>
+					</div>
 				</div>
 			</section>
 
@@ -443,7 +509,9 @@ const heroImages = {
 			<section class="final-cta">
 				<h2>La pregunta no es si vas a tener un agente IA. Es cuándo.</h2>
 				<p>Los que empiecen hoy tendrán años de ventaja sobre los que esperen. Tú decides de qué lado quieres estar.</p>
-				<a href={WHOP_URL} class="btn-primary" target="_blank">Entrar a TribuClaw ahora</a>
+				<div class="cta-wrap">
+					<a href={WHOP_URL} class="btn-primary" target="_blank">Entrar a TribuClaw ahora</a>
+				</div>
 			</section>
 		</main>
 		<Footer />

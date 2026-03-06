@@ -2,8 +2,7 @@
 # autopublish-deploy.sh — Build + Deploy a Cloudflare Pages
 # Llamado por autopublish.sh cuando toca publicar
 
-CF_TOKEN="4fZu4AsXIRUwWWuHJjw2bas66OyHOSNO_aC4wuyh"
-CF_ACCOUNT_ID="014162b37ae770253f6e43c0ba038fdb"
+source "$HOME/.openclaw/.env"
 CF_PROJECT="tribuclaw"
 BLOG_DIR="/home/claw1/.openclaw/workspace/tribuclaw-web"
 LOG="/home/claw1/.openclaw/workspace/tribuclaw-web/autopublish-deploy.log"

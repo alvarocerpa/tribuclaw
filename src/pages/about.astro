@@ -19,7 +19,7 @@ import { WHOP_URL } from '../consts';
 			}
 			.about-hero {
 				text-align: center;
-				padding: 4rem 1.5rem 3rem;
+				padding: 5rem 1.5rem 3rem;
 				max-width: 750px;
 				margin: 0 auto;
 				position: relative;
@@ -28,12 +28,12 @@ import { WHOP_URL } from '../consts';
 			.about-hero::before {
 				content: '';
 				position: absolute;
-				top: -100px;
+				top: -150px;
 				left: 50%;
 				transform: translateX(-50%);
-				width: 500px;
-				height: 500px;
-				background: radial-gradient(circle, rgba(233,69,96,0.08) 0%, transparent 70%);
+				width: 900px;
+				height: 600px;
+				background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, transparent 65%);
 				pointer-events: none;
 			}
 			.about-hero > * { position: relative; }
@@ -55,7 +55,7 @@ import { WHOP_URL } from '../consts';
 			.about-hero h1 span { color: #e94560; }
 			.about-hero .lead {
 				font-size: 1.15rem;
-				color: #999;
+				color: #8b949e;
 				line-height: 1.7;
 				animation: fadeUp 0.6s ease-out 0.2s both;
 			}
@@ -73,10 +73,10 @@ import { WHOP_URL } from '../consts';
 				font-size: 1.5rem;
 				margin-bottom: 1rem;
 				padding-bottom: 0.5rem;
-				border-bottom: 1px solid #1a1a1a;
+				border-bottom: 1px solid rgba(255,255,255,0.06);
 			}
 			.about-section p {
-				color: #aaa;
+				color: #8b949e;
 				line-height: 1.75;
 				margin-bottom: 1rem;
 			}
@@ -93,15 +93,15 @@ import { WHOP_URL } from '../consts';
 			}
 			.value-card {
 				padding: 1.5rem;
-				background: #0a0a0a;
-				border: 1px solid #1a1a1a;
+				background: rgba(255,255,255,0.02);
+				border: 1px solid rgba(255,255,255,0.06);
 				border-radius: 12px;
 				transition: border-color 0.3s;
 			}
-			.value-card:hover { border-color: rgba(233,69,96,0.25); }
+			.value-card:hover { border-color: rgba(233,69,96,0.25); box-shadow: 0 8px 30px rgba(233,69,96,0.08); }
 			.value-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
 			.value-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
-			.value-card p { color: #888; font-size: 0.88rem; line-height: 1.5; margin: 0; }
+			.value-card p { color: #8b949e; font-size: 0.88rem; line-height: 1.5; margin: 0; }
 
 			/* Founder */
 			.founder {
@@ -109,8 +109,8 @@ import { WHOP_URL } from '../consts';
 				gap: 1.5rem;
 				align-items: flex-start;
 				padding: 2rem;
-				background: #0a0a0a;
-				border: 1px solid #1a1a1a;
+				background: rgba(255,255,255,0.02);
+				border: 1px solid rgba(255,255,255,0.06);
 				border-radius: 14px;
 				margin: 1.5rem 0;
 			}
@@ -127,7 +127,7 @@ import { WHOP_URL } from '../consts';
 			}
 			.founder-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
 			.founder-info .role { color: #e94560; font-size: 0.85rem; margin-bottom: 0.5rem; }
-			.founder-info p { color: #888; font-size: 0.92rem; line-height: 1.6; margin: 0 0 0.75rem; }
+			.founder-info p { color: #8b949e; font-size: 0.92rem; line-height: 1.6; margin: 0 0 0.75rem; }
 			.founder-info .linkedin-link {
 				display: inline-flex; align-items: center; gap: 0.4rem;
 				color: #0077b5; font-size: 0.85rem; font-weight: 600;
@@ -143,9 +143,11 @@ import { WHOP_URL } from '../consts';
 				margin: 0 auto;
 			}
 			.about-cta h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-			.about-cta p { color: #888; margin-bottom: 1.5rem; }
+			.about-cta p { color: #8b949e; margin-bottom: 1.5rem; }
 			.about-cta a {
-				display: inline-block;
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
 				background: linear-gradient(135deg, #e94560, #d63851);
 				color: white;
 				padding: 0.85rem 2rem;
@@ -153,19 +155,18 @@ import { WHOP_URL } from '../consts';
 				font-weight: 700;
 				text-decoration: none;
 				transition: transform 0.2s, box-shadow 0.2s;
-				box-shadow: 0 4px 15px rgba(233,69,96,0.3);
+				box-shadow: 0 4px 20px rgba(233,69,96,0.4), 0 6px 25px rgba(233,69,96,0.3);
+				animation: ctaPulse 2s ease-in-out infinite;
+				min-height: 44px;
+				min-width: 44px;
 			}
 			.about-cta a:hover {
 				transform: translateY(-2px);
-				box-shadow: 0 6px 25px rgba(233,69,96,0.45);
 				text-decoration: none;
 			}
-			.about-cta a {
-				min-height: 44px;
-				min-width: 44px;
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
+			@keyframes ctaPulse {
+				0%, 100% { box-shadow: 0 4px 20px rgba(233,69,96,0.4), 0 6px 25px rgba(233,69,96,0.3); }
+				50% { box-shadow: 0 6px 30px rgba(233,69,96,0.6), 0 12px 40px rgba(233,69,96,0.25); }
 			}
 
 			@media (max-width: 720px) {
@@ -186,11 +187,12 @@ import { WHOP_URL } from '../consts';
 			}
 		</style>
 	</head>
-	<body>
+	<body class="dot-bg">
 		<Header />
 		<main id="main-content">
 			<section class="about-hero">
 				<img src="/images/logo-icon.png" alt="TribuClaw" class="logo-big" />
+				<span class="badge-pill">🦞 Sobre TribuClaw</span>
 				<h1>Esto es <span>TribuClaw</span></h1>
 				<p class="lead">
 					No somos un curso. No somos otro grupo de Telegram. Somos el lugar donde la gente
@@ -199,7 +201,7 @@ import { WHOP_URL } from '../consts';
 			</section>
 
 			<div class="about-content">
-				<section class="about-section">
+				<section class="about-section reveal">
 					<h2>El mundo está cambiando. La mayoría no se ha dado cuenta.</h2>
 					<p>
 						Hay personas que ya tienen una inteligencia artificial trabajando para ellas.
@@ -219,25 +221,25 @@ import { WHOP_URL } from '../consts';
 					</p>
 				</section>
 
-				<section class="about-section">
+				<section class="about-section reveal">
 					<h2>Qué vas a conseguir aquí</h2>
 					<div class="values">
-						<div class="value-card">
+						<div class="value-card reveal">
 							<span class="icon">🚀</span>
 							<h3>Tu agente IA funcionando</h3>
 							<p>No teoría. Sales de aquí con un agente real, conectado a tu vida y tu negocio, ejecutando tareas por ti.</p>
 						</div>
-						<div class="value-card">
+						<div class="value-card reveal">
 							<span class="icon">🔥</span>
 							<h3>Ventaja de primer jugador</h3>
 							<p>Los que aprenden esto ahora tendrán años de ventaja. Esta oleada no espera a nadie.</p>
 						</div>
-						<div class="value-card">
+						<div class="value-card reveal">
 							<span class="icon">🤝</span>
 							<h3>Gente que piensa como tu</h3>
 							<p>Emprendedores, creadores y visionarios que entienden que la IA no es una moda. Es el nuevo estándar.</p>
 						</div>
-						<div class="value-card">
+						<div class="value-card reveal">
 							<span class="icon">💰</span>
 							<h3>Nuevas formas de generar ingresos</h3>
 							<p>La IA autónoma abre modelos de negocio que hace un año no existían. Aquí aprendes a monetizarlos.</p>
@@ -245,9 +247,9 @@ import { WHOP_URL } from '../consts';
 					</div>
 				</section>
 
-				<section class="about-section">
+				<section class="about-section reveal">
 					<h2>Quién está detrás</h2>
-					<div class="founder">
+					<div class="founder reveal">
 						<div class="founder-avatar">AC</div>
 						<div class="founder-info">
 							<h3>Álvaro Cerpa</h3>
@@ -274,5 +276,17 @@ import { WHOP_URL } from '../consts';
 			</section>
 		</main>
 		<Footer />
+		<script>
+			const revealEls = document.querySelectorAll('.reveal');
+			const observer = new IntersectionObserver(entries => {
+				entries.forEach(entry => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('revealed');
+						observer.unobserve(entry.target);
+					}
+				});
+			}, { threshold: 0.1 });
+			revealEls.forEach(el => observer.observe(el));
+		</script>
 	</body>
 </html>

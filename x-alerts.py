@@ -7,14 +7,23 @@ Monitorea fuentes clave, agrupa todo y manda UN solo mensaje a Álvaro
 con los 3-5 trends más relevantes del día + oportunidad de post.
 """
 
-import json, re, time, hashlib, urllib.request
+import json, re, time, hashlib, urllib.request, os
 from datetime import datetime, timezone, timedelta
 from pathlib import Path
 import xml.etree.ElementTree as ET
 
+# ── Load .env ──────────────────────────────────────────────────────────────
+_env_path = Path.home() / ".openclaw" / ".env"
+if _env_path.exists():
+    for _line in _env_path.read_text().splitlines():
+        _line = _line.strip()
+        if _line and not _line.startswith("#") and "=" in _line:
+            _k, _, _v = _line.partition("=")
+            os.environ.setdefault(_k.strip(), _v.strip())
+
 # ── Config ─────────────────────────────────────────────────────────────────
-KIMO_BOT_TOKEN = "8224398104:AAHItBnzWGMyr9SeEa8g0l4SDOPps0RxLWg"
-KIMO_CHAT_ID   = "153921534"
+KIMO_BOT_TOKEN = os.environ.get("KIMO_BOT_TOKEN", "")
+KIMO_CHAT_ID   = os.environ.get("KIMO_CHAT_ID", "")
 SEEN_FILE      = Path("/tmp/trend-seen.json")
 LOG_FILE       = Path("/tmp/trend-alerts.log")
 

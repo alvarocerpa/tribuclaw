@@ -159,25 +159,14 @@ if [ "$FULL_INSTALL" = true ]; then
   export PATH="$HOME/.npm-global/bin:$PATH"
   npm config set prefix "$HOME/.npm-global" 2>/dev/null || true
 
-  if command -v openclaw &>/dev/null; then
-    warn "OpenClaw ya está instalado: $(openclaw --version 2>/dev/null || echo 'versión desconocida')"
+  # Check if openclaw is installed for THIS user (npm global prefix)
+  OPENCLAW_BIN="$HOME/.npm-global/bin/openclaw"
+  if [ -x "$OPENCLAW_BIN" ]; then
+    warn "OpenClaw ya está instalado para este usuario: $($OPENCLAW_BIN --version 2>/dev/null || echo 'versión desconocida')"
   else
+    info "Instalando OpenClaw para el usuario $(whoami)..."
     npm install -g openclaw 2>&1 | tail -5
     success "OpenClaw instalado"
-  fi
-
-  echo ""
-  info "Instalando Cortex..."
-  CORTEX_DIR="$HOME/.openclaw/workspace/projects/cortex"
-  if [ -d "$CORTEX_DIR" ]; then
-    warn "Cortex ya está instalado"
-  else
-    mkdir -p "$HOME/.openclaw/workspace/projects"
-    if command -v git &>/dev/null; then
-      git clone https://github.com/openclaw/cortex "$CORTEX_DIR" 2>/dev/null || warn "No se pudo clonar Cortex (continuando)"
-    else
-      warn "git no disponible, omitiendo Cortex"
-    fi
   fi
 fi
 

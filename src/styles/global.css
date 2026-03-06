@@ -1,34 +1,20 @@
 :root {
 	--accent: #e94560;
 	--accent-dark: #c23152;
-	--bg: #050505;
-	--bg-secondary: #0a0a0a;
+	--bg: #0d1117;
+	--bg-secondary: #161b22;
 	--text: #e0e0e0;
-	--text-muted: #888;
-	--border: #1a1a1a;
-}
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-regular.woff") format("woff");
-	font-weight: 400;
-	font-style: normal;
-	font-display: swap;
-}
-@font-face {
-	font-family: "Atkinson";
-	src: url("/fonts/atkinson-bold.woff") format("woff");
-	font-weight: 700;
-	font-style: normal;
-	font-display: swap;
+	--text-muted: #8b949e;
+	--border: rgba(255,255,255,0.06);
 }
 html {
 	overflow-x: hidden;
 }
 body {
-	font-family: "Atkinson", sans-serif;
+	font-family: 'Inter', sans-serif;
 	margin: 0;
 	padding: 0;
-	background: var(--bg);
+	background: #0d1117;
 	color: var(--text);
 	font-size: 18px;
 	line-height: 1.7;
@@ -65,14 +51,14 @@ img, svg {
 }
 code {
 	padding: 2px 6px;
-	background: #1a1a1a;
+	background: rgba(255,255,255,0.06);
 	border-radius: 4px;
 	font-size: 0.9em;
 }
 pre {
 	padding: 1.5em;
 	border-radius: 8px;
-	background: #0d0d0d;
+	background: #161b22;
 	border: 1px solid var(--border);
 	overflow-x: auto;
 }
@@ -103,7 +89,7 @@ th, td {
 	white-space: nowrap;
 }
 th {
-	background: #0d0d0d;
+	background: #161b22;
 	color: #fff;
 	font-weight: 700;
 }
@@ -125,4 +111,63 @@ li {
 	clip: rect(1px, 1px, 1px, 1px);
 	clip-path: inset(50%);
 	white-space: nowrap;
+}
+
+/* ─── REVEAL ANIMATIONS ─── */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── DOT GRID BACKGROUND ─── */
+.dot-bg {
+  background-image: radial-gradient(circle, rgba(255,255,255,0.022) 0%, rgba(255,255,255,0.022) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+}
+
+/* ─── SECTION GLOW TOP ─── */
+.glow-top {
+  position: relative;
+  overflow: hidden;
+}
+.glow-top::before {
+  content: '';
+  position: absolute;
+  top: -180px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 900px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(233,69,96,0.12) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-top > * { position: relative; z-index: 1; }
+
+/* ─── SECTION DIVIDER ─── */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(233,69,96,0.25), transparent);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ─── BADGE ─── */
+.badge-pill {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  background: rgba(233,69,96,0.1);
+  color: #e94560;
+  border: 1px solid rgba(233,69,96,0.25);
 }

@@ -1,0 +1,77 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#080808"/>
+  
+  <!-- Container -->
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Title -->
+  <text x="600" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="32" font-weight="700" fill="#fff" text-anchor="middle">CHAT VS ASISTENTE VS AGENTE</text>
+  <text x="600" y="120" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#888" text-anchor="middle">La diferencia que cambia las reglas del juego</text>
+  
+  <!-- ChatGPT Card (Left) -->
+  <rect x="70" y="160" width="330" height="340" rx="12" fill="#0a0a0a" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="70" y="160" width="330" height="50" rx="12" fill="#10a37f"/>
+  <rect x="70" y="198" width="330" height="12" fill="#10a37f"/>
+  <text x="235" y="192" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">ChatGPT</text>
+  
+  <!-- ChatGPT Icon -->
+  <circle cx="235" cy="250" r="35" fill="#0d0d0d" stroke="#10a37f" stroke-width="2"/>
+  <text x="235" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#10a37f" text-anchor="middle">C</text>
+  
+  <text x="235" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888" text-anchor="middle">Chat conversacional</text>
+  
+  <!-- ChatGPT Features -->
+  <text x="95" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Brainstorming rapido</text>
+  <text x="95" y="375" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Explica conceptos</text>
+  <text x="95" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Revision de textos</text>
+  <text x="95" y="425" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560">- Sin memoria permanente</text>
+  <text x="95" y="450" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560">- No se conecta a nada</text>
+  <text x="95" y="475" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#555">Precio: 0-20$/mes</text>
+  
+  <!-- Copilot Card (Center) -->
+  <rect x="435" y="160" width="330" height="340" rx="12" fill="#0a0a0a" stroke="#2a2a2a" stroke-width="1"/>
+  <rect x="435" y="160" width="330" height="50" rx="12" fill="#238636"/>
+  <rect x="435" y="198" width="330" height="12" fill="#238636"/>
+  <text x="600" y="192" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">GitHub Copilot</text>
+  
+  <!-- Copilot Icon -->
+  <circle cx="600" cy="250" r="35" fill="#0d0d0d" stroke="#238636" stroke-width="2"/>
+  <text x="600" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#238636" text-anchor="middle">&lt;/&gt;</text>
+  
+  <text x="600" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888" text-anchor="middle">Asistente de codigo</text>
+  
+  <!-- Copilot Features -->
+  <text x="460" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Autocompletado inteligente</text>
+  <text x="460" y="375" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Genera codigo desde texto</text>
+  <text x="460" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Explicaciones en IDE</text>
+  <text x="460" y="425" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560">- Solo funciona en editor</text>
+  <text x="460" y="450" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560">- No es un agente</text>
+  <text x="460" y="475" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#555">Precio: 0-10$/mes</text>
+  
+  <!-- OpenClaw Card (Right) -->
+  <rect x="800" y="160" width="330" height="340" rx="12" fill="#0a0a0a" stroke="#e94560" stroke-width="2"/>
+  <rect x="800" y="160" width="330" height="50" rx="12" fill="#e94560"/>
+  <rect x="800" y="198" width="330" height="12" fill="#e94560"/>
+  <text x="965" y="192" font-family="system-ui, -apple-system, sans-serif" font-size="20" font-weight="700" fill="#fff" text-anchor="middle">OpenClaw</text>
+  
+  <!-- OpenClaw Icon -->
+  <circle cx="965" cy="250" r="35" fill="#0d0d0d" stroke="#e94560" stroke-width="2"/>
+  <text x="965" y="258" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#e94560" text-anchor="middle">24/7</text>
+  
+  <text x="965" y="310" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#e94560" text-anchor="middle" font-weight="600">Agente autonomo</text>
+  
+  <!-- OpenClaw Features -->
+  <text x="825" y="350" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Trabaja mientras duermes</text>
+  <text x="825" y="375" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Memoria permanente</text>
+  <text x="825" y="400" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Conecta WhatsApp, email...</text>
+  <text x="825" y="425" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Open source + privacidad</text>
+  <text x="825" y="450" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#fff">+ Multi-modelo</text>
+  <text x="825" y="475" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#555">Precio: 5-35$/mes</text>
+  
+  <!-- Article Title -->
+  <text x="600" y="530" font-family="system-ui, -apple-system, sans-serif" font-size="24" font-weight="700" fill="#fff" text-anchor="middle">OpenClaw vs ChatGPT vs Copilot: cual elegir en 2026</text>
+  
+  <!-- Branding -->
+  <text x="600" y="560" font-family="system-ui, -apple-system, sans-serif" font-size="12" fill="#555" text-anchor="middle">tribuclaw.com</text>
+</svg>

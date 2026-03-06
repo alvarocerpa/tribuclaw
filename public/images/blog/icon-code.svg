@@ -1,0 +1,27 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="codeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Terminal window -->
+  <rect x="8" y="10" width="48" height="44" rx="4" fill="none" stroke="url(#codeGrad)" stroke-width="2.5" />
+
+  <!-- Window controls -->
+  <circle cx="16" cy="18" r="3" fill="#e94560" opacity="0.6" />
+  <circle cx="26" cy="18" r="3" fill="#e94560" opacity="0.4" />
+  <circle cx="36" cy="18" r="3" fill="#e94560" opacity="0.2" />
+
+  <!-- Code brackets -->
+  <text x="20" y="38" font-family="monospace" font-size="24" fill="#e94560" font-weight="bold">&lt;/&gt;</text>
+
+  <!-- Command prompt -->
+  <text x="20" y="48" font-family="monospace" font-size="10" fill="#e0e0e0">$</text>
+
+  <!-- Cursor -->
+  <rect x="26" y="44" width="8" height="2" fill="#e94560" opacity="0.8">
+    <animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite" />
+  </rect>
+</svg>

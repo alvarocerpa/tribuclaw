@@ -1,0 +1,40 @@
+.layout-container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+}
+
+.sidebar {
+    position: sticky;
+    top: 2rem;
+    height: calc(100vh - 4rem);
+    overflow-y: auto;
+}
+
+.main-content {
+    overflow-y: auto;
+}
+
+@media (max-width: 1024px) {
+    .layout-container {
+        grid-template-columns: 1fr;
+        padding: 0;
+    }
+    
+    .sidebar {
+        position: static;
+        height: auto;
+        max-height: 300px;
+        order: -1;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 640px) {
+    .sidebar {
+        display: none;
+    }
+}

@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080808"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="40" y="40" width="1120" height="550" rx="16" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Central hub: WhatsApp icon -->
+  <circle cx="600" cy="240" r="70" fill="#1a1a1a" stroke="#25D366" stroke-width="3"/>
+  <path d="M570 220 L640 215 L635 265 L585 270 Z" fill="#25D366"/>
+  <circle cx="600" cy="240" r="50" fill="#25D366"/>
+  <path d="M580 230 L625 228 L623 255 L582 258 Z" fill="#fff"/>
+  
+  <!-- Stats cards around hub -->
+  <!-- Card 1: 24/7 -->
+  <rect x="80" y="120" width="200" height="100" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="180" y="165" text-anchor="middle" fill="#e94560" font-size="28" font-weight="700">24/7</text>
+  <text x="180" y="195" text-anchor="middle" fill="#888" font-size="14">respuesta</text>
+  
+  <!-- Card 2: 120 msgs/day -->
+  <rect x="320" y="80" width="200" height="100" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="420" y="125" text-anchor="middle" fill="#e94560" font-size="28" font-weight="700">120+</text>
+  <text x="420" y="155" text-anchor="middle" fill="#888" font-size="14">mensajes/dia</text>
+  
+  <!-- Card 3: 4h saved -->
+  <rect x="680" y="80" width="200" height="100" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="780" y="125" text-anchor="middle" fill="#e94560" font-size="28" font-weight="700">4h</text>
+  <text x="780" y="155" text-anchor="middle" fill="#888" font-size="14">tiempo recuperado</text>
+  
+  <!-- Card 4: 67% leads -->
+  <rect x="920" y="120" width="200" height="100" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="1020" y="165" text-anchor="middle" fill="#e94560" font-size="28" font-weight="700">67%</text>
+  <text x="1020" y="195" text-anchor="middle" fill="#888" font-size="14">leads qualificados</text>
+  
+  <!-- Connection lines -->
+  <line x1="280" y1="180" x2="520" y2="210" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+  <line x1="520" y1="170" x2="680" y2="140" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+  <line x1="680" y1="130" x2="920" y2="170" stroke="#333" stroke-width="2" stroke-dasharray="8,4"/>
+  
+  <!-- Bottom features row -->
+  <rect x="80" y="380" width="240" height="140" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="200" y="420" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">Calificacion</text>
+  <text x="200" y="450" text-anchor="middle" fill="#888" font-size="14">de leads</text>
+  <text x="200" y="475" text-anchor="middle" fill="#25D366" font-size="24">auto</text>
+  
+  <rect x="360" y="380" width="240" height="140" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="480" y="420" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">Agenda</text>
+  <text x="480" y="450" text-anchor="middle" fill="#888" font-size="14">citas auto</text>
+  <text x="480" y="475" text-anchor="middle" fill="#25D366" font-size="24">instant</text>
+  
+  <rect x="640" y="380" width="240" height="140" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="760" y="420" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">Multiidioma</text>
+  <text x="760" y="450" text-anchor="middle" fill="#888" font-size="14">soporte</text>
+  <text x="760" y="475" text-anchor="middle" fill="#25D366" font-size="24">global</text>
+  
+  <rect x="920" y="380" width="200" height="140" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="1020" y="420" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">Handover</text>
+  <text x="1020" y="450" text-anchor="middle" fill="#888" font-size="14">a humano</text>
+  <text x="1020" y="475" text-anchor="middle" fill="#e94560" font-size="24">smart</text>
+  
+  <!-- Title -->
+  <text x="600" y="560" text-anchor="middle" fill="#fff" font-size="24" font-weight="700">Agente IA que gestiona tu WhatsApp</text>
+  
+  <!-- Branding -->
+  <text x="600" y="590" text-anchor="middle" fill="#555" font-size="12">tribuclaw.com</text>
+</svg>

@@ -1,0 +1,101 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="subtleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#e94560;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050505" />
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.3" />
+
+  <!-- Accent left bar -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#accentGradient)" />
+
+  <!-- Decorative tech elements -->
+  <!-- Top right corner accent -->
+  <path d="M 1200 0 L 1000 0 L 1200 200 Z" fill="#e94560" opacity="0.1" />
+  <circle cx="1120" cy="80" r="3" fill="#e94560" opacity="0.5" />
+  <circle cx="1140" cy="60" r="2" fill="#e94560" opacity="0.4" />
+  <circle cx="1100" cy="100" r="1.5" fill="#e94560" opacity="0.3" />
+
+  <!-- Bottom decorative line -->
+  <line x1="0" y1="600" x2="1200" y2="600" stroke="#1a1a1a" stroke-width="1" />
+  <rect x="0" y="620" width="1200" height="10" fill="#0a0a0a" />
+
+  <!-- Content area -->
+  <g transform="translate(80, 180)">
+    <!-- Sales funnel illustration -->
+    <g transform="translate(10, 10)">
+      <!-- Funnel shape -->
+      <path d="M 20 0 L 180 0 L 150 60 L 120 120 L 100 180" stroke="#e94560" stroke-width="3" fill="none"/>
+      <path d="M 20 0 L 50 60 L 80 120 L 100 180 L 120 120 L 150 60 L 180 0" fill="#0a0a0a" stroke="#e94560" stroke-width="2" opacity="0.8"/>
+
+      <!-- Lead stage -->
+      <circle cx="30" cy="30" r="8" fill="#e94560"/>
+      <text x="30" y="34" font-family="system-ui, sans-serif" font-size="10" fill="#050505" text-anchor="middle" font-weight="bold">L</text>
+      <text x="50" y="34" font-family="system-ui, sans-serif" font-size="11" fill="#888">Leads</text>
+
+      <!-- Contact stage -->
+      <circle cx="70" cy="70" r="8" fill="#e94560" opacity="0.8"/>
+      <text x="70" y="74" font-family="system-ui, sans-serif" font-size="10" fill="#050505" text-anchor="middle" font-weight="bold">C</text>
+      <text x="90" y="74" font-family="system-ui, sans-serif" font-size="11" fill="#888">Contacto</text>
+
+      <!-- Close stage -->
+      <circle cx="100" cy="140" r="8" fill="#e94560" opacity="0.6"/>
+      <text x="100" y="144" font-family="system-ui, sans-serif" font-size="10" fill="#050505" text-anchor="middle" font-weight="bold">V</text>
+      <text x="120" y="144" font-family="system-ui, sans-serif" font-size="11" fill="#888">Venta</text>
+
+      <!-- Auto-flow arrows -->
+      <path d="M 40 45 Q 60 55 65 60" stroke="#e94560" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+      <path d="M 80 85 Q 90 105 95 130" stroke="#e94560" stroke-width="2" fill="none" stroke-dasharray="4,2"/>
+
+      <!-- Money/sales icon -->
+      <g transform="translate(0, 190)">
+        <rect x="20" y="0" width="60" height="40" rx="8" fill="#e94560" opacity="0.2"/>
+        <text x="50" y="26" font-family="system-ui, sans-serif" font-size="20" fill="#e94560" text-anchor="middle">€€€</text>
+      </g>
+
+      <!-- Growth arrow -->
+      <g transform="translate(120, 170)">
+        <path d="M 0 50 L 10 40 L 20 30 L 30 10" stroke="#e94560" stroke-width="3" fill="none"/>
+        <polygon points="30,5 35,15 25,15" fill="#e94560"/>
+        <text x="45" y="30" font-family="system-ui, sans-serif" font-size="12" fill="#e94560" font-weight="bold">+340%</text>
+      </g>
+
+      <!-- Speed indicator -->
+      <circle cx="170" cy="40" r="20" fill="url(#accentGradient)" opacity="0.3"/>
+      <path d="M 170 30 A 10 10 0 0 1 170 40" stroke="#e94560" stroke-width="2" fill="none"/>
+      <text x="170" y="55" font-family="system-ui, sans-serif" font-size="8" fill="#e94560" text-anchor="middle">AUTO</text>
+    </g>
+
+    <!-- Title -->
+    <text x="280" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#e0e0e0" font-weight="600">Automatizar Ventas con IA</text>
+
+    <!-- Subtitle -->
+    <text x="280" y="55" font-family="system-ui, -apple-system, sans-serif" font-size="16" fill="#e94560" font-weight="500">Del Lead al Cierre Sin Work Manual</text>
+
+    <!-- Description -->
+    <text x="280" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Tu pipeline de ventas en piloto automático</text>
+
+    <!-- Category tag -->
+    <rect x="280" y="115" width="120" height="28" rx="4" fill="#e94560" opacity="0.2" />
+    <text x="340" y="134" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560" text-anchor="middle" font-weight="500">VENTAS</text>
+  </g>
+
+  <!-- Bottom right accent dots -->
+  <circle cx="1150" cy="580" r="4" fill="#e94560" opacity="0.6" />
+  <circle cx="1165" cy="580" r="3" fill="#e94560" opacity="0.4" />
+  <circle cx="1178" cy="580" r="2" fill="#e94560" opacity="0.3" />
+</svg>

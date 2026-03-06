@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="accentGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560"/>
+      <stop offset="100%" style="stop-color:#ff6b8a"/>
+    </linearGradient>
+  </defs>
+  
+  <!-- Fondo -->
+  <rect width="1200" height="630" fill="#080808"/>
+  
+  <!-- Contenedor principal -->
+  <rect x="40" y="40" width="1120" height="450" rx="12" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="2"/>
+  
+  <!-- Cerebro central con memoria -->
+  <circle cx="600" cy="220" r="80" fill="#0d0d0d" stroke="url(#accentGrad)" stroke-width="3"/>
+  <text x="600" y="210" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="40" font-weight="700">M</text>
+  <text x="600" y="245" text-anchor="middle" fill="#888" font-family="system-ui" font-size="14">MEMORY</text>
+  
+  <!-- Capas de memoria alrededor -->
+  <!-- Corto plazo -->
+  <rect x="180" y="100" width="180" height="100" rx="8" fill="#0d0d0d" stroke="#333" stroke-width="2"/>
+  <text x="270" y="135" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="600">Corto Plazo</text>
+  <text x="270" y="160" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Sesion actual</text>
+  <text x="270" y="180" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Contexto inmediato</text>
+  
+  <!-- Largo plazo -->
+  <rect x="840" y="100" width="180" height="100" rx="8" fill="#0d0d0d" stroke="#333" stroke-width="2"/>
+  <text x="930" y="135" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="600">Largo Plazo</text>
+  <text x="930" y="160" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">MEMORY.md</text>
+  <text x="930" y="180" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Decisiones, preferencias</text>
+  
+  <!-- Base conocimiento -->
+  <rect x="180" y="320" width="180" height="100" rx="8" fill="#0d0d0d" stroke="#333" stroke-width="2"/>
+  <text x="270" y="355" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="600">Knowledge</text>
+  <text x="270" y="380" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">memory/knowledge/</text>
+  <text x="270" y="400" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Datos estructurados</text>
+  
+  <!-- Embeddings -->
+  <rect x="840" y="320" width="180" height="100" rx="8" fill="#0d0d0d" stroke="url(#accentGrad)" stroke-width="2"/>
+  <text x="930" y="355" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="600">Embeddings</text>
+  <text x="930" y="380" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Busqueda vectorial</text>
+  <text x="930" y="400" text-anchor="middle" fill="#555" font-family="system-ui" font-size="11">Indices semanticos</text>
+  
+  <!-- Conexiones al cerebro -->
+  <line x1="360" y1="150" x2="520" y2="200" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="840" y1="150" x2="680" y2="200" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="360" y1="370" x2="520" y2="240" stroke="#333" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="840" y1="370" x2="680" y2="240" stroke="#e94560" stroke-width="2"/>
+  
+  <!-- Flechas bidireccionales -->
+  <polygon points="515,195 525,200 515,205" fill="#333"/>
+  <polygon points="685,195 675,200 685,205" fill="#333"/>
+  <polygon points="515,235 525,240 515,245" fill="#333"/>
+  <polygon points="685,235 675,240 685,245" fill="#e94560"/>
+  
+  <!-- Titulo del articulo -->
+  <text x="600" y="530" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="24" font-weight="700">Agente IA con Memoria Permanente</text>
+  
+  <!-- Branding -->
+  <text x="600" y="560" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>

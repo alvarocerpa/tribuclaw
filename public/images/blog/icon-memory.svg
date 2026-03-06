@@ -1,0 +1,24 @@
+<svg width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="memGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Brain outline -->
+  <ellipse cx="32" cy="32" rx="24" ry="20" fill="none" stroke="url(#memGrad)" stroke-width="2.5" />
+
+  <!-- Brain folds - main -->
+  <path d="M 12 32 Q 24 15 32 32 Q 40 49 52 32" fill="none" stroke="url(#memGrad)" stroke-width="2" />
+
+  <!-- Brain folds - secondary -->
+  <path d="M 16 36 Q 24 24 32 36 Q 40 48 48 36" fill="none" stroke="url(#memGrad)" stroke-width="1.5" opacity="0.7" />
+
+  <!-- Brain folds - tertiary -->
+  <path d="M 20 40 Q 28 32 32 40 Q 36 48 44 40" fill="none" stroke="url(#memGrad)" stroke-width="1" opacity="0.5" />
+
+  <!-- Connection points -->
+  <circle cx="20" cy="32" r="2" fill="#e94560" />
+  <circle cx="44" cy="32" r="2" fill="#e94560" />
+</svg>

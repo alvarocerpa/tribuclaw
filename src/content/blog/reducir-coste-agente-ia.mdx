@@ -1,0 +1,90 @@
+---
+title: 'Cómo reducir el coste de tu agente IA un 80% sin perder calidad'
+description: 'La mayoría de personas paga mucho más de lo necesario por sus agentes IA. Te cuento las estrategias que uso para mantener el coste en menos de 20€ al mes sin sacrificar rendimiento.'
+pubDate: '2026-02-23'
+author: 'Alvaro Cerpa'
+pillar: 'emprender-con-ia'
+tags: ['costes', 'openclaw', 'optimización', 'modelos ia', 'presupuesto']
+keywords: ['reducir coste agente ia', 'openclaw barato', 'agente ia económico', 'ahorrar ia modelos', 'coste openclaw reducir']
+heroImage: '/images/blog/hero-reducir-coste-agente-ia.svg'
+faq:
+  - q: '¿Cuál es el modelo de IA más barato que vale la pena?'
+    a: 'DeepSeek V3 y Qwen son los más económicos con buena calidad para tareas rutinarias. Claude Haiku es el más barato de Anthropic. Para la mayoría de interacciones diarias, estos modelos funcionan muy bien a una fracción del coste de Claude Sonnet u Opus.'
+  - q: '¿Cómo puedo saber cuánto estoy gastando en tokens?'
+    a: 'OpenRouter tiene un dashboard detallado de uso y coste por modelo. Anthropic y OpenAI también tienen paneles de uso en sus consolas. Lo ideal es revisar el consumo cada semana las primeras dos semanas y ajustar.'
+  - q: '¿Es posible tener un agente IA gratuito?'
+    a: 'Casi. El servidor cuesta 4-8€/mes mínimo. Pero usando modelos con tier gratuito (algunos de Groq o Mistral tienen límites gratuitos generosos), el coste de los modelos puede ser cero o casi cero para uso moderado.'
+  - q: '¿Mezclar modelos complica la configuración?'
+    a: 'No. Con OpenRouter puedes asignar diferentes modelos a diferentes tipos de tareas en OpenClaw con unas pocas líneas de configuración. Una vez configurado, funciona solo sin que tengas que pensar en ello.'
+---
+import CTA from '../../components/CTA.astro';
+
+Cuando empecé con mi agente IA, el primer mes me llegó una factura de casi 60 euros. No había hecho nada especial — simplemente no sabía que había forma más inteligente de usarlo.
+
+Hoy pago entre 15 y 22 euros al mes con un agente que hace exponencialmente más. Te cuento exactamente cómo.
+
+## El error que comete casi todo el mundo
+
+El error más común es usar el mismo modelo de IA para todo. Claude Sonnet o GPT-4o para responder un email rutinario, clasificar una notificación o hacer un resumen de tres líneas.
+
+Eso es como contratar a un arquitecto estrella para pintar una pared. El resultado es el mismo pero el coste es absurdo.
+
+La solución es **usar el modelo justo para cada tipo de tarea**.
+
+## La estrategia de modelos por nivel
+
+Divido las tareas en tres niveles según la complejidad que requieren:
+
+**Nivel 1 — Tareas rutinarias (80% del volumen)**
+Clasificar emails, responder preguntas frecuentes, formatear datos, hacer resúmenes breves.
+
+Modelos: DeepSeek V3, Qwen 2.5, Claude Haiku, GPT-4o Mini.
+Coste: entre 0,10 y 0,30 dólares por millón de tokens.
+
+**Nivel 2 — Tareas de análisis y redacción (15%)**
+Analizar documentos complejos, redactar contenido de calidad, tomar decisiones con contexto amplio.
+
+Modelos: Claude Sonnet, GPT-4o, Mistral Large.
+Coste: entre 1 y 5 dólares por millón de tokens.
+
+**Nivel 3 — Tareas críticas (5%)**
+Decisiones importantes, análisis profundos, redacción de alto impacto.
+
+Modelos: Claude Opus, GPT-4.
+Coste: entre 10 y 20 dólares por millón de tokens.
+
+Usando esta distribución, el coste mensual de modelos cae entre un 70 y un 85% respecto a usar un solo modelo caro para todo.
+
+<CTA text="Monta tu agente optimizado con TribuClaw" subtitle="Aprende a configurar el modelo justo para cada tarea. En español." />
+
+## Configuración práctica en OpenClaw
+
+En OpenClaw, puedes especificar el modelo en las instrucciones o configurarlo por tipo de tarea. La forma más sencilla es mediante OpenRouter: un intermediario que da acceso a docenas de modelos y permite cambiar entre ellos sin tocar tu código.
+
+La configuración que tengo:
+
+- Heartbeats y checks rutinarios: MiniMax M2.5 (casi gratuito)
+- Conversación diaria y tareas normales: DeepSeek V3
+- Redacción de posts y análisis: Claude Sonnet
+- Decisiones críticas o trabajo complejo: Claude Opus (reservado para momentos puntuales)
+
+## Otras formas de reducir el coste
+
+**Controla el contexto.** El coste depende de cuántos tokens procesa el modelo en cada llamada. Un contexto muy largo (historial enorme de conversación) multiplica el coste. OpenClaw tiene opciones para comprimir el contexto sin perder lo esencial.
+
+**Usa caché.** Anthropic y OpenAI tienen precios reducidos para tokens en caché. Las instrucciones del sistema que no cambian entre llamadas se pueden cachear y cuestan hasta un 90% menos.
+
+**Limita el uso innecesario.** Los heartbeats muy frecuentes, las tareas automáticas que corren sin necesidad y las búsquedas en memoria innecesarias acumulan tokens. Revisar los logs de uso ayuda a detectar qué está consumiendo más de lo necesario.
+
+**Compara precios regularmente.** El mercado de modelos evoluciona muy rápido. Un modelo que era caro hace seis meses puede ser hoy la mejor opción calidad-precio. Vale la pena revisar el landscape cada dos o tres meses.
+
+## El resultado de optimizar
+
+Antes de optimizar: 55-65€/mes.
+Después de optimizar: 15-22€/mes.
+
+Mismo agente. Mismas tareas. Mismos resultados. La diferencia está en usar el modelo correcto para cada caso en lugar de uno solo para todo.
+
+La optimización toma una tarde de configuración. El ahorro dura para siempre.
+
+<CTA text="Aprende en TribuClaw" subtitle="La comunidad donde aprendes a tener un agente IA potente y económico." />

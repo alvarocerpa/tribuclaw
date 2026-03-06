@@ -1,0 +1,233 @@
+---
+interface Props {
+  postTitle: string;
+}
+
+const { postTitle }: Props = Astro.props;
+---
+
+<aside class="toc-sidebar">
+  <div class="toc-header">
+    <h3>Índice</h3>
+    <button id="toc-toggle" class="toc-toggle" aria-expanded="false" aria-controls="toc-list">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="3" y1="12" x2="21" y2="12" />
+        <path d="M3 6h18" />
+        <path d="M3 18h18" />
+      </svg>
+    </button>
+  </div>
+  <ul id="toc-list" class="toc-list" hidden>
+  </ul>
+</aside>
+
+<script>
+  // Extract headings from the article and generate TOC
+  function initTOC() {
+    const article = document.querySelector('article');
+    if (!article) return;
+
+    const tocList = document.getElementById('toc-list');
+    const tocToggle = document.getElementById('toc-toggle');
+    if (!tocList || !tocToggle) return;
+
+    // Get all H2 and H3 headings
+    const headings = article.querySelectorAll('h2, h3');
+    if (headings.length === 0) {
+      tocList.parentElement?.classList.add('hidden');
+      return;
+    }
+
+    // Add IDs to headings if they don't have them
+    headings.forEach((heading, index) => {
+      if (!heading.id) {
+        const text = heading.textContent || '';
+        // Create a slug from the heading text
+        const slug = text
+          .toLowerCase()
+          .normalize('NFD')
+          .replace(/[\u0300-\u036f]/g, '') // Remove accents
+          .replace(/[^\w\s-]/g, '') // Remove special characters
+          .replace(/\s+/g, '-') // Replace spaces with hyphens
+          .replace(/-+/g, '-') // Replace multiple hyphens
+          .trim();
+
+        heading.id = `heading-${index}-${slug}`;
+      }
+    });
+
+    // Generate TOC items
+    tocList.innerHTML = '';
+
+    headings.forEach((heading) => {
+      const level = parseInt(heading.tagName.charAt(1));
+      const li = document.createElement('li');
+      li.className = `toc-item toc-level-${level}`;
+
+      const a = document.createElement('a');
+      a.href = `#${heading.id}`;
+      a.textContent = heading.textContent;
+      a.className = 'toc-link';
+
+      a.addEventListener('click', (e) => {
+        e.preventDefault();
+        heading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+
+      li.appendChild(a);
+      tocList.appendChild(li);
+    });
+
+    // Toggle functionality
+    tocToggle.addEventListener('click', () => {
+      const isExpanded = tocToggle.getAttribute('aria-expanded') === 'true';
+      tocToggle.setAttribute('aria-expanded', (!isExpanded).toString());
+      tocList.classList.toggle('hidden');
+    });
+
+    // Highlight active heading on scroll
+    const observerOptions = {
+      rootMargin: '-20% 0px -60% 0px',
+      threshold: 0
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const activeLink = document.querySelector(`.toc-link[href="#${id}"]`);
+          document.querySelectorAll('.toc-link').forEach(link => {
+            link.classList.remove('active');
+          });
+          if (activeLink) {
+            activeLink.classList.add('active');
+          }
+        }
+      });
+    }, observerOptions);
+
+    headings.forEach((heading) => {
+      observer.observe(heading);
+    });
+  }
+
+  // Initialize TOC when DOM is ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initTOC);
+  } else {
+    initTOC();
+  }
+</script>
+
+<style>
+  .toc-sidebar {
+    position: sticky;
+    top: 2rem;
+    max-height: calc(100vh - 4rem);
+    overflow-y: auto;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-left: 2rem;
+    width: 280px;
+    display: none; /* Hidden by default on mobile */
+  }
+
+  .toc-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .toc-header h3 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+  }
+
+  .toc-toggle {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.5rem;
+    color: #484f58;
+    transition: color 0.2s;
+  }
+
+  .toc-toggle:hover {
+    color: #e94560;
+  }
+
+  .toc-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .toc-item {
+    margin-bottom: 0.5rem;
+  }
+
+  .toc-level-3 {
+    margin-left: 1rem;
+    font-size: 0.9rem;
+  }
+
+  .toc-link {
+    display: block;
+    text-decoration: none;
+    color: #8b949e;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+  }
+
+  .toc-link:hover {
+    color: #e94560;
+    background: rgba(233, 69, 96, 0.05);
+  }
+
+  .toc-link.active {
+    color: #e94560;
+    background: rgba(233, 69, 96, 0.1);
+    font-weight: 500;
+  }
+
+  /* Scrollbar */
+  .toc-sidebar::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  .toc-sidebar::-webkit-scrollbar-track {
+    background: rgba(255,255,255,0.02);
+  }
+
+  .toc-sidebar::-webkit-scrollbar-thumb {
+    background: #333;
+    border-radius: 2px;
+  }
+
+  .toc-sidebar::-webkit-scrollbar-thumb:hover {
+    background: #484f58;
+  }
+
+  /* Responsive */
+  @media (min-width: 1025px) {
+    .toc-sidebar {
+      display: block;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .toc-sidebar {
+      display: none;
+    }
+  }
+</style>

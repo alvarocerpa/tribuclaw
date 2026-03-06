@@ -1,0 +1,28 @@
+# Headers para Cloudflare Pages
+# Reducir cache para contenido dinámico y asegurar actualizaciones
+
+/*
+  Cache-Control: public, max-age=3600, s-maxage=86400
+  X-Content-Type-Options: nosniff
+
+/blog/*
+  Cache-Control: public, max-age=1800, s-maxage=3600
+
+/blog/*/index.html
+  Cache-Control: public, max-age=900, s-maxage=1800
+
+# Sitemap y RSS (pueden cachearse más tiempo)
+/sitemap*
+/rss.xml
+  Cache-Control: public, max-age=86400, s-maxage=604800
+
+# Archivos estáticos (imágenes, fuentes, CSS, JS)
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.woff
+*.woff2
+*.css
+*.js
+  Cache-Control: public, max-age=31536000, immutable

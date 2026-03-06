@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 400">
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#080808"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+  </defs>
+  
+  <rect width="800" height="400" fill="url(#bg2)"/>
+  
+  <!-- Flow title -->
+  <text x="400" y="35" text-anchor="middle" fill="#fff" font-size="18" font-weight="700">Como funciona el agente IA</text>
+  
+  <!-- Step 1: Client message -->
+  <rect x="30" y="70" width="160" height="60" rx="8" fill="#1a1a1a" stroke="#25D366" stroke-width="2"/>
+  <text x="110" y="95" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Cliente</text>
+  <text x="110" y="115" text-anchor="middle" fill="#888" font-size="11">envia mensaje</text>
+  
+  <!-- Arrow 1 -->
+  <path d="M190 100 L240 100" stroke="#555" stroke-width="2" fill="none" marker-end="url(#arrow)"/>
+  
+  <!-- Step 2: AI Processing -->
+  <rect x="250" y="70" width="160" height="60" rx="8" fill="#1a1a1a" stroke="#e94560" stroke-width="2"/>
+  <text x="330" y="95" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Agente IA</text>
+  <text x="330" y="115" text-anchor="middle" fill="#888" font-size="11">procesa + contexto</text>
+  
+  <!-- Arrow 2 -->
+  <path d="M410 100 L460 100" stroke="#555" stroke-width="2" fill="none"/>
+  
+  <!-- Decision diamond -->
+  <polygon points="540,70 620,100 540,130 460,100" fill="#1a1a1a" stroke="#e94560" stroke-width="2"/>
+  <text x="540" y="105" text-anchor="middle" fill="#fff" font-size="11">Confianza</text>
+  
+  <!-- High confidence path -->
+  <path d="M620 100 L680 100" stroke="#25D366" stroke-width="2" fill="none"/>
+  <rect x="690" y="70" width="80" height="60" rx="8" fill="#0d0d0d" stroke="#25D366" stroke-width="2"/>
+  <text x="730" y="95" text-anchor="middle" fill="#25D366" font-size="11" font-weight="600">Responde</text>
+  <text x="730" y="115" text-anchor="middle" fill="#888" font-size="10">auto</text>
+  
+  <!-- Low confidence path -->
+  <path d="M540 130 L540 200" stroke="#e94560" stroke-width="2" fill="none"/>
+  <path d="M540 200 L620 200" stroke="#e94560" stroke-width="2" fill="none"/>
+  <rect x="630" y="170" width="140" height="60" rx="8" fill="#0d0d0d" stroke="#e94560" stroke-width="2"/>
+  <text x="700" y="195" text-anchor="middle" fill="#e94560" font-size="11" font-weight="600">Transfiere</text>
+  <text x="700" y="215" text-anchor="middle" fill="#888" font-size="10">a humano</text>
+  
+  <!-- Lead qualification box -->
+  <rect x="30" y="200" width="240" height="120" rx="8" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="150" y="225" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Calificacion de Leads</text>
+  <text x="150" y="250" text-anchor="middle" fill="#888" font-size="10">Score automatico:</text>
+  <text x="150" y="270" text-anchor="middle" fill="#e94560" font-size="11">+Presupuesto</text>
+  <text x="150" y="285" text-anchor="middle" fill="#e94560" font-size="11">+Timeline</text>
+  <text x="150" y="300" text-anchor="middle" fill="#e94560" font-size="11">+Necesidades</text>
+  
+  <!-- Calendar integration -->
+  <rect x="290" y="200" width="200" height="120" rx="8" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="390" y="225" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Integracion Calendario</text>
+  <text x="390" y="250" text-anchor="middle" fill="#888" font-size="10">El cliente ve horarios</text>
+  <text x="390" y="268" text-anchor="middle" fill="#888" font-size="10">disponibles en tiempo</text>
+  <text x="390" y="286" text-anchor="middle" fill="#888" font-size="10">real y agenda</text>
+  <text x="390" y="305" text-anchor="middle" fill="#25D366" font-size="11">sin intervention humana</text>
+  
+  <!-- CRM sync -->
+  <rect x="510" y="280" width="200" height="100" rx="8" fill="#0d0d0d" stroke="#1a1a1a" stroke-width="1"/>
+  <text x="610" y="305" text-anchor="middle" fill="#fff" font-size="12" font-weight="600">Sincronizacion CRM</text>
+  <text x="610" y="330" text-anchor="middle" fill="#888" font-size="10">Datos guardados en</text>
+  <text x="610" y="348" text-anchor="middle" fill="#888" font-size="10">tu CRM automaticamente</text>
+  <text x="610" y="366" text-anchor="middle" fill="#25D366" font-size="11">historial completo</text>
+</svg>

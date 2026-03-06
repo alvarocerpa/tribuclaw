@@ -1,0 +1,56 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accentGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="subtleGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:0" />
+      <stop offset="50%" style="stop-color:#e94560;stop-opacity:0.05" />
+      <stop offset="100%" style="stop-color:#e94560;stop-opacity:0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050505" />
+
+  <!-- Subtle grid pattern -->
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid)" opacity="0.3" />
+
+  <!-- Accent left bar -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#accentGradient)" />
+
+  <!-- Decorative tech elements -->
+  <!-- Top right corner accent -->
+  <path d="M 1200 0 L 1000 0 L 1200 200 Z" fill="#e94560" opacity="0.1" />
+  <circle cx="1120" cy="80" r="3" fill="#e94560" opacity="0.5" />
+  <circle cx="1140" cy="60" r="2" fill="#e94560" opacity="0.4" />
+  <circle cx="1100" cy="100" r="1.5" fill="#e94560" opacity="0.3" />
+
+  <!-- Bottom decorative line -->
+  <line x1="0" y1="600" x2="1200" y2="600" stroke="#1a1a1a" stroke-width="1" />
+  <rect x="0" y="620" width="1200" height="10" fill="#0a0a0a" />
+
+  <!-- Content placeholder area -->
+  <g transform="translate(80, 180)">
+    <!-- Placeholder for icon/illustration -->
+    <rect x="0" y="0" width="200" height="200" rx="16" fill="#0a0a0a" stroke="#1a1a1a" stroke-width="1" />
+    <text x="100" y="105" font-family="system-ui, -apple-system, sans-serif" font-size="24" fill="#888" text-anchor="middle">ICON</text>
+
+    <!-- Title placeholder -->
+    <text x="280" y="20" font-family="system-ui, -apple-system, sans-serif" font-size="28" fill="#e0e0e0" font-weight="600">TÍTULO DEL POST</text>
+    <text x="280" y="60" font-family="system-ui, -apple-system, sans-serif" font-size="18" fill="#888">Subtítulo o descripción breve aquí</text>
+
+    <!-- Category tag -->
+    <rect x="280" y="85" width="120" height="28" rx="4" fill="#e94560" opacity="0.2" />
+    <text x="340" y="104" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560" text-anchor="middle" font-weight="500">CATEGORÍA</text>
+  </g>
+
+  <!-- Bottom right accent dots -->
+  <circle cx="1150" cy="580" r="4" fill="#e94560" opacity="0.6" />
+  <circle cx="1165" cy="580" r="3" fill="#e94560" opacity="0.4" />
+  <circle cx="1178" cy="580" r="2" fill="#e94560" opacity="0.3" />
+</svg>

@@ -1,0 +1,105 @@
+---
+title: 'OpenClaw tutorial en español: configuración completa desde cero'
+description: 'La guía que faltaba en español. Cómo instalar, configurar y personalizar OpenClaw paso a paso para tener tu agente IA funcionando en menos de una hora.'
+pubDate: '2026-02-24'
+author: 'Alvaro Cerpa'
+pillar: 'openclaw'
+tags: ['openclaw', 'tutorial', 'configuración', 'español', 'guía']
+keywords: ['openclaw tutorial español', 'openclaw configurar', 'openclaw guía español', 'instalar openclaw', 'openclaw paso a paso']
+heroImage: '/images/blog/hero-openclaw-tutorial-espanol.svg'
+faq:
+  - q: '¿Cuánto tiempo lleva tener OpenClaw funcionando desde cero?'
+    a: 'Entre 30 minutos y 2 horas dependiendo de tu experiencia con servidores. Con el tutorial paso a paso de TribuClaw y un VPS ya contratado, la instalación base toma menos de 30 minutos. La personalización avanzada lleva más tiempo.'
+  - q: '¿Necesito saber programar para configurar OpenClaw?'
+    a: 'No. Los pasos básicos son copiar y pegar comandos en la terminal, editar un archivo de configuración en texto plano y conectar las APIs que quieras usar. Nada requiere escribir código.'
+  - q: '¿Qué necesito antes de empezar?'
+    a: 'Un servidor VPS con Ubuntu (desde 4€/mes en Hetzner o DigitalOcean), una API key de Anthropic o el modelo que prefieras, y una cuenta de Telegram para comunicarte con el agente. Con eso es suficiente para empezar.'
+  - q: '¿Puedo conectar OpenClaw con WhatsApp?'
+    a: 'Sí. OpenClaw tiene soporte nativo para WhatsApp. Requiere un número de teléfono dedicado y el proceso de vinculación de WhatsApp Web. Hay un tutorial específico en el blog de TribuClaw.'
+---
+import CTA from '../../components/CTA.astro';
+
+Cuando empecé con OpenClaw, el mayor obstáculo no fue la tecnología — fue la documentación. Toda en inglés, dispersa en varios repositorios, sin un camino claro de principio a fin.
+
+Este tutorial es lo que me habría gustado encontrar cuando empecé. En español, ordenado, con cada paso explicado para que no te pierdas en ningún momento.
+
+## Lo que necesitas antes de empezar
+
+Antes de instalar nada, asegúrate de tener:
+
+**Un VPS con Ubuntu 22.04 o superior.** Recomiendo Hetzner (CX22, 3,79€/mes) para empezar. Es el equilibrio perfecto entre precio y rendimiento. DigitalOcean y Contabo también funcionan bien.
+
+**Una API key de un modelo de IA.** Anthropic (Claude) es la mejor opción. Regístrate en console.anthropic.com, añade créditos (5 dólares son suficientes para empezar) y genera tu clave.
+
+**Una cuenta de Telegram.** Es el canal principal para comunicarte con tu agente. Necesitas crear un bot con @BotFather y guardar el token.
+
+**Node.js 20 o superior** en el servidor. Si usas Ubuntu, se instala en dos comandos.
+
+## Instalación paso a paso
+
+### Paso 1: Conectar al servidor
+
+```bash
+ssh root@tu-ip-del-servidor
+```
+
+### Paso 2: Instalar Node.js
+
+```bash
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+### Paso 3: Instalar OpenClaw
+
+```bash
+npm install -g openclaw
+```
+
+### Paso 4: Configuración inicial
+
+```bash
+openclaw configure
+```
+
+Este comando interactivo te pregunta tu API key del modelo de IA, el token del bot de Telegram y otras opciones básicas. Responde las preguntas y OpenClaw se configura solo.
+
+### Paso 5: Arrancar el gateway
+
+```bash
+openclaw gateway start
+```
+
+El gateway es el proceso que mantiene la conexión entre tu agente y tus canales de comunicación. En producción lo conviertes en un servicio del sistema para que arranque automáticamente.
+
+<CTA text="Completa tu instalación con TribuClaw" subtitle="Guías paso a paso, comunidad activa y soporte en español." />
+
+## Personalizar tu agente
+
+La instalación base es funcional, pero el valor real viene de personalizar el agente para que te conozca a ti.
+
+**SOUL.md** — La personalidad de tu agente. Aquí defines cómo habla, qué valores tiene, cómo responde cuando comete errores. Es el documento más importante para que tu agente suene natural.
+
+**USER.md** — Información sobre ti. Nombre, negocio, preferencias, contexto. Cuanto más sepa de ti, mejor te servirá.
+
+**MEMORY.md** — El cerebro permanente. Aquí va el conocimiento destilado que quieres que recuerde siempre: decisiones tomadas, preferencias importantes, proyectos activos.
+
+**HEARTBEAT.md** — Qué hace el agente cuando tú no le estás hablando. Checks automáticos, tareas recurrentes, monitorización.
+
+## Conectar Telegram
+
+Es el paso más directo. Con el token del bot de BotFather ya configurado en el paso anterior, solo tienes que:
+
+1. Buscar tu bot en Telegram
+2. Mandarle `/start`
+3. El agente responde y estáis conectados
+
+A partir de ese momento, todo lo que mandes al bot llega a tu agente. Y todo lo que el agente quiera comunicarte llega a tu Telegram.
+
+## Los primeros días
+
+Las primeras 24-48 horas son de aprendizaje mutuo. El agente procesa las instrucciones que le has dado y empieza a construir su modelo de cómo trabajas. Cuéntale cosas de tu negocio, cuéntale qué tareas quieres que gestione, prueba distintas formas de pedirle cosas.
+
+Cuanto más lo uses al principio, más rápido aprende y mejor funciona.
+
+<CTA text="Únete a TribuClaw" subtitle="La comunidad donde resolvemos dudas de instalación y configuración en español." />
