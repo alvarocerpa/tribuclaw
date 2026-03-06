@@ -168,6 +168,23 @@ if [ "$FULL_INSTALL" = true ]; then
     npm install -g openclaw 2>&1 | tail -5
     success "OpenClaw instalado"
   fi
+
+  echo ""
+  info "Instalando Cortex (memoria diferencial)..."
+  CORTEX_DIR="$HOME/.openclaw/workspace/projects/cortex"
+  if [ -d "$CORTEX_DIR/.git" ]; then
+    warn "Cortex ya está instalado — actualizando..."
+    cd "$CORTEX_DIR" && git pull --ff-only 2>/dev/null || true
+  else
+    mkdir -p "$HOME/.openclaw/workspace/projects"
+    git clone https://github.com/alvarocerpa/openclaw-cortex.git "$CORTEX_DIR" 2>&1 | tail -3
+    success "Cortex descargado"
+  fi
+  # Run Cortex installer (creates venv + deps + DB)
+  if [ -f "$CORTEX_DIR/install.sh" ]; then
+    cd "$CORTEX_DIR" && bash install.sh 2>&1 | tail -5
+    success "Cortex instalado"
+  fi
 fi
 
 # ─────────────────────────────────────────────────
