@@ -18,11 +18,12 @@ while [ $# -gt 0 ]; do
   case "$1" in
     --full) FULL_INSTALL=true ;;
     --user) shift; TARGET_USER="$1" ;;
+    --panel-url) shift; PANEL_URL="$1" ;;
   esac
   shift 2>/dev/null || true
 done
 
-PANEL_URL="https://tribuclaw-saas.vercel.app"
+PANEL_URL="${PANEL_URL:-https://tribuclaw-saas.vercel.app}"
 BRIDGE_PORT=18888
 
 # ─────────────────────────────────────────────────
