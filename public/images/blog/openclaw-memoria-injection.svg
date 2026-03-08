@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 380" fill="none">
+<rect width="800" height="380" fill="#080808"/>
+<rect x="20" y="20" width="760" height="340" rx="16" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<text x="400" y="55" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="15" font-weight="700">CONTEXT INJECTION: INICIO DE SESION</text>
+
+<!-- Step boxes -->
+<rect x="50" y="80" width="130" height="90" rx="10" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="115" y="108" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="22" font-weight="700">1</text>
+<text x="115" y="130" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">WAKE</text>
+<text x="115" y="150" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Sesion nueva</text>
+<text x="115" y="163" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">detectada</text>
+
+<rect x="210" y="80" width="130" height="90" rx="10" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="275" y="108" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="22" font-weight="700">2</text>
+<text x="275" y="130" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">LOAD</text>
+<text x="275" y="150" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">NOW.md + MEMORY.md</text>
+<text x="275" y="163" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">+ dailies recientes</text>
+
+<rect x="370" y="80" width="130" height="90" rx="10" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="435" y="108" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="22" font-weight="700">3</text>
+<text x="435" y="130" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">INJECT</text>
+<text x="435" y="150" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Contexto al modelo</text>
+<text x="435" y="163" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">como system prompt</text>
+
+<rect x="530" y="80" width="130" height="90" rx="10" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="595" y="108" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="22" font-weight="700">4</text>
+<text x="595" y="130" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12" font-weight="600">REFLECT</text>
+<text x="595" y="150" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Analizar huecos</text>
+<text x="595" y="163" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">en la memoria</text>
+
+<rect x="690" y="80" width="70" height="90" rx="10" fill="#111" stroke="#e94560" stroke-width="2"/>
+<text x="725" y="115" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="18" font-weight="700">OK</text>
+<text x="725" y="140" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="10" font-weight="600">READY</text>
+
+<!-- Arrows -->
+<line x1="180" y1="125" x2="210" y2="125" stroke="#555" stroke-width="1.5"/>
+<line x1="340" y1="125" x2="370" y2="125" stroke="#555" stroke-width="1.5"/>
+<line x1="500" y1="125" x2="530" y2="125" stroke="#555" stroke-width="1.5"/>
+<line x1="660" y1="125" x2="690" y2="125" stroke="#555" stroke-width="1.5"/>
+
+<!-- What the agent knows -->
+<rect x="50" y="200" width="700" height="130" rx="12" fill="#111" stroke="#1a1a1a"/>
+<text x="400" y="228" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="13" font-weight="700">RESULTADO: LO QUE EL AGENTE SABE DESDE EL PRIMER MENSAJE</text>
+
+<rect x="70" y="245" width="155" height="65" rx="8" fill="#0d0d0d" stroke="#333"/>
+<text x="147" y="270" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">Quien eres</text>
+<text x="147" y="290" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Preferencias, estilo,</text>
+<text x="147" y="302" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">forma de trabajar</text>
+
+<rect x="240" y="245" width="155" height="65" rx="8" fill="#0d0d0d" stroke="#333"/>
+<text x="317" y="270" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">Que hicisteis</text>
+<text x="317" y="290" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Ultimas sesiones,</text>
+<text x="317" y="302" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">decisiones recientes</text>
+
+<rect x="410" y="245" width="155" height="65" rx="8" fill="#0d0d0d" stroke="#333"/>
+<text x="487" y="270" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">Que toca hoy</text>
+<text x="487" y="290" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Tareas pendientes,</text>
+<text x="487" y="302" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">prioridades activas</text>
+
+<rect x="580" y="245" width="155" height="65" rx="8" fill="#0d0d0d" stroke="#333"/>
+<text x="657" y="270" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">Que evitar</text>
+<text x="657" y="290" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">Errores pasados,</text>
+<text x="657" y="302" text-anchor="middle" fill="#888" font-family="system-ui" font-size="9">lecciones aprendidas</text>
+
+<text x="400" y="355" text-anchor="middle" fill="#555" font-family="system-ui" font-size="10">tribuclaw.com</text>
+</svg>

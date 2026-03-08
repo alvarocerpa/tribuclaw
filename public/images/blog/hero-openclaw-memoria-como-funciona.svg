@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+<rect width="1200" height="630" fill="#080808"/>
+<rect x="40" y="40" width="1120" height="550" rx="20" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<!-- Title area -->
+<text x="600" y="85" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="16" font-weight="700">ARQUITECTURA DE MEMORIA</text>
+
+<!-- Layer 0: Active -->
+<rect x="80" y="105" width="240" height="170" rx="12" fill="#111" stroke="#e94560" stroke-width="2"/>
+<text x="200" y="135" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="700">CAPA 0: ACTIVA</text>
+<text x="200" y="160" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">NOW.md</text>
+<text x="200" y="180" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">MEMORY.md</text>
+<text x="200" y="200" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">AGENTS.md + SOUL.md</text>
+<line x1="100" y1="220" x2="280" y2="220" stroke="#333" stroke-width="1"/>
+<text x="200" y="240" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Inyeccion directa al LLM</text>
+<text x="200" y="260" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">2-5 KB por sesion</text>
+
+<!-- Layer 1: Working -->
+<rect x="350" y="105" width="240" height="170" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="470" y="135" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="700">CAPA 1: TRABAJO</text>
+<text x="470" y="160" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">daily/2026-03-07.md</text>
+<text x="470" y="180" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">daily/2026-03-06.md</text>
+<text x="470" y="200" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">daily/2026-03-05.md</text>
+<line x1="370" y1="220" x2="570" y2="220" stroke="#333" stroke-width="1"/>
+<text x="470" y="240" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Notas diarias automaticas</text>
+<text x="470" y="260" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">24-48h en contexto</text>
+
+<!-- Layer 2: Consolidated -->
+<rect x="620" y="105" width="240" height="170" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="740" y="135" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="700">CAPA 2: CONSOLIDADA</text>
+<text x="740" y="160" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">knowledge/</text>
+<text x="740" y="180" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">decisions/</text>
+<text x="740" y="200" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">lessons/</text>
+<line x1="640" y1="220" x2="840" y2="220" stroke="#333" stroke-width="1"/>
+<text x="740" y="240" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Auto-consolidacion cada 2d</text>
+<text x="740" y="260" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">Conocimiento permanente</text>
+
+<!-- Layer 3: Archival -->
+<rect x="890" y="105" width="240" height="170" rx="12" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<text x="1010" y="135" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="700">CAPA 3: ARCHIVO</text>
+<text x="1010" y="160" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">checkpoints/</text>
+<text x="1010" y="180" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">embeddings/</text>
+<text x="1010" y="200" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="12">cache/</text>
+<line x1="910" y1="220" x2="1110" y2="220" stroke="#333" stroke-width="1"/>
+<text x="1010" y="240" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Snapshots cada 30 min</text>
+<text x="1010" y="260" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="11" font-weight="600">Busqueda semantica</text>
+
+<!-- Arrows between layers -->
+<line x1="320" y1="190" x2="350" y2="190" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+<line x1="590" y1="190" x2="620" y2="190" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+<line x1="860" y1="190" x2="890" y2="190" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrowhead)"/>
+
+<!-- Arrow marker -->
+<defs>
+<marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+<polygon points="0 0, 8 3, 0 6" fill="#e94560"/>
+</marker>
+</defs>
+
+<!-- Flow section -->
+<rect x="80" y="310" width="1040" height="130" rx="12" fill="#111" stroke="#1a1a1a"/>
+<text x="600" y="340" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14" font-weight="700">FLUJO: INICIO DE SESION</text>
+
+<!-- Flow steps -->
+<rect x="110" y="360" width="150" height="55" rx="8" fill="#0d0d0d" stroke="#e94560" stroke-width="1"/>
+<text x="185" y="383" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">1. WAKE</text>
+<text x="185" y="400" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Detectar sesion nueva</text>
+
+<rect x="295" y="360" width="150" height="55" rx="8" fill="#0d0d0d" stroke="#e94560" stroke-width="1"/>
+<text x="370" y="383" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">2. LOAD</text>
+<text x="370" y="400" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Cargar NOW + MEMORY</text>
+
+<rect x="480" y="360" width="150" height="55" rx="8" fill="#0d0d0d" stroke="#e94560" stroke-width="1"/>
+<text x="555" y="383" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">3. INJECT</text>
+<text x="555" y="400" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Inyectar en contexto</text>
+
+<rect x="665" y="360" width="150" height="55" rx="8" fill="#0d0d0d" stroke="#e94560" stroke-width="1"/>
+<text x="740" y="383" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">4. REFLECT</text>
+<text x="740" y="400" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Detectar gaps</text>
+
+<rect x="850" y="360" width="150" height="55" rx="8" fill="#0d0d0d" stroke="#e94560" stroke-width="1"/>
+<text x="925" y="383" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="11" font-weight="600">5. READY</text>
+<text x="925" y="400" text-anchor="middle" fill="#888" font-family="system-ui" font-size="10">Agente operativo</text>
+
+<!-- Flow arrows -->
+<line x1="260" y1="387" x2="295" y2="387" stroke="#555" stroke-width="1" marker-end="url(#arrowSmall)"/>
+<line x1="445" y1="387" x2="480" y2="387" stroke="#555" stroke-width="1" marker-end="url(#arrowSmall)"/>
+<line x1="630" y1="387" x2="665" y2="387" stroke="#555" stroke-width="1" marker-end="url(#arrowSmall)"/>
+<line x1="815" y1="387" x2="850" y2="387" stroke="#555" stroke-width="1" marker-end="url(#arrowSmall)"/>
+
+<defs>
+<marker id="arrowSmall" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+<polygon points="0 0, 6 2.5, 0 5" fill="#555"/>
+</marker>
+</defs>
+
+<!-- Bottom stats -->
+<rect x="80" y="465" width="330" height="60" rx="10" fill="#111" stroke="#1a1a1a"/>
+<text x="245" y="490" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">100% local, 0 dependencias externas</text>
+<text x="245" y="510" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Markdown + embeddings en disco</text>
+
+<rect x="435" y="465" width="330" height="60" rx="10" fill="#111" stroke="#1a1a1a"/>
+<text x="600" y="490" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">Recall en menos de 10ms</text>
+<text x="600" y="510" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Busqueda hibrida: texto + semantica</text>
+
+<rect x="790" y="465" width="330" height="60" rx="10" fill="#111" stroke="#1a1a1a"/>
+<text x="955" y="490" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="13" font-weight="600">Menos de 2MB tras 1 anyo de uso</text>
+<text x="955" y="510" text-anchor="middle" fill="#888" font-family="system-ui" font-size="11">Auto-consolidacion + decay configurable</text>
+
+<!-- Title -->
+<text x="600" y="560" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="22" font-weight="700">OpenClaw memoria: como funciona por dentro</text>
+<text x="600" y="580" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>
