@@ -1,5 +1,5 @@
 #!/bin/bash
-# TribuClaw Bridge Installer v2
+# TribuClaw Bridge Installer v2.1
 # Usage: curl -fsSL https://tribuclaw.com/install-bridge.sh | bash -s -- <setupToken> --user <username> [--full] [--panel-url <url>]
 #
 # --full: installs OpenClaw + Cortex + Bridge (for new servers)
@@ -87,7 +87,7 @@ echo "     ██║   ██╔══██╗██║██╔══██╗
 echo "     ██║   ██║  ██║██║██████╔╝╚██████╔╝╚██████╗███████╗██║  ██║╚███╔███╔╝"
 echo "     ╚═╝   ╚═╝  ╚═╝╚═╝╚═════╝  ╚═════╝  ╚═════╝╚══════╝╚═╝  ╚═╝ ╚══╝╚══╝"
 echo ""
-echo "  Bridge Installer v2"
+echo "  Bridge Installer v2.1"
 if [ "$FULL_INSTALL" = true ]; then
   echo "  Modo: COMPLETO (OpenClaw + Cortex + Bridge)"
 else
@@ -134,6 +134,84 @@ success "Node.js $(node --version)"
 if ! command -v openssl &>/dev/null; then
   error "openssl no encontrado. Instálalo primero."
   exit 1
+fi
+
+# ─────────────────────────────────────────────────
+# Stop existing bridge (PM2, systemd, or raw process)
+# ─────────────────────────────────────────────────
+
+info "Comprobando si hay un bridge existente..."
+
+EXISTING_MANAGER="none"
+
+# Check PM2 first (most common in OpenClaw setups)
+if command -v pm2 &>/dev/null; then
+  PM2_STATUS=$(pm2 jlist 2>/dev/null | node -e "
+    try {
+      const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));
+      const b=d.find(p=>p.name==='$SERVICE_NAME');
+      if(b) console.log(b.pm2_env.status);
+      else console.log('not_found');
+    } catch { console.log('error'); }
+  " 2>/dev/null || echo "error")
+
+  if [ "$PM2_STATUS" != "not_found" ] && [ "$PM2_STATUS" != "error" ]; then
+    info "Bridge detectado en PM2 (status: $PM2_STATUS). Parando..."
+    pm2 delete "$SERVICE_NAME" 2>/dev/null || true
+    sleep 2
+    EXISTING_MANAGER="pm2"
+    success "Bridge PM2 parado y eliminado"
+  fi
+fi
+
+# Check systemd system service
+if sudo -n systemctl status "$SERVICE_NAME" 2>/dev/null | grep -q "Active:"; then
+  info "Bridge detectado como servicio de sistema. Parando..."
+  sudo systemctl stop "$SERVICE_NAME" 2>/dev/null || true
+  sudo systemctl disable "$SERVICE_NAME" 2>/dev/null || true
+  sudo rm -f "/etc/systemd/system/${SERVICE_NAME}.service" 2>/dev/null || true
+  sudo systemctl daemon-reload 2>/dev/null || true
+  [ "$EXISTING_MANAGER" = "none" ] && EXISTING_MANAGER="systemd-system"
+  success "Servicio de sistema parado y eliminado"
+fi
+
+# Check systemd user service
+export XDG_RUNTIME_DIR="/run/user/$(id -u)" 2>/dev/null || true
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus" 2>/dev/null || true
+
+if systemctl --user status "$SERVICE_NAME" 2>/dev/null | grep -q "Active:"; then
+  info "Bridge detectado como servicio de usuario. Parando..."
+  systemctl --user stop "$SERVICE_NAME" 2>/dev/null || true
+  systemctl --user disable "$SERVICE_NAME" 2>/dev/null || true
+  rm -f "$HOME/.config/systemd/user/${SERVICE_NAME}.service" 2>/dev/null || true
+  systemctl --user daemon-reload 2>/dev/null || true
+  [ "$EXISTING_MANAGER" = "none" ] && EXISTING_MANAGER="systemd-user"
+  success "Servicio de usuario parado y eliminado"
+fi
+
+# Kill any remaining process on bridge port
+BRIDGE_PID=$(ss -tlnp 2>/dev/null | grep ":${BRIDGE_PORT} " | grep -oP 'pid=\K[0-9]+' | head -1)
+if [ -n "$BRIDGE_PID" ]; then
+  info "Proceso en puerto $BRIDGE_PORT (PID: $BRIDGE_PID). Parando..."
+  kill "$BRIDGE_PID" 2>/dev/null || true
+  sleep 2
+  # Force kill if still running
+  kill -9 "$BRIDGE_PID" 2>/dev/null || true
+  sleep 1
+  success "Proceso parado"
+fi
+
+# Final check: port must be free
+if ss -tlnp 2>/dev/null | grep -q ":${BRIDGE_PORT} "; then
+  error "No se pudo liberar el puerto $BRIDGE_PORT. Otro proceso lo está usando."
+  error "Ejecuta: ss -tlnp | grep $BRIDGE_PORT  para ver qué lo usa."
+  exit 1
+fi
+
+if [ "$EXISTING_MANAGER" != "none" ]; then
+  success "Bridge anterior eliminado (era: $EXISTING_MANAGER)"
+else
+  info "No se encontró bridge existente"
 fi
 
 # ─────────────────────────────────────────────────
@@ -242,8 +320,18 @@ info "Configurando servicio..."
 NODE_PATH=$(which node)
 BRIDGE_STARTED=false
 
-# Strategy 1: System-level systemd (if we have sudo/root access)
-if command -v sudo &>/dev/null && sudo -n true 2>/dev/null; then
+# Strategy 1: PM2 (preferred — works with OpenClaw gateway)
+if command -v pm2 &>/dev/null; then
+  info "PM2 detectado. Usando PM2 para gestionar el bridge..."
+  cd "$INSTALL_DIR"
+  pm2 start index.js --name "$SERVICE_NAME" --cwd "$INSTALL_DIR" 2>&1 | tail -3
+  pm2 save 2>/dev/null || true
+  BRIDGE_STARTED=true
+  success "Bridge registrado en PM2"
+fi
+
+# Strategy 2: System-level systemd (if we have sudo/root access)
+if [ "$BRIDGE_STARTED" = false ] && command -v sudo &>/dev/null && sudo -n true 2>/dev/null; then
   info "Instalando servicio de sistema..."
 
   sudo tee /etc/systemd/system/${SERVICE_NAME}.service > /dev/null << SVCEOF
@@ -273,11 +361,8 @@ SVCEOF
   success "Servicio de sistema configurado"
 fi
 
-# Strategy 2: Systemd user service
+# Strategy 3: Systemd user service
 if [ "$BRIDGE_STARTED" = false ]; then
-  export XDG_RUNTIME_DIR="/run/user/$(id -u)" 2>/dev/null || true
-  export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus" 2>/dev/null || true
-
   if systemctl --user status 2>/dev/null | grep -q "State:" ; then
     info "Instalando servicio de usuario..."
 
@@ -310,12 +395,9 @@ SVCEOF
   fi
 fi
 
-# Strategy 3: Background process (fallback)
+# Strategy 4: Background process (last resort)
 if [ "$BRIDGE_STARTED" = false ]; then
-  warn "systemd no disponible. Iniciando en background..."
-
-  pkill -f "node.*$INSTALL_DIR/index.js" 2>/dev/null || true
-  sleep 1
+  warn "Ni PM2 ni systemd disponibles. Iniciando en background..."
 
   set -a
   . "$INSTALL_DIR/.env"
@@ -349,7 +431,36 @@ while [ $TRIES -lt $MAX_TRIES ]; do
 done
 
 if [ $TRIES -eq $MAX_TRIES ]; then
-  warn "El Bridge tardó en responder. Continuando..."
+  error "El Bridge no responde después de $((MAX_TRIES*2+3)) segundos."
+  error ""
+  error "Posibles causas:"
+  error "  - Otro proceso ocupa el puerto $BRIDGE_PORT"
+  error "  - Falta alguna dependencia npm"
+  error ""
+  error "Revisa los logs:"
+  if command -v pm2 &>/dev/null; then
+    error "  pm2 logs $SERVICE_NAME --lines 20"
+  elif command -v journalctl &>/dev/null; then
+    error "  journalctl --user -u $SERVICE_NAME -n 20"
+  else
+    error "  cat $INSTALL_DIR/bridge.log"
+  fi
+  exit 1
+fi
+
+# ─────────────────────────────────────────────────
+# Check firewall (warn if port might be blocked)
+# ─────────────────────────────────────────────────
+
+if command -v ufw &>/dev/null; then
+  UFW_STATUS=$(sudo -n ufw status 2>/dev/null || ufw status 2>/dev/null || echo "unknown")
+  if echo "$UFW_STATUS" | grep -q "Status: active"; then
+    if ! echo "$UFW_STATUS" | grep -q "$BRIDGE_PORT"; then
+      warn "⚠️  ufw está activo pero el puerto $BRIDGE_PORT NO está abierto."
+      warn "   El panel no podrá conectar con tu bridge."
+      warn "   Ejecuta como root: ufw allow $BRIDGE_PORT/tcp"
+    fi
+  fi
 fi
 
 # ─────────────────────────────────────────────────
@@ -361,21 +472,28 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 info "Conectando con TribuClaw..."
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-CALLBACK_RESPONSE=$(curl -sf -X POST \
+CALLBACK_HTTP_CODE=$(curl -s -o /tmp/tribuclaw-callback-response.json -w "%{http_code}" -X POST \
   "${PANEL_URL}/api/server/setup-callback" \
   -H "Content-Type: application/json" \
-  -d "{\"setupToken\":\"${SETUP_TOKEN}\",\"bridgeToken\":\"${BRIDGE_TOKEN}\",\"port\":${BRIDGE_PORT}}" \
-  2>&1)
+  -d "{\"setupToken\":\"${SETUP_TOKEN}\",\"bridgeToken\":\"${BRIDGE_TOKEN}\",\"port\":${BRIDGE_PORT}}")
 
-CALLBACK_STATUS=$?
+CALLBACK_BODY=$(cat /tmp/tribuclaw-callback-response.json 2>/dev/null || echo "")
+rm -f /tmp/tribuclaw-callback-response.json
 
-if [ $CALLBACK_STATUS -eq 0 ]; then
+if [ "$CALLBACK_HTTP_CODE" = "200" ]; then
   success "¡Conectado con TribuClaw!"
 else
-  error "No se pudo conectar con el panel: $CALLBACK_RESPONSE"
+  error "No se pudo conectar con el panel (HTTP $CALLBACK_HTTP_CODE)"
+  if [ -n "$CALLBACK_BODY" ]; then
+    ERROR_MSG=$(echo "$CALLBACK_BODY" | node -e "try{const d=JSON.parse(require('fs').readFileSync('/dev/stdin','utf8'));console.log(d.error||d.message||JSON.stringify(d))}catch{}" 2>/dev/null || echo "$CALLBACK_BODY")
+    error "Respuesta: $ERROR_MSG"
+  fi
   error ""
-  error "El Bridge está corriendo. Comprueba tu conexión a internet e inténtalo de nuevo."
-  error "Puedes reconectar manualmente desde: ${PANEL_URL}/import"
+  error "El Bridge está corriendo. Posibles causas:"
+  error "  - Token expirado (válido 30 min). Genera uno nuevo desde el panel."
+  error "  - Ya se usó este token. Genera uno nuevo."
+  error ""
+  error "Reconecta desde: ${PANEL_URL}/server"
   exit 1
 fi
 
@@ -390,7 +508,13 @@ echo "  ✅  TribuClaw Bridge v2 instalado y conectado"
 echo ""
 echo "  Puerto:   $BRIDGE_PORT"
 echo "  Panel:    $PANEL_URL"
+if command -v pm2 &>/dev/null; then
+echo "  Servicio: pm2 status $SERVICE_NAME"
+echo "  Logs:     pm2 logs $SERVICE_NAME"
+else
 echo "  Servicio: systemctl status $SERVICE_NAME"
+echo "  Logs:     journalctl -u $SERVICE_NAME -n 50"
+fi
 echo ""
 echo "  Vuelve al panel de TribuClaw — ya está todo listo."
 echo ""
