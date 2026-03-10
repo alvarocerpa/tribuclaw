@@ -295,19 +295,36 @@ function writeConfig(configPath, config) {
 async function restartGateway() {
     try {
         await gateway.request('restart', { reason: 'config change via SaaS' }, 10000);
+        console.log('[restartGateway] Gateway restart requested via WebSocket');
     }
-    catch {
+    catch (wsErr) {
+        const wsMsg = wsErr.message;
+        console.warn('[restartGateway] WebSocket restart failed:', wsMsg);
         // Gateway may disconnect during restart — that's expected
-        // Try SIGUSR1 as fallback
+        // Try SIGUSR1 as fallback, then systemctl
         try {
             const { execSync } = await Promise.resolve().then(() => __importStar(require('child_process')));
+            // Try systemctl first (more reliable)
+            try {
+                execSync('systemctl restart openclaw-gateway 2>&1 || systemctl restart openclaw 2>&1', {
+                    timeout: 10000,
+                    encoding: 'utf8'
+                });
+                console.log('[restartGateway] Gateway restarted via systemctl');
+                return;
+            }
+            catch { }
+            // Fallback: SIGUSR1
             const pid = execSync("pgrep -f 'openclaw.*gateway' || pgrep -f 'node.*openclaw'", { encoding: 'utf8' }).trim().split('\n')[0];
             if (pid) {
                 execSync(`kill -USR1 ${pid}`);
-                console.log(`Sent SIGUSR1 to gateway PID ${pid}`);
+                console.log(`[restartGateway] Sent SIGUSR1 to gateway PID ${pid}`);
             }
         }
-        catch { }
+        catch (sysErr) {
+            console.warn('[restartGateway] System restart also failed:', sysErr.message);
+            // Don't throw - config was saved, gateway will pick it up on next restart
+        }
     }
 }
 // Provider env var mapping
@@ -341,8 +358,12 @@ app.get('/health', async () => ({
 // POST /gw/channels/configure — Add or update a channel
 app.post('/gw/channels/configure', async (req, reply) => {
     try {
-        const { channel, config: channelConfig } = req.body ?? {};
+        const body = req.body;
+        const channel = body?.channel;
+        const channelConfig = body?.config;
+        console.log('[channels/configure] Request body:', JSON.stringify(body));
         if (!channel || !channelConfig) {
+            console.log('[channels/configure] Error: missing channel or config');
             return reply.code(400).send({ error: 'Faltan channel o config' });
         }
         const { path: configPath, config } = readConfig();
@@ -351,60 +372,101 @@ app.post('/gw/channels/configure', async (req, reply) => {
             config.channels = {};
         }
         const channels = config.channels;
-        // Merge config for the channel
-        const existing = (channels[channel] && typeof channels[channel] === 'object')
-            ? channels[channel]
+        // Merge config for the channel (use lowercase key for consistency)
+        const channelKey = channel.toLowerCase();
+        const existing = (channels[channelKey] && typeof channels[channelKey] === 'object')
+            ? channels[channelKey]
             : {};
-        channels[channel] = { ...existing, ...channelConfig, enabled: true };
+        channels[channelKey] = { ...existing, ...channelConfig, enabled: true };
         writeConfig(configPath, config);
-        console.log(`Channel ${channel} configured successfully`);
+        console.log(`[channels/configure] Channel ${channelKey} configured successfully`);
         // Restart gateway to pick up changes
         await restartGateway();
-        return { ok: true, message: `Canal ${channel} configurado. Gateway reiniciando.` };
+        return { ok: true, message: `Canal ${channelKey} configurado. Gateway reiniciando.` };
     }
     catch (err) {
         const msg = err.message;
-        console.error('Channel configure error:', msg);
+        console.error('[channels/configure] Error:', msg);
         return reply.code(500).send({ error: msg });
     }
 });
-// POST /gw/channels/remove — Disable a channel
+// POST /gw/channels/remove — Remove a channel completely
 app.post('/gw/channels/remove', async (req, reply) => {
     try {
-        const { channel } = req.body ?? {};
+        // Ensure body is parsed
+        const body = req.body;
+        const channel = body?.channel;
+        console.log('[channels/remove] Request body:', JSON.stringify(body));
         if (!channel) {
+            console.log('[channels/remove] Error: missing channel');
             return reply.code(400).send({ error: 'Falta channel' });
         }
         const { path: configPath, config } = readConfig();
         const channels = (config.channels ?? {});
-        if (channels[channel] && typeof channels[channel] === 'object') {
-            channels[channel].enabled = false;
+        console.log('[channels/remove] Current channels:', Object.keys(channels));
+        console.log('[channels/remove] Looking for channel:', channel);
+        // Try exact match first, then case-insensitive
+        let foundKey = channel;
+        if (!channels[foundKey]) {
+            // Try case-insensitive match
+            foundKey = Object.keys(channels).find(k => k.toLowerCase() === channel.toLowerCase()) || channel;
+        }
+        if (channels[foundKey]) {
+            delete channels[foundKey];
+            writeConfig(configPath, config);
+            console.log(`[channels/remove] Channel ${foundKey} removed completely from config`);
+            // Try to restart gateway, but don't fail if it's not available
+            try {
+                await restartGateway();
+                return { ok: true, message: `Canal ${foundKey} eliminado. Gateway reiniciando.` };
+            }
+            catch (restartErr) {
+                console.log(`[channels/remove] Gateway restart failed, but channel removed from config`);
+                return { ok: true, message: `Canal ${foundKey} eliminado de la config. Reinicia el gateway manualmente para aplicar.` };
+            }
         }
         else {
-            // Channel doesn't exist, nothing to remove
-            return { ok: true, message: `Canal ${channel} no estaba configurado` };
+            // Channel not in Bridge config - try to remove from gateway directly
+            console.log(`[channels/remove] Channel ${channel} not found in Bridge config, trying gateway...`);
+            try {
+                // Request gateway to disable/remove the channel
+                await gateway.request('channels.disable', { channel: channel.toLowerCase() }, 10000);
+                console.log(`[channels/remove] Channel ${channel} disabled via gateway`);
+                return { ok: true, message: `Canal ${channel} desactivado desde el gateway.` };
+            }
+            catch (gwErr) {
+                const gwMsg = gwErr.message;
+                console.log(`[channels/remove] Gateway error:`, gwMsg);
+                // If gateway method doesn't exist or gateway not available, just return success
+                // The channel will disappear after gateway restart
+                return { ok: true, message: `Canal ${channel} no estaba en la config del Bridge. Reinicia el gateway para aplicar cambios.` };
+            }
         }
-        writeConfig(configPath, config);
-        console.log(`Channel ${channel} disabled`);
-        await restartGateway();
-        return { ok: true, message: `Canal ${channel} desactivado. Gateway reiniciando.` };
     }
     catch (err) {
         const msg = err.message;
+        console.error('[channels/remove] Error:', msg);
         return reply.code(500).send({ error: msg });
     }
 });
 // POST /gw/channels/detail — Get detailed channel status
 app.post('/gw/channels/detail', async (req, reply) => {
     try {
+        const body = req.body;
+        const requested = body?.channel;
         const { config } = readConfig();
         const channels = (config.channels ?? {});
-        const requested = req.body?.channel;
+        console.log('[channels/detail] Channels in config:', Object.keys(channels));
         if (requested) {
-            const ch = channels[requested];
+            // Try exact match first, then case-insensitive
+            let foundKey = requested;
+            if (!channels[foundKey]) {
+                foundKey = Object.keys(channels).find(k => k.toLowerCase() === requested.toLowerCase()) || requested;
+            }
+            const ch = channels[foundKey];
             if (!ch)
                 return reply.code(404).send({ error: `Canal ${requested} no encontrado` });
-            return { channel: requested, config: ch };
+            return { channel: foundKey, config: ch };
         }
         // Return all channels with masked secrets
         const result = {};
@@ -573,6 +635,63 @@ app.post('/server/restart', async (_req, reply) => {
         return reply.code(500).send({ error: err.message });
     }
 });
+// POST /server/restart-all — Restart both Bridge and Gateway (full recovery)
+app.post('/server/restart-all', async (_req, reply) => {
+    try {
+        const { execSync } = await Promise.resolve().then(() => __importStar(require('child_process')));
+        const results = [];
+        // 1. Try to restart gateway via WebSocket first
+        try {
+            await gateway.request('restart', { reason: 'full restart via SaaS' }, 5000);
+            results.push('Gateway restart requested via WebSocket');
+        }
+        catch {
+            results.push('WebSocket restart failed, trying systemctl');
+        }
+        // 2. Try systemctl restart for gateway
+        try {
+            execSync('systemctl restart openclaw-gateway 2>&1 || systemctl restart openclaw 2>&1', {
+                timeout: 10000,
+                encoding: 'utf8'
+            });
+            results.push('Gateway restarted via systemctl');
+        }
+        catch {
+            results.push('systemctl gateway not available (may be using PM2)');
+        }
+        // 3. For PM2-managed gateways, try pm2 restart
+        try {
+            const pm2List = execSync('pm2 jlist 2>/dev/null', { encoding: 'utf8' });
+            const pm2Processes = JSON.parse(pm2List);
+            const gatewayProcess = pm2Processes.find((p) => p.name?.toLowerCase().includes('gateway') || p.name?.toLowerCase().includes('openclaw'));
+            if (gatewayProcess) {
+                execSync(`pm2 restart ${gatewayProcess.name}`, { encoding: 'utf8' });
+                results.push(`Gateway restarted via PM2 (${gatewayProcess.name})`);
+            }
+        }
+        catch {
+            // PM2 not available or no gateway process
+        }
+        // 4. Restart the bridge itself (PM2 only, systemctl would kill this request)
+        try {
+            execSync('pm2 restart tribuclaw-bridge 2>&1 || true', { encoding: 'utf8' });
+            results.push('Bridge restart scheduled via PM2');
+        }
+        catch {
+            // Not using PM2
+        }
+        return {
+            ok: true,
+            message: 'Reinicio completo ejecutado',
+            details: results,
+            note: 'El Bridge se reiniciará en unos segundos. Espera 10-15 segundos antes de usar el panel.'
+        };
+    }
+    catch (err) {
+        const msg = err.message;
+        return reply.code(500).send({ error: msg });
+    }
+});
 // POST /server/doctor — Run openclaw doctor
 app.post('/server/doctor', async (_req, reply) => {
     try {
@@ -591,6 +710,23 @@ app.post('/server/doctor', async (_req, reply) => {
         if (msg.includes('ETIMEDOUT') || msg.includes('SIGTERM')) {
             return { ok: false, output: 'Doctor tardó demasiado. Ejecuta `openclaw doctor` directamente en el servidor.' };
         }
+        return reply.code(500).send({ error: msg });
+    }
+});
+// POST /server/doctor-fix — Run openclaw doctor --fix
+app.post('/server/doctor-fix', async (_req, reply) => {
+    try {
+        const { execSync } = await Promise.resolve().then(() => __importStar(require('child_process')));
+        const envPath = `${process.env.PATH}:${(0, os_1.homedir)()}/.npm-global/bin:/usr/local/bin:/usr/bin`;
+        const output = execSync('openclaw doctor --fix 2>&1 || true', {
+            encoding: 'utf8',
+            timeout: 90000,
+            env: { ...process.env, PATH: envPath, NO_COLOR: '1', FORCE_COLOR: '0', CI: '1' },
+        }).trim();
+        return { ok: true, output };
+    }
+    catch (err) {
+        const msg = err.message || '';
         return reply.code(500).send({ error: msg });
     }
 });
