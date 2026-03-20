@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cortex — Sistema de Memoria</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+  
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0f;
+    color: #e4e4e7;
+    overflow-x: hidden;
+  }
+
+  .slide {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 80px;
+    position: relative;
+  }
+
+  .slide::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 30% 20%, rgba(239, 68, 68, 0.06) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 80%, rgba(59, 130, 246, 0.05) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  /* ============ SLIDE 1: Native Memory ============ */
+  .slide-title {
+    font-size: 14px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    color: #71717a;
+    margin-bottom: 12px;
+  }
+
+  h1 {
+    font-size: 48px;
+    font-weight: 800;
+    margin-bottom: 48px;
+    text-align: center;
+    line-height: 1.1;
+  }
+
+  h1 .accent { color: #ef4444; }
+  h1 .blue { color: #3b82f6; }
+  h1 .dim { color: #52525b; }
+
+  h2 {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 80px 1fr;
+    gap: 0;
+    width: 100%;
+    max-width: 1200px;
+    align-items: start;
+  }
+
+  .vs-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: center;
+    margin-top: 40px;
+  }
+
+  .vs-badge {
+    background: #18181b;
+    border: 2px solid #27272a;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 18px;
+    color: #71717a;
+  }
+
+  .mem-card {
+    background: #111116;
+    border: 1px solid #27272a;
+    border-radius: 20px;
+    padding: 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mem-card.native { border-color: #92400e33; }
+  .mem-card.cortex { border-color: #3b82f633; }
+
+  .mem-card.native::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f59e0b, #ef4444);
+  }
+
+  .mem-card.cortex::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+  }
+
+  .mem-card h3 {
+    font-size: 22px;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+
+  .mem-card .subtitle {
+    font-size: 13px;
+    color: #71717a;
+    margin-bottom: 28px;
+  }
+
+  .flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .flow-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 14px 0;
+    position: relative;
+  }
+
+  .flow-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    left: 17px;
+    top: 46px;
+    bottom: -2px;
+    width: 2px;
+    background: #27272a;
+  }
+
+  .step-dot {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+  }
+
+  .native .step-dot { background: #78350f33; }
+  .cortex .step-dot { background: #1e3a5f44; }
+
+  .step-content h4 {
+    font-size: 15px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+
+  .step-content p {
+    font-size: 12px;
+    color: #71717a;
+    line-height: 1.5;
+  }
+
+  .result-box {
+    margin-top: 24px;
+    padding: 16px 20px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  .result-bad {
+    background: #7f1d1d22;
+    border: 1px solid #7f1d1d44;
+    color: #fca5a5;
+  }
+
+  .result-good {
+    background: #14532d22;
+    border: 1px solid #14532d44;
+    color: #86efac;
+  }
+
+  /* ============ SLIDE 2: Cortex Deep Dive ============ */
+  .cortex-arch {
+    width: 100%;
+    max-width: 1100px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  .arch-row {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .arch-box {
+    background: #111116;
+    border: 1px solid #27272a;
+    border-radius: 16px;
+    padding: 28px 32px;
+    flex: 1;
+    max-width: 340px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.2s;
+  }
+
+  .arch-box:hover { transform: translateY(-2px); }
+
+  .arch-box .num {
+    position: absolute;
+    top: 16px;
+    right: 20px;
+    font-size: 48px;
+    font-weight: 900;
+    color: #ffffff06;
+    line-height: 1;
+  }
+
+  .arch-box .icon {
+    font-size: 28px;
+    margin-bottom: 12px;
+    display: block;
+  }
+
+  .arch-box h4 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+
+  .arch-box p {
+    font-size: 12px;
+    color: #71717a;
+    line-height: 1.6;
+  }
+
+  .arch-box.ingest { border-top: 2px solid #3b82f6; }
+  .arch-box.classify { border-top: 2px solid #8b5cf6; }
+  .arch-box.compress { border-top: 2px solid #f59e0b; }
+  .arch-box.recall { border-top: 2px solid #10b981; }
+  .arch-box.cognitive { border-top: 2px solid #ec4899; }
+  .arch-box.inject { border-top: 2px solid #06b6d4; }
+
+  .arch-arrow {
+    display: flex;
+    justify-content: center;
+    padding: 4px 0;
+  }
+
+  .arch-arrow svg {
+    width: 24px;
+    height: 24px;
+    color: #27272a;
+  }
+
+  /* ============ SLIDE 3: Key Differences ============ */
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
+    width: 100%;
+    max-width: 1100px;
+  }
+
+  .diff-card {
+    background: #111116;
+    border: 1px solid #27272a;
+    border-radius: 20px;
+    padding: 36px 32px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .diff-card .big-icon {
+    font-size: 48px;
+    margin-bottom: 20px;
+    display: block;
+  }
+
+  .diff-card h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+  }
+
+  .diff-card .native-way {
+    background: #7f1d1d18;
+    border-radius: 10px;
+    padding: 12px 16px;
+    margin-bottom: 12px;
+    font-size: 12px;
+    color: #fca5a5;
+  }
+
+  .diff-card .native-way::before {
+    content: '❌ Nativo: ';
+    font-weight: 600;
+  }
+
+  .diff-card .cortex-way {
+    background: #14532d18;
+    border-radius: 10px;
+    padding: 12px 16px;
+    font-size: 12px;
+    color: #86efac;
+  }
+
+  .diff-card .cortex-way::before {
+    content: '✅ Cortex: ';
+    font-weight: 600;
+  }
+
+  /* ============ Stats bar ============ */
+  .stats-bar {
+    display: flex;
+    gap: 48px;
+    justify-content: center;
+    margin-top: 48px;
+    padding: 28px 40px;
+    background: #111116;
+    border: 1px solid #27272a;
+    border-radius: 16px;
+    width: 100%;
+    max-width: 900px;
+  }
+
+  .stat {
+    text-align: center;
+  }
+
+  .stat .value {
+    font-size: 36px;
+    font-weight: 800;
+    background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    line-height: 1;
+  }
+
+  .stat .label {
+    font-size: 11px;
+    color: #71717a;
+    margin-top: 6px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  /* ============ Footer ============ */
+  .footer {
+    position: absolute;
+    bottom: 24px;
+    right: 40px;
+    font-size: 12px;
+    color: #27272a;
+    font-weight: 600;
+  }
+
+  .footer .red { color: #ef4444; }
+
+  /* Page break helper */
+  .page-break { page-break-after: always; }
+
+  /* Analogy section */
+  .analogy {
+    margin-top: 40px;
+    padding: 32px 40px;
+    background: linear-gradient(135deg, #111116, #18181b);
+    border: 1px solid #27272a;
+    border-radius: 20px;
+    max-width: 800px;
+    text-align: center;
+  }
+
+  .analogy .quote {
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+    color: #a1a1aa;
+    line-height: 1.7;
+  }
+
+  .analogy .quote em {
+    color: #e4e4e7;
+    font-style: normal;
+    font-weight: 600;
+  }
+</style>
+</head>
+<body>
+
+<!-- ==================== SLIDE 1: COMPARISON ==================== -->
+<div class="slide">
+  <div class="slide-title">Sistema de Memoria</div>
+  <h1>Memoria <span class="accent">Nativa</span> <span class="dim">vs</span> <span class="blue">Cortex</span></h1>
+
+  <div class="comparison">
+    <!-- Native -->
+    <div class="mem-card native">
+      <h3>🧠 Memoria Nativa</h3>
+      <p class="subtitle">memoryFlush — Lo que viene con OpenClaw</p>
+      
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-dot">💬</div>
+          <div class="step-content">
+            <h4>Conversación</h4>
+            <p>El agente habla contigo y acumula contexto</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-dot">📦</div>
+          <div class="step-content">
+            <h4>Se llena la ventana</h4>
+            <p>Al llegar al límite de tokens, se activa el flush</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-dot">📝</div>
+          <div class="step-content">
+            <h4>Resumen genérico</h4>
+            <p>Todo se comprime en un resumen corto</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-dot">🗑️</div>
+          <div class="step-content">
+            <h4>Se pierde el detalle</h4>
+            <p>Contexto original descartado para siempre</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-box result-bad">
+        ⚠️ El agente "olvida" decisiones, matices y contexto entre sesiones. Cada conversación empieza casi de cero.
+      </div>
+    </div>
+
+    <!-- VS -->
+    <div class="vs-divider">
+      <div class="vs-badge">VS</div>
+    </div>
+
+    <!-- Cortex -->
+    <div class="mem-card cortex">
+      <h3>🧬 Cortex</h3>
+      <p class="subtitle">Memoria diferencial — Construido sobre OpenClaw</p>
+      
+      <div class="flow">
+        <div class="flow-step">
+          <div class="step-dot">💬</div>
+          <div class="step-content">
+            <h4>Conversación</h4>
+            <p>El agente habla contigo normalmente</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-dot">🔍</div>
+          <div class="step-content">
+            <h4>Extrae solo lo nuevo</h4>
+            <p>Un daemon 24/7 detecta decisiones, datos, lecciones</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-dot">🏷️</div>
+          <div class="step-content">
+            <h4>Clasifica y puntúa</h4>
+            <p>Decisión, corrección, dato, lección — con importancia</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-dot">🧬</div>
+          <div class="step-content">
+            <h4>Embeddings semánticos</h4>
+            <p>Cada memoria se convierte en un vector buscable por significado</p>
+          </div>
+        </div>
+        <div class="flow-step">
+          <div class="step-dot">🔄</div>
+          <div class="step-content">
+            <h4>Compresión en 3 capas</h4>
+            <p>Raw → Compact → Core. Como destilar whisky</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-box result-good">
+        ✅ Nada se pierde. Cualquier agente puede buscar en toda la memoria del equipo. Recuerda para siempre.
+      </div>
+    </div>
+  </div>
+
+  <div class="footer"><span class="red">Tribu</span>Claw</div>
+</div>
+
+<!-- ==================== SLIDE 2: ARCHITECTURE ==================== -->
+<div class="slide">
+  <div class="slide-title">Arquitectura</div>
+  <h1>Cómo funciona <span class="blue">Cortex</span></h1>
+
+  <div class="cortex-arch">
+    <div class="arch-row">
+      <div class="arch-box ingest">
+        <span class="num">1</span>
+        <span class="icon">📡</span>
+        <h4>Ingesta</h4>
+        <p>Un daemon corre 24/7 leyendo las sesiones de todos los agentes. Extrae solo los <strong>deltas</strong> — lo que cambió, no todo.</p>
+      </div>
+      <div class="arch-box classify">
+        <span class="num">2</span>
+        <span class="icon">🏷️</span>
+        <h4>Clasificación</h4>
+        <p>Cada delta se clasifica automáticamente: <strong>decisión, corrección, dato, lección, síntesis</strong>. Se le asigna importancia (0-1).</p>
+      </div>
+      <div class="arch-box compress">
+        <span class="num">3</span>
+        <span class="icon">⚗️</span>
+        <h4>Destilación</h4>
+        <p>3 capas de compresión: <strong>Raw → Compact → Core</strong>. Los detalles recientes se mantienen, lo antiguo se destila a su esencia.</p>
+      </div>
+    </div>
+
+    <div class="arch-arrow">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+    </div>
+
+    <div class="arch-row">
+      <div class="arch-box recall">
+        <span class="num">4</span>
+        <span class="icon">🎯</span>
+        <h4>Recall Híbrido</h4>
+        <p>Búsqueda triple: <strong>semántica (significado) + texto (palabras) + importancia</strong>. Encuentra "pricing" aunque dijeras "cobrar 497€".</p>
+      </div>
+      <div class="arch-box cognitive">
+        <span class="num">5</span>
+        <span class="icon">🌙</span>
+        <h4>Capas Cognitivas</h4>
+        <p><strong>Dreams:</strong> conecta ideas dormido. <strong>Somáticos:</strong> detecta riesgo. <strong>Falsificación:</strong> cuestiona creencias.</p>
+      </div>
+      <div class="arch-box inject">
+        <span class="num">6</span>
+        <span class="icon">💉</span>
+        <h4>Inyección</h4>
+        <p>Cada 30 min, cada agente recibe un <strong>CORTEX-MEMORY.md</strong> con las memorias relevantes para él. Cero esfuerzo manual.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="value">875</div>
+      <div class="label">Memorias</div>
+    </div>
+    <div class="stat">
+      <div class="value">6</div>
+      <div class="label">Agentes conectados</div>
+    </div>
+    <div class="stat">
+      <div class="value">24/7</div>
+      <div class="label">Daemon activo</div>
+    </div>
+    <div class="stat">
+      <div class="value">65MB</div>
+      <div class="label">RAM total</div>
+    </div>
+    <div class="stat">
+      <div class="value">&lt;5ms</div>
+      <div class="label">Recall</div>
+    </div>
+  </div>
+
+  <div class="footer"><span class="red">Tribu</span>Claw</div>
+</div>
+
+<!-- ==================== SLIDE 3: KEY DIFFERENCES ==================== -->
+<div class="slide">
+  <div class="slide-title">Las 3 diferencias clave</div>
+  <h1>Por qué <span class="blue">Cortex</span> <span class="dim">cambia el juego</span></h1>
+
+  <div class="diff-grid">
+    <div class="diff-card">
+      <span class="big-icon">♾️</span>
+      <h3>No olvida nunca</h3>
+      <div class="native-way">Resume y descarta. Pierde detalles con cada flush.</div>
+      <div class="cortex-way">Destila en capas. La esencia se conserva para siempre.</div>
+    </div>
+
+    <div class="diff-card">
+      <span class="big-icon">🤝</span>
+      <h3>Memoria compartida</h3>
+      <div class="native-way">Cada agente es un silo. No saben lo que hacen los demás.</div>
+      <div class="cortex-way">Todos los agentes buscan en la misma memoria. El equipo aprende junto.</div>
+    </div>
+
+    <div class="diff-card">
+      <span class="big-icon">🎯</span>
+      <h3>Busca por significado</h3>
+      <div class="native-way">Solo encuentra si usas las mismas palabras exactas.</div>
+      <div class="cortex-way">Búsqueda semántica. Entiende que "pricing" = "cobrar 497€".</div>
+    </div>
+  </div>
+
+  <div class="analogy">
+    <p class="quote">
+      "La memoria nativa es un empleado con buena memoria a corto plazo — <em>mañana empieza de cero</em>.<br><br>
+      Cortex es darle un <em>segundo cerebro</em> con un archivo perfecto donde todo está clasificado, conectado, y disponible <em>para siempre</em>."
+    </p>
+  </div>
+
+  <div class="footer"><span class="red">Tribu</span>Claw</div>
+</div>
+
+</body>
+</html>

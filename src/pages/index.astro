@@ -1,519 +1,1691 @@
 ---
 import BaseHead from '../components/BaseHead.astro';
 import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
-import { getCollection } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
-import { SITE_DESCRIPTION, SITE_TITLE, WHOP_URL } from '../consts';
-
-const now = new Date();
-const posts = (await getCollection('blog')).filter(p => new Date(p.data.pubDate) <= now).sort(
-	(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
-
-const heroImages = {
-	'que-es-un-agente-ia-personal': '/images/blog/agente-ia-personal-hero.svg',
-	'openclaw-que-es-guia-completa-espanol': '/images/blog/hero-openclaw.svg',
-	'5-cosas-que-mi-agente-ia-hace-por-mi': '/images/blog/hero-5-cosas.svg',
-	'automatizar-whatsapp-con-ia-guia-completa': '/images/blog/hero-whatsapp.svg',
-	'ganar-dinero-con-ia-formas-reales': '/images/blog/hero-ganar-dinero.svg',
-	'como-crear-tu-propio-agente-ia-desde-cero': '/images/blog/hero-crear-agente.svg',
-	'automatizar-telegram-con-agente-ia': '/images/blog/hero-automatizar-telegram.svg',
-	'instalar-openclaw-en-vps-paso-a-paso': '/images/blog/hero-instalar-openclaw-vps.svg',
-	'agente-ia-personal-vs-chatgpt-diferencias': '/images/blog/hero-agente-ia-personal-vs-chatgpt-diferencias.svg',
-	'herramientas-ia-para-emprendedores-2026': '/images/blog/hero-herramientas-ia-para-emprendedores-2026.svg',
-	'agente-ia-que-gestiona-tu-whatsapp': '/images/blog/hero-agente-ia-que-gestiona-tu-whatsapp.svg',
-} as Record<string, string>;
+import { SITE_TITLE, WHOP_URL } from '../consts';
 ---
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<BaseHead title={`${SITE_TITLE} — La revolución de los agentes IA empieza aquí`} description="La IA ya no es del futuro. Aprende a crear tu agente IA autónomo y toma ventaja antes que el resto. La primera comunidad en español." />
-		<style>
-			/* Hero */
-			.hero {
-				position: relative;
-				text-align: center;
-				padding: 6rem 1.5rem 4rem;
-				max-width: 900px;
-				margin: 0 auto;
-				overflow: hidden;
-			}
-			.hero::before {
-				content: '';
-				position: absolute;
-				top: -200px;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 700px;
-				height: 700px;
-				background: radial-gradient(circle, rgba(233,69,96,0.10) 0%, transparent 70%);
-				pointer-events: none;
-				z-index: 0;
-			}
-			.hero > * { position: relative; z-index: 1; }
-			.hero-badge {
-				display: inline-block;
-				background: rgba(233,69,96,0.1);
-				border: 1px solid rgba(233,69,96,0.25);
-				color: #e94560;
-				padding: 0.35rem 1rem;
-				border-radius: 20px;
-				font-size: 0.8rem;
-				font-weight: 600;
-				margin-bottom: 1.5rem;
-				letter-spacing: 0.5px;
-				text-align: center;
-				width: auto;
-				max-width: 90%;
-			}
-			.hero h1 {
-				font-size: 3.2rem;
-				line-height: 1.1;
-				margin-bottom: 1.25rem;
-				color: #fff;
-			}
-			.hero h1 span {
-				color: #e94560;
-			}
-			.hero .subtitle {
-				font-size: 1.2rem;
-				color: #8b949e;
-				margin-bottom: 2.5rem;
-				line-height: 1.6;
-				max-width: 650px;
-				margin-left: auto;
-				margin-right: auto;
-				padding: 0 0.5rem;
-			}
-			.cta-buttons {
-				display: flex;
-				gap: 1rem;
-				justify-content: center;
-				flex-wrap: wrap;
-				margin-bottom: 3rem;
-				padding: 0 1rem;
-				box-sizing: border-box;
-			}
-			/* ─── CTA WRAP (spinning border) ─── */
-			.cta-wrap {
-				background: #0d1117;
-				border: 1px solid rgba(255,255,255,0.1);
-				border-radius: 14px;
-				padding: 4px;
-				display: inline-flex;
-				position: relative;
-				overflow: hidden;
-			}
-			.cta-wrap::before {
-				content: '';
-				position: absolute;
-				top: 50%; left: 50%;
-				translate: -50% -50%;
-				width: max(200%, 200vh);
-				height: max(200%, 200vh);
-				background: conic-gradient(transparent 0deg, transparent 280deg, #e94560 330deg, #ff6b6b 360deg);
-				animation: ctaBorderSpin 3s linear infinite;
-				z-index: 0;
-			}
-			.cta-wrap::after {
-				content: '';
-				position: absolute;
-				inset: 2px;
-				background: #0d1117;
-				border-radius: 12px;
-				z-index: 0;
-			}
-			.cta-wrap > * { position: relative; z-index: 1; }
-			@keyframes ctaBorderSpin { 100% { rotate: 360deg; } }
+<head>
+  <BaseHead
+    title={`${SITE_TITLE} — Tu equipo de IA trabajando 24/7`}
+    description="Hay gente que ya tiene un equipo de IA que trabaja 24/7. Están haciendo en 1 hora lo que a ti te lleva toda la semana. Entra en TribuClaw."
+  />
+</head>
+<body>
 
-			.btn-primary {
-				display: inline-flex;
-				flex-direction: column;
-				align-items: center;
-				gap: 0.2rem;
-				background: #e94560;
-				color: white;
-				padding: 0.9rem 2.2rem;
-				border-radius: 10px;
-				border-top: 1px solid rgba(255,255,255,0.2);
-				text-decoration: none;
-				font-weight: 800;
-				font-size: 1.05rem;
-				letter-spacing: 0.01em;
-				position: relative;
-				overflow: hidden;
-				cursor: pointer;
-				transition: transform 0.2s ease-out;
-				animation: ctaPulse 2s ease-in-out infinite;
-				white-space: nowrap;
-			}
-			.btn-primary:hover {
-				transform: translateY(-2px);
-				text-decoration: none;
-			}
-			@keyframes ctaPulse {
-				0%, 100% { box-shadow: 0 4px 20px rgba(233,69,96,0.5), 0 8px 40px rgba(233,69,96,0.2); }
-				50% { box-shadow: 0 6px 30px rgba(233,69,96,0.7), 0 12px 60px rgba(233,69,96,0.3); }
-			}
-			.btn-primary::before {
-				content: '';
-				position: absolute;
-				bottom: -40%; left: 50%;
-				width: 120%; height: 120%;
-				background: radial-gradient(#ff6b6b, rgba(255,107,107,0.5) 30%, transparent 60%);
-				filter: blur(10px);
-				animation: ctaBreathe 2.5s ease-in-out infinite;
-				pointer-events: none;
-				z-index: -1;
-				transform: translateX(-50%);
-			}
-			@keyframes ctaBreathe {
-				0%, 100% { opacity: 0.4; transform: translateX(-50%) scale(0.7); }
-				50% { opacity: 1; transform: translateX(-50%) scale(1.1); }
-			}
-			.btn-secondary {
-				border: 1.5px solid #333;
-				color: #ccc;
-				padding: 0.9rem 2.2rem;
-				border-radius: 10px;
-				text-decoration: none;
-				font-weight: 600;
-				font-size: 1.05rem;
-				transition: border-color 0.2s, color 0.2s;
-			}
-			.btn-secondary:hover {
-				border-color: #e94560;
-				color: #fff;
-				text-decoration: none;
-			}
+<!-- ═══════════════════════════════════ HEADER ═══════════════════════════════════ -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link" aria-label="TribuClaw - Inicio">
+      <img src="/images/logo-icon.png" width="32" height="32" alt="TribuClaw logo" fetchpriority="high" />
+      <span class="logo-text">Tribu<span class="accent">Claw</span></span>
+    </a>
+    <nav class="header-nav">
+      <a href="#pilares" class="nav-link">Qué incluye</a>
+      <a href="#timeline" class="nav-link">Un día</a>
+      <a href="#proof" class="nav-link">Miembros</a>
+      <a href="#cta-final" class="nav-link">Precio</a>
+    </nav>
+    <div class="cta-wrap cta-wrap-sm">
+      <a href="/membresia/" class="cta-btn header-cta">
+        Prueba gratis →
+      </a>
+    </div>
+  </div>
+</header>
 
-			/* Stats bar */
-			.stats {
-				display: flex;
-				justify-content: center;
-				gap: 2rem;
-				flex-wrap: wrap;
-				padding: 2rem 1rem;
-				border-top: 1px solid rgba(255,255,255,0.06);
-				border-bottom: 1px solid rgba(255,255,255,0.06);
-				max-width: 800px;
-				margin: 0 auto;
-			}
-			.stat {
-				text-align: center;
-				flex: 1 1 140px;
-				min-width: 100px;
-			}
-			.stat-number {
-				font-size: 2rem;
-				font-weight: 800;
-				color: #e94560;
-				display: block;
-			}
-			.stat-label {
-				font-size: 0.8rem;
-				color: #484f58;
-				margin-top: 0.2rem;
-			}
+<main id="main-content">
 
-			/* Features */
-			.section-title {
-				text-align: center;
-				max-width: 800px;
-				margin: 4rem auto 2.5rem;
-				padding: 0 1rem;
-			}
-			.section-title h2 {
-				font-size: 2rem;
-				margin-bottom: 0.5rem;
-			}
-			.section-title p {
-				color: #8b949e;
-				font-size: 1.05rem;
-			}
-			.features {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 1.5rem;
-				max-width: 1000px;
-				margin: 0 auto 3rem;
-				padding: 0 1rem;
-			}
-			.feature {
-				padding: 1.75rem;
-				border-radius: 14px;
-				border: 1px solid rgba(255,255,255,0.06);
-				background: rgba(255,255,255,0.02);
-				transition: border-color 0.2s;
-			}
-			.feature:hover {
-				border-color: rgba(233,69,96,0.35);
-			}
-			.feature-icon {
-				font-size: 2rem;
-				margin-bottom: 0.75rem;
-				display: block;
-			}
-			.feature h3 {
-				font-size: 1.1rem;
-				margin-bottom: 0.5rem;
-			}
-			.feature p {
-				color: #8b949e;
-				font-size: 0.92rem;
-				line-height: 1.6;
-				margin: 0;
-			}
+<!-- ═══════════════════════════════════ BLOQUE 1 — HERO ════════════════════════════════════ -->
+<section class="hero">
+  <!-- Partículas canvas -->
+  <canvas id="hero-particles-canvas" aria-hidden="true"></canvas>
+  <!-- Glow top -->
+  <div class="hero-glow-top"></div>
+  <!-- Glow bottom -->
+  <div class="hero-glow-bottom"></div>
+  <!-- Dot pattern -->
+  <div class="hero-dots"></div>
 
-			/* Blog section */
-			.posts-section {
-				max-width: 1000px;
-				margin: 2rem auto 4rem;
-				padding: 0 1rem;
-			}
-			.posts-grid {
-				display: grid;
-				grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-				gap: 1.5rem;
-			}
-			.post-card {
-				border: 1px solid rgba(255,255,255,0.06);
-				border-radius: 14px;
-				overflow: hidden;
-				background: rgba(255,255,255,0.02);
-				transition: border-color 0.2s;
-			}
-			.post-card:hover {
-				border-color: rgba(233,69,96,0.3);
-			}
-			.post-card a {
-				text-decoration: none;
-				color: inherit;
-				display: block;
-			}
-			.post-card-img {
-				width: 100%;
-				height: 180px;
-				aspect-ratio: 16/9;
-				background: #161b22;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				border-bottom: 1px solid rgba(255,255,255,0.06);
-				overflow: hidden;
-			}
-			.post-card-img img {
-				width: 100%;
-				height: 100%;
-				object-fit: cover;
-			}
-			.post-card-body {
-				padding: 1.25rem;
-			}
-			.post-card .meta {
-				font-size: 0.8rem;
-				color: #484f58;
-				margin-bottom: 0.4rem;
-			}
-			.post-card h3 {
-				font-size: 1.05rem;
-				margin-bottom: 0.4rem;
-				line-height: 1.35;
-				transition: color 0.2s;
-			}
-			.post-card a:hover h3 { color: #e94560; }
-			.post-card .excerpt {
-				color: #8b949e;
-				font-size: 0.85rem;
-				line-height: 1.5;
-				display: -webkit-box;
-				-webkit-line-clamp: 3;
-				-webkit-box-orient: vertical;
-				overflow: hidden;
-			}
-			.view-all {
-				text-align: center;
-				margin-top: 2rem;
-			}
+  <div class="container hero-layout">
+    <!-- Copy -->
+    <div class="hero-copy">
+      <span class="hero-badge">98 miembros ya lo tienen activo</span>
+      <h1 class="hero-headline">
+        Mientras tú lo haces todo a mano, hay gente con un equipo de IA que trabaja 24/7.
+      </h1>
+      <p class="hero-sub">
+        Kimo responde en Telegram. Mao escribe código. Pluma redacta. Mei gestiona. Todo a la vez, sin descanso, sin sueldo.
+        Eso es TribuClaw. Y puedes tenerlo funcionando esta semana.
+      </p>
+      <p class="hero-body">
+        No es un chatbot más. Es un equipo completo de agentes especializados que opera en tu negocio mientras tú haces otra cosa.
+        247.000 personas ya confían en la tecnología que usamos. 167K builders la están desplegando ahora mismo.
+      </p>
+      <p class="hero-fomo">
+        Los 98 miembros de TribuClaw ya lo tienen activo.
+        <strong>Tú sigues esperando, ¿a qué?</strong>
+      </p>
+      <div class="hero-cta-row">
+        <div class="cta-wrap">
+          <a href="/membresia/" class="cta-btn cta-large">
+            <span class="cta-main">Quiero mi equipo de IA → Entrar a TribuClaw</span>
+            <span class="cta-sub-line">Desde 35€/mes · Cancela cuando quieras</span>
+          </a>
+        </div>
+      </div>
+    </div>
 
-			/* Final CTA */
-			.final-cta {
-				text-align: center;
-				padding: 4rem 1.5rem;
-				max-width: 700px;
-				margin: 0 auto;
-				position: relative;
-				overflow: hidden;
-			}
-			.final-cta::before {
-				content: '';
-				position: absolute;
-				top: 0;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 500px;
-				height: 400px;
-				background: radial-gradient(circle, rgba(233,69,96,0.08) 0%, transparent 70%);
-				pointer-events: none;
-			}
-			.final-cta > * { position: relative; }
-			.final-cta h2 {
-				font-size: 2.2rem;
-				margin-bottom: 0.75rem;
-			}
-			.final-cta p {
-				color: #8b949e;
-				font-size: 1.1rem;
-				margin-bottom: 2rem;
-			}
+    <!-- Dashboard interactivo -->
+    <div class="hero-dashboard" id="agent-dashboard">
+      <div class="dash-titlebar">
+        <div class="dash-dots">
+          <span class="dot dot-red"></span>
+          <span class="dot dot-yellow"></span>
+          <span class="dot dot-green"></span>
+        </div>
+        <span class="dash-title">TribuClaw OS — Agentes activos</span>
+        <div class="dash-live">
+          <span class="live-dot"></span>
+          <span>LIVE</span>
+        </div>
+      </div>
+      <div class="agents-grid">
+        <div class="agent-card" data-agent="kimo">
+          <div class="agent-avatar">🎯</div>
+          <div class="agent-info">
+            <span class="agent-name">Kimo</span>
+            <span class="agent-role">Estrategia</span>
+          </div>
+          <div class="agent-status online"><span class="status-dot"></span><span>Activo</span></div>
+          <div class="agent-activity">Revisando métricas de growth...</div>
+        </div>
+        <div class="agent-card" data-agent="mao">
+          <div class="agent-avatar">🔧</div>
+          <div class="agent-info">
+            <span class="agent-name">Mao</span>
+            <span class="agent-role">Desarrollo</span>
+          </div>
+          <div class="agent-status online"><span class="status-dot"></span><span>Activo</span></div>
+          <div class="agent-activity">Desplegando nueva landing...</div>
+        </div>
+        <div class="agent-card" data-agent="pluma">
+          <div class="agent-avatar">✍️</div>
+          <div class="agent-info">
+            <span class="agent-name">Pluma</span>
+            <span class="agent-role">Copy</span>
+          </div>
+          <div class="agent-status busy"><span class="status-dot"></span><span>Ocupado</span></div>
+          <div class="agent-activity">Redactando posts para LinkedIn...</div>
+        </div>
+        <div class="agent-card" data-agent="mika">
+          <div class="agent-avatar">🎨</div>
+          <div class="agent-info">
+            <span class="agent-name">Mika</span>
+            <span class="agent-role">Diseño</span>
+          </div>
+          <div class="agent-status online"><span class="status-dot"></span><span>Activo</span></div>
+          <div class="agent-activity">Generando creatividades...</div>
+        </div>
+        <div class="agent-card" data-agent="mei">
+          <div class="agent-avatar">📋</div>
+          <div class="agent-info">
+            <span class="agent-name">Mei</span>
+            <span class="agent-role">Gestión</span>
+          </div>
+          <div class="agent-status online"><span class="status-dot"></span><span>Activo</span></div>
+          <div class="agent-activity">Procesando facturas del mes...</div>
+        </div>
+        <div class="agent-card" data-agent="data">
+          <div class="agent-avatar">📊</div>
+          <div class="agent-info">
+            <span class="agent-name">Data</span>
+            <span class="agent-role">Analítica</span>
+          </div>
+          <div class="agent-status busy"><span class="status-dot"></span><span>Ocupado</span></div>
+          <div class="agent-activity">Analizando tendencias semanales...</div>
+        </div>
+      </div>
+      <div class="activity-feed" id="activity-feed">
+        <div class="feed-item new">
+          <span class="feed-time">ahora</span>
+          <span class="feed-text"><strong>Kimo</strong> preparó briefing matutino</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-			@media (max-width: 720px) {
-				.hero { padding: 4rem 1rem 3rem; overflow-x: hidden; }
-				.hero h1 { font-size: 2rem; }
-				.hero .subtitle { font-size: 1rem; margin-bottom: 2rem; padding: 0 0.25rem; }
-				.hero-badge { font-size: 0.72rem; padding: 0.3rem 0.8rem; display: inline-flex; justify-content: center; }
-				.cta-buttons { flex-direction: column; align-items: center; gap: 0.75rem; padding: 0 1.5rem; width: 100%; box-sizing: border-box; }
-				.cta-wrap { width: 100%; max-width: 320px; display: flex; }
-				.btn-primary, .btn-secondary { width: 100%; text-align: center; padding: 1rem 1.5rem; min-height: 48px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; }
-				.stats { gap: 1.5rem; padding: 1.5rem 0.5rem; }
-				.stat { flex: 1 1 90px; }
-				.stat-number { font-size: 1.5rem; }
-				.stat-label { font-size: 0.7rem; }
-				.section-title { margin: 3rem auto 1.5rem; padding: 0 1.25rem; }
-				.section-title h2 { font-size: 1.5rem; }
-				.section-title p { font-size: 0.92rem; }
-				.features { grid-template-columns: 1fr; gap: 1rem; padding: 0 1.25rem; margin-bottom: 2rem; }
-				.feature { padding: 1.25rem; }
-				.posts-section { padding: 0 1.25rem; }
-				.posts-grid { grid-template-columns: 1fr; }
-				.post-card-img { height: 160px; aspect-ratio: auto; }
-				.final-cta h2 { font-size: 1.6rem; }
-				.final-cta p { font-size: 0.95rem; }
-			}
-			@media (max-width: 400px) {
-				.hero h1 { font-size: 1.7rem; }
-				.stats { gap: 1.2rem; }
-				.stat-number { font-size: 1.4rem; }
-				.stat-label { font-size: 0.65rem; }
-			}
-		</style>
-	</head>
-	<body>
-		<Header />
-		<main id="main-content">
-			<!-- Hero -->
-			<section class="hero">
-				<span class="hero-badge">La revolución ya empezó. No te quedes fuera.</span>
-				<h1>La mayoría usa la IA para preguntar cosas. <span>En TribuClaw la ponemos a trabajar.</span></h1>
-				<p class="subtitle">
-					Somos la comunidad donde aprendes a montar agentes reales con OpenClaw, sin código, sin necesitar conocimientos técnicos.
-					Da igual si quieres automatizar tu trabajo, vender servicios o montar algo propio.
-					Aquí te enseñamos a construir tu propio ejército de agentes que trabajan por ti.
-				</p>
-				<div class="cta-buttons">
-					<div class="cta-wrap">
-						<a href={WHOP_URL} class="btn-primary" target="_blank">Quiero mi agente IA</a>
-					</div>
-				</div>
-			</section>
+<div class="section-divider"></div>
 
-			<!-- Stats -->
-			<section class="stats">
-				<div class="stat">
-					<span class="stat-number">167K+</span>
-					<span class="stat-label">personas ya construyen agentes IA</span>
-				</div>
-				<div class="stat">
-					<span class="stat-number">∞</span>
-					<span class="stat-label">plataformas que tu agente controla</span>
-				</div>
-				<div class="stat">
-					<span class="stat-number">24/7</span>
-					<span class="stat-label">trabaja mientras tú duermes</span>
-				</div>
-			</section>
+<!-- ═══════════════════════════════════ BLOQUE 2 — LOS 3 PILARES ════════════════════════════════════ -->
+<section class="pillars-section reveal" id="pilares">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">Todo lo que necesitas para montar tu equipo de IA. Sin rodeos.</h2>
+      <p class="section-lead">Formación, comunidad y herramientas. Las tres cosas que separan a los que ya lo tienen montado de los que siguen "explorando opciones".</p>
+    </div>
+    <div class="pillars-grid">
+      <!-- Card 1: Formación -->
+      <div class="pillar-card-v2 tilt-card pillar-formacion">
+        <span class="pillar-number">01</span>
+        <span class="pillar-icon-v2">🎓</span>
+        <h3>De cero a agente funcionando en 8 minutos.</h3>
+        <p>Curso en español, actualizado, sin teoría de relleno. Solo lo que necesitas para que tu primer agente esté activo hoy.</p>
+        <p class="pillar-punch">Vas a tu ritmo. Pero ve rápido: cada día sin agente es un día haciendo trabajo que no deberías estar haciendo tú.</p>
+        <div class="pillar-features">
+          <span class="pillar-tag">Vídeos actualizados</span>
+          <span class="pillar-tag">En español</span>
+          <span class="pillar-tag">Paso a paso</span>
+        </div>
+      </div>
+      <!-- Card 2: Comunidad -->
+      <div class="pillar-card-v2 tilt-card pillar-comunidad">
+        <span class="pillar-number">02</span>
+        <span class="pillar-icon-v2">👥</span>
+        <h3>98 personas que ya lo tienen montado y te cuentan cómo.</h3>
+        <p>Directos los miércoles. Soporte real, no un bot de FAQ. Preguntas que importan, respuestas de gente que ha pasado por lo mismo.</p>
+        <p class="pillar-punch">Cuando tienes un problema a las 11 de la noche, quieres una comunidad, no un foro de 2019.</p>
+        <div class="pillar-features">
+          <span class="pillar-tag">Directos semanales</span>
+          <span class="pillar-tag">Soporte 24/7</span>
+          <span class="pillar-tag">TribuBot</span>
+        </div>
+      </div>
+      <!-- Card 3: SaaS -->
+      <div class="pillar-card-v2 tilt-card pillar-saas">
+        <span class="pillar-number">03</span>
+        <span class="pillar-icon-v2">🛠️</span>
+        <h3>Tu panel de control. Memoria, skills, automatizaciones.</h3>
+        <p>Gestiona tus agentes desde un solo sitio. Les das memoria, les asignas tareas, conectas las automatizaciones. Sin tocar código si no quieres.</p>
+        <p class="pillar-punch">Los que ya lo usan dicen que es lo primero que abren por la mañana.</p>
+        <div class="pillar-features">
+          <span class="pillar-tag">OpenClaw</span>
+          <span class="pillar-tag">Memoria persistente</span>
+          <span class="pillar-tag">Automatizaciones</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-			<!-- Features -->
-			<section class="section-title">
-				<h2>Esto no es un chatbot. Es tu ventaja competitiva.</h2>
-				<p>Los que entienden esto ahora van a dominar los próximos 10 años.</p>
-			</section>
-			<section class="features">
-				<div class="feature">
-					<span class="feature-icon">🧠</span>
-					<h3>Un cerebro que solo trabaja para ti</h3>
-					<p>Conoce tu negocio, recuerda cada conversación, aprende de tus decisiones. No es genérico. Es tuyo.</p>
-				</div>
-				<div class="feature">
-					<span class="feature-icon">⚡</span>
-					<h3>Mientras tú duermes, él ejecuta</h3>
-					<p>Responde clientes, organiza tu agenda, monitoriza oportunidades. Tu agente no descansa, no se distrae, no falla.</p>
-				</div>
-				<div class="feature">
-					<span class="feature-icon">🔗</span>
-					<h3>Conectado a toda tu vida digital</h3>
-					<p>WhatsApp, email, calendario, CRM, redes sociales. Un solo agente que lo controla todo desde un punto.</p>
-				</div>
-				<div class="feature">
-					<span class="feature-icon">🔒</span>
-					<h3>Tus datos, tu control total</h3>
-					<p>Sin intermediarios. Sin empresas que lean tus mensajes. Tu agente vive en tu servidor, bajo tus reglas.</p>
-				</div>
-				<div class="feature">
-					<span class="feature-icon">💰</span>
-					<h3>Accesible para cualquiera</h3>
-					<p>5 euros al mes. No necesitas saber programar. No necesitas ser técnico. Solo necesitas empezar.</p>
-				</div>
-				<div class="feature">
-					<span class="feature-icon">🇪🇸</span>
-					<h3>La primera comunidad en español</h3>
-					<p>Todo el conocimiento que estaba solo en inglés, ahora en tu idioma. Guías, soporte y gente como tú.</p>
-				</div>
-			</section>
+<div class="section-divider"></div>
 
-			<!-- Blog posts -->
-			<section class="section-title">
-				<h2>Aprende lo que el 99% aún no sabe</h2>
-				<p>Guías prácticas, estrategias reales y todo lo que necesitas para construir tu agente IA.</p>
-			</section>
-			<section class="posts-section">
-				<div class="posts-grid">
-					{posts.slice(0, 6).map((post) => {
-						const heroImg = heroImages[post.id] || post.data.heroImage || '/images/og-default.jpg';
-						return (
-							<div class="post-card">
-								<a href={`/blog/${post.id}/`}>
-									<div class="post-card-img">
-										<img src={heroImg} alt={post.data.title} loading="lazy" decoding="async" width="300" height="169" />
-									</div>
-									<div class="post-card-body">
-										<div class="meta"><FormattedDate date={post.data.pubDate} /></div>
-										<h3>{post.data.title}</h3>
-										<p class="excerpt">{post.data.description}</p>
-									</div>
-								</a>
-							</div>
-						);
-					})}
-				</div>
-				{posts.length > 6 && (
-					<div class="view-all">
-						<a href="/blog/" class="btn-secondary">Ver todos los artículos</a>
-					</div>
-				)}
-			</section>
+<!-- ═══════════════════════════════════ BLOQUE 3 — TIMELINE ════════════════════════════════════ -->
+<section class="timeline-section" id="timeline">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">Lo que tu agente hace mientras tú vives.</h2>
+      <p class="section-lead">Un día normal cuando tienes un equipo de IA. Sin exagerar ni inventar: esto es lo que hacen los agentes de TribuClaw ahora mismo.</p>
+    </div>
+    <div class="timeline-wrapper">
+      <div class="timeline-track">
+        <div class="timeline-progress" id="timeline-progress"></div>
+      </div>
 
-			<!-- Final CTA -->
-			<section class="final-cta">
-				<h2>La pregunta no es si vas a tener un agente IA. Es cuándo.</h2>
-				<p>Los que empiecen hoy tendrán años de ventaja sobre los que esperen. Tú decides de qué lado quieres estar.</p>
-				<div class="cta-wrap">
-					<a href={WHOP_URL} class="btn-primary" target="_blank">Entrar a TribuClaw ahora</a>
-				</div>
-			</section>
-		</main>
-		<Footer />
-	</body>
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">07:00 — Briefing automático</div>
+        <div class="timeline-event-title">Kimo lee tus mensajes pendientes, revisa las novedades relevantes para tu negocio y te prepara un resumen antes de que abras el ordenador.</div>
+        <div class="timeline-event-desc">Tú te despiertas informado.</div>
+        <div class="timeline-preview">Kimo → Briefing listo: 3 emails nuevos, 1 propuesta pendiente</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">10:00 — Emails y agenda</div>
+        <div class="timeline-event-title">Mientras atiendes lo urgente, Kimo filtra, responde y organiza. Solo llegan a ti los que de verdad necesitan tu criterio.</div>
+        <div class="timeline-event-desc">El resto, resuelto.</div>
+        <div class="timeline-preview">Kimo → 8 emails procesados, 2 requieren tu aprobación</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">14:00 — Competencia y tendencias</div>
+        <div class="timeline-event-title">Data monitoriza lo que se mueve en tu sector. Si hay algo que te afecta, lo sabes antes que la mayoría.</div>
+        <div class="timeline-event-desc">Sin pasar horas en Twitter buscando.</div>
+        <div class="timeline-preview">Data → 3 tendencias detectadas en tu sector esta semana</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">18:00 — Informe del día</div>
+        <div class="timeline-event-title">Pluma redacta el resumen. Mei ordena las tareas para mañana. Mao prepara lo que haga falta en código.</div>
+        <div class="timeline-event-desc">Cierras el día sin cabos sueltos.</div>
+        <div class="timeline-preview">Pluma → Informe del día listo · Mei → 5 tareas programadas para mañana</div>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-time">22:00 — Trabajan. Tú duermes.</div>
+        <div class="timeline-event-title">Mientras descansas, tus agentes ejecutan las tareas programadas, monitorizan, preparan y dejan todo listo para que mañana empiece rodando.</div>
+        <div class="timeline-event-desc">Así cada día.</div>
+        <div class="timeline-preview">Sistema → 12 tareas nocturnas en ejecución · Todo OK</div>
+      </div>
+    </div>
+
+    <div class="text-center" style="margin-top:3rem;">
+      <div class="cta-wrap">
+        <a href="/membresia/" class="cta-btn">
+          <span class="cta-main">Quiero este sistema funcionando en mi negocio → Entrar a TribuClaw</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ BLOQUE 4 — PROOF SOCIAL ════════════════════════════════════ -->
+<section class="proof-section reveal" id="proof">
+  <div class="container">
+    <div class="text-center">
+      <h2 class="section-title">No te lo estoy contando yo. Te lo cuentan ellos.</h2>
+      <p class="section-lead">98 miembros. Agentes activos. Tareas ejecutándose mientras lees esto.</p>
+    </div>
+
+    <!-- Counters animados -->
+    <div class="counters-row">
+      <div class="counter-item">
+        <span class="counter-value" data-target="98" data-suffix="+">0</span>
+        <span class="counter-label">Miembros activos en TribuClaw</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-value" data-target="247" data-suffix="K">0</span>
+        <span class="counter-label">GitHub stars del proyecto base (OpenClaw)</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-value" data-target="167" data-suffix="K">0</span>
+        <span class="counter-label">Builders usando esta tecnología en el mundo</span>
+      </div>
+      <div class="counter-item">
+        <span class="counter-value" data-target="5" data-suffix="">0</span>
+        <span class="counter-label">Agentes especializados listos para tu negocio</span>
+      </div>
+    </div>
+
+    <!-- Review destacada -->
+    <div class="review-featured">
+      <div class="review-quote">
+        <span class="review-quote-mark">"</span>
+        Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw.
+      </div>
+      <div class="review-author-featured">
+        <div class="review-avatar">AB</div>
+        <div>
+          <span class="review-name">Alberto Batlle</span>
+          <span class="review-stars-sm">★★★★★</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Rating strip -->
+    <div class="ratings-strip">
+      <div class="rating-chip">
+        <div class="chip-avatar">AR</div>
+        <span class="chip-name">Alvaro Rodriguez</span>
+        <span class="chip-stars">★★★★★</span>
+      </div>
+      <div class="rating-chip">
+        <div class="chip-avatar">M</div>
+        <span class="chip-name">Maria</span>
+        <span class="chip-stars">★★★★★</span>
+      </div>
+      <div class="rating-chip">
+        <div class="chip-avatar">R</div>
+        <span class="chip-name">Raul</span>
+        <span class="chip-stars">★★★★★</span>
+      </div>
+    </div>
+
+    <!-- Logo bar -->
+    <div class="logo-bar">
+      <span class="logo-bar-item">OpenClaw</span>
+      <span class="logo-bar-item">Telegram</span>
+      <span class="logo-bar-item">Whop</span>
+    </div>
+    <p class="logo-bar-desc">Las tres piezas del sistema. Una tecnología open source con 247K estrellas, el canal donde viven los agentes y la plataforma donde está la comunidad. No reinventamos nada. Conectamos lo que ya funciona.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════════════════════════════════ BLOQUE 5 — CTA FINAL ════════════════════════════════════ -->
+<section class="cta-final-section reveal" id="cta-final">
+  <div class="cta-final-glow"></div>
+  <div class="container text-center">
+    <div class="urgency-stat">
+      <span class="urgency-number">247.000</span>
+      <span class="urgency-text">GitHub stars · La curva de adopción ya arrancó</span>
+    </div>
+    <h2 class="section-title cta-final-title">En 6 meses, tener un agente va a ser lo normal. Ahora todavía eres de los primeros.</h2>
+    <p class="section-lead" style="max-width:600px;margin:0 auto 2.5rem;">
+      247.000 stars en GitHub. 167K builders. La curva de adopción ya arrancó. Puedes entrar ahora o puedes entrar cuando todo el mundo lo esté haciendo.
+    </p>
+
+    <p class="cta-compare-intro">Piénsalo así:</p>
+    <p class="cta-compare-body">Un asistente virtual humano te cuesta entre 800€ y 1.500€ al mes. Y se va de vacaciones. Y tiene mal día. Y solo hace una cosa a la vez.</p>
+    <p class="cta-compare-body">Tu equipo de IA en TribuClaw: desde 35€ al mes. 1,16€ al día.<br/>Trabaja los 365. Sin bajas, sin excusas, sin olvidar lo que le dijiste la semana pasada.</p>
+    <p class="cta-compare-punch">No es que sea más barato. Es que hace cosas que un VA humano no puede hacer aunque quiera.</p>
+
+    <!-- Comparativa tabla -->
+    <div class="price-compare">
+      <div class="price-col">
+        <span class="price-col-label">VA Humano</span>
+        <span class="price-amount">800€ – 1.500€</span>
+        <span class="price-per-day">8h/día laborables</span>
+        <span class="price-per-day">1 tarea a la vez</span>
+        <span class="price-per-day">Se va de vacaciones</span>
+      </div>
+      <div class="price-col highlight">
+        <span class="price-col-label">Tu agente en TribuClaw</span>
+        <span class="price-amount">Desde 35€</span>
+        <span class="price-per-day">24/7/365</span>
+        <span class="price-per-day">Múltiples tareas en paralelo</span>
+        <span class="price-per-day">Memoria permanente</span>
+      </div>
+    </div>
+
+    <!-- CTA principal -->
+    <div class="cta-wrap" style="margin-bottom:1.5rem;">
+      <a href="/membresia/" class="cta-btn cta-large">
+        <span class="cta-main">Entrar a TribuClaw</span>
+        <span class="cta-sub-line">Desde 35€/mes · 1,16€ al día · Cancela cuando quieras</span>
+      </a>
+    </div>
+
+    <!-- CTA secundario -->
+    <p class="cta-secondary">¿Tienes dudas? Habla con Kimo antes de decidir. Sin presión.</p>
+
+    <!-- Texto de cierre -->
+    <p class="cta-closing">Desde 35€/mes. Sin permanencia. Sin letra pequeña.</p>
+  </div>
+</section>
+
+</main>
+
+<Footer />
+
+<!-- ═══════════════════════════════════ ALL JS ═══════════════════════════════════ -->
+<script>
+(function() {
+  'use strict';
+
+  // ─── SCROLL REVEAL ───
+  const revealEls = document.querySelectorAll('.reveal');
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('revealed');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '-50px' });
+  revealEls.forEach(el => revealObserver.observe(el));
+
+  // ─── PARTICLE CANVAS ───
+  const canvas = document.getElementById('hero-particles-canvas');
+  if (canvas) {
+    const ctx = canvas.getContext('2d');
+    const isMobile = window.innerWidth < 768;
+    const PARTICLE_COUNT = isMobile ? 25 : 60;
+    const COLORS = ['#00d4ff', '#10b981', '#8b5cf6', '#ffffff'];
+    const particles: Array<{
+      x: number; y: number; size: number;
+      speedX: number; speedY: number;
+      opacity: number; color: string; pulse: number;
+    }> = [];
+
+    function resize() {
+      canvas.width = canvas.offsetWidth;
+      canvas.height = canvas.offsetHeight;
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    for (let i = 0; i < PARTICLE_COUNT; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        size: Math.random() * 1.5 + 0.5,
+        speedX: (Math.random() - 0.5) * 0.3,
+        speedY: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.5 + 0.1,
+        color: COLORS[Math.floor(Math.random() * COLORS.length)],
+        pulse: Math.random() * Math.PI * 2,
+      });
+    }
+
+    let paused = false;
+    document.addEventListener('visibilitychange', () => { paused = document.hidden; });
+
+    function animate() {
+      if (paused) { requestAnimationFrame(animate); return; }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      // Connections
+      for (let i = 0; i < particles.length; i++) {
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[i].x - particles[j].x;
+          const dy = particles[i].y - particles[j].y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < 120) {
+            ctx.save();
+            ctx.globalAlpha = (1 - dist / 120) * 0.08;
+            ctx.strokeStyle = '#00d4ff';
+            ctx.lineWidth = 0.5;
+            ctx.beginPath();
+            ctx.moveTo(particles[i].x, particles[i].y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.stroke();
+            ctx.restore();
+          }
+        }
+      }
+
+      particles.forEach(p => {
+        p.x += p.speedX;
+        p.y += p.speedY;
+        p.pulse += 0.02;
+        p.opacity = 0.1 + Math.sin(p.pulse) * 0.2 + 0.2;
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+        ctx.save();
+        ctx.globalAlpha = p.opacity;
+        ctx.fillStyle = p.color;
+        ctx.shadowBlur = 6;
+        ctx.shadowColor = p.color;
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.restore();
+      });
+
+      requestAnimationFrame(animate);
+    }
+    animate();
+  }
+
+  // ─── DASHBOARD CLICK ───
+  document.querySelectorAll('.agent-card').forEach(card => {
+    card.addEventListener('click', () => {
+      document.querySelectorAll('.agent-card').forEach(c => c.classList.remove('active'));
+      card.classList.add('active');
+    });
+  });
+
+  // ─── LIVE ACTIVITY FEED ───
+  const activities = [
+    { agent: 'Mao', action: 'desplegó nueva landing en Cloudflare' },
+    { agent: 'Pluma', action: 'redactó 3 posts para LinkedIn' },
+    { agent: 'Data', action: 'analizó tendencias de la semana' },
+    { agent: 'Mei', action: 'procesó 12 facturas del mes' },
+    { agent: 'Mika', action: 'generó 4 creatividades para anuncios' },
+    { agent: 'Kimo', action: 'revisó KPIs y preparó briefing' },
+  ];
+  let activityIdx = 0;
+  const feed = document.getElementById('activity-feed');
+  if (feed) {
+    setInterval(() => {
+      const item = activities[activityIdx % activities.length];
+      const el = document.createElement('div');
+      el.className = 'feed-item new';
+      el.innerHTML = `<span class="feed-time">ahora</span><span class="feed-text"><strong>${item.agent}</strong> ${item.action}</span>`;
+      feed.prepend(el);
+      const items = feed.querySelectorAll('.feed-item');
+      if (items.length > 3) items[items.length - 1].remove();
+      activityIdx++;
+    }, 3000);
+  }
+
+  // ─── 3D TILT CARDS ───
+  if (window.matchMedia('(pointer: fine)').matches) {
+    const cards = document.querySelectorAll('.tilt-card');
+    const TILT_MAX = 12;
+    const SCALE = 1.04;
+    const PERSPECTIVE = 800;
+
+    cards.forEach(card => {
+      (card as HTMLElement).style.transformStyle = 'preserve-3d';
+      (card as HTMLElement).style.willChange = 'transform';
+
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = (e.clientX - rect.left) / rect.width - 0.5;
+        const y = (e.clientY - rect.top) / rect.height - 0.5;
+        const rotateX = -y * TILT_MAX * 2;
+        const rotateY = x * TILT_MAX * 2;
+        const glowX = (x + 0.5) * 100;
+        const glowY = (y + 0.5) * 100;
+        (card as HTMLElement).style.transform = `perspective(${PERSPECTIVE}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${SCALE})`;
+        (card as HTMLElement).style.background = `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(255,255,255,0.04) 0%, transparent 60%), rgba(22, 27, 34, 1)`;
+        (card as HTMLElement).style.transition = 'transform 0.1s ease-out, box-shadow 0.3s ease';
+      });
+
+      card.addEventListener('mouseleave', () => {
+        (card as HTMLElement).style.transform = `perspective(${PERSPECTIVE}px) rotateX(0) rotateY(0) scale(1)`;
+        (card as HTMLElement).style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s ease, background 0.3s ease';
+        (card as HTMLElement).style.background = '';
+      });
+
+      card.addEventListener('mouseenter', () => {
+        (card as HTMLElement).style.transition = 'transform 0.1s ease-out, box-shadow 0.2s ease';
+      });
+    });
+  }
+
+  // ─── TIMELINE SCROLL ───
+  const section = document.querySelector('.timeline-section');
+  const progress = document.getElementById('timeline-progress');
+  const items = document.querySelectorAll('.timeline-item');
+  if (section && progress) {
+    function updateTimeline() {
+      const rect = section.getBoundingClientRect();
+      const winH = window.innerHeight;
+      const sectionHeight = rect.height;
+      const scrolled = Math.max(0, Math.min(1, (winH - rect.top) / (sectionHeight + winH)));
+      progress.style.height = (scrolled * 100) + '%';
+      items.forEach(item => {
+        const itemTop = item.getBoundingClientRect().top;
+        if (itemTop < winH * 0.75) {
+          item.classList.add('timeline-active');
+        }
+      });
+    }
+    window.addEventListener('scroll', updateTimeline, { passive: true });
+    updateTimeline();
+  }
+
+  // ─── ANIMATED COUNTERS ───
+  function animateCounter(el: Element, target: number, duration: number, prefix: string, suffix: string) {
+    const start = performance.now();
+    function update(timestamp: number) {
+      const elapsed = timestamp - start;
+      const progress = Math.min(elapsed / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3);
+      const current = Math.floor(eased * target);
+      el.textContent = prefix + current.toLocaleString('es-ES') + suffix;
+      if (progress < 1) requestAnimationFrame(update);
+      else el.textContent = prefix + target.toLocaleString('es-ES') + suffix;
+    }
+    requestAnimationFrame(update);
+  }
+
+  const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        const target = parseFloat((el as HTMLElement).dataset.target || '0');
+        const prefix = (el as HTMLElement).dataset.prefix || '';
+        const suffix = (el as HTMLElement).dataset.suffix || '';
+        animateCounter(el, target, 2000, prefix, suffix);
+        counterObserver.unobserve(el);
+      }
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.counter-value').forEach(el => counterObserver.observe(el));
+
+})();
+</script>
+
+<style>
+/* ═══════════════════════════════════════════════════
+   BASE & RESET
+   ═══════════════════════════════════════════════════ */
+html { scroll-behavior: smooth; }
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0d1117;
+  color: #fff;
+  line-height: 1.7;
+  font-size: 1rem;
+  font-weight: 400;
+  overflow-x: hidden;
+}
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+}
+.text-center { text-align: center; }
+
+/* ═══════════════════════════════════════════════════
+   HEADER
+   ═══════════════════════════════════════════════════ */
+.site-header {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(13,17,23,0.85);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.header-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.25rem;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+  color: white;
+  font-weight: 800;
+  font-size: 1.1rem;
+  letter-spacing: -0.02em;
+}
+.logo-link:hover { text-decoration: none; }
+.accent { color: #00d4ff; }
+.header-nav { display: flex; align-items: center; gap: 1.5rem; }
+.nav-link {
+  color: #8b949e;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.nav-link:hover { color: #00d4ff; }
+.header-cta {
+  font-size: 0.75rem;
+  padding: 0.6rem 1.25rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   CTA SYSTEM (Cyan)
+   ═══════════════════════════════════════════════════ */
+.cta-wrap {
+  background: #0d1117;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  padding: 4px;
+  display: inline-flex;
+  position: relative;
+  overflow: hidden;
+}
+.cta-wrap::before {
+  content: '';
+  position: absolute;
+  top: 50%; left: 50%;
+  translate: -50% -50%;
+  width: max(200%, 200vh);
+  height: max(200%, 200vh);
+  background: conic-gradient(transparent 0deg, transparent 280deg, #00d4ff 330deg, #10b981 360deg);
+  animation: ctaBorderSpin 3s linear infinite;
+  z-index: 0;
+}
+.cta-wrap::after {
+  content: '';
+  position: absolute;
+  inset: 2px;
+  background: #0d1117;
+  border-radius: 12px;
+  z-index: 0;
+}
+.cta-wrap > * { position: relative; z-index: 1; }
+@keyframes ctaBorderSpin { 100% { rotate: 360deg; } }
+
+.cta-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  background: linear-gradient(135deg, #00aacc, #00d4ff);
+  color: #0d1117;
+  font-family: 'Inter', sans-serif;
+  font-weight: 900;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 0.85rem 2rem;
+  border-radius: 10px;
+  border: none;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.3s ease-out;
+  animation: ctaPulseCyan 2s ease-in-out infinite;
+  white-space: nowrap;
+}
+.cta-btn:hover { transform: translateY(-2px); text-decoration: none; }
+.cta-main { display: block; }
+.cta-sub-line {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.7;
+  margin-top: 0.2rem;
+}
+@keyframes ctaPulseCyan {
+  0%, 100% { box-shadow: 0 4px 20px rgba(0,212,255,0.5), 0 8px 40px rgba(0,212,255,0.2); }
+  50% { box-shadow: 0 6px 30px rgba(0,212,255,0.7), 0 12px 60px rgba(0,212,255,0.3); }
+}
+.cta-large { font-size: 1rem; padding: 1rem 2.5rem; }
+.cta-wrap-sm { padding: 2px; border-radius: 10px; }
+.cta-wrap-sm .header-cta { font-size: 0.75rem; padding: 0.5rem 1rem; }
+
+/* ═══════════════════════════════════════════════════
+   SECTION DIVIDER & REVEAL
+   ═══════════════════════════════════════════════════ */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
+  max-width: 600px;
+  margin: 0 auto;
+}
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.reveal.revealed {
+  opacity: 1;
+  transform: translateY(0);
+}
+section { padding: 5rem 0; }
+
+/* ═══════════════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════════════ */
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin-bottom: 1rem;
+}
+.section-lead {
+  color: #8b949e;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════
+   BLOQUE 1 — HERO
+   ═══════════════════════════════════════════════════ */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 7rem 0 5rem;
+  overflow: hidden;
+  background: #0d1117;
+}
+#hero-particles-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.8;
+}
+.hero-glow-top {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1400px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.12) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-glow-bottom {
+  position: absolute;
+  bottom: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1400px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(139,92,246,0.08) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+.hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.024) 0%, rgba(255,255,255,0.024) 1.5px, transparent 1.5px);
+  background-size: 15px 15px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Hero layout: 2 columnas */
+.hero-layout {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 55fr 45fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.25);
+  color: #00d4ff;
+  padding: 0.4rem 1rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+.hero-headline {
+  font-size: clamp(1.8rem, 4.5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+.hero-sub {
+  color: #c9d1d9;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.hero-body {
+  color: #8b949e;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 1rem;
+}
+.hero-fomo {
+  color: #8b949e;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin-bottom: 2rem;
+}
+.hero-fomo strong {
+  color: #f0f6fc;
+}
+.hero-cta-row {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Dashboard */
+.hero-dashboard {
+  background: rgba(13, 17, 23, 0.9);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 0 0 1px rgba(0, 212, 255, 0.08),
+    0 20px 60px rgba(0, 0, 0, 0.6),
+    0 0 80px rgba(0, 212, 255, 0.05);
+  animation: dashboardFloat 6s ease-in-out infinite;
+}
+@keyframes dashboardFloat {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+.dash-titlebar {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255, 255, 255, 0.02);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+.dash-dots { display: flex; gap: 6px; }
+.dot { width: 10px; height: 10px; border-radius: 50%; }
+.dot-red { background: #ff5f57; }
+.dot-yellow { background: #ffbd2e; }
+.dot-green { background: #28ca41; }
+.dash-title { flex: 1; font-size: 0.75rem; color: #484f58; text-align: center; }
+.dash-live {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #10b981;
+  letter-spacing: 0.05em;
+}
+.live-dot {
+  width: 6px; height: 6px;
+  background: #10b981;
+  border-radius: 50%;
+  animation: livePulse 1.5s ease-in-out infinite;
+}
+@keyframes livePulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(16,185,129,0.5); }
+  50% { box-shadow: 0 0 0 4px rgba(16,185,129,0); }
+}
+.agents-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: rgba(255,255,255,0.04);
+  padding: 1px;
+}
+.agent-card {
+  background: #0d1117;
+  padding: 0.75rem 1rem;
+  cursor: pointer;
+  transition: background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+.agent-card:hover { background: rgba(0, 212, 255, 0.04); }
+.agent-card.active {
+  background: rgba(0, 212, 255, 0.06);
+}
+.agent-avatar { font-size: 1.5rem; margin-bottom: 0.25rem; }
+.agent-name { display: block; font-size: 0.8rem; font-weight: 700; color: #f0f6fc; }
+.agent-role { display: block; font-size: 0.65rem; color: #484f58; }
+.agent-status {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.65rem;
+  margin-top: 0.25rem;
+}
+.agent-status.online { color: #10b981; }
+.agent-status.busy { color: #f59e0b; }
+.status-dot {
+  width: 5px; height: 5px;
+  border-radius: 50%;
+  background: currentColor;
+}
+.agent-activity {
+  font-size: 0.6rem;
+  color: #484f58;
+  margin-top: 0.35rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.activity-feed {
+  padding: 0.5rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  max-height: 80px;
+  overflow: hidden;
+}
+.feed-item {
+  display: flex;
+  gap: 0.75rem;
+  font-size: 0.65rem;
+  color: #484f58;
+  animation: feedSlideIn 0.4s ease-out;
+}
+.feed-item.new { color: #8b949e; }
+.feed-time { color: #00d4ff; flex-shrink: 0; }
+@keyframes feedSlideIn {
+  from { opacity: 0; transform: translateX(-8px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+/* ═══════════════════════════════════════════════════
+   BLOQUE 2 — PILARES (3 CARDS)
+   ═══════════════════════════════════════════════════ */
+.pillars-section {
+  background: #0d1117;
+  padding: 6rem 0;
+}
+.pillars-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  max-width: 900px;
+  margin: 3rem auto 0;
+}
+.pillar-card-v2 {
+  background: rgba(22, 27, 34, 1);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transform-style: preserve-3d;
+}
+.pillar-card-v2::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, var(--card-accent), transparent 50%);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.pillar-card-v2:hover::before { opacity: 1; }
+.pillar-card-v2::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 21px;
+  background: radial-gradient(ellipse at 50% 0%, var(--card-glow) 0%, transparent 60%);
+  opacity: 0;
+  transition: opacity 0.4s;
+  z-index: -1;
+}
+.pillar-card-v2:hover::after { opacity: 1; }
+.pillar-formacion { --card-accent: #00d4ff; --card-glow: rgba(0,212,255,0.2); }
+.pillar-comunidad { --card-accent: #10b981; --card-glow: rgba(16,185,129,0.2); }
+.pillar-saas { --card-accent: #8b5cf6; --card-glow: rgba(139,92,246,0.2); }
+.pillar-number {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  font-size: 3rem;
+  font-weight: 900;
+  color: rgba(255,255,255,0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.pillar-icon-v2 {
+  font-size: 3rem;
+  margin-bottom: 1.25rem;
+  display: block;
+  filter: drop-shadow(0 0 12px var(--card-accent));
+}
+.pillar-card-v2 h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #f0f6fc;
+}
+.pillar-card-v2 p {
+  font-size: 0.95rem;
+  color: #8b949e;
+  line-height: 1.7;
+  margin-bottom: 0.5rem;
+}
+.pillar-punch {
+  font-size: 0.9rem !important;
+  color: #c9d1d9 !important;
+  font-style: italic;
+  margin-bottom: 1.25rem !important;
+}
+.pillar-features {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+.pillar-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #8b949e;
+}
+
+/* ═══════════════════════════════════════════════════
+   BLOQUE 3 — TIMELINE
+   ═══════════════════════════════════════════════════ */
+.timeline-section {
+  position: relative;
+  padding: 6rem 0;
+  background: #161b22;
+}
+.timeline-wrapper {
+  max-width: 700px;
+  margin: 3rem auto 0;
+  position: relative;
+  padding-left: 3rem;
+}
+.timeline-track {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: rgba(255,255,255,0.06);
+}
+.timeline-progress {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 2px;
+  height: 0%;
+  background: linear-gradient(to bottom, #00d4ff, #10b981);
+  transition: height 0.1s ease-out;
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+.timeline-item {
+  position: relative;
+  padding: 0 0 3rem 2.5rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.timeline-item.timeline-active {
+  opacity: 1;
+  transform: translateX(0);
+}
+.timeline-dot {
+  position: absolute;
+  left: -3rem;
+  top: 0.25rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: #21262d;
+  border: 2px solid rgba(255,255,255,0.1);
+  transform: translateX(-50%) translateX(1px);
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
+  z-index: 1;
+}
+.timeline-item.timeline-active .timeline-dot {
+  background: #00d4ff;
+  border-color: #00d4ff;
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+}
+.timeline-time {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #00d4ff;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.4rem;
+}
+.timeline-event-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #f0f6fc;
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+.timeline-event-desc {
+  font-size: 0.95rem;
+  color: #8b949e;
+  line-height: 1.6;
+}
+.timeline-preview {
+  margin-top: 0.75rem;
+  background: rgba(0, 212, 255, 0.04);
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-radius: 8px;
+  padding: 0.6rem 0.85rem;
+  font-size: 0.8rem;
+  color: #8b949e;
+  font-family: 'Courier New', monospace;
+}
+.timeline-preview::before {
+  content: '> ';
+  color: #00d4ff;
+}
+.timeline-item:nth-child(1) { transition-delay: 0s; }
+.timeline-item:nth-child(2) { transition-delay: 0.1s; }
+.timeline-item:nth-child(3) { transition-delay: 0.15s; }
+.timeline-item:nth-child(4) { transition-delay: 0.2s; }
+.timeline-item:nth-child(5) { transition-delay: 0.25s; }
+
+/* ═══════════════════════════════════════════════════
+   BLOQUE 4 — PROOF SOCIAL
+   ═══════════════════════════════════════════════════ */
+.proof-section {
+  background: #0d1117;
+  padding: 6rem 0;
+}
+
+/* Counters */
+.counters-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  max-width: 800px;
+  margin: 3rem auto;
+}
+.counter-item { text-align: center; }
+.counter-value {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  background: linear-gradient(135deg, #00d4ff, #10b981);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.counter-label {
+  font-size: 0.8rem;
+  color: #484f58;
+  margin-top: 0.35rem;
+}
+
+/* Review destacada */
+.review-featured {
+  max-width: 580px;
+  margin: 3rem auto;
+  background: rgba(0,212,255,0.04);
+  border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 16px;
+  padding: 2rem 2.5rem;
+  text-align: center;
+}
+.review-quote {
+  font-size: 1.1rem;
+  color: #c9d1d9;
+  font-style: italic;
+  line-height: 1.7;
+}
+.review-quote-mark {
+  font-size: 3rem;
+  color: #00d4ff;
+  line-height: 0;
+  vertical-align: -0.4em;
+  margin-right: 0.1rem;
+  font-style: normal;
+}
+.review-author-featured {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+.review-avatar {
+  width: 36px; height: 36px;
+  background: linear-gradient(135deg, #00d4ff, #10b981);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.review-name { display: block; font-size: 0.9rem; font-weight: 700; color: #fff; }
+.review-stars-sm { color: #f59e0b; font-size: 0.8rem; }
+
+/* Rating strip */
+.ratings-strip {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+.rating-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 100px;
+  padding: 0.4rem 1rem 0.4rem 0.4rem;
+}
+.chip-avatar {
+  width: 28px; height: 28px;
+  background: linear-gradient(135deg, #00d4ff, #10b981);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.chip-name { font-size: 0.8rem; font-weight: 600; color: #c9d1d9; }
+.chip-stars { font-size: 0.7rem; color: #f59e0b; }
+
+/* Logo bar */
+.logo-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  padding: 2.5rem 0 1rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  flex-wrap: wrap;
+}
+.logo-bar-item {
+  opacity: 0.3;
+  filter: grayscale(1);
+  transition: opacity 0.3s, filter 0.3s;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #8b949e;
+}
+.logo-bar-item:hover { opacity: 0.7; filter: grayscale(0); }
+.logo-bar-desc {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+  font-size: 0.85rem;
+  color: #484f58;
+  line-height: 1.7;
+}
+
+/* ═══════════════════════════════════════════════════
+   BLOQUE 5 — CTA FINAL
+   ═══════════════════════════════════════════════════ */
+.cta-final-section {
+  position: relative;
+  overflow: hidden;
+  padding: 8rem 0;
+  text-align: center;
+  background: #0d1117;
+}
+.cta-final-glow {
+  position: absolute;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(0,212,255,0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-final-section > * { position: relative; }
+
+.urgency-stat {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(139, 92, 246, 0.08);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 999px;
+  padding: 0.5rem 1.25rem;
+  margin-bottom: 2rem;
+}
+.urgency-number {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: #8b5cf6;
+}
+.urgency-text {
+  font-size: 0.85rem;
+  color: #8b949e;
+}
+
+.cta-final-title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
+}
+
+.cta-compare-intro {
+  color: #f0f6fc;
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.cta-compare-body {
+  color: #8b949e;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  max-width: 600px;
+  margin: 0 auto 0.5rem;
+}
+.cta-compare-punch {
+  color: #f0f6fc;
+  font-size: 1rem;
+  font-weight: 700;
+  max-width: 600px;
+  margin: 0 auto 2.5rem;
+}
+
+/* Price compare */
+.price-compare {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  max-width: 560px;
+  margin: 0 auto 3rem;
+}
+.price-col {
+  background: rgba(22, 27, 34, 1);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.price-col.highlight {
+  border-color: rgba(0, 212, 255, 0.3);
+  background: rgba(0, 212, 255, 0.04);
+}
+.price-col-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #484f58;
+}
+.price-amount {
+  font-size: 1.8rem;
+  font-weight: 900;
+  line-height: 1;
+}
+.price-col:not(.highlight) .price-amount {
+  color: #484f58;
+  text-decoration: line-through;
+}
+.price-col.highlight .price-amount {
+  color: #00d4ff;
+}
+.price-per-day {
+  font-size: 0.8rem;
+  color: #484f58;
+}
+.price-col.highlight .price-per-day {
+  color: #10b981;
+}
+
+.cta-secondary {
+  color: #8b949e;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+.cta-secondary:hover {
+  color: #c9d1d9;
+}
+.cta-closing {
+  color: #484f58;
+  font-size: 0.85rem;
+}
+
+/* ═══════════════════════════════════════════════════
+   FOOTER OVERRIDE (cyan accent)
+   ═══════════════════════════════════════════════════ */
+footer .accent { color: #00d4ff; }
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — xs (≤375px)
+   ═══════════════════════════════════════════════════ */
+@media (max-width: 375px) {
+  .container { padding: 0 1rem; }
+
+  /* Header */
+  .header-inner { padding: 0 1rem; height: 54px; }
+  .logo-link img { width: 26px; height: 26px; }
+  .logo-text { font-size: 1rem; }
+  .header-nav { display: none; }
+  .cta-wrap-sm::before, .cta-wrap-sm::after { display: none; }
+  .cta-wrap-sm { border: 1.5px solid rgba(0,212,255,0.5); background: #0d1117; width: auto !important; flex: 0 0 auto; }
+  .header-cta { font-size: 0.65rem; padding: 0.4rem 0.8rem; width: auto !important; animation: none; box-shadow: 0 2px 10px rgba(0,212,255,0.4); }
+
+  /* Hero */
+  .hero { padding: 4.5rem 0 2.5rem; min-height: auto; }
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-dashboard { display: none; }
+  .hero-badge { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
+  .hero-headline { font-size: 1.75rem; }
+  .hero-sub { font-size: 0.9rem; }
+  .hero-body { font-size: 0.85rem; }
+  .hero-fomo { font-size: 0.85rem; }
+  .cta-wrap { width: 100%; display: flex; }
+  .cta-btn { width: 100%; justify-content: center; padding: 1rem 1.5rem; font-size: 0.85rem; }
+  .cta-btn.cta-large { font-size: 0.9rem; }
+  .cta-sub-line { font-size: 0.55rem; }
+
+  /* Pillars */
+  .pillars-section { padding: 3rem 0; }
+  .section-title { font-size: 1.4rem; }
+  .section-lead { font-size: 0.9rem; }
+  .pillars-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .pillar-card-v2 { padding: 1.5rem 1.25rem; }
+  .pillar-icon-v2 { font-size: 2rem; }
+  .pillar-card-v2 h3 { font-size: 1.1rem; }
+  .pillar-card-v2 p { font-size: 0.85rem; }
+
+  /* Timeline */
+  .timeline-section { padding: 3rem 0; }
+  .timeline-wrapper { padding-left: 1.5rem; }
+  .timeline-track { display: none; }
+  .timeline-progress { display: none; }
+  .timeline-dot { display: none; }
+  .timeline-item { padding: 0 0 2rem 0; opacity: 1; transform: none; }
+  .timeline-event-title { font-size: 0.95rem; }
+  .timeline-event-desc { font-size: 0.85rem; }
+  .timeline-preview { font-size: 0.7rem; }
+
+  /* Proof */
+  .proof-section { padding: 3rem 0; }
+  .counters-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .counter-value { font-size: 2rem; }
+  .counter-label { font-size: 0.7rem; }
+  .review-featured { padding: 1.25rem 1rem; margin: 2rem auto; }
+  .review-quote { font-size: 0.95rem; }
+  .review-quote-mark { font-size: 2rem; }
+  .ratings-strip { flex-direction: column; align-items: center; gap: 0.5rem; }
+  .logo-bar { gap: 1.5rem; }
+  .logo-bar-desc { font-size: 0.8rem; }
+
+  /* CTA final */
+  .cta-final-section { padding: 3rem 0; }
+  .cta-final-title { font-size: 1.5rem !important; }
+  .urgency-stat { padding: 0.4rem 1rem; }
+  .urgency-number { font-size: 1rem; }
+  .urgency-text { font-size: 0.75rem; }
+  .cta-compare-intro { font-size: 0.95rem; }
+  .cta-compare-body { font-size: 0.85rem; }
+  .cta-compare-punch { font-size: 0.9rem; }
+  .price-compare { grid-template-columns: 1fr; gap: 0.75rem; }
+  .price-amount { font-size: 1.5rem; }
+
+  section { padding: 2.5rem 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — sm (376px–480px)
+   ═══════════════════════════════════════════════════ */
+@media (min-width: 376px) and (max-width: 480px) {
+  .container { padding: 0 1rem; }
+  .header-nav { display: none; }
+  .cta-wrap-sm::before, .cta-wrap-sm::after { display: none; }
+  .cta-wrap-sm { border: 1.5px solid rgba(0,212,255,0.5); background: #0d1117; width: auto !important; flex: 0 0 auto; }
+  .header-cta { font-size: 0.7rem; padding: 0.45rem 0.9rem; width: auto !important; animation: none; box-shadow: 0 2px 10px rgba(0,212,255,0.4); }
+
+  .hero { padding: 4.75rem 0 2.75rem; min-height: auto; }
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-dashboard { display: none; }
+  .hero-headline { font-size: 1.9rem; }
+  .cta-wrap { width: 100%; display: flex; }
+  .cta-btn { width: 100%; justify-content: center; }
+  .cta-btn.cta-large { font-size: 0.95rem; }
+
+  .pillars-section { padding: 3.5rem 0; }
+  .pillars-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .pillar-card-v2 { padding: 1.75rem 1.5rem; }
+
+  .timeline-section { padding: 3.5rem 0; }
+  .timeline-wrapper { padding-left: 1.5rem; }
+  .timeline-track { display: none; }
+  .timeline-progress { display: none; }
+  .timeline-dot { display: none; }
+  .timeline-item { padding: 0 0 2rem 0; opacity: 1; transform: none; }
+
+  .proof-section { padding: 3.5rem 0; }
+  .counters-row { grid-template-columns: repeat(2, 1fr); }
+  .ratings-strip { flex-wrap: wrap; gap: 0.5rem; }
+  .rating-chip { flex: 1 1 45%; min-width: 0; }
+
+  .cta-final-section { padding: 3.5rem 0; }
+  .cta-final-title { font-size: 1.6rem !important; }
+  .price-compare { grid-template-columns: 1fr; }
+
+  section { padding: 2.75rem 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — md (481px–767px)
+   ═══════════════════════════════════════════════════ */
+@media (min-width: 481px) and (max-width: 767px) {
+  .header-nav { display: none; }
+  .cta-wrap-sm::before, .cta-wrap-sm::after { display: none; }
+  .cta-wrap-sm { border: 1.5px solid rgba(0,212,255,0.5); background: #0d1117; width: auto !important; flex: 0 0 auto; }
+  .header-cta { font-size: 0.7rem; padding: 0.5rem 1rem; width: auto !important; animation: none; box-shadow: 0 2px 10px rgba(0,212,255,0.4); }
+
+  .hero { padding: 5rem 0 3rem; min-height: auto; }
+  .hero-layout { grid-template-columns: 1fr; gap: 2.5rem; }
+  .hero-headline { font-size: clamp(2rem, 7vw, 2.4rem); }
+  .cta-wrap { width: 100%; display: flex; }
+  .cta-btn { width: 100%; justify-content: center; }
+
+  .pillars-section { padding: 4rem 0; }
+  .pillars-grid { grid-template-columns: 1fr; max-width: 500px; }
+
+  .timeline-section { padding: 4rem 0; }
+  .timeline-wrapper { padding-left: 2rem; }
+  .timeline-dot { left: -2rem; }
+
+  .proof-section { padding: 4rem 0; }
+  .counters-row { grid-template-columns: repeat(2, 1fr); }
+
+  .cta-final-section { padding: 4rem 0; }
+  .price-compare { grid-template-columns: 1fr; max-width: 400px; }
+
+  section { padding: 3rem 0; }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — lg (768px–1023px)
+   ═══════════════════════════════════════════════════ */
+@media (min-width: 768px) and (max-width: 1023px) {
+  .hero { padding: 6rem 0 4rem; }
+  .hero-layout { grid-template-columns: 50fr 50fr; gap: 2rem; }
+
+  .pillars-grid { grid-template-columns: repeat(3, 1fr); gap: 1rem; }
+  .pillar-card-v2 { padding: 2rem 1.5rem; }
+  .pillar-icon-v2 { font-size: 2.5rem; }
+  .pillar-card-v2 h3 { font-size: 1.15rem; }
+
+  .counters-row { grid-template-columns: repeat(4, 1fr); gap: 1.5rem; }
+
+  .price-compare { max-width: 500px; }
+}
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVE — xl (≥1024px)
+   ═══════════════════════════════════════════════════ */
+@media (min-width: 1024px) {
+  .pillars-grid { max-width: 900px; }
+  .counters-row { max-width: 800px; }
+  .price-compare { max-width: 560px; }
+}
+</style>
+
+</body>
 </html>
