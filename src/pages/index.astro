@@ -8,16 +8,16 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 <html lang="es">
 <head>
   <BaseHead
-    title={`${SITE_TITLE} — Tu equipo de IA trabajando 24/7`}
-    description="TribuClaw es la comunidad en español que te da un equipo de agentes IA propio en 8 minutos. OpenClaw instalado en tu servidor. Sin inglés, sin configuraciones complejas. Desde 35€/mes."
+    title={`${SITE_TITLE} — Aprende a montar tu equipo de IA`}
+    description="TribuClaw te enseña a montar tu equipo de agentes IA con OpenClaw. Formación completa, casos de uso, soporte 24/7 y directos semanales. Todo lo que necesitas para que la IA trabaje por ti."
   />
 
-  <!-- Product Schema (membresía) -->
+  <!-- Product Schema -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "TribuClaw — Membresía",
-    "description": "Comunidad en español con instalador automático, curso actualizado, soporte 24/7 y directos semanales para montar tu equipo de agentes IA con OpenClaw.",
+    "description": "Comunidad en español con curso completo de OpenClaw, casos de uso reales, soporte 24/7, directos semanales y TribuClaw App para gestionar tu equipo de agentes IA.",
     "url": SITE_URL,
     "brand": {
       "@type": "Brand",
@@ -65,7 +65,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
         "name": "¿Necesito experiencia técnica?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "No. El instalador de TribuClaw hace todo automáticamente. Solo necesitas copiar y pegar un comando. Si sabes enviar un mensaje por Telegram, sabes usar tu agente."
+          "text": "No. El curso de TribuClaw está diseñado para personas sin experiencia técnica. Te guiamos paso a paso, en español, con vídeos actualizados y soporte directo. Si sabes enviar un mensaje por Telegram, puedes usar tu agente."
         }
       },
       {
@@ -73,7 +73,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
         "name": "¿Qué incluye la membresía?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Instalador de primer agente, instalador de agentes adicionales, curso actualizado con vídeos, directos cada miércoles, TribuBot 24/7, soporte personal de Álvaro, casos de uso semanales y seguridad enterprise incluida."
+          "text": "Curso completo para aprender OpenClaw, casos de uso semanales para diferentes negocios, TribuBot 24/7, soporte personal de Álvaro, directos cada miércoles a las 19:00 y TribuClaw App para gestionar tus agentes, memoria y automatizaciones."
         }
       },
       {
@@ -81,7 +81,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
         "name": "¿Mis datos están seguros?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tus datos nunca salen de tu servidor. No pasan por nuestros servidores ni por terceros. El instalador configura firewall, fail2ban y hardening SSH automáticamente."
+          "text": "Tus datos nunca salen de tu servidor. No pasan por nuestros servidores ni por terceros. OpenClaw corre en tu propio VPS, así que tú tienes el control total de tus datos."
         }
       },
       {
@@ -89,7 +89,23 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
         "name": "¿Qué pasa si cancelo?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Tu agente sigue funcionando. TribuClaw te da las herramientas y la comunidad, pero el agente es 100% tuyo. Si cancelas, pierdes acceso a la comunidad y actualizaciones, pero tu agente no se apaga."
+          "text": "Tu agente sigue funcionando. TribuClaw te da la formación, la comunidad y las herramientas, pero el agente es 100% tuyo. Si cancelas, pierdes acceso a la comunidad y actualizaciones, pero tu agente no se apaga."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo tener más de un agente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. OpenClaw soporta múltiples agentes, cada uno con su personalidad, memoria y propósito. Dentro de TribuClaw te enseñamos a configurarlos y gestionarlos todos desde TribuClaw App."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo ganar dinero con esto?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Dentro de la comunidad compartimos casos de uso reales de personas que están rentabilizando agentes: automatización de servicios, negocios unipersonales con IA, soporte automatizado para clientes, y más."
         }
       }
     ]
@@ -115,12 +131,10 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
         Entrar a TribuClaw →
       </a>
     </div>
-    <!-- Mobile hamburger -->
     <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
   </div>
-  <!-- Mobile nav drawer -->
   <nav class="mobile-nav" id="mobile-nav">
     <a href="#que-es" class="mobile-nav-link">¿Qué es?</a>
     <a href="#incluye" class="mobile-nav-link">Qué incluye</a>
@@ -136,28 +150,28 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <main id="main-content">
 
-<!-- ═══════════════════════════════════ BLOQUE 1 — HERO WOW ════════════════════════════════════ -->
+<!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
 <section class="hero">
   <canvas id="hero-particles-canvas" aria-hidden="true"></canvas>
-  <div class="hero-glow-top"></div>
-  <div class="hero-glow-bottom"></div>
-  <div class="hero-dots"></div>
+  <div class="hero-glow hero-glow-1"></div>
+  <div class="hero-glow hero-glow-2"></div>
+  <div class="hero-noise"></div>
 
   <div class="hero-inner">
     <div class="hero-copy">
-      <span class="hero-badge">98 miembros ya lo tienen activo</span>
-      <h1 class="hero-headline">
-        Mientras tú lo haces todo a mano, hay gente con un equipo de IA que trabaja 24/7.
+      <span class="hero-badge reveal-stagger">98 miembros · Formación completa</span>
+      <h1 class="hero-headline reveal-stagger">
+        <span class="gradient-text-hero">Te enseñamos a montar tu equipo de IA</span> y te damos todas las herramientas para gestionarlo.
       </h1>
-      <p class="hero-sub">
-        Kimo responde en Telegram. Mao escribe código. Pluma redacta. Mei gestiona. Todo a la vez, sin descanso, sin sueldo.
-        Eso es TribuClaw. Y puedes tenerlo funcionando esta semana.
+      <p class="hero-sub reveal-stagger">
+        Kimo coordina. Mao escribe código. Pluma redacta. Mei gestiona. Data analiza.
+        Todo a la vez, sin descanso, sin sueldo.
       </p>
-      <p class="hero-body">
+      <p class="hero-body reveal-stagger">
         No es un chatbot más. Es un equipo completo de agentes especializados que opera en tu negocio mientras tú haces otra cosa.
         247.000 personas ya confían en la tecnología que usamos.
       </p>
-      <div class="hero-cta-row">
+      <div class="hero-cta-row reveal-stagger">
         <div class="cta-wrap">
           <a href={WHOP_URL} class="cta-btn cta-large" target="_blank" rel="noopener">
             <span class="cta-main">Unirme a TribuClaw</span>
@@ -167,7 +181,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
       </div>
     </div>
 
-    <!-- Dashboard interactivo (desktop only via CSS) -->
+    <!-- Dashboard -->
     <div class="hero-dashboard" id="agent-dashboard">
       <div class="dash-titlebar">
         <div class="dash-dots">
@@ -247,7 +261,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
   </div>
 </section>
 
-<!-- ═══════════════════════════════════ BLOQUE 2 — ¿QUÉ ES OPENCLAW? ════════════════════════════════════ -->
+<!-- ═══════════════════════════════════ QUÉ ES OPENCLAW ═══════════════════════════════════ -->
 <section class="section-openclaw reveal" id="que-es">
   <div class="container">
     <div class="text-center">
@@ -258,24 +272,24 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
       </p>
     </div>
 
-    <div class="oc-stats-row">
+    <div class="oc-stats-row reveal-stagger">
       <div class="oc-stat">
-        <span class="oc-stat-number">247K</span>
+        <span class="oc-stat-number gradient-text-stat">247K</span>
         <span class="oc-stat-label">GitHub Stars</span>
       </div>
       <div class="oc-stat-divider"></div>
       <div class="oc-stat">
-        <span class="oc-stat-number">10 días</span>
+        <span class="oc-stat-number gradient-text-stat">10 días</span>
         <span class="oc-stat-label">de 0 a 210K stars</span>
       </div>
       <div class="oc-stat-divider"></div>
       <div class="oc-stat">
-        <span class="oc-stat-number">47.7K</span>
+        <span class="oc-stat-number gradient-text-stat">47.7K</span>
         <span class="oc-stat-label">Forks</span>
       </div>
     </div>
 
-    <div class="oc-timeline">
+    <div class="oc-timeline reveal-stagger">
       <div class="oc-event">
         <div class="oc-event-date">Nov 2025</div>
         <div class="oc-event-text">Peter Steinberger crea el proyecto como código abierto</div>
@@ -295,17 +309,17 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     </div>
 
     <div class="oc-pillars">
-      <div class="oc-pillar">
+      <div class="glass-card reveal-stagger">
         <div class="oc-pillar-icon">🧠</div>
         <h3>No chatea. Ejecuta.</h3>
         <p>A diferencia de ChatGPT, OpenClaw tiene "manos": navega la web, gestiona archivos, envía emails, organiza tu calendario. Actúa, no solo responde.</p>
       </div>
-      <div class="oc-pillar">
+      <div class="glass-card reveal-stagger">
         <div class="oc-pillar-icon">🏠</div>
         <h3>Vive en tu servidor</h3>
         <p>Tu agente corre en tu VPS. Tus datos nunca salen de ahí. Si OpenClaw desaparece mañana, tu agente sigue funcionando. Es tuyo.</p>
       </div>
-      <div class="oc-pillar">
+      <div class="glass-card reveal-stagger">
         <div class="oc-pillar-icon">👥</div>
         <h3>Multi-agente</h3>
         <p>No solo un agente: un equipo entero. Agente de ventas, de soporte, personal, de contenido... cada uno con su personalidad y memoria aislada.</p>
@@ -316,50 +330,65 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════ BLOQUE 3 — LOS 3 PILARES ════════════════════════════════════ -->
-<section class="pillars-section reveal" id="pilares">
+<!-- ═══════════════════════════════════ QUÉ INCLUYE — BENTO GRID ═══════════════════════════════════ -->
+<section class="section-includes reveal" id="incluye">
   <div class="container">
     <div class="text-center">
-      <h2 class="section-title">Todo lo que necesitas para montar tu equipo de IA. Sin rodeos.</h2>
+      <span class="badge badge-accent">📦 Todo lo que obtienes</span>
+      <h2 class="section-title">Una membresía. Todo lo que necesitas para dominar la IA.</h2>
       <p class="section-lead section-lead-narrow">
-        Formación, comunidad y herramientas. Las tres cosas que separan a los que ya lo tienen montado de los que siguen "explorando opciones".
+        Formación, comunidad, herramientas y soporte. Todo lo que separa a los que ya tienen agentes de los que siguen "explorando opciones".
       </p>
     </div>
-    <div class="pillars-grid">
-      <div class="pillar-card tilt-card pillar-formacion">
-        <span class="pillar-number">01</span>
-        <span class="pillar-icon">🎓</span>
-        <h3>De cero a agente funcionando en 8 minutos.</h3>
-        <p>Curso en español, actualizado, sin teoría de relleno. Solo lo que necesitas para que tu primer agente esté activo hoy.</p>
-        <p class="pillar-punch">Vas a tu ritmo. Pero ve rápido: cada día sin agente es un día haciendo trabajo que no deberías estar haciendo tú.</p>
-        <div class="pillar-features">
-          <span class="pillar-tag">Vídeos actualizados</span>
-          <span class="pillar-tag">En español</span>
-          <span class="pillar-tag">Paso a paso</span>
+
+    <div class="bento-grid">
+      <!-- Card 1: Formación — grande -->
+      <div class="bento-card bento-card-lg reveal-stagger">
+        <div class="bento-glow"></div>
+        <span class="bento-icon">🎓</span>
+        <h3>Curso completo de OpenClaw</h3>
+        <p>De cero a tener tu equipo de agentes funcionando. Todo en español, paso a paso, con vídeos actualizados. Vas a tu ritmo, pero sin relleno.</p>
+        <div class="bento-tags">
+          <span class="bento-tag">Vídeos actualizados</span>
+          <span class="bento-tag">En español</span>
+          <span class="bento-tag">Paso a paso</span>
         </div>
       </div>
-      <div class="pillar-card tilt-card pillar-comunidad">
-        <span class="pillar-number">02</span>
-        <span class="pillar-icon">👥</span>
-        <h3>98 personas que ya lo tienen montado y te cuentan cómo.</h3>
-        <p>Directos los miércoles. Soporte real, no un bot de FAQ. Preguntas que importan, respuestas de gente que ha pasado por lo mismo.</p>
-        <p class="pillar-punch">Cuando tienes un problema a las 11 de la noche, quieres una comunidad, no un foro de 2019.</p>
-        <div class="pillar-features">
-          <span class="pillar-tag">Directos semanales</span>
-          <span class="pillar-tag">Soporte 24/7</span>
-          <span class="pillar-tag">TribuBot</span>
-        </div>
+
+      <!-- Card 2: Casos de uso -->
+      <div class="bento-card reveal-stagger">
+        <div class="bento-glow"></div>
+        <span class="bento-icon">💡</span>
+        <h3>Casos de uso reales</h3>
+        <p>Ejemplos concretos de cómo aplicar agentes a tu negocio. Coaching, e-commerce, freelance, SaaS...</p>
       </div>
-      <div class="pillar-card tilt-card pillar-saas">
-        <span class="pillar-number">03</span>
-        <span class="pillar-icon">🛠️</span>
-        <h3>Tu panel de control. Memoria, skills, automatizaciones.</h3>
-        <p>Gestiona tus agentes desde un solo sitio. Les das memoria, les asignas tareas, conectas las automatizaciones. Sin tocar código si no quieres.</p>
-        <p class="pillar-punch">Los que ya lo usan dicen que es lo primero que abren por la mañana.</p>
-        <div class="pillar-features">
-          <span class="pillar-tag">OpenClaw</span>
-          <span class="pillar-tag">Memoria persistente</span>
-          <span class="pillar-tag">Automatizaciones</span>
+
+      <!-- Card 3: Soporte -->
+      <div class="bento-card reveal-stagger">
+        <div class="bento-glow"></div>
+        <span class="bento-icon">🤝</span>
+        <h3>Soporte 24/7</h3>
+        <p>TribuBot resuelve tus dudas a cualquier hora. Y si necesitas algo más, Álvaro está ahí personalmente.</p>
+      </div>
+
+      <!-- Card 4: Directos — ancho -->
+      <div class="bento-card bento-card-wide reveal-stagger">
+        <div class="bento-glow"></div>
+        <span class="bento-icon">📡</span>
+        <h3>Directos semanales — Cada miércoles a las 19:00</h3>
+        <p>Q&A en vivo con Álvaro. Troubleshooting, estrategia, casos de uso. Preguntas que importan, respuestas de gente que lo usa cada día.</p>
+      </div>
+
+      <!-- Card 5: TribuClaw App — grande -->
+      <div class="bento-card bento-card-lg reveal-stagger">
+        <div class="bento-glow"></div>
+        <span class="bento-icon">🖥️</span>
+        <h3>TribuClaw App</h3>
+        <p>Tu centro de mandos para gestionar todo: skills, memoria, automatizaciones y agentes. Sin tocar código si no quieres.</p>
+        <div class="bento-tags">
+          <span class="bento-tag">Skills</span>
+          <span class="bento-tag">Memoria</span>
+          <span class="bento-tag">Automatizaciones</span>
         </div>
       </div>
     </div>
@@ -368,13 +397,13 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════ BLOQUE 4 — UN DÍA CON TU AGENTE ════════════════════════════════════ -->
+<!-- ═══════════════════════════════════ UN DÍA CON TU AGENTE ═══════════════════════════════════ -->
 <section class="timeline-section" id="timeline">
   <div class="container">
     <div class="text-center">
       <h2 class="section-title">Lo que tu agente hace mientras tú vives.</h2>
       <p class="section-lead section-lead-narrow">
-        Un día normal cuando tienes un equipo de IA. Sin exagerar ni inventar: esto es lo que hacen los agentes de TribuClaw ahora mismo.
+        Un día normal cuando tienes un equipo de IA. Sin exagerar: esto es lo que hacen los agentes de TribuClaw ahora mismo.
       </p>
     </div>
     <div class="timeline-wrapper">
@@ -426,7 +455,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     <div class="text-center" style="margin-top:3rem;">
       <div class="cta-wrap">
         <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">
-          <span class="cta-main">Quiero este sistema en mi negocio → Entrar a TribuClaw</span>
+          <span class="cta-main">Quiero este sistema en mi negocio →</span>
         </a>
       </div>
     </div>
@@ -435,183 +464,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════ BLOQUE 5 — TODO LO QUE INCLUYE ════════════════════════════════════ -->
-<section class="section-includes reveal" id="incluye">
-  <div class="container">
-    <div class="text-center">
-      <span class="badge badge-accent">📦 Todo lo que obtienes</span>
-      <h2 class="section-title">Una membresía. Todo lo que necesitas.</h2>
-      <p class="section-lead section-lead-narrow">
-        No vendemos solo acceso. Vendemos resultados.
-      </p>
-    </div>
-    <div class="includes-grid">
-      <div class="include-card">
-        <div class="include-icon">⚡</div>
-        <h3>Instalador de primer agente</h3>
-        <p>Un comando instala servidor seguro, OpenClaw, firewall, fail2ban, memoria y servicio automático. 8 minutos.</p>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">➕</div>
-        <h3>Instalador de agentes adicionales</h3>
-        <p>¿Quieres un agente de ventas, otro de soporte, otro personal? 30 segundos para añadir uno nuevo.</p>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🎓</div>
-        <h3>Curso actualizado con vídeos</h3>
-        <p>Lecciones de apoyo en vídeo. Actualizado constantemente con las últimas novedades de OpenClaw.</p>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📡</div>
-        <h3>Directos cada miércoles 19:00</h3>
-        <p>Q&A en vivo conmigo. Troubleshooting, estrategia, casos de uso. Todas las semanas.</p>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🤖</div>
-        <h3>TribuBot 24/7</h3>
-        <p>Bot de soporte IA entrenado para TribuClaw. Resuelve tus dudas a cualquier hora, cualquier día.</p>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">👨‍💻</div>
-        <h3>Soporte personal de Álvaro</h3>
-        <p>No estás solo. Yo estoy en la comunidad respondiendo personalmente.</p>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">📋</div>
-        <h3>Casos de uso semanales</h3>
-        <p>Cada semana, nuevos workflows para diferentes sectores. Coaching, e-commerce, freelance, SaaS...</p>
-      </div>
-      <div class="include-card">
-        <div class="include-icon">🔐</div>
-        <h3>Seguridad enterprise incluida</h3>
-        <p>Firewall, fail2ban, hardening SSH. Tu agente protegido desde el minuto uno.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ═══════════════════════════════════ BLOQUE 6 — COMPARATIVA ════════════════════════════════════ -->
-<section class="section-compare reveal">
-  <div class="container">
-    <div class="text-center">
-      <span class="badge badge-accent">📊 Comparativa</span>
-      <h2 class="section-title">TribuClaw vs las alternativas</h2>
-    </div>
-    <div class="compare-table-wrap">
-      <table class="compare-table">
-        <thead>
-          <tr>
-            <th></th>
-            <th class="col-highlight">TribuClaw</th>
-            <th>Hacerlo solo</th>
-            <th>Managed</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Instalación</td>
-            <td class="col-highlight accent-text">8 min (auto)</td>
-            <td>Horas/días</td>
-            <td>Lo hacen ellos</td>
-          </tr>
-          <tr>
-            <td>Precio</td>
-            <td class="col-highlight accent-text">35€/mes</td>
-            <td>Tu tiempo</td>
-            <td>100-200€/mes</td>
-          </tr>
-          <tr>
-            <td>Idioma</td>
-            <td class="col-highlight accent-text">🇪🇸 Español</td>
-            <td>🇬🇧 Inglés</td>
-            <td>🇬🇧 Inglés</td>
-          </tr>
-          <tr>
-            <td>Control datos</td>
-            <td class="col-highlight accent-text">100% tuyo</td>
-            <td>100% tuyo</td>
-            <td>Sus servidores</td>
-          </tr>
-          <tr>
-            <td>Soporte</td>
-            <td class="col-highlight accent-text">24/7 bot + humano</td>
-            <td>Stack Overflow</td>
-            <td>Email</td>
-          </tr>
-          <tr>
-            <td>Más agentes</td>
-            <td class="col-highlight accent-text">30 segundos</td>
-            <td>Config manual</td>
-            <td>Extra $$</td>
-          </tr>
-          <tr>
-            <td>Si te vas</td>
-            <td class="col-highlight accent-text">Tu agente sigue</td>
-            <td>Tu agente sigue</td>
-            <td>Pierdes todo</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
-    <!-- Mobile cards -->
-    <div class="compare-mobile">
-      <div class="compare-row">
-        <span class="compare-feature">Instalación</span>
-        <div class="compare-vals">
-          <span><strong class="accent-text">TribuClaw:</strong> 8 min (auto)</span>
-          <span><strong>Solo:</strong> Horas/días</span>
-          <span><strong>Managed:</strong> Lo hacen ellos</span>
-        </div>
-      </div>
-      <div class="compare-row">
-        <span class="compare-feature">Precio</span>
-        <div class="compare-vals">
-          <span><strong class="accent-text">TribuClaw:</strong> 35€/mes</span>
-          <span><strong>Solo:</strong> Tu tiempo</span>
-          <span><strong>Managed:</strong> 100-200€/mes</span>
-        </div>
-      </div>
-      <div class="compare-row">
-        <span class="compare-feature">Idioma</span>
-        <div class="compare-vals">
-          <span><strong class="accent-text">TribuClaw:</strong> 🇪🇸 Español</span>
-          <span><strong>Solo:</strong> 🇬🇧 Inglés</span>
-          <span><strong>Managed:</strong> 🇬🇧 Inglés</span>
-        </div>
-      </div>
-      <div class="compare-row">
-        <span class="compare-feature">Control datos</span>
-        <div class="compare-vals">
-          <span><strong class="accent-text">TribuClaw:</strong> 100% tuyo</span>
-          <span><strong>Solo:</strong> 100% tuyo</span>
-          <span><strong>Managed:</strong> Sus servidores</span>
-        </div>
-      </div>
-      <div class="compare-row">
-        <span class="compare-feature">Soporte</span>
-        <div class="compare-vals">
-          <span><strong class="accent-text">TribuClaw:</strong> 24/7 bot + humano</span>
-          <span><strong>Solo:</strong> Stack Overflow</span>
-          <span><strong>Managed:</strong> Email</span>
-        </div>
-      </div>
-      <div class="compare-row">
-        <span class="compare-feature">Si te vas</span>
-        <div class="compare-vals">
-          <span><strong class="accent-text">TribuClaw:</strong> Tu agente sigue</span>
-          <span><strong>Solo:</strong> Tu agente sigue</span>
-          <span><strong>Managed:</strong> Pierdes todo</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ═══════════════════════════════════ BLOQUE 7 — PROOF SOCIAL ════════════════════════════════════ -->
+<!-- ═══════════════════════════════════ SOCIAL PROOF ═══════════════════════════════════ -->
 <section class="proof-section reveal" id="proof">
   <div class="container">
     <div class="text-center">
@@ -622,7 +475,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
       </p>
     </div>
 
-    <!-- Counters animados -->
+    <!-- Counters -->
     <div class="counters-row">
       <div class="counter-item">
         <span class="counter-value" data-target="98" data-suffix="+">0</span>
@@ -643,7 +496,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     </div>
 
     <!-- Review destacada -->
-    <div class="review-featured">
+    <div class="glass-card review-featured">
       <div class="review-quote">
         <span class="review-quote-mark">"</span>
         Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw.
@@ -657,22 +510,39 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
       </div>
     </div>
 
-    <!-- Rating strip -->
-    <div class="ratings-strip">
-      <div class="rating-chip">
-        <div class="chip-avatar">AR</div>
-        <span class="chip-name">Alvaro Rodriguez</span>
-        <span class="chip-stars">★★★★★</span>
-      </div>
-      <div class="rating-chip">
-        <div class="chip-avatar">M</div>
-        <span class="chip-name">Maria</span>
-        <span class="chip-stars">★★★★★</span>
-      </div>
-      <div class="rating-chip">
-        <div class="chip-avatar">R</div>
-        <span class="chip-name">Raul</span>
-        <span class="chip-stars">★★★★★</span>
+    <!-- Marquee de reviews -->
+    <div class="marquee-wrap">
+      <div class="marquee-track" id="marquee-track">
+        <div class="marquee-item glass-card-sm">
+          <span class="marquee-stars">★★★★★</span>
+          <span class="marquee-text">"En menos de una semana ya tenía mi primer agente funcionando. Increíble."</span>
+          <span class="marquee-author">Alvaro R.</span>
+        </div>
+        <div class="marquee-item glass-card-sm">
+          <span class="marquee-stars">★★★★★</span>
+          <span class="marquee-text">"El soporte es de otra galaxia. Responden a cualquier hora."</span>
+          <span class="marquee-author">Maria</span>
+        </div>
+        <div class="marquee-item glass-card-sm">
+          <span class="marquee-stars">★★★★★</span>
+          <span class="marquee-text">"Llevo un mes y ya no puedo vivir sin mis agentes. Serio."</span>
+          <span class="marquee-author">Raul</span>
+        </div>
+        <div class="marquee-item glass-card-sm">
+          <span class="marquee-stars">★★★★★</span>
+          <span class="marquee-text">"La mejor inversión que he hecho este año. Sin duda."</span>
+          <span class="marquee-author">Carlos M.</span>
+        </div>
+        <div class="marquee-item glass-card-sm">
+          <span class="marquee-stars">★★★★★</span>
+          <span class="marquee-text">"Los directos de los miércoles son oro puro. Aprendo algo nuevo cada semana."</span>
+          <span class="marquee-author">Laura P.</span>
+        </div>
+        <div class="marquee-item glass-card-sm">
+          <span class="marquee-stars">★★★★★</span>
+          <span class="marquee-text">"El curso está genial. Todo claro, sin rollo, y en español."</span>
+          <span class="marquee-author">Javier S.</span>
+        </div>
       </div>
     </div>
 
@@ -690,63 +560,69 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════ BLOQUE 8 — PRICING + CTA FINAL ════════════════════════════════════ -->
+<!-- ═══════════════════════════════════ PRICING ═══════════════════════════════════ -->
 <section class="cta-final-section reveal" id="precio">
   <div class="cta-final-glow"></div>
   <div class="container">
     <div class="text-center">
-      <h2 class="section-title cta-final-title">¿Listo para tener tu equipo de IA?</h2>
+      <h2 class="section-title cta-final-title">¿Listo para montar tu equipo de IA?</h2>
       <p class="section-lead section-lead-narrow" style="margin-bottom:2.5rem;">
-        8 minutos. Un comando. Tu agente trabajando para ti 24/7.
+        Te enseñamos todo. Te damos las herramientas. Tú pones los agentes a trabajar.
       </p>
     </div>
 
     <!-- Coste real -->
     <div class="cost-wrap">
-      <div class="cost-table">
-        <div class="cost-row">
-          <span>VPS (Hetzner)</span>
-          <span>~4€/mes</span>
-        </div>
-        <div class="cost-row">
-          <span>IA (OpenRouter)</span>
-          <span>1-5€/mes</span>
-        </div>
-        <div class="cost-row">
-          <span>OpenClaw</span>
-          <span class="cost-free">Gratis</span>
-        </div>
-        <div class="cost-row">
-          <span>Telegram</span>
-          <span class="cost-free">Gratis</span>
-        </div>
-        <div class="cost-row">
-          <span>TribuClaw</span>
-          <span>35€/mes</span>
-        </div>
-        <div class="cost-row cost-total">
-          <span>TOTAL</span>
-          <span class="accent-text">desde ~40€/mes</span>
+      <div class="glass-card cost-table-card">
+        <h3 class="cost-card-title">Coste real mensual</h3>
+        <div class="cost-table">
+          <div class="cost-row">
+            <span>VPS (Hetzner)</span>
+            <span>~4€/mes</span>
+          </div>
+          <div class="cost-row">
+            <span>IA (OpenRouter)</span>
+            <span>1-5€/mes</span>
+          </div>
+          <div class="cost-row">
+            <span>OpenClaw</span>
+            <span class="cost-free">Gratis</span>
+          </div>
+          <div class="cost-row">
+            <span>Telegram</span>
+            <span class="cost-free">Gratis</span>
+          </div>
+          <div class="cost-row">
+            <span>TribuClaw</span>
+            <span>35€/mes</span>
+          </div>
+          <div class="cost-row cost-total">
+            <span>TOTAL</span>
+            <span class="accent-text">desde ~40€/mes</span>
+          </div>
         </div>
       </div>
 
-      <div class="cost-vs">
-        <div class="cost-compare-item">
-          <span class="cost-compare-label">VA humano</span>
-          <span class="cost-compare-val muted">800-2.000€/mes</span>
-        </div>
-        <div class="cost-compare-item">
-          <span class="cost-compare-label">Empleado</span>
-          <span class="cost-compare-val muted">3.500€+/mes</span>
-        </div>
-        <div class="cost-compare-item highlight-item">
-          <span class="cost-compare-label">Tu agente IA</span>
-          <span class="cost-day">1,30€/día</span>
+      <div class="glass-card cost-vs-card">
+        <h3 class="cost-card-title">¿A qué equivale?</h3>
+        <div class="cost-vs">
+          <div class="cost-compare-item">
+            <span class="cost-compare-label">VA humano</span>
+            <span class="cost-compare-val muted">800-2.000€/mes</span>
+          </div>
+          <div class="cost-compare-item">
+            <span class="cost-compare-label">Empleado</span>
+            <span class="cost-compare-val muted">3.500€+/mes</span>
+          </div>
+          <div class="cost-compare-item highlight-item">
+            <span class="cost-compare-label">Tu agente IA</span>
+            <span class="cost-day">1,30€/día</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- CTA principal -->
+    <!-- CTA -->
     <div class="text-center" style="margin-top:3rem;">
       <div class="cta-wrap">
         <a href={WHOP_URL} class="cta-btn cta-large" target="_blank" rel="noopener">
@@ -762,7 +638,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════ BLOQUE 9 — FAQ ════════════════════════════════════ -->
+<!-- ═══════════════════════════════════ FAQ ═══════════════════════════════════ -->
 <section class="section-faq reveal" id="faq">
   <div class="container">
     <div class="text-center">
@@ -785,7 +661,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
           <span class="faq-arrow">▾</span>
         </button>
         <div class="faq-answer">
-          <p>No. El instalador de TribuClaw hace todo automáticamente. Solo necesitas copiar y pegar un comando. Si sabes enviar un mensaje por Telegram, sabes usar tu agente.</p>
+          <p>No. El curso de TribuClaw está diseñado para personas sin experiencia técnica. Te guiamos paso a paso, en español, con vídeos actualizados y soporte directo. Si sabes enviar un mensaje por Telegram, puedes usar tu agente.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -794,7 +670,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
           <span class="faq-arrow">▾</span>
         </button>
         <div class="faq-answer">
-          <p>Instaladores automatizados, curso con vídeos actualizado, comunidad activa, soporte 24/7 con TribuBot, directos semanales con Álvaro, y casos de uso nuevos cada semana.</p>
+          <p>Curso completo para aprender OpenClaw, casos de uso semanales para diferentes negocios, TribuBot 24/7, soporte personal de Álvaro, directos cada miércoles a las 19:00 y TribuClaw App para gestionar tus agentes, memoria y automatizaciones.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -803,7 +679,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
           <span class="faq-arrow">▾</span>
         </button>
         <div class="faq-answer">
-          <p>Sí. Con nuestro instalador de agentes adicionales, puedes añadir un nuevo agente en 30 segundos. Cada uno con su personalidad, memoria y bot de Telegram propio.</p>
+          <p>Sí. OpenClaw soporta múltiples agentes, cada uno con su personalidad, memoria y propósito. Dentro de TribuClaw te enseñamos a configurarlos y gestionarlos todos desde TribuClaw App.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -812,7 +688,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
           <span class="faq-arrow">▾</span>
         </button>
         <div class="faq-answer">
-          <p>Tus datos nunca salen de tu servidor. No pasan por nuestros servidores ni por terceros. El instalador configura firewall, protección anti-intrusos y hardening SSH automáticamente.</p>
+          <p>Tus datos nunca salen de tu servidor. No pasan por nuestros servidores ni por terceros. OpenClaw corre en tu propio VPS, así que tú tienes el control total de tus datos.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -821,7 +697,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
           <span class="faq-arrow">▾</span>
         </button>
         <div class="faq-answer">
-          <p>Tu agente sigue funcionando. TribuClaw te da las herramientas y la comunidad, pero el agente es 100% tuyo. Si cancelas, pierdes acceso a la comunidad y actualizaciones, pero tu agente no se apaga.</p>
+          <p>Tu agente sigue funcionando. TribuClaw te da la formación, la comunidad y las herramientas, pero el agente es 100% tuyo. Si cancelas, pierdes acceso a la comunidad y actualizaciones, pero tu agente no se apaga.</p>
         </div>
       </div>
       <div class="faq-item">
@@ -830,7 +706,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
           <span class="faq-arrow">▾</span>
         </button>
         <div class="faq-answer">
-          <p>Sí. Dentro de la comunidad enseñamos a rentabilizar agentes: ofrecer servicios de configuración, crear negocios unipersonales con IA, automatizar procesos para clientes.</p>
+          <p>Sí. Dentro de la comunidad compartimos casos de uso reales de personas que están rentabilizando agentes: automatización de servicios, negocios unipersonales con IA, soporte automatizado para clientes, y más.</p>
         </div>
       </div>
     </div>
@@ -839,7 +715,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <div class="section-divider"></div>
 
-<!-- ═══════════════════════════════════ CTA CIERRE ════════════════════════════════════ -->
+<!-- ═══════════════════════════════════ CTA CIERRE ═══════════════════════════════════ -->
 <section class="section-cta-closing">
   <div class="container text-center">
     <h2 class="section-title final-title">En 6 meses, tener un agente va a ser lo normal.</h2>
@@ -880,17 +756,33 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     });
   }
 
-  // ─── SCROLL REVEAL ───
-  const revealEls = document.querySelectorAll('.reveal');
+  // ─── SCROLL REVEAL WITH STAGGER ───
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
+        // Find stagger siblings
+        const parent = entry.target.closest('.reveal, .container');
+        if (parent) {
+          const staggerEls = parent.querySelectorAll('.reveal-stagger');
+          staggerEls.forEach((el, i) => {
+            setTimeout(() => el.classList.add('revealed-stagger'), i * 100);
+          });
+        }
         entry.target.classList.add('revealed');
         revealObserver.unobserve(entry.target);
       }
     });
   }, { threshold: 0.08, rootMargin: '-40px' });
-  revealEls.forEach(el => revealObserver.observe(el));
+
+  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Also observe individual stagger elements not inside .reveal
+  document.querySelectorAll('.reveal-stagger').forEach(el => {
+    const parentReveal = el.closest('.reveal');
+    if (!parentReveal) {
+      revealObserver.observe(el);
+    }
+  });
 
   // ─── PARTICLE CANVAS ───
   const canvas = document.getElementById('hero-particles-canvas');
@@ -976,6 +868,31 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     animate();
   }
 
+  // ─── GLASSMORPHISM GLOW FOLLOW CURSOR ───
+  if (window.matchMedia('(pointer: fine)').matches) {
+    document.querySelectorAll('.glass-card, .bento-card').forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const glow = card.querySelector('.bento-glow') || card;
+        if (glow !== card) {
+          (glow as HTMLElement).style.background = `radial-gradient(400px circle at ${x}px ${y}px, rgba(233,69,96,0.06), transparent 60%)`;
+        } else {
+          card.style.background = `radial-gradient(400px circle at ${x}px ${y}px, rgba(233,69,96,0.04), transparent 60%), rgba(22, 27, 34, 0.7)`;
+        }
+      });
+      card.addEventListener('mouseleave', () => {
+        const glow = card.querySelector('.bento-glow');
+        if (glow) {
+          (glow as HTMLElement).style.background = '';
+        } else {
+          card.style.background = '';
+        }
+      });
+    });
+  }
+
   // ─── DASHBOARD CLICK ───
   document.querySelectorAll('.agent-card').forEach(card => {
     card.addEventListener('click', () => {
@@ -1008,40 +925,11 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     }, 3000);
   }
 
-  // ─── 3D TILT CARDS ───
-  if (window.matchMedia('(pointer: fine)').matches) {
-    const cards = document.querySelectorAll('.tilt-card');
-    const TILT_MAX = 12;
-    const SCALE = 1.04;
-    const PERSPECTIVE = 800;
-
-    cards.forEach(card => {
-      (card as HTMLElement).style.transformStyle = 'preserve-3d';
-      (card as HTMLElement).style.willChange = 'transform';
-
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = (e.clientX - rect.left) / rect.width - 0.5;
-        const y = (e.clientY - rect.top) / rect.height - 0.5;
-        const rotateX = -y * TILT_MAX * 2;
-        const rotateY = x * TILT_MAX * 2;
-        const glowX = (x + 0.5) * 100;
-        const glowY = (y + 0.5) * 100;
-        (card as HTMLElement).style.transform = `perspective(${PERSPECTIVE}px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale(${SCALE})`;
-        (card as HTMLElement).style.background = `radial-gradient(circle at ${glowX}% ${glowY}%, rgba(255,255,255,0.04) 0%, transparent 60%), rgba(22, 27, 34, 1)`;
-        (card as HTMLElement).style.transition = 'transform 0.1s ease-out, box-shadow 0.3s ease';
-      });
-
-      card.addEventListener('mouseleave', () => {
-        (card as HTMLElement).style.transform = `perspective(${PERSPECTIVE}px) rotateX(0) rotateY(0) scale(1)`;
-        (card as HTMLElement).style.transition = 'transform 0.5s cubic-bezier(0.23,1,0.32,1), box-shadow 0.3s ease, background 0.3s ease';
-        (card as HTMLElement).style.background = '';
-      });
-
-      card.addEventListener('mouseenter', () => {
-        (card as HTMLElement).style.transition = 'transform 0.1s ease-out, box-shadow 0.2s ease';
-      });
-    });
+  // ─── MARQUEE DUPLICATE FOR INFINITE SCROLL ───
+  const marqueeTrack = document.getElementById('marquee-track');
+  if (marqueeTrack) {
+    const items = marqueeTrack.innerHTML;
+    marqueeTrack.innerHTML = items + items;
   }
 
   // ─── TIMELINE SCROLL ───
@@ -1152,10 +1040,10 @@ img { max-width: 100%; height: auto; }
    TYPOGRAPHY
    ═══════════════════════════════════════════════════ */
 .section-title {
-  font-size: clamp(1.6rem, 4vw, 2.5rem);
-  font-weight: 800;
-  letter-spacing: -0.03em;
-  line-height: 1.2;
+  font-size: clamp(1.8rem, 5vw, 3rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.12;
   margin-bottom: 1rem;
 }
 .section-lead {
@@ -1185,15 +1073,64 @@ img { max-width: 100%; height: auto; }
 .badge-accent { background: rgba(233,69,96,0.12); color: #e94560; border: 1px solid rgba(233,69,96,0.25); }
 
 /* ═══════════════════════════════════════════════════
+   GRADIENT TEXT
+   ═══════════════════════════════════════════════════ */
+.gradient-text-hero {
+  background: linear-gradient(135deg, #e94560 0%, #ff6b6b 35%, #f0f6fc 65%, #8b949e 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-stat {
+  background: linear-gradient(135deg, #e94560, #ff6b6b 50%, #8b5cf6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ═══════════════════════════════════════════════════
+   GLASS CARD (reusable)
+   ═══════════════════════════════════════════════════ */
+.glass-card {
+  background: rgba(22, 27, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, box-shadow 0.5s;
+}
+.glass-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow:
+    0 0 0 1px rgba(233,69,96,0.08),
+    0 20px 60px rgba(0,0,0,0.3),
+    0 0 80px rgba(233,69,96,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.glass-card-sm {
+  background: rgba(22, 27, 34, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  padding: 1.5rem;
+}
+
+/* ═══════════════════════════════════════════════════
    HEADER
    ═══════════════════════════════════════════════════ */
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 100;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(13,17,23,0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(13,17,23,0.8);
   border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 .header-inner {
@@ -1247,7 +1184,6 @@ img { max-width: 100%; height: auto; }
 .nav-toggle.open span:nth-child(2) { opacity: 0; }
 .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
 
-/* Mobile nav drawer */
 .mobile-nav {
   position: fixed;
   top: 60px;
@@ -1394,8 +1330,8 @@ img { max-width: 100%; height: auto; }
    ═══════════════════════════════════════════════════ */
 .section-divider {
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(233,69,96,0.2), transparent);
-  max-width: 600px;
+  background: linear-gradient(90deg, transparent, rgba(233,69,96,0.15), rgba(139,92,246,0.1), transparent);
+  max-width: 800px;
   margin: 0 auto;
 }
 .reveal {
@@ -1405,11 +1341,20 @@ img { max-width: 100%; height: auto; }
 }
 .reveal.revealed { opacity: 1; transform: translateY(0); }
 
-/* Sections breathe */
+.reveal-stagger {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.reveal-stagger.revealed-stagger {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 section { padding: 5rem 0; }
 
 /* ═══════════════════════════════════════════════════
-   BLOQUE 1 — HERO
+   HERO
    ═══════════════════════════════════════════════════ */
 .hero {
   position: relative;
@@ -1429,32 +1374,31 @@ section { padding: 5rem 0; }
   z-index: 0;
   opacity: 0.8;
 }
-.hero-glow-top {
+.hero-glow {
   position: absolute;
-  top: -200px;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: 50%;
+}
+.hero-glow-1 {
+  top: -20%;
   left: 50%;
   transform: translateX(-50%);
   width: 1400px;
-  height: 600px;
-  background: radial-gradient(ellipse at center, rgba(233,69,96,0.12) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(233,69,96,0.1) 0%, transparent 55%);
 }
-.hero-glow-bottom {
-  position: absolute;
-  bottom: -200px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 1400px;
-  height: 600px;
-  background: radial-gradient(ellipse at center, rgba(139,92,246,0.08) 0%, transparent 60%);
-  pointer-events: none;
-  z-index: 0;
+.hero-glow-2 {
+  bottom: -30%;
+  right: -10%;
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(ellipse at center, rgba(139,92,246,0.07) 0%, transparent 55%);
 }
-.hero-dots {
+.hero-noise {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgba(255,255,255,0.024) 0%, rgba(255,255,255,0.024) 1.5px, transparent 1.5px);
+  background-image: radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.02) 1.5px, transparent 1.5px);
   background-size: 15px 15px;
   pointer-events: none;
   z-index: 0;
@@ -1486,21 +1430,21 @@ section { padding: 5rem 0; }
   margin-bottom: 1.5rem;
 }
 .hero-headline {
-  font-size: clamp(1.8rem, 5vw, 3.2rem);
+  font-size: clamp(2rem, 6vw, 4.2rem);
   font-weight: 900;
-  letter-spacing: -0.03em;
+  letter-spacing: -0.04em;
   line-height: 1.1;
   margin-bottom: 1.25rem;
-  max-width: 750px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
 .hero-sub {
   color: #c9d1d9;
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 1rem;
-  max-width: 600px;
+  max-width: 620px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -1518,22 +1462,24 @@ section { padding: 5rem 0; }
   justify-content: center;
 }
 
-/* Dashboard — hidden on mobile/tablet by default */
+/* Dashboard hidden on mobile by default */
 .hero-dashboard { display: none; }
 
 /* ═══════════════════════════════════════
    DASHBOARD STYLES
    ═══════════════════════════════════════ */
 .hero-dashboard {
-  background: rgba(13, 17, 23, 0.9);
-  border: 1px solid rgba(233, 69, 96, 0.15);
-  border-radius: 16px;
+  background: rgba(13, 17, 23, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
   overflow: hidden;
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px) saturate(1.2);
+  -webkit-backdrop-filter: blur(24px) saturate(1.2);
   box-shadow:
-    0 0 0 1px rgba(233, 69, 96, 0.08),
-    0 20px 60px rgba(0, 0, 0, 0.6),
-    0 0 80px rgba(233, 69, 96, 0.05);
+    0 0 0 1px rgba(233, 69, 96, 0.06),
+    0 24px 80px rgba(0, 0, 0, 0.5),
+    0 0 120px rgba(233, 69, 96, 0.04),
+    inset 0 1px 0 rgba(255,255,255,0.04);
   animation: dashboardFloat 6s ease-in-out infinite;
 }
 @keyframes dashboardFloat {
@@ -1639,9 +1585,21 @@ section { padding: 5rem 0; }
 }
 
 /* ═══════════════════════════════════════════════════
-   BLOQUE 2 — QUÉ ES OPENCLAW
+   QUÉ ES OPENCLAW
    ═══════════════════════════════════════════════════ */
-.section-openclaw { background: #161b22; }
+.section-openclaw {
+  background: linear-gradient(180deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+  position: relative;
+  overflow: hidden;
+}
+.section-openclaw::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.018) 1px, transparent 1px);
+  background-size: 20px 20px;
+  pointer-events: none;
+}
 
 .oc-stats-row {
   display: flex;
@@ -1654,9 +1612,8 @@ section { padding: 5rem 0; }
 .oc-stat { text-align: center; }
 .oc-stat-number {
   display: block;
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
   font-weight: 900;
-  color: #e94560;
   line-height: 1.1;
 }
 .oc-stat-label {
@@ -1667,8 +1624,9 @@ section { padding: 5rem 0; }
 }
 .oc-stat-divider {
   width: 1px;
-  height: 40px;
-  background: rgba(255,255,255,0.08);
+  height: 50px;
+  background: linear-gradient(to bottom, transparent, rgba(233,69,96,0.4), transparent);
+  box-shadow: 0 0 8px rgba(233,69,96,0.15);
 }
 
 .oc-timeline {
@@ -1723,26 +1681,13 @@ section { padding: 5rem 0; }
   gap: 1.5rem;
   margin-top: 2rem;
 }
-.oc-pillar {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 16px;
-  padding: 2rem 1.5rem;
-  text-align: center;
-  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
-}
-.oc-pillar:hover {
-  transform: translateY(-4px);
-  border-color: rgba(233,69,96,0.2);
-  box-shadow: 0 8px 30px rgba(233,69,96,0.08);
-}
 .oc-pillar-icon {
   font-size: 2.2rem;
   margin-bottom: 1rem;
   display: block;
 }
 .oc-pillar h3 {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: #fff;
   margin: 0 0 0.75rem;
@@ -1755,108 +1700,98 @@ section { padding: 5rem 0; }
 }
 
 /* ═══════════════════════════════════════════════════
-   BLOQUE 3 — PILARES
+   BENTO GRID — QUÉ INCLUYE
    ═══════════════════════════════════════════════════ */
-.pillars-section { background: #0d1117; padding: 5rem 0; }
-.pillars-grid {
+.section-includes {
+  background: #0d1117;
+  position: relative;
+}
+.section-includes::before {
+  content: '';
+  position: absolute;
+  top: 20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 600px;
+  background: radial-gradient(ellipse at center, rgba(233,69,96,0.05) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.bento-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 1.5rem;
-  max-width: 900px;
-  margin: 3rem auto 0;
+  gap: 1rem;
+  margin-top: 3rem;
 }
-.pillar-card {
-  background: rgba(22, 27, 34, 1);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  border-radius: 20px;
-  padding: 2.5rem 2rem;
+.bento-card {
+  background: rgba(22, 27, 34, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 24px;
+  padding: 2rem;
   position: relative;
   overflow: hidden;
-  cursor: default;
-  transform-style: preserve-3d;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
+  transition: transform 0.4s cubic-bezier(0.23,1,0.32,1), border-color 0.4s, box-shadow 0.5s;
 }
-.pillar-card::before {
-  content: '';
+.bento-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(255,255,255,0.14);
+  box-shadow:
+    0 0 0 1px rgba(233,69,96,0.08),
+    0 20px 60px rgba(0,0,0,0.3),
+    0 0 80px rgba(233,69,96,0.04),
+    inset 0 1px 0 rgba(255,255,255,0.05);
+}
+.bento-glow {
   position: absolute;
   inset: 0;
-  border-radius: 20px;
-  padding: 1px;
-  background: linear-gradient(135deg, var(--card-accent), transparent 50%);
-  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-  -webkit-mask-composite: xor;
-  mask-composite: exclude;
-  opacity: 0;
-  transition: opacity 0.3s;
-}
-.pillar-card:hover::before { opacity: 1; }
-.pillar-card::after {
-  content: '';
-  position: absolute;
-  inset: -1px;
-  border-radius: 21px;
-  background: radial-gradient(ellipse at 50% 0%, var(--card-glow) 0%, transparent 60%);
-  opacity: 0;
-  transition: opacity 0.4s;
-  z-index: -1;
-}
-.pillar-card:hover::after { opacity: 1; }
-.pillar-formacion { --card-accent: #e94560; --card-glow: rgba(233,69,96,0.2); }
-.pillar-comunidad { --card-accent: #ff6b6b; --card-glow: rgba(255,107,107,0.2); }
-.pillar-saas { --card-accent: #8b5cf6; --card-glow: rgba(139,92,246,0.2); }
-.pillar-number {
-  position: absolute;
-  top: 1.5rem;
-  right: 1.5rem;
-  font-size: 3rem;
-  font-weight: 900;
-  color: rgba(255,255,255,0.03);
-  line-height: 1;
   pointer-events: none;
-  user-select: none;
+  border-radius: 24px;
+  transition: background 0.3s;
 }
-.pillar-icon {
-  font-size: 3rem;
-  margin-bottom: 1.25rem;
+.bento-icon {
+  font-size: 2.5rem;
   display: block;
-  filter: drop-shadow(0 0 12px var(--card-accent));
+  margin-bottom: 1rem;
 }
-.pillar-card h3 {
-  font-size: 1.3rem;
+.bento-card h3 {
+  font-size: 1.15rem;
   font-weight: 800;
-  margin-bottom: 0.75rem;
   color: #f0f6fc;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
 }
-.pillar-card p {
-  font-size: 0.95rem;
+.bento-card p {
+  font-size: 0.9rem;
   color: #8b949e;
-  line-height: 1.7;
-  margin-bottom: 0.5rem;
+  line-height: 1.65;
+  margin: 0;
 }
-.pillar-punch {
-  font-size: 0.9rem !important;
-  color: #c9d1d9 !important;
-  font-style: italic;
-  margin-bottom: 1.25rem !important;
-}
-.pillar-features {
+.bento-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 1.25rem;
 }
-.pillar-tag {
+.bento-tag {
   font-size: 0.7rem;
   font-weight: 700;
-  padding: 0.25rem 0.6rem;
-  border-radius: 4px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #8b949e;
+  padding: 0.3rem 0.7rem;
+  border-radius: 8px;
+  background: rgba(233,69,96,0.08);
+  border: 1px solid rgba(233,69,96,0.15);
+  color: #e94560;
 }
 
 /* ═══════════════════════════════════════════════════
-   BLOQUE 4 — TIMELINE
+   TIMELINE
    ═══════════════════════════════════════════════════ */
-.timeline-section { background: #161b22; }
+.timeline-section {
+  background: linear-gradient(180deg, #0d1117 0%, #161b22 50%, #0d1117 100%);
+}
 .timeline-wrapper {
   max-width: 700px;
   margin: 3rem auto 0;
@@ -1866,17 +1801,19 @@ section { padding: 5rem 0; }
 .timeline-track {
   position: absolute;
   left: 0; top: 0; bottom: 0;
-  width: 2px;
-  background: rgba(255,255,255,0.06);
+  width: 3px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 3px;
 }
 .timeline-progress {
   position: absolute;
   left: 0; top: 0;
-  width: 2px;
+  width: 3px;
   height: 0%;
-  background: linear-gradient(to bottom, #e94560, #ff6b6b);
+  background: linear-gradient(to bottom, #e94560, #8b5cf6, #ff6b6b);
   transition: height 0.1s ease-out;
-  box-shadow: 0 0 8px rgba(233, 69, 96, 0.5);
+  box-shadow: 0 0 16px rgba(233, 69, 96, 0.5), 0 0 40px rgba(139,92,246,0.2);
+  border-radius: 3px;
 }
 .timeline-item {
   position: relative;
@@ -1893,19 +1830,25 @@ section { padding: 5rem 0; }
   position: absolute;
   left: -3rem;
   top: 0.25rem;
-  width: 14px;
-  height: 14px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  background: #21262d;
-  border: 2px solid rgba(255,255,255,0.1);
+  background: #161b22;
+  border: 3px solid rgba(255,255,255,0.1);
   transform: translateX(-50%) translateX(1px);
   transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
   z-index: 1;
+  box-shadow: 0 0 0 4px rgba(13,17,23,0.8);
 }
 .timeline-item.timeline-active .timeline-dot {
   background: #e94560;
   border-color: #e94560;
-  box-shadow: 0 0 12px rgba(233, 69, 96, 0.6);
+  box-shadow: 0 0 0 4px rgba(233,69,96,0.2), 0 0 20px rgba(233,69,96,0.5);
+  animation: dotRingPulse 2s ease-in-out infinite;
+}
+@keyframes dotRingPulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(233,69,96,0.2), 0 0 20px rgba(233,69,96,0.5); }
+  50% { box-shadow: 0 0 0 8px rgba(233,69,96,0.08), 0 0 30px rgba(233,69,96,0.6); }
 }
 .timeline-time {
   font-size: 0.75rem;
@@ -1947,107 +1890,24 @@ section { padding: 5rem 0; }
 .timeline-item:nth-child(5) { transition-delay: 0.25s; }
 
 /* ═══════════════════════════════════════════════════
-   BLOQUE 5 — INCLUDES
+   SOCIAL PROOF
    ═══════════════════════════════════════════════════ */
-.section-includes { background: #161b22; }
-.includes-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1rem;
-  margin-top: 2.5rem;
+.proof-section {
+  background: #0d1117;
+  position: relative;
+  overflow: hidden;
 }
-.include-card {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  padding: 1.5rem 1.25rem;
-  text-align: left;
-  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+.proof-section::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 1000px;
+  height: 500px;
+  background: radial-gradient(ellipse at center, rgba(139,92,246,0.04) 0%, transparent 60%);
+  pointer-events: none;
 }
-.include-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(233,69,96,0.3);
-  box-shadow: 0 8px 30px rgba(233,69,96,0.1);
-}
-.include-icon {
-  font-size: 2rem;
-  display: block;
-  margin-bottom: 0.75rem;
-}
-.include-card h3 { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.4rem; }
-.include-card p { color: #8b949e; font-size: 0.82rem; line-height: 1.5; }
-
-/* ═══════════════════════════════════════════════════
-   BLOQUE 6 — COMPARATIVA
-   ═══════════════════════════════════════════════════ */
-.section-compare { background: #0d1117; }
-.compare-table-wrap {
-  overflow-x: auto;
-  max-width: 700px;
-  margin: 2.5rem auto 0;
-  display: none;
-}
-.compare-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-.compare-table th, .compare-table td {
-  padding: 0.85rem 1rem;
-  text-align: left;
-  border-bottom: 1px solid rgba(255,255,255,0.06);
-}
-.compare-table th {
-  font-weight: 700;
-  color: #8b949e;
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.col-highlight {
-  background: rgba(233,69,96,0.05);
-  border-left: 1px solid rgba(233,69,96,0.15);
-  border-right: 1px solid rgba(233,69,96,0.15);
-}
-th.col-highlight {
-  color: #e94560 !important;
-  border-top: 1px solid rgba(233,69,96,0.15);
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
-}
-.compare-table td:first-child { color: #8b949e; }
-
-/* Mobile cards — shown by default on mobile */
-.compare-mobile {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 2rem;
-}
-.compare-row {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
-  padding: 1rem;
-}
-.compare-feature {
-  display: block;
-  font-weight: 700;
-  margin-bottom: 0.5rem;
-  font-size: 0.85rem;
-}
-.compare-vals {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  font-size: 0.85rem;
-  color: #8b949e;
-}
-
-/* ═══════════════════════════════════════════════════
-   BLOQUE 7 — PROOF SOCIAL
-   ═══════════════════════════════════════════════════ */
-.proof-section { background: #0d1117; }
 
 .counters-row {
   display: grid;
@@ -2063,7 +1923,7 @@ th.col-highlight {
   letter-spacing: -0.04em;
   line-height: 1;
   white-space: nowrap;
-  background: linear-gradient(135deg, #e94560, #ff6b6b);
+  background: linear-gradient(135deg, #e94560, #ff6b6b 40%, #8b5cf6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -2077,10 +1937,6 @@ th.col-highlight {
 .review-featured {
   max-width: 580px;
   margin: 3rem auto;
-  background: rgba(233,69,96,0.04);
-  border: 1px solid rgba(233,69,96,0.15);
-  border-radius: 16px;
-  padding: 2rem 2.5rem;
   text-align: center;
 }
 .review-quote {
@@ -2118,35 +1974,45 @@ th.col-highlight {
 .review-name { display: block; font-size: 0.9rem; font-weight: 700; color: #fff; }
 .review-stars-sm { color: #e94560; font-size: 0.8rem; }
 
-.ratings-strip {
+/* Marquee */
+.marquee-wrap {
+  overflow: hidden;
+  margin: 2.5rem 0;
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+}
+.marquee-track {
   display: flex;
-  justify-content: center;
   gap: 1rem;
-  flex-wrap: wrap;
-  margin-top: 1.5rem;
+  width: max-content;
+  animation: marqueeScroll 40s linear infinite;
 }
-.rating-chip {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 100px;
-  padding: 0.4rem 1rem 0.4rem 0.4rem;
+@keyframes marqueeScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-.chip-avatar {
-  width: 28px; height: 28px;
-  background: linear-gradient(135deg, #e94560, #ff6b6b);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.65rem;
-  font-weight: 700;
+.marquee-item {
   flex-shrink: 0;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
-.chip-name { font-size: 0.8rem; font-weight: 600; color: #c9d1d9; }
-.chip-stars { font-size: 0.7rem; color: #e94560; }
+.marquee-stars {
+  color: #e94560;
+  font-size: 0.8rem;
+}
+.marquee-text {
+  font-size: 0.85rem;
+  color: #c9d1d9;
+  line-height: 1.5;
+  font-style: italic;
+}
+.marquee-author {
+  font-size: 0.75rem;
+  color: #484f58;
+  font-weight: 600;
+}
 
 .logo-bar {
   display: flex;
@@ -2178,12 +2044,12 @@ th.col-highlight {
 }
 
 /* ═══════════════════════════════════════════════════
-   BLOQUE 8 — PRICING + CTA FINAL
+   PRICING
    ═══════════════════════════════════════════════════ */
 .cta-final-section {
   position: relative;
   overflow: hidden;
-  background: #0d1117;
+  background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
 }
 .cta-final-glow {
   position: absolute;
@@ -2197,7 +2063,7 @@ th.col-highlight {
 }
 .cta-final-section > .container { position: relative; }
 .cta-final-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
+  font-size: clamp(2rem, 5vw, 3.2rem) !important;
 }
 
 .cost-wrap {
@@ -2207,38 +2073,45 @@ th.col-highlight {
   flex-direction: column;
   gap: 1.5rem;
 }
+.cost-card-title {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: #8b949e;
+  margin-bottom: 1rem;
+}
 .cost-table {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .cost-row {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.04);
   font-size: 0.9rem;
 }
 .cost-row:last-child { border-bottom: none; }
 .cost-total {
   background: rgba(233,69,96,0.05);
+  border-radius: 12px;
+  padding: 0.75rem 1rem !important;
   font-weight: 700;
-  border-top: 1px solid rgba(233,69,96,0.15) !important;
+  border-top: none !important;
+  margin-top: 0.25rem;
 }
 .cost-free { color: #14b8a6; font-weight: 600; }
 .cost-vs {
-  background: rgba(255,255,255,0.02);
-  border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 12px;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 .cost-compare-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.75rem 1.25rem;
+  padding: 0.75rem 0;
   border-bottom: 1px solid rgba(255,255,255,0.04);
   font-size: 0.9rem;
 }
@@ -2246,7 +2119,10 @@ th.col-highlight {
 .cost-compare-label { color: #8b949e; }
 .highlight-item {
   background: rgba(233,69,96,0.05);
-  border-top: 1px solid rgba(233,69,96,0.15) !important;
+  border-radius: 12px;
+  padding: 0.75rem 1rem !important;
+  border-top: none !important;
+  margin-top: 0.25rem;
 }
 .highlight-item .cost-compare-label { color: white; font-weight: 600; }
 .cost-day {
@@ -2269,9 +2145,11 @@ th.col-highlight {
 }
 
 /* ═══════════════════════════════════════════════════
-   BLOQUE 9 — FAQ
+   FAQ
    ═══════════════════════════════════════════════════ */
-.section-faq { background: #0d1117; }
+.section-faq {
+  background: #0d1117;
+}
 .faq-list {
   max-width: 720px;
   margin: 2rem auto 0;
@@ -2281,12 +2159,18 @@ th.col-highlight {
 }
 .faq-item {
   background: rgba(255,255,255,0.02);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 10px;
+  border-radius: 20px;
   overflow: hidden;
-  transition: border-color 0.2s;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.02);
 }
-.faq-item.open { border-color: rgba(233,69,96,0.2); }
+.faq-item.open {
+  border-color: rgba(233,69,96,0.15);
+  box-shadow: 0 8px 30px rgba(233,69,96,0.06), inset 0 1px 0 rgba(255,255,255,0.03);
+}
 .faq-question {
   width: 100%;
   background: none;
@@ -2295,7 +2179,7 @@ th.col-highlight {
   font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 0.95rem;
-  padding: 1rem 1.25rem;
+  padding: 1.15rem 1.5rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -2315,7 +2199,7 @@ th.col-highlight {
   transition: max-height 0.4s ease;
 }
 .faq-answer p {
-  padding: 0 1.25rem 1.25rem;
+  padding: 0 1.5rem 1.5rem;
   color: #8b949e;
   font-size: 0.9rem;
   line-height: 1.7;
@@ -2325,11 +2209,11 @@ th.col-highlight {
    CTA CLOSING
    ═══════════════════════════════════════════════════ */
 .section-cta-closing {
-  background: #161b22;
+  background: linear-gradient(180deg, #0d1117, #161b22);
   padding: 6rem 0;
 }
 .final-title {
-  font-size: clamp(1.8rem, 4vw, 2.8rem) !important;
+  font-size: clamp(2rem, 5vw, 3.2rem) !important;
 }
 
 /* ═══════════════════════════════════════════════════
@@ -2338,7 +2222,7 @@ th.col-highlight {
 footer .accent { color: #e94560; }
 
 /* ═══════════════════════════════════════════════════
-   RESPONSIVE — Mobile-first approach
+   RESPONSIVE — Mobile-first
    ═══════════════════════════════════════════════════
 
    Base: mobile (< 640px)
@@ -2346,91 +2230,81 @@ footer .accent { color: #e94560; }
    768px: tablet
    1024px: desktop
    1280px: desktop large
-
    */
 
-/* ─── Base: Mobile (< 640px) ─── */
-.hero { padding: 5rem 0 3rem; min-height: auto; }
-.hero-copy { text-align: center; }
-.hero-badge { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
-.hero-headline { font-size: 1.75rem; }
-.hero-sub { font-size: 0.9rem; }
-.hero-body { font-size: 0.85rem; }
-.cta-wrap { width: 100%; display: flex; }
-.cta-btn { width: 100%; justify-content: center; padding: 1rem 1.5rem; font-size: 0.85rem; }
-.cta-btn.cta-large { font-size: 0.9rem; padding: 1rem 1.5rem; }
-.cta-sub-line { font-size: 0.55rem; }
+@media (max-width: 639px) {
+  .hero { padding: 5rem 0 3rem; min-height: auto; }
+  .hero-copy { text-align: center; }
+  .hero-badge { font-size: 0.75rem; padding: 0.3rem 0.8rem; }
+  .hero-headline { font-size: 1.85rem; }
+  .hero-sub { font-size: 0.9rem; }
+  .hero-body { font-size: 0.85rem; }
+  .cta-wrap { width: 100%; display: flex; }
+  .cta-btn { width: 100%; justify-content: center; padding: 1rem 1.5rem; font-size: 0.85rem; }
+  .cta-btn.cta-large { font-size: 0.9rem; padding: 1rem 1.5rem; }
+  .cta-sub-line { font-size: 0.55rem; }
 
-.section-openclaw { padding: 4rem 0; }
-.section-title { font-size: 1.4rem; }
-.section-lead { font-size: 0.9rem; }
-.oc-stats-row { gap: 1.5rem; }
-.oc-stat-divider { display: none; }
-.oc-timeline { padding-left: 1.25rem; }
-.oc-event { padding-left: 1rem; }
-.oc-event-text { font-size: 0.85rem; }
-.oc-pillars { grid-template-columns: 1fr; }
+  .section-openclaw { padding: 4rem 0; }
+  .section-title { font-size: 1.5rem; }
+  .section-lead { font-size: 0.9rem; }
+  .oc-stats-row { gap: 1.5rem; }
+  .oc-stat-divider { display: none; }
+  .oc-timeline { padding-left: 1.25rem; }
+  .oc-event { padding-left: 1rem; }
+  .oc-event-text { font-size: 0.85rem; }
+  .oc-pillars { grid-template-columns: 1fr; }
+  .glass-card { padding: 1.5rem 1.25rem; border-radius: 20px; }
 
-.pillars-section { padding: 4rem 0; }
-.pillars-grid { grid-template-columns: 1fr; }
-.pillar-card { padding: 1.5rem 1.25rem; }
-.pillar-icon { font-size: 2rem; }
-.pillar-card h3 { font-size: 1.1rem; }
-.pillar-card p { font-size: 0.85rem; }
+  .section-includes { padding: 4rem 0; }
+  .bento-grid { grid-template-columns: 1fr; gap: 0.75rem; }
+  .bento-card { padding: 1.5rem; border-radius: 20px; }
+  .bento-icon { font-size: 2rem; }
+  .bento-card h3 { font-size: 1rem; }
+  .bento-card p { font-size: 0.85rem; }
 
-.timeline-section { padding: 4rem 0; }
-.timeline-wrapper { padding-left: 1.5rem; }
-.timeline-dot { left: -1.5rem; }
-.timeline-event-title { font-size: 0.95rem; }
-.timeline-event-desc { font-size: 0.85rem; }
-.timeline-preview { font-size: 0.7rem; }
+  .timeline-section { padding: 4rem 0; }
+  .timeline-wrapper { padding-left: 1.5rem; }
+  .timeline-dot { left: -1.5rem; width: 14px; height: 14px; }
+  .timeline-event-title { font-size: 0.95rem; }
+  .timeline-event-desc { font-size: 0.85rem; }
+  .timeline-preview { font-size: 0.7rem; }
 
-.section-includes { padding: 4rem 0; }
-.includes-grid { grid-template-columns: 1fr; gap: 0.75rem; }
-.include-card { padding: 1.25rem 1rem; }
-.include-icon { font-size: 1.5rem; }
-.include-card h3 { font-size: 0.85rem; }
-.include-card p { font-size: 0.78rem; }
+  .proof-section { padding: 4rem 0; }
+  .counters-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+  .counter-value { font-size: 2rem; }
+  .counter-label { font-size: 0.7rem; }
+  .review-featured { padding: 1.25rem 1rem; margin: 2rem auto; }
+  .review-quote { font-size: 0.95rem; }
+  .review-quote-mark { font-size: 2rem; }
+  .marquee-item { width: 280px; }
+  .logo-bar { gap: 1.5rem; }
+  .logo-bar-desc { font-size: 0.8rem; }
 
-.section-compare { padding: 4rem 0; }
-.compare-mobile { display: flex; }
-.compare-table-wrap { display: none; }
+  .cta-final-section { padding: 4rem 0; }
+  .cta-final-title { font-size: 1.6rem !important; }
+  .cost-row { padding: 0.6rem 0; font-size: 0.85rem; }
+  .cost-day { font-size: 1.25rem; }
 
-.proof-section { padding: 4rem 0; }
-.counters-row { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-.counter-value { font-size: 2rem; }
-.counter-label { font-size: 0.7rem; }
-.review-featured { padding: 1.25rem 1rem; margin: 2rem auto; }
-.review-quote { font-size: 0.95rem; }
-.review-quote-mark { font-size: 2rem; }
-.ratings-strip { flex-direction: column; align-items: center; gap: 0.5rem; }
-.rating-chip { width: 100%; max-width: 220px; justify-content: flex-start; }
-.logo-bar { gap: 1.5rem; }
-.logo-bar-desc { font-size: 0.8rem; }
+  .section-faq { padding: 4rem 0; }
+  .faq-question { padding: 1rem; font-size: 0.85rem; }
+  .faq-answer p { padding: 0 1rem 1rem; font-size: 0.85rem; }
+  .faq-item { border-radius: 16px; }
 
-.cta-final-section { padding: 4rem 0; }
-.cta-final-title { font-size: 1.5rem !important; }
-.cost-row { padding: 0.6rem 1rem; font-size: 0.85rem; }
-.cost-day { font-size: 1.25rem; }
+  .section-cta-closing { padding: 4rem 0; }
+  .final-title { font-size: 1.6rem !important; }
 
-.section-faq { padding: 4rem 0; }
-.faq-question { padding: 0.85rem 1rem; font-size: 0.85rem; }
-.faq-answer p { padding: 0 1rem 1rem; font-size: 0.85rem; }
-
-.section-cta-closing { padding: 4rem 0; }
-.final-title { font-size: 1.5rem !important; }
-
-section { padding: 4rem 0; }
+  section { padding: 4rem 0; }
+}
 
 /* ─── 640px: Tablet small ─── */
 @media (min-width: 640px) {
   .hero { padding: 5.5rem 0 3.5rem; }
-  .hero-headline { font-size: 2rem; }
+  .hero-headline { font-size: 2.2rem; }
   .hero-sub { font-size: 0.95rem; }
   .hero-body { font-size: 0.9rem; }
   .cta-btn.cta-large { font-size: 0.95rem; }
 
-  .section-title { font-size: 1.5rem; }
+  .section-title { font-size: 1.7rem; }
   .section-lead { font-size: 0.95rem; }
 
   .oc-stats-row { gap: 2rem; }
@@ -2438,18 +2312,18 @@ section { padding: 4rem 0; }
   .oc-timeline { padding-left: 1.5rem; }
   .oc-event { padding-left: 1.25rem; }
 
-  .pillars-grid { grid-template-columns: 1fr; }
-  .pillar-card { padding: 2rem 1.5rem; }
+  .oc-pillars { grid-template-columns: 1fr; }
+  .glass-card { padding: 2rem; }
 
-  .includes-grid { grid-template-columns: 1fr; }
+  .bento-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .bento-card { padding: 2rem; }
 
   .counters-row { gap: 2rem; }
-  .ratings-strip { flex-wrap: wrap; gap: 0.5rem; }
-  .rating-chip { flex: 1 1 45%; min-width: 0; width: auto; max-width: none; justify-content: center; }
+  .marquee-item { width: 320px; }
 
-  .cta-final-title { font-size: 1.6rem !important; }
+  .cta-final-title { font-size: 1.8rem !important; }
 
-  section { padding: 4.5rem 0; }
+  section { padding: 5rem 0; }
 }
 
 /* ─── 768px: Tablet ─── */
@@ -2459,37 +2333,31 @@ section { padding: 4rem 0; }
 
   .hero { padding: 6rem 0 4rem; }
   .hero-inner { padding: 0 2rem; }
-  .hero-headline { font-size: clamp(2rem, 4vw, 2.8rem); }
+  .hero-headline { font-size: clamp(2.2rem, 4.5vw, 3.2rem); }
   .hero-dashboard { display: none; }
 
-  .section-title { font-size: clamp(1.6rem, 3vw, 2.2rem); }
+  .section-title { font-size: clamp(1.8rem, 3.5vw, 2.5rem); }
 
   .oc-pillars { grid-template-columns: repeat(3, 1fr); }
 
-  .pillars-grid { grid-template-columns: 1fr; max-width: 500px; }
-
-  .includes-grid { grid-template-columns: repeat(2, 1fr); }
-
-  .compare-mobile { display: flex; }
-  .compare-table-wrap { display: none; }
+  .bento-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .bento-card-lg { grid-column: span 2; }
+  .bento-card-wide { grid-column: span 2; }
 
   .counters-row { grid-template-columns: repeat(4, 1fr); }
 
-  .cta-final-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem) !important; }
+  .cta-final-title { font-size: clamp(2rem, 3.5vw, 2.6rem) !important; }
+  .final-title { font-size: clamp(2rem, 3.5vw, 2.6rem) !important; }
 
-  .final-title { font-size: clamp(1.8rem, 3.5vw, 2.4rem) !important; }
-
-  section { padding: 5rem 0; }
+  section { padding: 6rem 0; }
 }
 
 /* ─── 1024px: Desktop ─── */
 @media (min-width: 1024px) {
-  /* Show desktop nav, hide hamburger */
   .header-nav { display: flex; align-items: center; gap: 1.5rem; }
   .nav-toggle { display: none; }
   .mobile-nav { display: none; }
 
-  /* Hero: 2 columns with dashboard */
   .hero { padding: 7rem 0 5rem; min-height: 100vh; }
   .hero-inner {
     padding: 0 2rem;
@@ -2503,27 +2371,27 @@ section { padding: 4rem 0; }
   .hero-cta-row { justify-content: flex-start; }
   .hero-dashboard { display: block; }
 
-  /* CTAs: auto width on desktop */
   .cta-wrap { width: auto; display: inline-flex; }
   .cta-btn { width: auto; justify-content: center; }
-
-  /* Header CTA with spin animation */
   .cta-wrap-sm::before, .cta-wrap-sm::after { display: block; }
   .header-cta { animation: cta-pulse 2s ease-in-out infinite; }
 
+  .section-title { font-size: clamp(2rem, 4vw, 3rem); }
+
   .oc-pillars { grid-template-columns: repeat(3, 1fr); }
 
-  .pillars-grid { grid-template-columns: repeat(3, 1fr); max-width: 900px; }
-
-  .includes-grid { grid-template-columns: repeat(4, 1fr); }
-
-  /* Desktop: table, mobile: hidden */
-  .compare-mobile { display: none; }
-  .compare-table-wrap { display: flex; justify-content: center; }
+  .bento-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  .bento-card-lg { grid-column: span 2; }
+  .bento-card-wide { grid-column: span 2; }
 
   .counters-row { max-width: 800px; }
 
-  section { padding: 6rem 0; }
+  .cost-wrap { max-width: 560px; }
+
+  section { padding: 8rem 0; }
 }
 
 /* ─── 1280px: Desktop large ─── */
@@ -2531,9 +2399,9 @@ section { padding: 4rem 0; }
   .container { padding: 0 2rem; }
   .hero-inner { padding: 0 2rem; }
 
-  .pillars-grid { max-width: 900px; gap: 1.5rem; }
+  .bento-grid { gap: 1.5rem; }
 
-  .section-cta-closing { padding: 7rem 0; }
+  .section-cta-closing { padding: 8rem 0; }
 }
 </style>
 
