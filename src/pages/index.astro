@@ -15,20 +15,6 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
   />
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "TribuClaw",
-    "url": SITE_URL,
-    "logo": `${SITE_URL}/images/logo-icon.png`
-  })} />
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "TribuClaw",
-    "url": SITE_URL,
-    "inLanguage": "es"
-  })} />
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
     "@type": "Product",
     "name": "TribuClaw — Membresía",
     "description": "Comunidad en español con curso completo de OpenClaw, casos de uso reales, soporte 24/7, directos semanales y TribuClaw App.",
@@ -358,6 +344,16 @@ import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
+
+// ─── Lenis smooth scroll ───
+import Lenis from '@studio-freight/lenis';
+const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
+function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+requestAnimationFrame(raf);
+// Sync Lenis with GSAP ScrollTrigger
+lenis.on('scroll', ScrollTrigger.update);
+gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+gsap.ticker.lagSmoothing(0);
 
 // ─── Hero animations on load ───
 const heroBadge = document.querySelector('.hero-badge');

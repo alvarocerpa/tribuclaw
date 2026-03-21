@@ -67,7 +67,7 @@ const rest = posts.slice(1);
             <p class="featured-excerpt">{featured.data.description}</p>
             <span class="featured-meta">
               <time datetime={featured.data.pubDate.toISOString()}>
-                {featured.data.pubDate.toLocaleDateString('en-us', { year: 'numeric', month: 'short', day: 'numeric' })}
+                {featured.data.pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}
               </time>
               &middot; {featured.data.author}
             </span>
