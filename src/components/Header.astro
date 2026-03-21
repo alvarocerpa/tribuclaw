@@ -1,114 +1,219 @@
 ---
-import HeaderLink from './HeaderLink.astro';
 import { WHOP_URL } from '../consts';
 ---
-<style>
-	.skip-link {
-		position: absolute;
-		left: -9999px;
-		top: auto;
-		width: 1px;
-		height: 1px;
-		overflow: hidden;
-		z-index: 1000;
-		background: #e94560;
-		color: white;
-		padding: 8px 16px;
-		text-decoration: none;
-		font-weight: 600;
-		border-radius: 0 0 4px 0;
-	}
-	.skip-link:focus {
-		position: fixed;
-		left: 0;
-		top: 0;
-		width: auto;
-		height: auto;
-		overflow: visible;
-		outline: 2px solid #fff;
-		outline-offset: 2px;
-	}
-</style>
 <a href="#main-content" class="skip-link">Saltar al contenido</a>
-<header>
-	<nav>
-		<a href="/" class="logo" aria-label="TribuClaw - Ir al inicio">
-			<img src="/images/logo-icon.png" alt="TribuClaw" class="logo-img" width="36" height="36" fetchpriority="high" />
-			<span>Tribu<em>Claw</em></span>
-		</a>
-		<div class="nav-links">
-			<HeaderLink href="/blog">Blog</HeaderLink>
-			<HeaderLink href="/about">Sobre</HeaderLink>
-			<a href={WHOP_URL} target="_blank" class="nav-cta">Unirse</a>
-		</div>
-	</nav>
+<header class="site-header" id="site-header">
+  <div class="header-inner">
+    <a href="/" class="logo-link" aria-label="TribuClaw - Inicio">
+      <img src="/images/logo-icon.png" width="32" height="32" alt="" fetchpriority="high" />
+      <span class="logo-text">Tribu<span class="accent">Claw</span></span>
+    </a>
+    <nav class="header-nav" id="main-nav">
+      <a href="/" class="nav-link">Inicio</a>
+      <a href="/blog/" class="nav-link">Blog</a>
+      <a href="/about/" class="nav-link">Nosotros</a>
+    </nav>
+    <div class="header-cta-wrap">
+      <a href={WHOP_URL} class="header-cta-btn" target="_blank" rel="noopener">Unirme →</a>
+    </div>
+    <button class="nav-toggle" id="nav-toggle" aria-label="Menú">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="/" class="mobile-nav-link">Inicio</a>
+    <a href="/blog/" class="mobile-nav-link">Blog</a>
+    <a href="/about/" class="mobile-nav-link">Nosotros</a>
+    <div class="mobile-nav-cta">
+      <a href={WHOP_URL} class="mobile-cta-btn" target="_blank" rel="noopener">Unirme a TribuClaw →</a>
+    </div>
+  </nav>
 </header>
-<style>
-	header {
-		border-bottom: 1px solid rgba(255,255,255,0.06);
-		background: rgba(13,17,23,0.92);
-		backdrop-filter: blur(12px);
-		position: sticky;
-		top: 0;
-		z-index: 100;
-	}
-	nav {
-		max-width: 1000px;
-		margin: 0 auto;
-		padding: 0.6rem 1rem;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-	}
-	.logo {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		font-size: 1.3rem;
-		font-weight: 700;
-		font-family: 'Inter', sans-serif;
-		color: #fff;
-		text-decoration: none;
-	}
-	.logo:hover { text-decoration: none; }
-	.logo-img {
-		width: 36px;
-		height: 36px;
-		border-radius: 0;
-	}
-	.logo em {
-		color: #e94560;
-		font-style: normal;
-	}
-	.nav-links {
-		display: flex;
-		align-items: center;
-		gap: 1.5rem;
-	}
-	.nav-cta {
-		background: #e94560;
-		color: white !important;
-		padding: 0.4rem 1rem;
-		border-radius: 6px;
-		font-weight: 600;
-		font-size: 0.9rem;
-		font-family: 'Inter', sans-serif;
-		text-decoration: none !important;
-		transition: background 0.2s;
-		display: inline-flex;
-		align-items: center;
-		white-space: nowrap;
-	}
-	.nav-cta:hover {
-		background: #c23152;
-	}
 
-	/* Mobile */
-	@media (max-width: 600px) {
-		nav { padding: 0.6rem 1rem; gap: 0; }
-		.logo { gap: 0.4rem; font-size: 1.1rem; }
-		.logo-img { width: 32px; height: 32px; }
-		.nav-links { gap: 0.75rem; }
-		.nav-cta { padding: 0.35rem 0.75rem; font-size: 0.8rem; min-height: 34px; }
-	}
+<style>
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: auto;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    z-index: 1000;
+    background: #e94560;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: auto;
+    height: auto;
+    overflow: visible;
+    outline: 2px solid #fff;
+    outline-offset: 2px;
+  }
+  .site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    background: rgba(13,17,23,0.85);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    transition: background 0.3s;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    height: 64px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: #fff;
+    font-weight: 800;
+    font-size: 1.15rem;
+    letter-spacing: -0.02em;
+    font-family: 'Inter', sans-serif;
+  }
+  .logo-link:hover { text-decoration: none; }
+  .accent { color: #e94560; }
+  .header-nav {
+    display: none;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-link {
+    color: rgba(250,250,250,0.5);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .nav-link:hover { color: #e94560; text-decoration: none; }
+  .header-cta-wrap { display: none; }
+  .header-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.5rem 1.4rem;
+    background: rgba(233,69,96,0.1);
+    border: 1px solid rgba(233,69,96,0.3);
+    color: #e94560;
+    font-weight: 700;
+    font-size: 0.82rem;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .header-cta-btn:hover {
+    background: rgba(233,69,96,0.2);
+    border-color: rgba(233,69,96,0.5);
+    transform: translateY(-1px);
+    text-decoration: none;
+    color: #e94560;
+  }
+
+  /* Mobile toggle */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 6px;
+    z-index: 110;
+  }
+  .nav-toggle span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: #fff;
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+  .nav-toggle.open span:nth-child(2) { opacity: 0; }
+  .nav-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+  /* Mobile nav */
+  .mobile-nav {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(13,17,23,0.98);
+    backdrop-filter: blur(20px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 99;
+  }
+  .mobile-nav.open { transform: translateX(0); }
+  .mobile-nav-link {
+    color: #fafafa;
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.5rem 0;
+    transition: color 0.2s;
+    font-family: 'Inter', sans-serif;
+  }
+  .mobile-nav-link:hover { color: #e94560; text-decoration: none; }
+  .mobile-nav-cta { margin-top: 1rem; }
+  .mobile-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.85rem 2rem;
+    background: linear-gradient(124deg, #e94560, #ff6b6b);
+    color: #fff;
+    font-weight: 800;
+    font-size: 0.9rem;
+    border-radius: 14px;
+    text-decoration: none;
+    font-family: 'Inter', sans-serif;
+  }
+  .mobile-cta-btn:hover { text-decoration: none; color: #fff; }
+
+  @media (min-width: 768px) {
+    .header-nav { display: flex; }
+    .header-cta-wrap { display: block; }
+    .nav-toggle { display: none; }
+    .mobile-nav { display: none; }
+  }
 </style>
+
+<script>
+(function(){
+  const t = document.getElementById('nav-toggle');
+  const mn = document.getElementById('mobile-nav');
+  if (t && mn) {
+    t.onclick = () => { t.classList.toggle('open'); mn.classList.toggle('open'); };
+    mn.querySelectorAll('a').forEach(a => a.onclick = () => {
+      t.classList.remove('open');
+      mn.classList.remove('open');
+    });
+  }
+})();
+</script>

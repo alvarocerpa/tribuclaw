@@ -3,16 +3,14 @@ import '../styles/global.css';
 import { SITE_TITLE, SITE_URL } from '../consts';
 
 interface Props {
-	title: string;
-	description: string;
-	image?: string;
-	type?: string;
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
 }
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const { title, description, image = '/images/og-default.jpg', type = 'website' } = Astro.props;
-// Google Discover requiere imágenes JPG/PNG (no SVG) de mínimo 1200px
-// Si el heroImage es SVG, usamos la versión JPG generada automáticamente
 const ogImagePath = image.endsWith('.svg') ? image.replace('.svg', '.jpg') : image;
 const ogImage = new URL(ogImagePath, Astro.site).href;
 ---
@@ -35,7 +33,6 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-
 
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
@@ -70,26 +67,26 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
 
 <!-- Organization Schema -->
 <script type="application/ld+json" set:html={JSON.stringify({
-	"@context": "https://schema.org",
-	"@type": "Organization",
-	"name": "TribuClaw",
-	"url": SITE_URL,
-	"logo": SITE_URL + "/images/logo-icon.png",
-	"description": "La comunidad en español de agentes IA personales",
-	"sameAs": ["https://whop.com/tribu-claw/tribu-claw/"]
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TribuClaw",
+  "url": SITE_URL,
+  "logo": SITE_URL + "/images/logo-icon.png",
+  "description": "La comunidad en español de agentes IA personales",
+  "sameAs": ["https://whop.com/tribu-claw/tribu-claw/"]
 })} />
 
 <!-- WebSite Schema -->
 <script type="application/ld+json" set:html={JSON.stringify({
-	"@context": "https://schema.org",
-	"@type": "WebSite",
-	"name": "TribuClaw",
-	"url": SITE_URL,
-	"description": "La comunidad en español que te enseña a crear tu agente IA personal",
-	"inLanguage": "es",
-	"potentialAction": {
-		"@type": "SearchAction",
-		"target": SITE_URL + "/blog/?q={search_term_string}",
-		"query-input": "required name=search_term_string"
-	}
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "TribuClaw",
+  "url": SITE_URL,
+  "description": "La comunidad en español que te enseña a crear tu agente IA personal",
+  "inLanguage": "es",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": SITE_URL + "/blog/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
 })} />

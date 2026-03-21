@@ -7,286 +7,350 @@ import { WHOP_URL } from '../consts';
 
 <!doctype html>
 <html lang="es">
-	<head>
-		<BaseHead
-			title="Sobre TribuClaw — La comunidad que te prepara para la era de los agentes IA"
-			description="TribuClaw es donde la gente que va a dominar la próxima década aprende a crear agentes IA autónomos. En español, desde cero, con una comunidad que te acompaña."
-		/>
-		<style>
-			@keyframes fadeUp {
-				from { opacity: 0; transform: translateY(25px); }
-				to { opacity: 1; transform: translateY(0); }
-			}
-			.about-hero {
-				text-align: center;
-				padding: 5rem 1.5rem 3rem;
-				max-width: 750px;
-				margin: 0 auto;
-				position: relative;
-				overflow: hidden;
-			}
-			.about-hero::before {
-				content: '';
-				position: absolute;
-				top: -150px;
-				left: 50%;
-				transform: translateX(-50%);
-				width: 900px;
-				height: 600px;
-				background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, transparent 65%);
-				pointer-events: none;
-			}
-			.about-hero > * { position: relative; }
-			.about-hero .logo-big {
-				width: 80px;
-				height: 80px;
-				margin-bottom: 1.5rem;
-				animation: fadeUp 0.6s ease-out;
-			}
-			.about-hero .logo-big {
-				width: 80px;
-				height: 80px;
-			}
-			.about-hero h1 {
-				font-size: 2.5rem;
-				margin-bottom: 0.75rem;
-				animation: fadeUp 0.6s ease-out 0.1s both;
-			}
-			.about-hero h1 span { color: #e94560; }
-			.about-hero .lead {
-				font-size: 1.15rem;
-				color: #8b949e;
-				line-height: 1.7;
-				animation: fadeUp 0.6s ease-out 0.2s both;
-			}
+<head>
+  <BaseHead
+    title="Sobre TribuClaw — La comunidad que te prepara para la era de los agentes IA"
+    description="TribuClaw es donde la gente que va a dominar la próxima década aprende a crear agentes IA autónomos. En español, desde cero, con una comunidad que te acompaña."
+  />
+</head>
+<body class="dot-bg">
+<Header />
+<main id="main-content">
 
-			.about-content {
-				max-width: 700px;
-				margin: 0 auto;
-				padding: 0 1.5rem 3rem;
-			}
+  <!-- Hero -->
+  <section class="about-hero">
+    <div class="section-glow" style="width:900px;height:600px;background:radial-gradient(ellipse,rgba(233,69,96,0.1) 0%,transparent 65%);top:-150px;left:50%;transform:translateX(-50%)"></div>
+    <div class="container">
+      <div class="about-hero-inner" data-animate="fade-up">
+        <img src="/images/logo-icon.png" alt="TribuClaw" class="about-logo" />
+        <span class="badge-pill">🦞 Sobre TribuClaw</span>
+        <h1>Esto es <span class="gradient-text">TribuClaw</span></h1>
+        <p class="about-lead">
+          No somos un curso. No somos otro grupo de Telegram. Somos el lugar donde la gente
+          que va a dominar la próxima década aprende a hacerlo.
+        </p>
+      </div>
+    </div>
+  </section>
 
-			.about-section {
-				margin-bottom: 3rem;
-			}
-			.about-section h2 {
-				font-size: 1.5rem;
-				margin-bottom: 1rem;
-				padding-bottom: 0.5rem;
-				border-bottom: 1px solid rgba(255,255,255,0.06);
-			}
-			.about-section p {
-				color: #8b949e;
-				line-height: 1.75;
-				margin-bottom: 1rem;
-			}
-			.about-section strong {
-				color: #e0e0e0;
-			}
+  <!-- Content -->
+  <div class="about-content container">
 
-			/* Values grid */
-			.values {
-				display: grid;
-				grid-template-columns: 1fr 1fr;
-				gap: 1.25rem;
-				margin: 1.5rem 0;
-			}
-			.value-card {
-				padding: 1.5rem;
-				background: rgba(255,255,255,0.02);
-				border: 1px solid rgba(255,255,255,0.06);
-				border-radius: 12px;
-				transition: border-color 0.3s;
-			}
-			.value-card:hover { border-color: rgba(233,69,96,0.25); box-shadow: 0 8px 30px rgba(233,69,96,0.08); }
-			.value-card .icon { font-size: 1.5rem; margin-bottom: 0.5rem; display: block; }
-			.value-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
-			.value-card p { color: #8b949e; font-size: 0.88rem; line-height: 1.5; margin: 0; }
+    <!-- Story -->
+    <section class="about-section" data-animate="fade-up">
+      <h2>El mundo está cambiando. La mayoría no se ha dado cuenta.</h2>
+      <p>
+        Hay personas que ya tienen una inteligencia artificial trabajando para ellas.
+        No hablamos de pedirle cosas a ChatGPT. Hablamos de un <strong>agente autónomo</strong> que gestiona
+        su negocio, responde sus clientes, analiza oportunidades y toma decisiones. Solo.
+        Mientras duermen.
+      </p>
+      <p>
+        Esta tecnología ya existe. Ya es accesible. Pero el 99% de la gente no lo sabe
+        porque todo el conocimiento está en inglés, enterrado en repositorios de GitHub
+        y foros técnicos.
+      </p>
+      <p>
+        <strong>TribuClaw nació para romper esa barrera.</strong> Para que cualquier persona,
+        sin importar su nivel técnico, pueda tener su propio agente IA funcionando.
+        En español. Con una comunidad que le acompañe.
+      </p>
+    </section>
 
-			/* Founder */
-			.founder {
-				display: flex;
-				gap: 1.5rem;
-				align-items: flex-start;
-				padding: 2rem;
-				background: rgba(255,255,255,0.02);
-				border: 1px solid rgba(255,255,255,0.06);
-				border-radius: 14px;
-				margin: 1.5rem 0;
-			}
-			.founder-avatar {
-				width: 70px;
-				height: 70px;
-				border-radius: 50%;
-				background: linear-gradient(135deg, #e94560, #d63851);
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				flex-shrink: 0;
-				font-size: 1.8rem;
-			}
-			.founder-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
-			.founder-info .role { color: #e94560; font-size: 0.85rem; margin-bottom: 0.5rem; }
-			.founder-info p { color: #8b949e; font-size: 0.92rem; line-height: 1.6; margin: 0 0 0.75rem; }
-			.founder-info .linkedin-link {
-				display: inline-flex; align-items: center; gap: 0.4rem;
-				color: #0077b5; font-size: 0.85rem; font-weight: 600;
-				text-decoration: none; transition: opacity 0.2s;
-			}
-			.founder-info .linkedin-link:hover { opacity: 0.8; text-decoration: none; }
+    <!-- Values -->
+    <section class="about-section" data-animate="fade-up">
+      <h2>Qué vas a conseguir aquí</h2>
+      <div class="values-grid" data-animate="stagger">
+        <div class="glass-card value-card">
+          <span class="value-icon">🚀</span>
+          <h3>Tu agente IA funcionando</h3>
+          <p>No teoría. Sales de aquí con un agente real, conectado a tu vida y tu negocio, ejecutando tareas por ti.</p>
+        </div>
+        <div class="glass-card value-card">
+          <span class="value-icon">🔥</span>
+          <h3>Ventaja de primer jugador</h3>
+          <p>Los que aprenden esto ahora tendrán años de ventaja. Esta oleada no espera a nadie.</p>
+        </div>
+        <div class="glass-card value-card">
+          <span class="value-icon">🤝</span>
+          <h3>Gente que piensa como tú</h3>
+          <p>Emprendedores, creadores y visionarios que entienden que la IA no es una moda. Es el nuevo estándar.</p>
+        </div>
+        <div class="glass-card value-card">
+          <span class="value-icon">💰</span>
+          <h3>Nuevas formas de generar ingresos</h3>
+          <p>La IA autónoma abre modelos de negocio que hace un año no existían. Aquí aprendes a monetizarlos.</p>
+        </div>
+      </div>
+    </section>
 
-			/* CTA */
-			.about-cta {
-				text-align: center;
-				padding: 3rem 1.5rem;
-				max-width: 600px;
-				margin: 0 auto;
-			}
-			.about-cta h2 { font-size: 1.8rem; margin-bottom: 0.5rem; }
-			.about-cta p { color: #8b949e; margin-bottom: 1.5rem; }
-			.about-cta a {
-				display: inline-flex;
-				align-items: center;
-				justify-content: center;
-				background: linear-gradient(135deg, #e94560, #d63851);
-				color: white;
-				padding: 0.85rem 2rem;
-				border-radius: 10px;
-				font-weight: 700;
-				text-decoration: none;
-				transition: transform 0.2s, box-shadow 0.2s;
-				box-shadow: 0 4px 20px rgba(233,69,96,0.4), 0 6px 25px rgba(233,69,96,0.3);
-				animation: ctaPulse 2s ease-in-out infinite;
-				min-height: 44px;
-				min-width: 44px;
-			}
-			.about-cta a:hover {
-				transform: translateY(-2px);
-				text-decoration: none;
-			}
-			@keyframes ctaPulse {
-				0%, 100% { box-shadow: 0 4px 20px rgba(233,69,96,0.4), 0 6px 25px rgba(233,69,96,0.3); }
-				50% { box-shadow: 0 6px 30px rgba(233,69,96,0.6), 0 12px 40px rgba(233,69,96,0.25); }
-			}
+    <!-- Mission -->
+    <section class="about-section" data-animate="fade-up">
+      <h2>Nuestra misión</h2>
+      <p>
+        <strong>Democratizar los agentes IA en español.</strong> Que nadie se quede fuera por no saber inglés.
+        Que la barrera de entrada sea la curiosidad, no el código. Que tener un agente IA
+        trabajando por ti sea tan normal como tener un email.
+      </p>
+      <p>
+        Creemos que la IA autónoma es la revolución más importante de esta década.
+        Y queremos que la comunidad hispanohablante no sea la última en enterarse.
+      </p>
+    </section>
 
-			@media (max-width: 720px) {
-				.about-hero { padding: 3rem 1.25rem 2rem; }
-				.about-hero h1 { font-size: 1.8rem; }
-				.about-hero .lead { font-size: 1rem; }
-				.about-hero .logo-big { width: 60px; height: 60px; }
-				.about-content { padding: 0 1.25rem 2rem; }
-				.about-section h2 { font-size: 1.25rem; }
-				.about-section p { font-size: 0.92rem; }
-				.about-section { margin-bottom: 2.5rem; }
-				.values { grid-template-columns: 1fr; gap: 1rem; }
-				.value-card { padding: 1.25rem; }
-				.founder { flex-direction: column; align-items: center; text-align: center; padding: 1.5rem; }
-				.about-cta { padding: 2.5rem 1.25rem; }
-				.about-cta h2 { font-size: 1.5rem; }
-				.about-cta p { font-size: 0.92rem; }
-			}
-		</style>
-	</head>
-	<body class="dot-bg">
-		<Header />
-		<main id="main-content">
-			<section class="about-hero">
-				<img src="/images/logo-icon.png" alt="TribuClaw" class="logo-big" />
-				<span class="badge-pill">🦞 Sobre TribuClaw</span>
-				<h1>Esto es <span>TribuClaw</span></h1>
-				<p class="lead">
-					No somos un curso. No somos otro grupo de Telegram. Somos el lugar donde la gente
-					que va a dominar la próxima década aprende a hacerlo.
-				</p>
-			</section>
+    <!-- Founder -->
+    <section class="about-section" data-animate="fade-up">
+      <h2>Quién está detrás</h2>
+      <div class="founder glass-card">
+        <div class="founder-avatar">AC</div>
+        <div class="founder-info">
+          <h3>Álvaro Cerpa</h3>
+          <div class="founder-role">Fundador de TribuClaw · Emprendedor Digital</div>
+          <p>
+            Emprendedor que lleva años construyendo negocios digitales. Cuando configuró su propio
+            agente IA y vio cómo transformaba por completo su forma de trabajar, supo que
+            esto iba a cambiarlo todo. Creó TribuClaw porque necesitaba existir: un espacio en español,
+            sin humo, donde cualquiera pudiera acceder a esta tecnología y construir su ventaja.
+          </p>
+          <a href="https://www.linkedin.com/in/alvaro-cerpa/" target="_blank" rel="noopener noreferrer" class="founder-link">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fafafa"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            linkedin.com/in/alvaro-cerpa
+          </a>
+        </div>
+      </div>
+    </section>
 
-			<div class="about-content">
-				<section class="about-section reveal">
-					<h2>El mundo está cambiando. La mayoría no se ha dado cuenta.</h2>
-					<p>
-						Hay personas que ya tienen una inteligencia artificial trabajando para ellas.
-						No hablamos de pedirle cosas a ChatGPT. Hablamos de un agente autónomo que gestiona
-						su negocio, responde sus clientes, analiza oportunidades y toma decisiones. Solo.
-						Mientras duermen.
-					</p>
-					<p>
-						Esta tecnología ya existe. Ya es accesible. Pero el 99% de la gente no lo sabe
-						porque todo el conocimiento está en inglés, enterrado en repositorios de GitHub
-						y foros técnicos.
-					</p>
-					<p>
-						<strong>TribuClaw nació para romper esa barrera.</strong> Para que cualquier persona,
-						sin importar su nivel técnico, pueda tener su propio agente IA funcionando.
-						En español. Con una comunidad que le acompañe.
-					</p>
-				</section>
+    <!-- Numbers -->
+    <section class="about-section" data-animate="fade-up">
+      <div class="about-numbers" data-animate="stagger">
+        <div class="number-item">
+          <span class="number-value gradient-text">98+</span>
+          <span class="number-label">Miembros</span>
+        </div>
+        <div class="number-item">
+          <span class="number-value gradient-text">247K</span>
+          <span class="number-label">GitHub Stars</span>
+        </div>
+        <div class="number-item">
+          <span class="number-value gradient-text">4.9</span>
+          <span class="number-label">Valoración</span>
+        </div>
+      </div>
+    </section>
 
-				<section class="about-section reveal">
-					<h2>Qué vas a conseguir aquí</h2>
-					<div class="values">
-						<div class="value-card reveal">
-							<span class="icon">🚀</span>
-							<h3>Tu agente IA funcionando</h3>
-							<p>No teoría. Sales de aquí con un agente real, conectado a tu vida y tu negocio, ejecutando tareas por ti.</p>
-						</div>
-						<div class="value-card reveal">
-							<span class="icon">🔥</span>
-							<h3>Ventaja de primer jugador</h3>
-							<p>Los que aprenden esto ahora tendrán años de ventaja. Esta oleada no espera a nadie.</p>
-						</div>
-						<div class="value-card reveal">
-							<span class="icon">🤝</span>
-							<h3>Gente que piensa como tu</h3>
-							<p>Emprendedores, creadores y visionarios que entienden que la IA no es una moda. Es el nuevo estándar.</p>
-						</div>
-						<div class="value-card reveal">
-							<span class="icon">💰</span>
-							<h3>Nuevas formas de generar ingresos</h3>
-							<p>La IA autónoma abre modelos de negocio que hace un año no existían. Aquí aprendes a monetizarlos.</p>
-						</div>
-					</div>
-				</section>
+  </div>
 
-				<section class="about-section reveal">
-					<h2>Quién está detrás</h2>
-					<div class="founder reveal">
-						<div class="founder-avatar">AC</div>
-						<div class="founder-info">
-							<h3>Álvaro Cerpa</h3>
-							<div class="role">Fundador de TribuClaw · Emprendedor Digital</div>
-							<p>
-								Emprendedor que lleva años construyendo negocios digitales. Cuando configuró su propio
-								agente IA y vio cómo transformaba por completo su forma de trabajar, supo que
-								esto iba a cambiarlo todo. Creó TribuClaw porque necesitaba existir: un espacio en español,
-								sin humo, donde cualquiera pudiera acceder a esta tecnología y construir su ventaja.
-							</p>
-							<a href="https://www.linkedin.com/in/alvaro-cerpa/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
-								<svg width="16" height="16" viewBox="0 0 24 24" fill="#0077b5" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-								linkedin.com/in/alvaro-cerpa
-							</a>
-						</div>
-					</div>
-				</section>
-			</div>
+  <!-- CTA -->
+  <section class="about-cta">
+    <div class="section-glow" style="width:900px;height:600px;background:radial-gradient(ellipse,rgba(233,69,96,0.1) 0%,transparent 65%);top:-100px;left:50%;transform:translateX(-50%)"></div>
+    <div class="container">
+      <div class="about-cta-inner" data-animate="fade-up">
+        <h2>La oleada no va a esperar</h2>
+        <p>Dentro de un año, desearás haber empezado hoy. Este es el momento.</p>
+        <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+          <span>Entrar a TribuClaw</span>
+        </a>
+      </div>
+    </div>
+  </section>
 
-			<section class="about-cta">
-				<h2>La oleada no va a esperar</h2>
-				<p>Dentro de un año, desearás haber empezado hoy. Este es el momento.</p>
-				<a href={WHOP_URL} target="_blank">Entrar a TribuClaw</a>
-			</section>
-		</main>
-		<Footer />
-		<script>
-			const revealEls = document.querySelectorAll('.reveal');
-			const observer = new IntersectionObserver(entries => {
-				entries.forEach(entry => {
-					if (entry.isIntersecting) {
-						entry.target.classList.add('revealed');
-						observer.unobserve(entry.target);
-					}
-				});
-			}, { threshold: 0.1 });
-			revealEls.forEach(el => observer.observe(el));
-		</script>
-	</body>
+</main>
+<Footer />
+
+<script>
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
+gsap.registerPlugin(ScrollTrigger);
+
+gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach(el => {
+  gsap.from(el, {
+    scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+    opacity: 0, y: 30, duration: 0.7, ease: 'power2.out',
+  });
+});
+
+gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container => {
+  gsap.from(container.children, {
+    scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+    opacity: 0, y: 25, duration: 0.6, stagger: 0.1, ease: 'power2.out',
+  });
+});
+</script>
+
+<style>
+  .about-hero {
+    padding: 7rem 0 3rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-hero-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .about-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+  .about-hero h1 {
+    font-size: clamp(2rem, 5vw, 2.8rem);
+    margin-bottom: 0.75rem;
+  }
+  .about-lead {
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .about-content {
+    padding: 0 1.5rem 3rem;
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .about-section {
+    margin-bottom: 3.5rem;
+  }
+  .about-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .about-section p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+  }
+
+  /* Values grid */
+  .values-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .value-card {
+    padding: 1.5rem;
+  }
+  .value-icon {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+    display: block;
+  }
+  .value-card h3 {
+    font-size: 1rem;
+    margin-bottom: 0.3rem;
+  }
+  .value-card p {
+    color: var(--text-muted);
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+  /* Founder */
+  .founder {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 2rem;
+    margin: 1.5rem 0;
+  }
+  .founder-avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    background: var(--gradient);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .founder-info { flex: 1; }
+  .founder-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
+  .founder-role { color: var(--accent); font-size: 0.85rem; margin-bottom: 0.5rem; display: block; }
+  .founder-info p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 0.75rem; }
+  .founder-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    color: rgba(250,250,250,0.5);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .founder-link:hover { color: #fafafa; text-decoration: none; }
+
+  /* Numbers */
+  .about-numbers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    text-align: center;
+    margin: 2rem 0;
+  }
+  .number-value {
+    display: block;
+    font-size: 2.5rem;
+    font-weight: 900;
+    letter-spacing: -0.03em;
+    line-height: 1;
+  }
+  .number-label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-top: 0.35rem;
+  }
+
+  /* CTA */
+  .about-cta {
+    padding: 5rem 0;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-cta-inner {
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .about-cta h2 {
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    margin-bottom: 0.5rem;
+  }
+  .about-cta p {
+    color: var(--text-muted);
+    margin-bottom: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .values-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .about-hero { padding: 5rem 0 2rem; }
+    .about-hero h1 { font-size: 1.8rem; }
+    .about-lead { font-size: 1rem; }
+    .about-logo { width: 60px; height: 60px; }
+    .about-content { padding: 0 1.25rem 2rem; }
+    .about-section h2 { font-size: 1.25rem; }
+    .about-section { margin-bottom: 2.5rem; }
+    .founder { flex-direction: column; align-items: center; text-align: center; }
+    .about-cta { padding: 3rem 0; }
+    .about-cta h2 { font-size: 1.5rem; }
+    .number-value { font-size: 2rem; }
+  }
+</style>
+
+</body>
 </html>

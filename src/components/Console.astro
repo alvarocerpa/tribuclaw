@@ -1,0 +1,253 @@
+---
+// Console.astro — Animated terminal showing agents working
+---
+
+<div class="console-wrap" id="hero-console">
+  <div class="console-header">
+    <div class="console-dots">
+      <span class="dot dot-red"></span>
+      <span class="dot dot-yellow"></span>
+      <span class="dot dot-green"></span>
+    </div>
+    <span class="console-title">TribuClaw — Agentes activos</span>
+    <span class="console-status">
+      <span class="status-dot"></span>
+      5 online
+    </span>
+  </div>
+  <div class="console-body">
+    <div class="console-lines" id="console-lines"></div>
+    <div class="console-cursor" id="console-cursor"></div>
+  </div>
+</div>
+
+<style>
+  .console-wrap {
+    background: rgba(13,17,23,0.9);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow:
+      0 0 0 1px rgba(233,69,96,0.05),
+      0 0 60px rgba(233,69,96,0.06),
+      0 25px 80px rgba(0,0,0,0.5);
+    position: relative;
+    font-family: 'SF Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  }
+
+  .console-header {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1rem;
+    background: rgba(22,27,34,0.8);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    gap: 0.75rem;
+  }
+
+  .console-dots {
+    display: flex;
+    gap: 6px;
+  }
+  .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+  }
+  .dot-red { background: #e94560; }
+  .dot-yellow { background: #ffb347; }
+  .dot-green { background: #4ade80; }
+
+  .console-title {
+    flex: 1;
+    font-size: 0.72rem;
+    color: rgba(250,250,250,0.4);
+    font-weight: 500;
+    letter-spacing: 0.02em;
+  }
+
+  .console-status {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    color: rgba(250,250,250,0.35);
+  }
+  .status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4ade80;
+    animation: statusPulse 2s ease-in-out infinite;
+  }
+  @keyframes statusPulse {
+    0%, 100% { opacity: 1; box-shadow: 0 0 4px rgba(74,222,128,0.5); }
+    50% { opacity: 0.5; box-shadow: 0 0 8px rgba(74,222,128,0.8); }
+  }
+
+  .console-body {
+    padding: 1.25rem;
+    min-height: 260px;
+    max-height: 320px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .console-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .console-line {
+    font-size: 0.78rem;
+    line-height: 1.5;
+    color: rgba(250,250,250,0.75);
+    opacity: 0;
+    transform: translateY(6px);
+    transition: opacity 0.3s, transform 0.3s;
+  }
+  .console-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  .console-line .agent-name {
+    color: var(--accent);
+    font-weight: 600;
+  }
+  .console-line .system-name {
+    color: var(--accent-light, #ff6b6b);
+    font-weight: 600;
+  }
+  .console-line .line-text {
+    color: rgba(250,250,250,0.6);
+  }
+  .console-line .highlight {
+    color: #4ade80;
+    font-weight: 600;
+  }
+
+  .console-cursor {
+    display: inline-block;
+    width: 8px;
+    height: 16px;
+    background: var(--accent);
+    border-radius: 1px;
+    animation: cursorBlink 1s step-end infinite;
+    margin-top: 0.5rem;
+    opacity: 0;
+  }
+  .console-cursor.active {
+    opacity: 1;
+  }
+  @keyframes cursorBlink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  @media (max-width: 640px) {
+    .console-body {
+      min-height: 200px;
+      max-height: 260px;
+      padding: 1rem;
+    }
+    .console-line { font-size: 0.7rem; }
+    .console-title { font-size: 0.65rem; }
+  }
+</style>
+
+<script>
+const lines = [
+  { agent: '🦞 Kimo', text: 'Analizando métricas de la semana...' },
+  { agent: '📊 Data', text: 'Revenue +23% vs semana anterior', highlight: '+23%' },
+  { agent: '🎨 Mika', text: 'Generando thumbnail para el blog...' },
+  { agent: '✍️ Pluma', text: 'Redactando post de LinkedIn...' },
+  { agent: '🤖 Mao', text: 'Desplegando nueva feature en producción' },
+  { agent: '⚡ Sistema', text: '5 agentes activos · 847 tareas completadas hoy', isSystem: true },
+];
+
+const linesEl = document.getElementById('console-lines');
+const cursorEl = document.getElementById('console-cursor');
+if (linesEl && cursorEl) {
+  let lineIndex = 0;
+  let charIndex = 0;
+  let currentLineEl: HTMLDivElement | null = null;
+  let currentTextEl: HTMLSpanElement | null = null;
+
+  function createLine() {
+    const lineData = lines[lineIndex];
+    const div = document.createElement('div');
+    div.className = 'console-line';
+
+    const agentSpan = document.createElement('span');
+    agentSpan.className = lineData.isSystem ? 'system-name' : 'agent-name';
+    agentSpan.textContent = lineData.agent + ' > ';
+
+    const textSpan = document.createElement('span');
+    textSpan.className = 'line-text';
+
+    div.appendChild(agentSpan);
+    div.appendChild(textSpan);
+    linesEl.appendChild(div);
+
+    // Show cursor
+    cursorEl.classList.add('active');
+
+    return { div, textSpan };
+  }
+
+  function typeLine() {
+    if (lineIndex >= lines.length) {
+      // Pause then restart
+      cursorEl.classList.remove('active');
+      setTimeout(() => {
+        linesEl.innerHTML = '';
+        lineIndex = 0;
+        charIndex = 0;
+        currentLineEl = null;
+        currentTextEl = null;
+        setTimeout(typeLine, 400);
+      }, 2500);
+      return;
+    }
+
+    if (!currentLineEl) {
+      const { div, textSpan } = createLine();
+      currentLineEl = div;
+      currentTextEl = textSpan;
+      charIndex = 0;
+    }
+
+    const lineData = lines[lineIndex];
+    const fullText = lineData.text;
+
+    if (charIndex <= fullText.length) {
+      // Handle highlight
+      if (lineData.highlight && charIndex >= fullText.indexOf(lineData.highlight)) {
+        currentTextEl.innerHTML = fullText.substring(0, charIndex)
+          .replace(lineData.highlight, `<span class="highlight">${lineData.highlight}</span>`)
+          + (charIndex < fullText.length ? '<span class="typing-cursor">|</span>' : '');
+      } else {
+        currentTextEl.textContent = fullText.substring(0, charIndex)
+          + (charIndex < fullText.length ? '|' : '');
+      }
+      charIndex++;
+      setTimeout(typeLine, 25 + Math.random() * 35);
+    } else {
+      // Line complete
+      if (lineData.highlight) {
+        currentTextEl.innerHTML = fullText.replace(lineData.highlight, `<span class="highlight">${lineData.highlight}</span>`);
+      } else {
+        currentTextEl.textContent = fullText;
+      }
+      currentLineEl.classList.add('visible');
+      currentLineEl = null;
+      currentTextEl = null;
+      lineIndex++;
+      setTimeout(typeLine, 300 + Math.random() * 500);
+    }
+  }
+
+  // Start after a short delay
+  setTimeout(typeLine, 800);
+}
+</script>

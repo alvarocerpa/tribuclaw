@@ -1,0 +1,141 @@
+---
+import FormattedDate from './FormattedDate.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags?: string[];
+  slug: string;
+  heroImage?: string;
+}
+
+const { title, description, pubDate, tags = [], slug, heroImage } = Astro.props;
+---
+
+<article class="blog-card glass-card">
+  <a href={`/blog/${slug}/`}>
+    <div class="card-image">
+      <img
+        src={heroImage || '/images/og-default.jpg'}
+        alt={title}
+        loading="lazy"
+        decoding="async"
+        width="400"
+        height="225"
+      />
+    </div>
+    <div class="card-body">
+      <div class="card-meta">
+        <FormattedDate date={pubDate} />
+        {tags.length > 0 && (
+          <span class="card-tag">{tags[0]}</span>
+        )}
+      </div>
+      <h3 class="card-title">{title}</h3>
+      <p class="card-excerpt">{description}</p>
+      <span class="card-read">Leer más →</span>
+    </div>
+  </a>
+</article>
+
+<style>
+  .blog-card {
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.4s cubic-bezier(.23,1,.32,1), border-color 0.4s, box-shadow 0.5s;
+  }
+  .blog-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(233,69,96,0.2);
+    box-shadow: 0 0 0 1px rgba(233,69,96,0.06), 0 20px 50px rgba(0,0,0,0.3), 0 0 40px rgba(233,69,96,0.04);
+  }
+  .blog-card a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .blog-card a:hover { text-decoration: none; color: inherit; }
+
+  .card-image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    overflow: hidden;
+    border-radius: 20px 20px 0 0;
+    background: var(--bg-alt);
+  }
+  .card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(.23,1,.32,1);
+  }
+  .blog-card:hover .card-image img {
+    transform: scale(1.03);
+  }
+
+  .card-body {
+    padding: 1.25rem 1.5rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    margin-bottom: 0.6rem;
+  }
+  .card-tag {
+    background: rgba(233,69,96,0.08);
+    color: var(--accent);
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    font-size: 0.68rem;
+    font-weight: 600;
+  }
+
+  .card-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.35;
+    margin-bottom: 0.5rem;
+    transition: color 0.2s;
+  }
+  .blog-card:hover .card-title {
+    color: var(--accent);
+  }
+
+  .card-excerpt {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    line-height: 1.55;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    margin-bottom: 1rem;
+  }
+
+  .card-read {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--accent);
+    transition: transform 0.2s;
+  }
+  .blog-card:hover .card-read {
+    transform: translateX(3px);
+  }
+
+  @media (max-width: 640px) {
+    .card-body { padding: 1rem 1.25rem 1.25rem; }
+    .card-title { font-size: 0.95rem; }
+    .card-excerpt { -webkit-line-clamp: 2; }
+  }
+</style>
