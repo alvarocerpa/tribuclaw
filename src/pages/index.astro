@@ -398,7 +398,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 <div class="section-divider"></div>
 
 <!-- ═══════════════════════════════════ UN DÍA CON TU AGENTE ═══════════════════════════════════ -->
-<section class="timeline-section" id="timeline">
+<section class="timeline-section reveal" id="timeline">
   <div class="container">
     <div class="text-center">
       <h2 class="section-title">Lo que tu agente hace mientras tú vives.</h2>
@@ -776,10 +776,17 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  // Also observe individual stagger elements not inside .reveal
+  // Hero stagger elements: reveal immediately with stagger delay on page load
+  const heroStaggers = document.querySelectorAll('.hero .reveal-stagger');
+  heroStaggers.forEach((el, i) => {
+    setTimeout(() => el.classList.add('revealed-stagger'), 200 + i * 150);
+  });
+
+  // Also observe individual stagger elements not inside .reveal (non-hero)
   document.querySelectorAll('.reveal-stagger').forEach(el => {
     const parentReveal = el.closest('.reveal');
-    if (!parentReveal) {
+    const parentHero = el.closest('.hero');
+    if (!parentReveal && !parentHero) {
       revealObserver.observe(el);
     }
   });
