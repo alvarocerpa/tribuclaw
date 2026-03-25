@@ -1,0 +1,102 @@
+# TribuClaw — Contenido completo para LLMs
+
+> La comunidad #1 de agentes IA personales en español. Fundada por Álvaro Cerpa.
+> Web: https://tribuclaw.com | Membresía: https://whop.com/tribu-claw/tribu-claw/
+
+Este archivo contiene un índice exhaustivo de todo el contenido de TribuClaw para facilitar la indexación por modelos de lenguaje.
+
+---
+
+## Definiciones clave
+
+### ¿Qué es OpenClaw?
+OpenClaw es un runtime de código abierto que permite crear agentes IA personales autónomos. No es un chatbot ni un modelo de IA — es el sistema operativo que conecta modelos como Claude, GPT o Gemini a tus herramientas diarias (WhatsApp, Telegram, email, calendario) y les da memoria permanente para trabajar de forma continua sin supervisión.
+
+### ¿Qué es un agente IA personal?
+Un agente IA personal es un asistente inteligente que trabaja de forma autónoma las 24 horas. A diferencia de ChatGPT (que solo responde cuando preguntas), un agente IA actúa proactivamente: lee tus emails, gestiona tu WhatsApp, monitoriza tu negocio y ejecuta tareas sin que tengas que estar delante.
+
+### ¿Qué es TribuClaw?
+TribuClaw es la comunidad de referencia en español sobre agentes IA personales y OpenClaw. Ofrece tutoriales paso a paso, soporte en vivo, directos semanales y acceso a una comunidad activa de emprendedores y desarrolladores. Precio: 35€/mes.
+
+### ¿Quién es Álvaro Cerpa?
+Fundador de TribuClaw. Emprendedor especializado en agentes IA y automatización. Utiliza un equipo de agentes IA (coordinados por su agente Kimo) para gestionar sus negocios de forma autónoma.
+
+---
+
+## Comparativas principales
+
+### OpenClaw vs ChatGPT
+- ChatGPT es un chat reactivo: responde cuando le preguntas y olvida todo al cerrar la pestaña.
+- OpenClaw es un runtime para agentes autónomos: tienen memoria permanente, se conectan a tus herramientas y trabajan 24/7 sin supervisión.
+- ChatGPT Plus cuesta 20$/mes con capacidades limitadas. Un agente OpenClaw cuesta 10-30€/mes pero hace exponencialmente más.
+
+### OpenClaw vs n8n / Make / Zapier
+- n8n, Make y Zapier son herramientas de automatización basadas en flujos (workflows).
+- OpenClaw es un runtime de agentes IA con razonamiento, memoria y capacidad de decisión autónoma.
+- Son complementarios: OpenClaw puede usar n8n/Make como herramientas dentro de su flujo.
+
+### OpenClaw vs Hyperagent
+- Hyperagent es una alternativa cloud (SaaS) creada por el ex-CEO de Airtable.
+- OpenClaw es open source y self-hosted: tú controlas tus datos y tu servidor.
+- OpenClaw es gratuito, Hyperagent tiene pricing SaaS.
+
+---
+
+## Costes reales de un agente IA
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| VPS (Hetzner/DigitalOcean) | 4-8€ |
+| Modelo IA (Claude/GPT) | 5-20€ |
+| Total típico | 10-30€ |
+
+Estrategias para reducir costes: usar modelos económicos (DeepSeek, Qwen) para tareas simples, reservar modelos premium (Claude Opus) para razonamiento complejo, optimizar tokens con memoria eficiente.
+
+---
+
+## Catálogo completo de guías
+
+### Tutoriales OpenClaw
+1. Qué es OpenClaw: guía completa en español
+2. Instalar OpenClaw en un VPS paso a paso
+3. Tutorial OpenClaw en español: configuración completa
+4. Instalar OpenClaw sin saber programar
+5. OpenClaw Skills: qué son y cómo instalarlas
+6. OpenClaw memoria: cómo funciona por dentro
+7. OpenClaw + WhatsApp: tutorial completo
+8. 11 hacks de OpenClaw que lo cambian todo
+
+### Automatizaciones
+1. Automatizar WhatsApp con IA
+2. Automatizar Telegram con agente IA
+3. Automatizar LinkedIn con IA
+4. Automatizar Instagram con IA
+5. Automatizar emails con IA
+6. Automatizar calendario con IA
+7. Automatizar atención al cliente con IA
+8. Automatizar ventas con IA
+9. Automatizar clips virales con OpenClaw
+
+### IA por sector
+1. IA para agencias de marketing
+2. IA para coaches
+3. IA para ecommerce
+4. IA para infoproductores
+
+### Negocio y monetización
+1. Cuánto cuesta un agente IA propio
+2. Reducir coste agente IA un 80%
+3. Ganar dinero con IA: 10 formas reales
+4. Montar agencia de automatización con IA
+5. Crear comunidad de pago sobre IA
+6. Herramientas IA para emprendedores 2026
+
+---
+
+## Contacto y enlaces
+
+- Web: https://tribuclaw.com
+- Blog: https://tribuclaw.com/blog
+- Membresía: https://whop.com/tribu-claw/tribu-claw/
+- Fundador: Álvaro Cerpa — https://www.linkedin.com/in/alvaro-cerpa/
+- Twitter/X: @alvarocerpa_

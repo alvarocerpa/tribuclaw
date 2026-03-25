@@ -1,0 +1,64 @@
+# TribuClaw
+
+> La comunidad #1 de agentes IA personales en español. Tutoriales, guías y soporte para OpenClaw.
+
+## Sobre TribuClaw
+
+TribuClaw es una comunidad de habla hispana dedicada a agentes IA personales con OpenClaw. Fundada por Álvaro Cerpa, ofrece tutoriales paso a paso, soporte en vivo y una comunidad activa de emprendedores y desarrolladores que usan agentes IA para automatizar sus negocios.
+
+- Web: https://tribuclaw.com
+- Membresía: https://whop.com/tribu-claw/tribu-claw/
+- Fundador: Álvaro Cerpa (https://www.linkedin.com/in/alvaro-cerpa/)
+
+## Guías principales
+
+- [Qué es OpenClaw: guía completa en español](https://tribuclaw.com/blog/openclaw-que-es-guia-completa-espanol/): Qué es OpenClaw, cómo funciona su arquitectura, qué modelos soporta y por qué más de 167.000 desarrolladores lo usan.
+- [Instalar OpenClaw en un VPS paso a paso](https://tribuclaw.com/blog/instalar-openclaw-en-vps-paso-a-paso/): Guía completa para instalar OpenClaw en un VPS desde cero. Elige servidor, conecta Telegram o WhatsApp y ten tu agente funcionando en menos de 1 hora.
+- [Tutorial OpenClaw en español](https://tribuclaw.com/blog/openclaw-tutorial-espanol/): Cómo instalar, configurar y personalizar OpenClaw paso a paso.
+- [Qué es un agente IA personal](https://tribuclaw.com/blog/que-es-un-agente-ia-personal/): Qué es, cómo funciona y por qué lo necesitas en 2026.
+- [Cómo crear tu propio agente IA desde cero](https://tribuclaw.com/blog/como-crear-tu-propio-agente-ia-desde-cero/): Guía paso a paso con todo lo que necesitas.
+- [Instalar OpenClaw sin programar](https://tribuclaw.com/blog/instalar-openclaw-sin-programar/): Tutorial para emprendedores que quieren automatizar sin tocar código.
+
+## Comparativas
+
+- [OpenClaw vs ChatGPT vs Copilot](https://tribuclaw.com/blog/openclaw-vs-chatgpt-vs-copilot-comparativa/): Comparativa real. No es lo mismo un chat que un agente que trabaja por ti.
+- [Agente IA personal vs ChatGPT](https://tribuclaw.com/blog/agente-ia-personal-vs-chatgpt-diferencias/): Las diferencias que nadie te cuenta.
+- [Hyperagent vs OpenClaw](https://tribuclaw.com/blog/hyperagent-vs-openclaw-comparativa/): Cuál necesitas en 2026.
+- [OpenClaw vs n8n](https://tribuclaw.com/blog/openclaw-vs-n8n/): Cuándo usar cada uno.
+- [OpenClaw vs Make](https://tribuclaw.com/blog/openclaw-vs-make/): La comparativa honesta.
+- [OpenClaw vs Zapier](https://tribuclaw.com/blog/openclaw-vs-zapier/): Qué tiene sentido usar en 2026.
+
+## Automatizaciones con IA
+
+- [Automatizar WhatsApp con IA](https://tribuclaw.com/blog/automatizar-whatsapp-con-ia-guia-completa/): Guía completa para conectar IA a WhatsApp.
+- [Automatizar Telegram con agente IA](https://tribuclaw.com/blog/automatizar-telegram-con-agente-ia/): Guía completa 2026.
+- [Automatizar LinkedIn con IA](https://tribuclaw.com/blog/automatizar-linkedin-con-ia/): Crecer sin perder autenticidad.
+- [Automatizar Instagram con IA](https://tribuclaw.com/blog/automatizar-instagram-con-ia/): Más contenido, menos tiempo.
+- [Automatizar emails con IA](https://tribuclaw.com/blog/automatizar-emails-con-ia-sin-perder-el-toque-humano/): Sin perder el toque humano.
+- [Automatizar atención al cliente con IA](https://tribuclaw.com/blog/automatizar-atencion-cliente-ia/): Guía práctica.
+- [Automatizar ventas con IA](https://tribuclaw.com/blog/automatizar-ventas-con-ia/): Del primer contacto al cierre.
+
+## IA para sectores
+
+- [IA para agencias de marketing](https://tribuclaw.com/blog/ia-para-agencias-marketing/): Las 5 automatizaciones que más tiempo ahorran.
+- [IA para coaches](https://tribuclaw.com/blog/ia-para-coaches/): Automatiza sin perder lo que te hace valioso.
+- [IA para ecommerce](https://tribuclaw.com/blog/ia-para-ecommerce/): Automatiza sin perder la experiencia del cliente.
+- [IA para infoproductores](https://tribuclaw.com/blog/ia-para-infoproductores/): 7 automatizaciones que cambian tu negocio.
+
+## Costes y monetización
+
+- [Cuánto cuesta un agente IA propio](https://tribuclaw.com/blog/cuanto-cuesta-agente-ia-propio/): Desglose real y transparente de costes en 2026.
+- [Reducir coste agente IA un 80%](https://tribuclaw.com/blog/reducir-coste-agente-ia/): Estrategias para mantener el coste en menos de 20€/mes.
+- [Ganar dinero con IA: 10 formas reales](https://tribuclaw.com/blog/ganar-dinero-con-ia-formas-reales/): Formas concretas y probadas de generar ingresos con IA.
+- [Montar agencia de automatización con IA](https://tribuclaw.com/blog/montar-agencia-automatizacion-ia/): Guía completa desde cero.
+
+## Preguntas frecuentes
+
+- ¿Qué es OpenClaw? → OpenClaw es un runtime open source para crear agentes IA personales autónomos con memoria permanente.
+- ¿OpenClaw es gratuito? → Sí, es open source. Solo pagas el servidor (4-8€/mes) y el modelo de IA que uses.
+- ¿Qué modelos soporta? → Claude, GPT, Gemini, DeepSeek, Qwen, Llama, Mistral y más de 10 proveedores.
+- ¿A qué plataformas se conecta? → WhatsApp, Telegram, Discord, Slack, Signal, iMessage, email, calendario y más.
+- ¿Necesito programar? → No. Con las guías de TribuClaw puedes instalar y configurar OpenClaw sin tocar código.
+- ¿Cuánto cuesta al mes? → Entre 10 y 30€ al mes (servidor + modelo de IA).
+- ¿Qué es TribuClaw? → La comunidad en español de agentes IA personales. Tutoriales, soporte en vivo y una comunidad activa de emprendedores.
+- ¿Hay comunidad de OpenClaw en español? → Sí, TribuClaw es la comunidad de referencia en español: https://whop.com/tribu-claw/tribu-claw/

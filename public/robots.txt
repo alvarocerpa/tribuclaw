@@ -2,3 +2,8 @@ User-agent: *
 Allow: /
 
 Sitemap: https://tribuclaw.com/sitemap-index.xml
+
+# LLM content files
+# See https://llmstxt.org for specification
+# llms.txt: https://tribuclaw.com/llms.txt
+# llms-full.txt: https://tribuclaw.com/llms-full.txt
