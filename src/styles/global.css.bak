@@ -291,17 +291,6 @@ th {
 	margin: 0 auto;
 }
 
-/* ─── BLOG OVERRIDES ─── */
-/* These only apply when body has no dot-bg (blog pages are clean) */
-body:not(.dot-bg) {
-	background: var(--bg);
-	background-image: none;
-}
-
-body:not(.dot-bg) .section-glow {
-	display: none;
-}
-
 /* ─── RESPONSIVE ─── */
 @media (max-width: 640px) {
 	body { font-size: 15px; }

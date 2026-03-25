@@ -1,0 +1,333 @@
+---
+import type { CollectionEntry } from 'astro:content';
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import FormattedDate from '../components/FormattedDate.astro';
+import Header from '../components/Header.astro';
+import RelatedPosts from '../components/RelatedPosts.astro';
+import TOCClient from '../components/TOCClient.astro';
+import { WHOP_URL, SITE_URL } from '../consts';
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, description, pubDate, updatedDate, heroImage, author, tags, faq } = Astro.props;
+const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
+---
+
+<html lang="es">
+<head>
+  <BaseHead title={`${title} | TribuClaw`} description={description} type="article" />
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "author": { "@type": "Person", "name": author || "Álvaro Cerpa", "url": "https://www.linkedin.com/in/alvaro-cerpa/" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "TribuClaw",
+      "logo": { "@type": "ImageObject", "url": SITE_URL + "/images/logo-icon.png" }
+    },
+    "datePublished": pubDate.toISOString(),
+    "dateModified": (updatedDate || pubDate).toISOString(),
+    "mainEntityOfPage": articleUrl,
+    "image": SITE_URL + "/images/og-default.jpg",
+    "inLanguage": "es"
+  })} />
+  {faq && faq.length > 0 && (
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": faq.map((f: {q: string; a: string}) => ({
+        "@type": "Question",
+        "name": f.q,
+        "acceptedAnswer": { "@type": "Answer", "text": f.a }
+      }))
+    })} />
+  )}
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": SITE_URL },
+      { "@type": "ListItem", "position": 2, "name": "Blog", "item": SITE_URL + "/blog/" },
+      { "@type": "ListItem", "position": 3, "name": title, "item": articleUrl }
+    ]
+  })} />
+  <style>
+    .article-layout {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .prose {
+      width: 720px;
+      max-width: calc(100% - 2em);
+      margin: auto;
+      padding: 1em;
+    }
+
+    .article-header {
+      margin-bottom: 2.5rem;
+      padding: 1em 0;
+      position: relative;
+    }
+    .article-header::before {
+      content: '';
+      position: absolute;
+      top: -100px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 600px;
+      height: 400px;
+      background: radial-gradient(ellipse at center, rgba(233,69,96,0.07) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .article-header > * { position: relative; z-index: 1; }
+
+    .breadcrumb {
+      font-size: 0.85rem;
+      color: rgba(250,250,250,0.3);
+      margin-bottom: 1rem;
+      display: flex;
+      gap: 0.35rem;
+    }
+    .breadcrumb a {
+      color: rgba(250,250,250,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .breadcrumb a:hover { color: var(--accent); }
+    .breadcrumb span { color: rgba(250,250,250,0.3); }
+
+    .meta {
+      color: rgba(250,250,250,0.35);
+      font-size: 0.9rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .article-header h1 {
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0 0 1rem 0;
+    }
+
+    .hero-img {
+      width: 100%;
+      border-radius: 16px;
+      margin-top: 1rem;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    }
+
+    .tags {
+      display: flex;
+      gap: 0.4rem;
+      flex-wrap: wrap;
+      margin-top: 0.75rem;
+    }
+    .tag {
+      background: rgba(233,69,96,0.08);
+      color: var(--accent);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      border: 1px solid rgba(233,69,96,0.15);
+    }
+
+    /* FAQ section */
+    .faq-section {
+      margin-top: 3rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+    }
+    .faq-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .faq-item { margin-bottom: 1.5rem; }
+    .faq-item h3 {
+      font-size: 1.05rem;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+    .faq-item p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    /* Author Bio */
+    .author-bio {
+      display: flex;
+      gap: 1.25rem;
+      align-items: flex-start;
+      margin: 2.5rem 0;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+    }
+    .author-bio-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      color: white;
+    }
+    .author-bio-info { flex: 1; }
+    .author-bio-info .name { font-weight: 700; font-size: 0.95rem; margin-bottom: 0.2rem; }
+    .author-bio-info .bio-text { color: var(--text-muted); font-size: 0.875rem; line-height: 1.6; margin: 0 0 0.5rem; }
+    .author-bio-info .linkedin-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      color: rgba(250,250,250,0.4);
+      font-size: 0.8rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .author-bio-info .linkedin-link:hover { color: #fafafa; text-decoration: none; }
+
+    /* Bottom CTA */
+    .cta-box {
+      margin-top: 3rem;
+      padding: 2rem;
+      background: rgba(233,69,96,0.06);
+      border: 1px solid rgba(233,69,96,0.15);
+      border-radius: 16px;
+      text-align: center;
+    }
+    .cta-box h3 { color: #fff; margin-bottom: 0.5rem; font-size: 1.2rem; }
+    .cta-box p { color: var(--text-muted); margin-bottom: 1rem; }
+    .cta-box a {
+      background: var(--gradient);
+      color: white;
+      padding: 0.7rem 1.8rem;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .cta-box a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(233,69,96,0.4);
+      text-decoration: none;
+    }
+
+    @media (max-width: 640px) {
+      .article-header h1 { font-size: 1.6rem; }
+      .prose { padding: 1em 1.25em; }
+      .cta-box { padding: 1.5rem; }
+      .author-bio { flex-direction: column; align-items: center; text-align: center; }
+      .faq-section h2 { font-size: 1.25rem; }
+    }
+
+    @media (min-width: 1025px) {
+      .article-layout {
+        flex-direction: row;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 3rem;
+      }
+      .article-layout .prose {
+        flex: 1;
+        min-width: 0;
+      }
+    }
+  </style>
+</head>
+
+<body class="dot-bg">
+  <Header />
+  <main id="main-content">
+    <article>
+      <div class="article-layout">
+        <div class="prose">
+        <!-- Breadcrumbs -->
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+          <a href="/">Inicio</a>
+          <span>›</span>
+          <a href="/blog/">Blog</a>
+          <span>›</span>
+          <span>{title}</span>
+        </nav>
+
+        <div class="article-header">
+          <div class="meta">
+            <FormattedDate date={pubDate} /> &middot; {author || 'Álvaro Cerpa'}
+            {updatedDate && (
+              <span> &middot; Actualizado: <FormattedDate date={updatedDate} /></span>
+            )}
+          </div>
+          <h1>{title}</h1>
+          {heroImage && (
+            <img src={heroImage} alt={title} class="hero-img" width="720" height="378" fetchpriority="high" />
+          )}
+          {tags && tags.length > 0 && (
+            <div class="tags">
+              {tags.map((tag: string) => <span class="tag">{tag}</span>)}
+            </div>
+          )}
+        </div>
+
+        <slot />
+
+        {faq && faq.length > 0 && (
+          <section class="faq-section">
+            <h2>Preguntas frecuentes</h2>
+            {faq.map((f: {q: string; a: string}) => (
+              <div class="faq-item">
+                <h3>{f.q}</h3>
+                <p>{f.a}</p>
+              </div>
+            ))}
+          </section>
+        )}
+
+        <!-- Author Bio -->
+        <div class="author-bio">
+          <div class="author-bio-avatar">AC</div>
+          <div class="author-bio-info">
+            <div class="name">Álvaro Cerpa</div>
+            <p class="bio-text">Emprendedor digital y fundador de TribuClaw. Lleva meses operando sus negocios con agentes IA y comparte lo que realmente funciona, sin filtros y en español.</p>
+            <a href="https://www.linkedin.com/in/alvaro-cerpa/" target="_blank" rel="noopener noreferrer" class="linkedin-link">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              linkedin.com/in/alvaro-cerpa
+            </a>
+          </div>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="cta-box">
+          <h3>¿Listo para tener tu propio agente IA?</h3>
+          <p>Únete a TribuClaw y aprende paso a paso, con guías en español y una comunidad que te ayuda.</p>
+          <a href={WHOP_URL} target="_blank">Unirme a TribuClaw →</a>
+        </div>
+
+        <RelatedPosts currentTags={tags || []} currentId={Astro.url.pathname.split('/').filter(Boolean).pop() || ''} />
+      </div>
+
+      <TOCClient postTitle={title} />
+      </div>
+    </article>
+  </main>
+  <Footer />
+</body>
+</html>
