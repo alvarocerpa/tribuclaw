@@ -13,13 +13,12 @@ import { WHOP_URL } from '../consts';
     description="TribuClaw es donde la gente que va a dominar la próxima década aprende a crear agentes IA autónomos. En español, desde cero, con una comunidad que te acompaña."
   />
 </head>
-<body class="dot-bg">
+<body>
 <Header />
 <main id="main-content">
 
   <!-- Hero -->
   <section class="about-hero">
-    <div class="section-glow" style="width:900px;height:600px;background:radial-gradient(ellipse,rgba(233,69,96,0.1) 0%,transparent 65%);top:-150px;left:50%;transform:translateX(-50%)"></div>
     <div class="container">
       <div class="about-hero-inner" data-animate="fade-up">
         <img src="/images/logo-icon.png" alt="TribuClaw" class="about-logo" />
@@ -61,23 +60,19 @@ import { WHOP_URL } from '../consts';
     <section class="about-section" data-animate="fade-up">
       <h2>Qué vas a conseguir aquí</h2>
       <div class="values-grid" data-animate="stagger">
-        <div class="glass-card value-card">
-          <span class="value-icon">🚀</span>
+        <div class="value-card">
           <h3>Tu agente IA funcionando</h3>
           <p>No teoría. Sales de aquí con un agente real, conectado a tu vida y tu negocio, ejecutando tareas por ti.</p>
         </div>
-        <div class="glass-card value-card">
-          <span class="value-icon">🔥</span>
+        <div class="value-card">
           <h3>Ventaja de primer jugador</h3>
           <p>Los que aprenden esto ahora tendrán años de ventaja. Esta oleada no espera a nadie.</p>
         </div>
-        <div class="glass-card value-card">
-          <span class="value-icon">🤝</span>
+        <div class="value-card">
           <h3>Gente que piensa como tú</h3>
           <p>Emprendedores, creadores y visionarios que entienden que la IA no es una moda. Es el nuevo estándar.</p>
         </div>
-        <div class="glass-card value-card">
-          <span class="value-icon">💰</span>
+        <div class="value-card">
           <h3>Nuevas formas de generar ingresos</h3>
           <p>La IA autónoma abre modelos de negocio que hace un año no existían. Aquí aprendes a monetizarlos.</p>
         </div>
@@ -98,10 +93,10 @@ import { WHOP_URL } from '../consts';
       </p>
     </section>
 
-    <!-- Founder -->
+    <!-- Founder (sin glass-card) -->
     <section class="about-section" data-animate="fade-up">
       <h2>Quién está detrás</h2>
-      <div class="founder glass-card">
+      <div class="founder">
         <div class="founder-avatar">AC</div>
         <div class="founder-info">
           <h3>Álvaro Cerpa</h3>
@@ -120,29 +115,10 @@ import { WHOP_URL } from '../consts';
       </div>
     </section>
 
-    <!-- Numbers -->
-    <section class="about-section" data-animate="fade-up">
-      <div class="about-numbers" data-animate="stagger">
-        <div class="number-item">
-          <span class="number-value gradient-text">98+</span>
-          <span class="number-label">Miembros</span>
-        </div>
-        <div class="number-item">
-          <span class="number-value gradient-text">247K</span>
-          <span class="number-label">GitHub Stars</span>
-        </div>
-        <div class="number-item">
-          <span class="number-value gradient-text">4.9</span>
-          <span class="number-label">Valoración</span>
-        </div>
-      </div>
-    </section>
-
   </div>
 
   <!-- CTA -->
   <section class="about-cta">
-    <div class="section-glow" style="width:900px;height:600px;background:radial-gradient(ellipse,rgba(233,69,96,0.1) 0%,transparent 65%);top:-100px;left:50%;transform:translateX(-50%)"></div>
     <div class="container">
       <div class="about-cta-inner" data-animate="fade-up">
         <h2>La oleada no va a esperar</h2>
@@ -226,7 +202,7 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
     margin-bottom: 1rem;
   }
 
-  /* Values grid */
+  /* Values grid (sin emojis, sin glass-card) */
   .values-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -235,15 +211,13 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   }
   .value-card {
     padding: 1.5rem;
-  }
-  .value-icon {
-    font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    display: block;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
   }
   .value-card h3 {
     font-size: 1rem;
-    margin-bottom: 0.3rem;
+    margin-bottom: 0.4rem;
   }
   .value-card p {
     color: var(--text-muted);
@@ -252,24 +226,27 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
     margin: 0;
   }
 
-  /* Founder */
+  /* Founder (sin glass-card) */
   .founder {
     display: flex;
     gap: 1.5rem;
     align-items: flex-start;
     padding: 2rem;
     margin: 1.5rem 0;
+    background: rgba(255,255,255,0.02);
+    border: 1px solid var(--border);
+    border-radius: 12px;
   }
   .founder-avatar {
-    width: 70px;
-    height: 70px;
+    width: 64px;
+    height: 64px;
     border-radius: 50%;
     background: var(--gradient);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
-    font-size: 1.8rem;
+    font-size: 1.5rem;
     font-weight: 700;
     color: #fff;
   }
@@ -289,33 +266,12 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   }
   .founder-link:hover { color: #fafafa; text-decoration: none; }
 
-  /* Numbers */
-  .about-numbers {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    text-align: center;
-    margin: 2rem 0;
-  }
-  .number-value {
-    display: block;
-    font-size: 2.5rem;
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1;
-  }
-  .number-label {
-    display: block;
-    font-size: 0.85rem;
-    color: var(--text-muted);
-    margin-top: 0.35rem;
-  }
-
   /* CTA */
   .about-cta {
     padding: 5rem 0;
     position: relative;
     overflow: hidden;
+    background: var(--bg-alt);
   }
   .about-cta-inner {
     text-align: center;
@@ -348,7 +304,6 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
     .founder { flex-direction: column; align-items: center; text-align: center; }
     .about-cta { padding: 3rem 0; }
     .about-cta h2 { font-size: 1.5rem; }
-    .number-value { font-size: 2rem; }
   }
 </style>
 
