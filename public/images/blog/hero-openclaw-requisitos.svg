@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+<rect width="1200" height="630" fill="#080808"/>
+<rect x="40" y="40" width="1120" height="550" rx="20" fill="#0d0d0d" stroke="#1a1a1a"/>
+
+<!-- Card 1: Hardware -->
+<rect x="100" y="110" width="280" height="340" rx="16" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<circle cx="240" cy="190" r="50" fill="#0d0d0d" stroke="#e94560" stroke-width="1.5"/>
+<text x="240" y="210" text-anchor="middle" font-family="system-ui" font-size="42">🖥️</text>
+<text x="240" y="270" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">Hardware</text>
+<text x="240" y="300" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">VPS o servidor 24/7</text>
+<line x1="160" y1="330" x2="320" y2="330" stroke="#1a1a1a" stroke-width="1"/>
+<text x="150" y="360" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="175" y="360" fill="#888" font-family="system-ui" font-size="12">VPS 2 vCPU / 4GB RAM</text>
+<text x="150" y="385" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="175" y="385" fill="#888" font-family="system-ui" font-size="12">20GB+ disco SSD</text>
+<text x="150" y="410" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="175" y="410" fill="#888" font-family="system-ui" font-size="12">Ubuntu 24 recomendado</text>
+
+<!-- Card 2: Software -->
+<rect x="460" y="110" width="280" height="340" rx="16" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<circle cx="600" cy="190" r="50" fill="#0d0d0d" stroke="#e94560" stroke-width="1.5"/>
+<text x="600" y="210" text-anchor="middle" font-family="system-ui" font-size="42">⚡</text>
+<text x="600" y="270" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">Software</text>
+<text x="600" y="300" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Runtime y herramientas</text>
+<line x1="520" y1="330" x2="680" y2="330" stroke="#1a1a1a" stroke-width="1"/>
+<text x="510" y="360" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="535" y="360" fill="#888" font-family="system-ui" font-size="12">Node.js 22+</text>
+<text x="510" y="385" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="535" y="385" fill="#888" font-family="system-ui" font-size="12">npm / git</text>
+<text x="510" y="410" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="535" y="410" fill="#888" font-family="system-ui" font-size="12">Terminal / SSH</text>
+
+<!-- Card 3: APIs -->
+<rect x="820" y="110" width="280" height="340" rx="16" fill="#111" stroke="#e94560" stroke-width="1.5"/>
+<circle cx="960" cy="190" r="50" fill="#0d0d0d" stroke="#e94560" stroke-width="1.5"/>
+<text x="960" y="210" text-anchor="middle" font-family="system-ui" font-size="42">🔑</text>
+<text x="960" y="270" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="16" font-weight="700">API Keys</text>
+<text x="960" y="300" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Modelos de IA</text>
+<line x1="880" y1="330" x2="1040" y2="330" stroke="#1a1a1a" stroke-width="1"/>
+<text x="870" y="360" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="895" y="360" fill="#888" font-family="system-ui" font-size="12">Anthropic / OpenAI</text>
+<text x="870" y="385" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="895" y="385" fill="#888" font-family="system-ui" font-size="12">Google AI / Grok</text>
+<text x="870" y="410" fill="#e94560" font-family="system-ui" font-size="14">✓</text>
+<text x="895" y="410" fill="#888" font-family="system-ui" font-size="12">Modelos económicos</text>
+
+<!-- Bottom bar -->
+<rect x="300" y="490" width="600" height="70" rx="12" fill="#111" stroke="#e94560" stroke-width="2"/>
+<text x="600" y="522" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="18" font-weight="700">Desde 4€/mes · Funciona en 15 minutos</text>
+<text x="600" y="545" text-anchor="middle" fill="#888" font-family="system-ui" font-size="12">Sin sorpresas, sin requisitos ocultos</text>
+
+<text x="600" y="580" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>
