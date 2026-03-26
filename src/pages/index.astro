@@ -345,15 +345,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
-// ─── Lenis smooth scroll ───
-import Lenis from '@studio-freight/lenis';
-const lenis = new Lenis({ duration: 1.2, easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
-// Sync Lenis with GSAP ScrollTrigger
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => { lenis.raf(time * 1000); });
-gsap.ticker.lagSmoothing(0);
+// Lenis smooth scroll REMOVED — using native browser scroll
 
 // ─── Hero animations on load ───
 const heroBadge = document.querySelector('.hero-badge');
