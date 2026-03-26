@@ -8,7 +8,7 @@ type Props = {
   limit?: number;
 };
 
-const { currentTags, currentId, limit = 5 }: Props = Astro.props;
+const { currentTags, currentId, limit = 3 }: Props = Astro.props;
 
 const allPosts = (await getCollection('blog'))
   .filter(post => post.id !== currentId);
@@ -34,36 +34,23 @@ const relatedPosts = getRelatedPosts(allPosts, currentTags, limit);
 ---
 
 <section class="related-posts">
-  <div class="related-posts-header">
-    <h3>Artículos relacionados</h3>
-  </div>
+  <h3>Artículos relacionados</h3>
 
   {relatedPosts.length === 0 ? (
     <p class="no-posts">No hay artículos relacionados.</p>
   ) : (
-    <ul class="related-posts-list">
+    <ul class="related-list">
       {relatedPosts.map((post) => (
-        <li class="related-post">
+        <li>
           <a href={`/blog/${post.id}/`}>
-            {post.data.heroImage && (
-              <img src={post.data.heroImage} alt={post.data.title} class="post-image" loading="lazy" />
-            )}
-            <div class="post-content">
-              <h4 class="post-title">{post.data.title}</h4>
-              <p class="post-description">{post.data.description?.substring(0, 100)}...</p>
-              <div class="post-meta">
-                <span class="post-date">
-                  {new Date(post.data.pubDate).toLocaleDateString('es-ES', {
-                    day: 'numeric',
-                    month: 'short',
-                    year: 'numeric'
-                  })}
-                </span>
-                {post.data.pillar && (
-                  <span class="post-pillar">{post.data.pillar}</span>
-                )}
-              </div>
-            </div>
+            <span class="post-title">{post.data.title}</span>
+            <span class="post-date">
+              {new Date(post.data.pubDate).toLocaleDateString('es-ES', {
+                day: 'numeric',
+                month: 'short',
+                year: 'numeric'
+              })}
+            </span>
           </a>
         </li>
       ))}
@@ -73,111 +60,67 @@ const relatedPosts = getRelatedPosts(allPosts, currentTags, limit);
 
 <style>
   .related-posts {
-    margin: 3rem 0;
-    padding: 2rem 0;
+    margin: 2.5rem 0;
+    padding-top: 2rem;
     border-top: 1px solid rgba(255,255,255,0.06);
   }
 
-  .related-posts-header {
-    margin-bottom: 1.5rem;
-  }
-
-  .related-posts-header h3 {
-    font-size: 1.25rem;
+  .related-posts h3 {
+    font-size: 1rem;
     color: #fff;
-    margin: 0;
+    margin: 0 0 1rem;
+    font-weight: 700;
   }
 
   .no-posts {
-    color: #8b949e;
+    color: rgba(250,250,250,0.4);
     font-size: 0.9rem;
-    text-align: center;
-    padding: 1rem;
-    background: rgba(255,255,255,0.02);
-    border-radius: 8px;
   }
 
-  .related-posts-list {
+  .related-list {
     list-style: none;
     padding: 0;
     margin: 0;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-    gap: 1rem;
   }
 
-  .related-post a {
-    display: block;
-    text-decoration: none;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: all 0.2s ease;
-    height: 100%;
+  .related-list li {
+    border-bottom: 1px solid rgba(255,255,255,0.04);
   }
 
-  .related-post a:hover {
-    border-color: #e94560;
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(233, 69, 96, 0.15);
+  .related-list li:last-child {
+    border-bottom: none;
   }
 
-  .post-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 1rem;
-  }
-
-  .post-content {
+  .related-list a {
     display: flex;
-    flex-direction: column;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 0;
+    text-decoration: none;
+  }
+
+  .related-list a:hover .post-title {
+    color: #e94560;
   }
 
   .post-title {
-    color: #fff;
-    font-size: 1rem;
-    font-weight: 600;
-    margin: 0 0 0.5rem 0;
-    line-height: 1.4;
-  }
-
-  .post-description {
-    color: #8b949e;
-    font-size: 0.85rem;
-    margin: 0 0 0.75rem 0;
-    line-height: 1.5;
-  }
-
-  .post-meta {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
+    color: #fafafa;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: color 0.2s;
   }
 
   .post-date {
-    color: #484f58;
+    color: rgba(250,250,250,0.3);
     font-size: 0.75rem;
+    flex-shrink: 0;
   }
 
-  .post-pillar {
-    background: rgba(233, 69, 96, 0.1);
-    color: #e94560;
-    padding: 0.25rem 0.5rem;
-    border-radius: 4px;
-    font-size: 0.7rem;
-    font-weight: 600;
-  }
-
-  @media (max-width: 640px) {
-    .related-posts-list {
-      grid-template-columns: 1fr;
-    }
-
-    .post-image {
-      height: 180px;
+  @media (max-width: 480px) {
+    .related-list a {
+      flex-direction: column;
+      gap: 0.25rem;
     }
   }
 </style>

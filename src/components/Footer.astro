@@ -4,31 +4,16 @@ const today = new Date();
 ---
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="/" class="footer-logo-link">
-          <img src="/images/logo-icon.png" width="28" height="28" alt="TribuClaw" />
-          <span class="footer-logo">Tribu<span class="accent">Claw</span></span>
-        </a>
-        <p class="footer-tagline">La comunidad de agentes IA en español.</p>
-      </div>
-      <nav class="footer-nav">
-        <div class="footer-col">
-          <h4>Páginas</h4>
-          <a href="/">Inicio</a>
-          <a href="/blog/">Blog</a>
-          <a href="/about/">Nosotros</a>
-        </div>
-        <div class="footer-col">
-          <h4>Comunidad</h4>
-          <a href={WHOP_URL} target="_blank" rel="noopener">Unirse a TribuClaw</a>
-          <a href={WHOP_URL} target="_blank" rel="noopener">Membresía</a>
-        </div>
+    <div class="footer-row">
+      <a href="/" class="footer-logo">Tribu<span class="accent">Claw</span></a>
+      <nav class="footer-links">
+        <a href="/">Inicio</a>
+        <a href="/blog/">Blog</a>
+        <a href="/about/">Nosotros</a>
+        <a href={WHOP_URL} target="_blank" rel="noopener" class="accent-link">Unirme →</a>
       </nav>
     </div>
-    <div class="footer-bottom">
-      <p class="footer-copy">&copy; {today.getFullYear()} TribuClaw. Todos los derechos reservados.</p>
-    </div>
+    <p class="footer-copy">&copy; {today.getFullYear()} TribuClaw.</p>
   </div>
 </footer>
 
@@ -36,83 +21,52 @@ const today = new Date();
   .site-footer {
     background: #0d1117;
     border-top: 1px solid rgba(255,255,255,0.06);
-    padding: 3rem 1.5rem 1.5rem;
+    padding: 2rem 1.5rem;
   }
   .footer-inner {
     max-width: 1200px;
     margin: 0 auto;
   }
-  .footer-top {
+  .footer-row {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    flex-wrap: wrap;
-    gap: 2rem;
-    padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .footer-brand { max-width: 300px; }
-  .footer-logo-link {
-    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    text-decoration: none;
-    color: #fff;
-    margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    gap: 1rem;
   }
-  .footer-logo-link:hover { text-decoration: none; }
   .footer-logo {
     font-family: 'Inter', sans-serif;
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: 1rem;
     color: #fff;
+    text-decoration: none;
   }
+  .footer-logo:hover { text-decoration: none; }
   .accent { color: #e94560; }
-  .footer-tagline {
-    color: rgba(250,250,250,0.35);
-    font-size: 0.85rem;
-    margin: 0;
-    line-height: 1.5;
-  }
-  .footer-nav {
+  .footer-links {
     display: flex;
-    gap: 3rem;
+    gap: 1.5rem;
+    align-items: center;
+    flex-wrap: wrap;
   }
-  .footer-col {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-  .footer-col h4 {
-    font-size: 0.75rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.06em;
+  .footer-links a {
     color: rgba(250,250,250,0.5);
-    margin-bottom: 0.25rem;
-  }
-  .footer-col a {
-    color: rgba(250,250,250,0.4);
     font-size: 0.85rem;
     text-decoration: none;
     transition: color 0.2s;
     font-family: 'Inter', sans-serif;
   }
-  .footer-col a:hover { color: #e94560; text-decoration: none; }
-  .footer-bottom {
-    padding-top: 1.5rem;
-    text-align: center;
-  }
+  .footer-links a:hover { color: #e94560; text-decoration: none; }
+  .accent-link { color: #e94560 !important; font-weight: 600; }
   .footer-copy {
-    color: rgba(250,250,250,0.2);
-    font-size: 0.78rem;
-    margin: 0;
+    color: rgba(250,250,250,0.25);
+    font-size: 0.75rem;
+    margin: 1.5rem 0 0;
     font-family: 'Inter', sans-serif;
   }
 
   @media (max-width: 639px) {
-    .footer-top { flex-direction: column; gap: 1.5rem; }
-    .footer-nav { gap: 2rem; }
-    .site-footer { padding: 2rem 1.25rem 1.25rem; }
+    .footer-row { flex-direction: column; gap: 1.25rem; text-align: center; }
+    .footer-links { gap: 1rem; }
   }
 </style>
