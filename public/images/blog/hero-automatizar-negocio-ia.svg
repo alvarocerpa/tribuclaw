@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" fill="none">
+<rect width="1200" height="630" fill="#080808"/>
+<rect x="40" y="40" width="1120" height="550" rx="20" fill="#0d0d0d" stroke="#1a1a1a"/>
+<!-- Gear 1 (large, left) -->
+<circle cx="280" cy="250" r="90" fill="none" stroke="#1a3a2a" stroke-width="2"/>
+<circle cx="280" cy="250" r="65" fill="none" stroke="#25D366" stroke-width="1.5" opacity="0.4"/>
+<circle cx="280" cy="250" r="20" fill="#111" stroke="#25D366" stroke-width="2"/>
+<!-- Gear teeth -->
+<rect x="272" y="155" width="16" height="25" rx="4" fill="#1a3a2a"/>
+<rect x="272" y="320" width="16" height="25" rx="4" fill="#1a3a2a"/>
+<rect x="185" y="242" width="25" height="16" rx="4" fill="#1a3a2a"/>
+<rect x="350" y="242" width="25" height="16" rx="4" fill="#1a3a2a"/>
+<!-- Gear 2 (medium, right) -->
+<circle cx="520" cy="300" r="60" fill="none" stroke="#1a2a3a" stroke-width="2"/>
+<circle cx="520" cy="300" r="40" fill="none" stroke="#4285F4" stroke-width="1.5" opacity="0.4"/>
+<circle cx="520" cy="300" r="14" fill="#111" stroke="#4285F4" stroke-width="2"/>
+<!-- Gear 2 teeth -->
+<rect x="514" y="235" width="12" height="20" rx="3" fill="#1a2a3a"/>
+<rect x="514" y="345" width="12" height="20" rx="3" fill="#1a2a3a"/>
+<rect x="455" y="294" width="20" height="12" rx="3" fill="#1a2a3a"/>
+<rect x="565" y="294" width="20" height="12" rx="3" fill="#1a2a3a"/>
+<!-- Flow arrows -->
+<line x1="370" y1="200" x2="460" y2="250" stroke="#e94560" stroke-width="2" opacity="0.6"/>
+<polygon points="460,250 450,240 455,252" fill="#e94560" opacity="0.6"/>
+<line x1="580" y1="280" x2="680" y2="220" stroke="#e94560" stroke-width="2" opacity="0.6"/>
+<polygon points="680,220 670,225 668,215" fill="#e94560" opacity="0.6"/>
+<!-- Automation nodes (right side) -->
+<rect x="700" y="160" width="160" height="50" rx="10" fill="#111" stroke="#e94560" stroke-width="1" opacity="0.8"/>
+<text x="780" y="190" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="12" font-weight="600">📧 Emails auto</text>
+<rect x="700" y="230" width="160" height="50" rx="10" fill="#111" stroke="#4285F4" stroke-width="1" opacity="0.8"/>
+<text x="780" y="260" text-anchor="middle" fill="#4285F4" font-family="system-ui" font-size="12" font-weight="600">📊 Reportes IA</text>
+<rect x="700" y="300" width="160" height="50" rx="10" fill="#111" stroke="#25D366" stroke-width="1" opacity="0.8"/>
+<text x="780" y="330" text-anchor="middle" fill="#25D366" font-family="system-ui" font-size="12" font-weight="600">💬 Respuestas bot</text>
+<!-- Connecting lines to nodes -->
+<line x1="680" y1="185" x2="700" y2="185" stroke="#333" stroke-width="1"/>
+<line x1="680" y1="185" x2="700" y2="255" stroke="#333" stroke-width="1"/>
+<line x1="680" y1="185" x2="700" y2="325" stroke="#333" stroke-width="1"/>
+<!-- Title -->
+<text x="600" y="480" text-anchor="middle" fill="#fff" font-family="system-ui" font-size="24" font-weight="700">Automatizar tu negocio</text>
+<text x="600" y="510" text-anchor="middle" fill="#e94560" font-family="system-ui" font-size="14">Guía completa 2026</text>
+<text x="600" y="540" text-anchor="middle" fill="#555" font-family="system-ui" font-size="12">tribuclaw.com</text>
+</svg>
