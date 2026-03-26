@@ -1,0 +1,304 @@
+---
+title: "OpenClaw requisitos: qué necesitas antes de instalar (guía 2026)"
+description: "Descubre los requisitos de OpenClaw: hardware mínimo, VPS recomendado, Node.js, API keys de modelos de IA y coste estimado mensual. Todo lo que necesitas saber antes de instalar."
+pubDate: 2026-03-29
+heroImage: "/images/blog/crear-agente-requisitos.svg"
+tags: ["requisitos openclaw", "openclaw requisitos", "instalar openclaw", "vps para ia", "agente ia"]
+keywords: ["requisitos openclaw", "openclaw requisitos", "instalar openclaw vps", "hardware openclaw", "node.js openclaw"]
+faq:
+  - q: "¿Necesito saber programar para usar OpenClaw?"
+    a: "No. OpenClaw está diseñado para que puedas configurar agentes sin escribir código. El instalador te guía paso a paso y la interfaz es visual. Si sabes usar un chat, puedes usar OpenClaw. Ahora bien, si quieres automatizaciones muy específicas o integraciones raras, algo de conocimiento técnico ayuda — pero no es obligatorio para empezar."
+  - q: "¿Puedo usar OpenClaw en mi ordenador personal o necesito un VPS?"
+    a: "Puedes usarlo en tu ordenador personal (Mac, Windows con WSL2, o Linux). Funciona perfecto para pruebas y uso personal. Pero si quieres que tu agente esté disponible 24/7, responda mensajes mientras duermes o gestione canales como WhatsApp o Telegram continuamente, entonces sí necesitas un VPS o un servidor que esté siempre encendido."
+  - q: "¿Cuánto cuesta mantener OpenClaw al mes?"
+    a: "Depende del uso. Un VPS básico cuesta desde 4€/mes (Hetzner CX22). Las APIs de IA varían: con modelos económicos como Grok o Gemini Flash puedes empezar por 5-15€/mes para uso moderado. Un setup completo para un negocio pequeño suele rondar los 20-40€/mes entre VPS y APIs. Te explico los detalles en el artículo."
+  - q: "¿Qué versión de Node.js necesito para OpenClaw?"
+    a: "OpenClaw requiere Node.js 22.14 o superior. La versión recomendada es Node 24, que es el runtime por defecto para instalaciones nuevas. El instalador oficial de OpenClaw detecta si tienes Node y lo instala automáticamente si hace falta, así que no tienes que preocuparte demasiado por esto."
+  - q: "¿Funciona OpenClaw en una Raspberry Pi?"
+    a: "Sí, OpenClaw funciona en Raspberry Pi 4 o superior. No es la opción más potente, pero para un agente ligero que gestione mensajes básicos o tareas simples, una Raspberry Pi con 4GB de RAM puede ser suficiente. El límite no es OpenClaw, sino la potencia que necesitas para tu caso de uso concreto."
+---
+
+# OpenClaw requisitos: qué necesitas antes de instalar (guía 2026)
+
+Si estás leyendo esto, probablemente ya te has convencido de que quieres un agente de IA propio. Algo que responda mensajes mientras tú haces otra cosa. Que gestione tu WhatsApp. Que publique en redes sociales sin que tengas que estar pendiente.
+
+Pero antes de lanzarte a instalar OpenClaw, necesitas saber qué hace falta. No quiero que llegues al punto de instalación y te des cuenta de que te falta algo.
+
+Esta guía cubre exactamente eso: qué hardware necesitas, qué software tener preparado, qué API keys vas a usar y cuánto te va a costar todo el setup al mes.
+
+Sin sorpresas. Sin letra pequeña.
+
+## Requisitos de hardware: más simple de lo que crees
+
+Vamos a empezar por el hardware, que es lo que más dudas genera.
+
+### Lo mínimo para funcionar
+
+OpenClaw no es exigente. Los requisitos mínimos oficiales son:
+
+- **RAM:** 512 MB para OpenClaw (1 GB recomendado)
+- **Almacenamiento:** 500 MB para la instalación, más espacio para logs y archivos de memoria
+- **Procesador:** Cualquier procesador moderno de 64 bits
+- **Conexión a internet:** Necesaria para usar modelos de IA en la nube
+
+Eso significa que prácticamente cualquier ordenador hecho en los últimos 8-10 años puede correr OpenClaw. No necesitas un ordenador gaming. No necesitas una gráfica potente (a menos que quieras correr modelos locales, pero eso es otro tema).
+
+### ¿Ordenador personal o VPS?
+
+Aquí está la decisión importante.
+
+**Usar tu ordenador personal** está bien si:
+- Solo quieres probar OpenClaw
+- No necesitas que el agente esté disponible 24/7
+- Te vale con que funcione mientras el ordenador está encendido
+
+El problema: en cuanto apagas el ordenador, tu agente se va con él. Si alguien te escribe a las 3 de la mañana, no hay respuesta.
+
+**Usar un VPS** es lo recomendado si:
+- Quieres disponibilidad 24/7
+- Vas a conectar WhatsApp, Telegram u otros canales que necesitan respuesta constante
+- Quieres independencia de tu ordenador personal
+
+Un VPS (Virtual Private Server) es básicamente un ordenador en la nube que está siempre encendido. Por 4-10€ al mes tienes uno más que suficiente para OpenClaw.
+
+### VPS recomendados para OpenClaw
+
+Si vas por la opción VPS, aquí tienes algunas recomendaciones concretas:
+
+**Hetzner (recomendado por precio/rendimiento):**
+- **CX22:** 2 vCPU, 4 GB RAM, 40 GB NVMe — desde 3,79€/mes
+- **CPX22:** 2 vCPU, 4 GB RAM, 80 GB NVMe — desde 7,72€/mes
+
+Hetzner es probablemente la mejor relación calidad-precio del mercado. Servidores en Alemania y Finlandia, muy estables, y precios que no te van a arruinar.
+
+**Otras opciones:**
+- **DigitalOcean:** Más caro (desde ~12€/mes para 2GB RAM), pero interfaz muy amigable
+- **Oracle Cloud:** Tienen un tier gratuito generoso (hasta 4 ARM cores y 24GB RAM gratis), pero el registro puede ser tedioso
+- **Vultr, Linode:** Alternativas sólidas en el mismo rango de precios que DigitalOcean
+
+Para OpenClaw, con 2 GB de RAM vas sobrado para un agente con uso normal. Si vas a tener varios agentes corriendo simultáneamente o mucho tráfico, sube a 4 GB.
+
+### Casos especiales: Raspberry Pi y otros
+
+Sí, OpenClaw funciona en Raspberry Pi 4+. No es ideal para cargas pesadas, pero si quieres un agente que gestione un canal de Telegram con poco tráfico o haga tareas simples, una Pi con 4 GB de RAM puede ser suficiente.
+
+El consumo eléctrico es mínimo (unos 5-7W), así que si ya tienes una Raspberry por casa, puedes darle uso.
+
+## Requisitos de software: qué instalar antes
+
+Ahora vamos con el software. No es mucho, pero necesitas tenerlo listo.
+
+### Sistema operativo
+
+OpenClaw corre en:
+
+- **macOS** 12 o superior (Intel y Apple Silicon)
+- **Linux** (Ubuntu 20.04+, Debian 11+, Fedora, etc.)
+- **Windows** 10+ con WSL2 (Windows Subsystem for Linux)
+
+Si estás en Windows, **necesitas WSL2**. No es opcional. OpenClaw no corre nativamente en Windows, pero con WSL2 funciona perfectamente. Si no sabes qué es WSL2, hay mil tutoriales en YouTube que te lo explican en 5 minutos.
+
+Si vas a usar un VPS, lo normal es que venga con Ubuntu o Debian preinstalado. Cualquiera de los dos funciona bien.
+
+### Node.js: el requisito clave
+
+OpenClaw está construido sobre Node.js, así que es un requisito obligatorio.
+
+**Versión necesaria:** Node.js 22.14 o superior
+**Versión recomendada:** Node.js 24 (es el runtime por defecto para instalaciones nuevas)
+
+Para comprobar si ya lo tienes instalado:
+
+```bash
+node -v
+```
+
+Si el comando devuelve `v24.x.x` o `v22.14.x` o superior, estás listo. Si devuelve una versión más antigua o dice "command not found", necesitas instalarlo o actualizarlo.
+
+**Cómo instalar Node.js:**
+
+En macOS (con Homebrew):
+```bash
+brew install node
+```
+
+En Ubuntu/Debian:
+```bash
+curl -fsSL https://deb.nodesource.com/setup_24.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+La buena noticia: el instalador oficial de OpenClaw detecta si tienes Node y lo instala automáticamente si hace falta. Así que si no quieres preocuparte por esto, simplemente ejecuta el instalador y deja que haga su magia.
+
+### El instalador de OpenClaw
+
+La forma más sencilla de instalar OpenClaw es con el instalador oficial:
+
+```bash
+curl -fsSL https://openclaw.ai/install.sh | bash
+```
+
+Este script:
+1. Detecta tu sistema operativo
+2. Comprueba si tienes Node.js (y lo instala si no)
+3. Instala OpenClaw
+4. Te guía a través de la configuración inicial
+
+También puedes usar `openclaw onboard` después de la instalación para configurar el gateway, workspace, canales y skills paso a paso.
+
+Tienes una guía completa de [instalación paso a paso en VPS](/blog/instalar-openclaw-en-vps-paso-a-paso/) si prefieres ir con más detalle.
+
+## API keys: el cerebro de tu agente
+
+El hardware y el software son el cuerpo. Las API keys son el cerebro.
+
+OpenClaw por sí solo no "piensa". Necesitas conectarlo a un modelo de IA a través de una API. Hay varias opciones, cada una con sus pros, sus contras y sus precios.
+
+### Modelos disponibles y sus costes
+
+Aquí tienes un resumen de los modelos más usados con OpenClaw y sus precios aproximados (por millón de tokens):
+
+| Modelo | Input (€/1M) | Output (€/1M) | Cuándo usarlo |
+|--------|-------------|---------------|---------------|
+| **Grok 4.1 Fast** | ~0,18€ | ~0,45€ | Máximo ahorro, buen rendimiento |
+| **Gemini 3 Flash** | ~0,45€ | ~2,70€ | Balance calidad/precio |
+| **Claude Haiku 4.5** | ~0,90€ | ~4,50€ | Tareas rápidas, alto volumen |
+| **GPT-5.2** | ~1,60€ | ~12,60€ | Uso general, buena calidad |
+| **Claude Sonnet 4.6** | ~2,70€ | ~13,50€ | Razonamiento complejo |
+| **Claude Opus 4.6** | ~4,50€ | ~22,50€ | Máxima capacidad, tareas críticas |
+
+*Nota: Los precios están en euros aproximados y pueden variar ligeramente según el proveedor y las fluctuaciones de cambio.*
+
+### ¿Cuánto vas a gastar en APIs?
+
+Esto depende totalmente de tu uso. Pero vamos a poner ejemplos concretos:
+
+**Uso ligero (1-2 horas de conversación al día):**
+- Modelo: Gemini 3 Flash o Grok 4.1
+- Consumo estimado: ~5-10 millones de tokens/mes
+- Coste: 5-15€/mes
+
+**Uso moderado (agente de WhatsApp con 20-50 conversaciones diarias):**
+- Modelo: Claude Haiku o GPT-5.2
+- Consumo estimado: ~20-40 millones de tokens/mes
+- Coste: 20-50€/mes
+
+**Uso intensivo (múltiples canales, muchos agentes):**
+- Modelo: Claude Sonnet o Gemini Pro
+- Consumo estimado: ~50-100 millones de tokens/mes
+- Coste: 80-200€/mes
+
+La clave: **empieza con modelos económicos** (Grok, Gemini Flash, Claude Haiku) y sube de categoría solo si necesitas más capacidad. No tiene sentido pagar por Claude Opus si un Haiku te resuelve el 95% de las tareas.
+
+### Dónde conseguir las API keys
+
+Cada proveedor tiene su propia plataforma:
+
+- **OpenAI (GPT):** platform.openai.com
+- **Anthropic (Claude):** console.anthropic.com
+- **Google (Gemini):** aistudio.google.com
+- **xAI (Grok):** x.ai
+
+El proceso es similar en todos: creas una cuenta, añades método de pago, y generas una API key. Esa key es la que configuras en OpenClaw para que tu agente pueda "pensar".
+
+Recomendación: empieza con uno o dos proveedores. No necesitas tener todas las API keys el primer día. Claude y OpenAI cubren la mayoría de casos de uso.
+
+## Lo que NO necesitas
+
+Antes de que te preocupes demasiado, vamos a dejar claro lo que NO hace falta:
+
+### No necesitas saber programar
+
+OpenClaw está diseñado para usuarios no técnicos. La configuración se hace a través de archivos de texto simples (JSON/YAML) y la interfaz es intuitiva.
+
+Si puedes editar un documento de texto, puedes configurar OpenClaw. Si puedes seguir un tutorial, puedes tener tu agente funcionando en una tarde.
+
+Ahora bien, si quieres integraciones muy específicas o automatizaciones complejas, algo de conocimiento técnico ayuda. Pero para empezar, no es un requisito.
+
+Te lo explico con más detalle en la guía de [cómo instalar OpenClaw sin saber programar](/blog/instalar-openclaw-sin-programar/).
+
+### No necesitas una gráfica potente
+
+Los modelos de IA que usas con OpenClaw corren en la nube. Tu ordenador o VPS solo ejecuta el "cuerpo" del agente, no el "cerebro".
+
+Si quisieras correr modelos localmente (sin depender de APIs), ahí sí necesitarías hardware más potente. Pero para empezar, con modelos en la nube, cualquier ordenador básico o VPS pequeño es suficiente.
+
+### No necesitas un servidor dedicado
+
+Un VPS de 4€/mes es más que suficiente para la mayoría de casos. No necesitas un servidor dedicado de 100€/mes a menos que estés moviendo mucho tráfico o tienes muchos agentes simultáneos.
+
+Empieza pequeño. Escala cuando lo necesites.
+
+## Resumen de costes estimados
+
+Vamos a poner números sobre la mesa para que tengas una idea clara:
+
+### Setup mínimo (uso personal, pruebas)
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| VPS Hetzner CX22 | 3,79€ |
+| API (Grok/Gemini Flash, uso ligero) | 5-10€ |
+| **Total** | **9-14€/mes** |
+
+### Setup estándar (negocio pequeño, 1-2 canales)
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| VPS Hetzner CPX22 | 7,72€ |
+| API (Claude Haiku/GPT-5.2, uso moderado) | 20-40€ |
+| **Total** | **28-48€/mes** |
+
+### Setup profesional (múltiples canales, alto volumen)
+
+| Concepto | Coste mensual |
+|----------|---------------|
+| VPS potente (4 vCPU, 8GB RAM) | 15-25€ |
+| APIs múltiples (uso intensivo) | 80-150€ |
+| **Total** | **95-175€/mes** |
+
+¿Comparación? Un asistente virtual a tiempo parcial te cuesta 400-800€/mes. Un agente de IA está en el rango de 30-100€/mes para la mayoría de negocios pequeños.
+
+No es lo mismo, claro. Un humano hace cosas que una IA no puede. Pero para tareas repetitivas, respuestas automáticas y gestión de canales... el agente de IA gana en coste-eficiencia.
+
+Si quieres profundizar más en los costes, tengo un artículo completo sobre [cuánto cuesta tener un agente de IA propio](/blog/cuanto-cuesta-agente-ia-propio/) y otro con estrategias para [reducir el coste de tu agente de IA](/blog/reducir-coste-agente-ia/).
+
+## Checklist antes de instalar
+
+Resumiendo todo lo anterior, aquí tienes tu checklist personal:
+
+**Hardware:**
+- [ ] Ordenador personal O VPS con al menos 1 GB de RAM
+- [ ] 1 GB de espacio libre en disco
+- [ ] Conexión a internet estable
+
+**Software:**
+- [ ] Sistema operativo compatible (macOS 12+, Ubuntu 20.04+, Windows con WSL2)
+- [ ] Node.js 22.14+ (el instalador puede instalarlo por ti)
+- [ ] Terminal acceso (o SSH si es VPS)
+
+**APIs:**
+- [ ] Al menos una API key de un modelo de IA (OpenAI, Anthropic, Google, o xAI)
+- [ ] Método de pago configurado en la plataforma del proveedor
+
+**Opcional pero recomendado:**
+- [ ] Dominio propio (si quieres que tu agente tenga URL personalizada)
+- [ ] Cuenta en Cloudflare (para gestión de DNS si usas dominio)
+
+Si tienes todo esto, estás listo para instalar. Si te falta algo, ya sabes qué buscar.
+
+## Siguiente paso: la instalación
+
+Ya sabes qué necesitas. El siguiente paso es instalar OpenClaw y configurar tu primer agente.
+
+Tienes dos opciones:
+
+1. Seguir el [tutorial completo en español](/blog/openclaw-tutorial-espanol/) donde te guío paso a paso
+2. Usar el instalador oficial con `openclaw onboard` y dejarte guiar
+
+Ambos caminos llegan al mismo sitio. Elige el que te haga sentir más cómodo.
+
+Y si te surgen dudas durante el proceso, en TribuClaw tenemos comunidad y recursos para ayudarte. No estás solo en esto.
+
+
+*Instalar OpenClaw es más fácil de lo que parece. Lo difícil no es la instalación, es decidir qué vas a automatizar primero. Esa es la pregunta que realmente importa.*
