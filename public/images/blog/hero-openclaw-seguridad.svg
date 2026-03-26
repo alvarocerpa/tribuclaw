@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 675" fill="none">
+<rect width="1200" height="675" fill="#0a0a0f"/>
+<rect x="40" y="40" width="1120" height="595" rx="20" fill="#0d0d0d" stroke="#1a1a1a"/>
+<!-- Shield shape -->
+<path d="M600 140 L720 200 L720 360 Q720 460 600 520 Q480 460 480 360 L480 200 Z" fill="none" stroke="#e94560" stroke-width="2.5"/>
+<path d="M600 160 L700 212 L700 355 Q700 445 600 500 Q500 445 500 355 L500 212 Z" fill="#111" opacity="0.5"/>
+<!-- Lock icon inside shield -->
+<rect x="570" y="310" width="60" height="50" rx="8" fill="none" stroke="#e94560" stroke-width="2"/>
+<path d="M582 310 L582 290 Q582 268 600 268 Q618 268 618 290 L618 310" fill="none" stroke="#e94560" stroke-width="2"/>
+<circle cx="600" cy="338" r="6" fill="#e94560"/>
+<line x1="600" y1="344" x2="600" y2="352" stroke="#e94560" stroke-width="2.5"/>
+<!-- Checkmark 1 -->
+<circle cx="300" cy="280" r="30" fill="#111" stroke="#e94560" stroke-width="1.5" opacity="0.6"/>
+<path d="M285 280 L295 290 L315 270" stroke="#e94560" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Checkmark 2 -->
+<circle cx="900" cy="280" r="30" fill="#111" stroke="#e94560" stroke-width="1.5" opacity="0.6"/>
+<path d="M885 280 L895 290 L915 270" stroke="#e94560" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Checkmark 3 -->
+<circle cx="350" cy="450" r="25" fill="#111" stroke="#e94560" stroke-width="1.5" opacity="0.4"/>
+<path d="M338 450 L346 458 L362 442" stroke="#e94560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Checkmark 4 -->
+<circle cx="850" cy="450" r="25" fill="#111" stroke="#e94560" stroke-width="1.5" opacity="0.4"/>
+<path d="M838 450 L846 458 L862 442" stroke="#e94560" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<!-- Connection lines from checks to shield -->
+<line x1="330" y1="280" x2="480" y2="300" stroke="#e94560" stroke-width="1" opacity="0.15"/>
+<line x1="870" y1="280" x2="720" y2="300" stroke="#e94560" stroke-width="1" opacity="0.15"/>
+<line x1="375" y1="440" x2="500" y2="400" stroke="#e94560" stroke-width="1" opacity="0.1"/>
+<line x1="825" y1="440" x2="700" y2="400" stroke="#e94560" stroke-width="1" opacity="0.1"/>
+<!-- Key icon left -->
+<circle cx="180" cy="380" r="15" fill="none" stroke="#e94560" stroke-width="1.5" opacity="0.3"/>
+<line x1="195" y1="380" x2="230" y2="380" stroke="#e94560" stroke-width="1.5" opacity="0.3"/>
+<line x1="220" y1="380" x2="220" y2="395" stroke="#e94560" stroke-width="1.5" opacity="0.3"/>
+<!-- Key icon right -->
+<circle cx="1020" cy="380" r="15" fill="none" stroke="#e94560" stroke-width="1.5" opacity="0.3"/>
+<line x1="1005" y1="380" x2="970" y2="380" stroke="#e94560" stroke-width="1.5" opacity="0.3"/>
+<line x1="980" y1="380" x2="980" y2="395" stroke="#e94560" stroke-width="1.5" opacity="0.3"/>
+<!-- Subtle grid dots -->
+<circle cx="200" cy="550" r="2" fill="#e94560" opacity="0.1"/>
+<circle cx="400" cy="560" r="2" fill="#e94560" opacity="0.08"/>
+<circle cx="800" cy="560" r="2" fill="#e94560" opacity="0.08"/>
+<circle cx="1000" cy="550" r="2" fill="#e94560" opacity="0.1"/>
+<circle cx="600" cy="580" r="2" fill="#e94560" opacity="0.08"/>
+</svg>

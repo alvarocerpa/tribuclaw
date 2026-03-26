@@ -1,0 +1,295 @@
+---
+title: "OpenClaw seguridad: guía completa para proteger tu agente IA"
+description: "Configura OpenClaw de forma segura: permisos de herramientas, sandboxing, API keys, SSH, backups y privacidad. Tu agente es seguro si tú lo configuras bien."
+pubDate: 2026-03-25
+heroImage: "/images/blog/hero-openclaw-seguridad.svg"
+tags: ["openclaw seguridad", "seguridad openclaw", "seguridad agente ia", "proteger ia", "api keys seguras"]
+faq:
+  - q: "¿Es seguro usar OpenClaw para mi negocio?"
+    a: "Sí, siempre que configures los permisos correctamente. OpenClaw solo tiene acceso a lo que tú le das. Si sigues las buenas prácticas de esta guía (principio de mínimo privilegio, API keys con permisos limitados, sandboxing donde aplique), el riesgo es mínimo. El problema no es la herramienta, es la configuración."
+  - q: "¿Qué datos puede ver mi agente de OpenClaw?"
+    a: "Tu agente solo ve lo que tú le permitas ver a través de las herramientas que configures. Si le das acceso a tu Google Drive, puede leer los documentos que compartas. Si le das acceso a tu email, puede gestionar tu bandeja de entrada. No hay acceso mágico a tus datos: cada permiso se concede explícitamente en la configuración."
+  - q: "¿Dónde se guardan las API keys en OpenClaw?"
+    a: "Las API keys se guardan en el archivo openclaw.json dentro de tu servidor. Este archivo nunca sale de tu máquina. OpenClaw no envía tus claves a servidores externos ni las comparte con terceros. Tú tienes el control total sobre dónde están y quién puede acceder a ellas."
+  - q: "¿Debo usar un VPS o puedo usar OpenClaw en local?"
+    a: "Puedes usarlo en local, pero un VPS suele ser más seguro si lo configuras bien. En local, tu agente está expuesto a cualquier malware que entre en tu ordenador. En un VPS bien configurado (firewall, SSH con claves, sistema actualizado), el aislamiento es mayor. Además, un VPS te permite exponer menos tu red personal."
+  - q: "¿Cómo puedo hacer backup de mi configuración de OpenClaw?"
+    a: "Haz backup del directorio ~/.openclaw/ completo. Ahí está tu openclaw.json (configuración), tu workspace (memoria y contexto del agente) y tus skills. Puedes automatizarlo con un cron job que comprima el directorio y lo envíe a un almacenamiento seguro. Te recomiendo backups diarios con retención de 7 días mínimo."
+---
+
+# OpenClaw seguridad: guía completa para proteger tu agente IA
+
+Cuando instalas un agente de IA en tu negocio, le estás dando acceso a cosas importantes. Tus emails. Tu WhatsApp. Tus documentos. Tal vez incluso tu servidor.
+
+Es normal que te preocupes.
+
+La buena noticia: OpenClaw es tan seguro como tú lo configuras. No hay puertas traseras. No hay acceso mágico a tus datos. Todo lo que tu agente puede hacer depende de los permisos que tú le concedas.
+
+Esta guía te enseña a configurarlo bien. A entender qué datos ve tu agente, cómo proteger tus API keys, qué permisos conceder y cuáles evitar, y cómo mantener tu setup seguro a largo plazo.
+
+## El principio de mínimo privilegio
+
+Si solo te quedas con una idea de este artículo, que sea esta:
+
+**Tu agente solo debería tener acceso a lo que necesita para hacer su trabajo. Nada más.**
+
+No le des permisos de administrador si no los necesita. No le des acceso a todos tus archivos si solo necesita una carpeta. No le des tu API key de producción cuando una de desarrollo basta.
+
+En la práctica:
+
+- **Revisa cada permiso antes de concederlo.** ¿Tu agente necesita realmente acceso a esa herramienta?
+- **Empieza con lo mínimo.** Configura los permisos básicos, prueba que funciona, y solo entonces añade más si hacen falta.
+- **Revisa periódicamente.** Cada mes, revisa qué permisos tiene tu agente y elimina los que ya no uses.
+
+OpenClaw facilita esto porque cada herramienta tiene sus permisos claramente definidos. Pero tú decides activarlos.
+
+## Permisos de herramientas: qué puede y qué no puede hacer tu agente
+
+OpenClaw funciona con herramientas. Cada una da a tu agente una capacidad específica: leer archivos, ejecutar comandos, hacer peticiones HTTP.
+
+### Herramientas por defecto
+
+OpenClaw viene con herramientas básicas activadas:
+
+- **Lectura/escritura de archivos:** dentro de su workspace
+- **Ejecución de comandos:** con limitaciones
+
+La clave es "dentro de su workspace". Tu agente no puede acceder a archivos fuera de su directorio de trabajo a menos que tú lo configures explícitamente.
+
+### Herramientas con permisos elevados
+
+Algunas requieren más cuidado:
+
+**Ejecución de comandos:** Por defecto, OpenClaw ejecuta comandos con los permisos del usuario que lo ejecuta. Si ejecutas como root (no lo hagas), tu agente tendría acceso total. Ejecútalo siempre con un usuario limitado.
+
+**MCP (Model Context Protocol):** Las herramientas MCP dan acceso a servicios externos como GitHub, Notion o Google Drive. Revisa los permisos de cada conexión antes de activarla.
+
+### Cómo revisar los permisos
+
+El archivo `openclaw.json` contiene toda la configuración. La política `allowlist` significa que solo las herramientas explícitamente permitidas están activadas. Es la configuración más segura.
+
+Si quieres profundizar en los requisitos técnicos, echa un vistazo a [nuestra guía de requisitos de OpenClaw](/blog/openclaw-requisitos-que-necesitas/).
+
+## API keys seguras: cómo gestionarlas
+
+Las API keys son las credenciales que permiten a tu agente usar servicios de IA. Sin ellas, no hay inteligencia. Pero si caen en manos equivocadas, pueden costarte dinero y exponer datos.
+
+### Dónde guardarlas
+
+En OpenClaw, las API keys se guardan en `openclaw.json`. Este archivo está en tu servidor y nunca se envía a servidores externos.
+
+Reglas de oro:
+
+1. **Nunca compartas tu openclaw.json.** Borra las API keys antes de compartir capturas.
+2. **No lo subas a repositorios públicos.** Añádelo a .gitignore.
+3. **Usa variables de entorno para producción.** Puedes configurar OpenClaw para leerlas desde el entorno.
+
+### Permisos de las API keys
+
+Una key de OpenAI con acceso completo puede generar facturas de miles de euros si se abusa de ella.
+
+**Recomendaciones por proveedor:**
+
+- **OpenAI:** Configura límites de uso mensuales. Crea keys específicas para cada proyecto.
+- **Anthropic:** Usa keys con budgets definidos. Activa alertas de gasto.
+- **Google (Gemini):** Configura quotas en Google Cloud Console.
+
+### Rotación de API keys
+
+Cambia tus API keys cada 3-6 meses. Es una buena práctica de seguridad general. Si detectas uso sospechoso, cámbialas inmediatamente.
+
+## Sandboxing: aísla tu agente del resto del sistema
+
+El sandboxing ejecuta tu agente en un entorno aislado para que, si algo sale mal, el daño esté contenido.
+
+### ¿Cuándo necesitas sandboxing?
+
+Para un agente que responde mensajes y gestiona tu agenda, el riesgo es bajo. Considera sandboxing si:
+
+- Tu agente ejecuta código arbitrario
+- Procesas archivos subidos por usuarios externos
+- Conectas tu agente a sistemas críticos de producción
+- Manejas datos sensibles (médicos, financieros, legales)
+
+### Opciones de sandboxing
+
+**Docker:** La opción más común. Ejecutar OpenClaw en un contenedor aísla el proceso del resto del sistema.
+
+**Usuario dedicado:** Crea un usuario de sistema específico para OpenClaw con permisos mínimos.
+
+**Máquina virtual:** Para máxima isolación, ejecuta OpenClaw en una VM separada. Overkill para la mayoría de casos.
+
+La [guía de instalación en VPS](/blog/instalar-openclaw-en-vps-paso-a-paso/) cubre los detalles de configuración con Docker.
+
+## No expongas puertos innecesarios
+
+Cada puerto que abres es una puerta potencial de entrada.
+
+OpenClaw necesita exponer un puerto para la interfaz web (por defecto 18789). Eso es todo.
+
+### Buenas prácticas
+
+**Usa un reverse proxy:** Nginx o Caddy añaden SSL automáticamente y puedes configurar autenticación adicional.
+
+**Firewall:** Configura ufw para que solo los puertos necesarios estén abiertos: 22 (SSH), 80 (HTTP), 443 (HTTPS), y el puerto de OpenClaw si lo necesitas externo.
+
+**VPN o Tailscale:** Si solo tú vas a acceder a la interfaz, usa Tailscale. Te permite acceder sin exponer el servidor públicamente.
+
+El [tutorial completo en español](/blog/openclaw-tutorial-espanol/) te guía paso a paso en la configuración.
+
+## SSH: claves, no contraseñas
+
+Si usas un VPS, la configuración de SSH es crítica.
+
+### Usa claves SSH
+
+Las contraseñas se pueden adivinar con fuerza bruta. Las claves SSH (ED25519) son prácticamente imposibles de romper.
+
+```bash
+ssh-keygen -t ed25519 -C "tu@email.com"
+ssh-copy-id usuario@tu-servidor.com
+```
+
+### Desactiva el acceso por contraseña
+
+Una vez que las claves funcionan:
+
+Edita `/etc/ssh/sshd_config`:
+```
+PasswordAuthentication no
+PubkeyAuthentication yes
+```
+
+Y reinicia SSH: `sudo systemctl restart sshd`
+
+### Otras configuraciones recomendadas
+
+- **Cambia el puerto por defecto (22):** Reduce el ruido de logs
+- **Desactiva root login:** `PermitRootLogin no`
+- **Limita usuarios:** `AllowUsers tu-usuario`
+
+## Backups: tu red de seguridad
+
+La seguridad no es solo evitar ataques. También es poder recuperarte si algo va mal.
+
+### Qué hacer backup
+
+En OpenClaw, lo esencial está en:
+
+- `~/.openclaw/` — Configuración, API keys, estado del agente
+- `~/.openclaw/workspace/` — Memoria del agente, proyectos
+- `~/.openclaw/skills/` — Skills personalizadas
+
+### Estrategia de backup
+
+**Backups automáticos:**
+```bash
+0 3 * * * tar -czf /backup/openclaw-$(date +\%Y\%m\%d).tar.gz -C ~ .openclaw/
+```
+
+**Retención:** Guarda 7 días de backups, más semanales durante un mes.
+
+**Almacenamiento externo:** Copia los backups a S3, Backblaze, otro VPS o tu ordenador local.
+
+**Verifica los backups:** Prueba la restauración ocasionalmente.
+
+## Actualizaciones: mantén todo al día
+
+El software desactualizado es uno de los vectores de ataque más comunes.
+
+### OpenClaw
+
+```bash
+npm update -g openclaw
+```
+
+Revisa el changelog antes de actualizar.
+
+### Sistema operativo
+
+```bash
+sudo apt update && sudo apt upgrade -y
+```
+
+Configura actualizaciones automáticas de seguridad:
+
+```bash
+sudo apt install unattended-upgrades
+sudo dpkg-reconfigure -plow unattended-upgrades
+```
+
+## Qué datos ve tu agente realmente
+
+La pregunta más común tiene una respuesta simple.
+
+### Tu agente solo ve lo que tú le das
+
+No hay acceso mágico. Cada dato que tu agente procesa pasa por una herramienta que tú has configurado.
+
+**Si le das acceso a Google Drive:** Puede leer los documentos que compartas.
+**Si le das acceso a email:** Puede gestionar tu bandeja de entrada.
+**Si no configuras ninguna conexión:** Solo puede leer/escribir en su workspace, ejecutar comandos limitados y usar los modelos de IA que configures.
+
+### Memoria del agente
+
+OpenClaw tiene un sistema de memoria. Tu agente puede recordar conversaciones y contexto. Esta memoria se guarda localmente en tu servidor. Puedes revisarla, editarla y borrarla cuando quieras. Los archivos están en texto plano.
+
+### Logs y trazas
+
+OpenClaw genera logs de su actividad: comandos ejecutados, herramientas usadas, respuestas de los modelos. Se guardan localmente y puedes auditarlos.
+
+## Privacidad vs cloud: ¿dónde procesa tus datos?
+
+OpenClaw puede usar modelos en la nube (OpenAI, Anthropic, Google) o locales (Ollama, LM Studio).
+
+### Modelos en la nube
+
+Cuando usas OpenAI o Anthropic, tu texto viaja a sus servidores. Estas empresas tienen políticas de privacidad, pero si trabajas con datos extremadamente sensibles, debes saberlo.
+
+**Buenas prácticas:**
+- No envíes datos de clientes sin consentimiento
+- Anonimiza datos sensibles antes de procesarlos
+- Revisa las políticas de retención de cada proveedor
+
+### Modelos locales
+
+Si la privacidad es crítica, usa modelos locales. Tu texto nunca sale de tu servidor. El trade-off es rendimiento: requieren hardware potente y suelen ser menos capaces que GPT-4 o Claude.
+
+### Estrategia híbrida
+
+Usa modelos locales para datos sensibles y modelos cloud para tareas generales. OpenClaw te permite configurar diferentes modelos para diferentes agentes.
+
+## Checklist de seguridad
+
+**Permisos:**
+- [ ] Principio de mínimo privilegio aplicado
+- [ ] Solo herramientas necesarias activadas
+- [ ] Política de herramientas en "allowlist"
+
+**API Keys:**
+- [ ] Keys con límites de uso configurados
+- [ ] openclaw.json no compartido ni en repositorios
+- [ ] Rotación programada cada 3-6 meses
+
+**Acceso:**
+- [ ] SSH solo con claves (no contraseñas)
+- [ ] Firewall configurado (solo puertos necesarios)
+- [ ] Reverse proxy con SSL
+
+**Sistema:**
+- [ ] Backups automáticos diarios
+- [ ] Sistema operativo actualizado
+- [ ] Node.js en versión soportada
+
+**Privacidad:**
+- [ ] Datos sensibles identificados
+- [ ] Modelo de IA apropiado para cada tipo de dato
+- [ ] Logs bajo control
+
+---
+
+La seguridad no es un destino, es un proceso. Configurar bien tu agente al principio es importante. Pero revisar periódicamente, mantener actualizaciones al día y ajustar permisos según evoluciona tu uso es igual de crítico.
+
+Tu agente de IA puede ser una herramienta increíblemente poderosa. Con la configuración correcta, también puede ser increíblemente segura.
+
+La clave está en tus manos. Literalmente: en tu archivo openclaw.json, en tus SSH keys, en tus decisiones de configuración.
