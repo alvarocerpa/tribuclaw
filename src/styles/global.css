@@ -212,7 +212,7 @@ th {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--gradient);
+	background: var(--accent);
 	color: #fff;
 	font-family: 'Inter', sans-serif;
 	font-weight: 800;
@@ -220,32 +220,23 @@ th {
 	text-transform: uppercase;
 	letter-spacing: 0.04em;
 	padding: 0.85rem 2rem;
-	border-radius: 14px;
+	border-radius: 10px;
 	border: none;
 	text-decoration: none;
 	cursor: pointer;
-	transition: transform 0.3s, box-shadow 0.3s;
-	position: relative;
-	overflow: hidden;
+	transition: background 0.2s, transform 0.2s;
 	white-space: nowrap;
 }
 .cta-btn:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 0 30px rgba(233,69,96,0.4), 0 0 60px rgba(233,69,96,0.15);
+	background: var(--accent-dark);
+	transform: translateY(-1px);
 	text-decoration: none;
 	color: #fff;
-}
-.cta-btn::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(124deg, rgba(255,255,255,0.15), transparent 50%);
-	pointer-events: none;
 }
 .cta-btn-lg {
 	font-size: 0.95rem;
 	padding: 1rem 2.5rem;
-	border-radius: 16px;
+	border-radius: 12px;
 }
 
 /* ─── SECTION HEADER ─── */
