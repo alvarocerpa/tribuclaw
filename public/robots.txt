@@ -1,3 +1,24 @@
+# ========== Bots de búsqueda tradicionales ==========
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# ========== Bots de LLM / IA ==========
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# ========== General ==========
 User-agent: *
 Allow: /
 
