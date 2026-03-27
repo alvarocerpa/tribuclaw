@@ -9,14 +9,16 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 <html lang="es">
 <head>
   <BaseHead
-    title={`${SITE_TITLE} — Aprende a montar tu equipo de agentes IA`}
-    description="TribuClaw: la comunidad #1 de OpenClaw en español. Formación completa, casos de uso reales, soporte 24/7 y directos semanales para que la IA trabaje por ti."
+    title={`${SITE_TITLE} — Monta tu agente IA que trabaje 24/7 por ti`}
+    description="Mientras tú haces todo manual, otros ya tienen un agente IA trabajando 24/7. TribuClaw te enseña a montar el tuyo en un servidor de 5€/mes. Sin ser programador."
   />
+  <!-- LCP preload: hero image (phone frame is decorative, h1 is text LCP — font preload is in BaseHead) -->
+  <link rel="preload" href="/images/logo-icon.webp" as="image" type="image/webp" />
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Product",
     "name": "TribuClaw — Membresía",
-    "description": "Comunidad en español con curso completo de OpenClaw, casos de uso reales, soporte 24/7, directos semanales y TribuClaw App.",
+    "description": "Comunidad en español que te enseña a montar tu propio agente IA con OpenClaw. Curso completo, casos de uso reales, soporte 24/7, directos semanales y TribuClaw App.",
     "url": SITE_URL,
     "brand": { "@type": "Brand", "name": "TribuClaw" },
     "offers": {
@@ -39,13 +41,16 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "¿Qué es OpenClaw?", "acceptedAnswer": { "@type": "Answer", "text": "Sistema de agentes IA autónomos open source. 247K stars en GitHub. No es un chatbot: es un sistema de agentes que vive en tu servidor, ejecuta tareas, gestiona emails, navega la web y trabaja 24/7 por ti." } },
-      { "@type": "Question", "name": "¿Necesito experiencia técnica?", "acceptedAnswer": { "@type": "Answer", "text": "No. El curso te guía paso a paso, en español. Sin experiencia técnica necesaria." } },
-      { "@type": "Question", "name": "¿Qué incluye la membresía?", "acceptedAnswer": { "@type": "Answer", "text": "Curso completo, casos de uso semanales, TribuBot 24/7, directos semanales, TribuClaw App y comunidad activa." } },
+      { "@type": "Question", "name": "¿Necesito saber programar?", "acceptedAnswer": { "@type": "Answer", "text": "No. El curso está pensado para gente sin conocimientos técnicos." } },
+      { "@type": "Question", "name": "¿En cuánto tiempo tengo mi agente funcionando?", "acceptedAnswer": { "@type": "Answer", "text": "La mayoría lo tienen montado en la primera semana." } },
+      { "@type": "Question", "name": "¿Puedo cancelar cuando quiera?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Sin permanencia. Entras y sales cuando quieras." } },
+      { "@type": "Question", "name": "¿Qué necesito para empezar?", "acceptedAnswer": { "@type": "Answer", "text": "Solo un ordenador y conexión a internet. Te guiamos con lo demás." } },
+      { "@type": "Question", "name": "¿El servidor de 5€/mes es obligatorio?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, es donde vive tu agente. Te enseñamos a montarlo en el curso." } },
+      { "@type": "Question", "name": "¿Esto funciona para mi negocio?", "acceptedAnswer": { "@type": "Answer", "text": "Si gestionas emails, clientes o redes sociales de forma manual, sí. Funciona." } },
+      { "@type": "Question", "name": "¿OpenClaw es de pago?", "acceptedAnswer": { "@type": "Answer", "text": "No. OpenClaw es 100% gratuito y open source. TribuClaw es la comunidad que te enseña a montarlo y sacarle provecho." } },
       { "@type": "Question", "name": "¿Puedo tener más de un agente?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Te enseñamos a configurarlos y gestionarlos." } },
       { "@type": "Question", "name": "¿Mis datos están seguros?", "acceptedAnswer": { "@type": "Answer", "text": "100%. Tu servidor, tus datos. Nada pasa por terceros." } },
-      { "@type": "Question", "name": "¿Qué pasa si cancelo?", "acceptedAnswer": { "@type": "Answer", "text": "Tu agente sigue funcionando. Pierdes acceso a comunidad y updates." } },
-      { "@type": "Question", "name": "¿Puedo ganar dinero con esto?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Compartimos casos reales de monetización." } }
+      { "@type": "Question", "name": "¿Qué pasa si cancelo?", "acceptedAnswer": { "@type": "Answer", "text": "Tu agente sigue funcionando. Pierdes acceso a comunidad y updates." } }
     ]
   })} />
 </head>
@@ -55,60 +60,224 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <main id="main-content">
 
-<!-- ═══════ HERO ═══════ -->
+<!-- ═══════ BLOQUE 1: HERO ═══════ -->
 <section class="hero" id="hero">
-  <div class="hero-inner container-hero">
-    <div class="hero-content">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-left">
       <div class="hero-badge" data-animate="fade-up">
         <span>✦ La comunidad #1 de OpenClaw en español</span>
       </div>
-      <h1 class="hero-headline" data-animate="split-text">
-        Aprende a montar tu equipo de agentes IA
+      <h1 class="hero-headline" data-animate="fade-up">
+        Mientras tú haces todo manual, otros ya tienen un agente IA trabajando 24/7 por ellos.
       </h1>
       <p class="hero-sub" data-animate="fade-up">
-        Formación completa, casos de uso reales, soporte 24/7 y todas las herramientas para que la IA trabaje por ti.
+        TribuClaw te enseña a montar tu propio agente IA en un servidor de 5€/mes. Sin ser programador. Sin frases raras. Un sistema real que gestiona tus emails, tus clientes y tus redes por ti.
       </p>
       <div class="hero-cta" data-animate="fade-up">
         <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
-          <span>Unirme a TribuClaw</span>
+          <span>Entrar a TribuClaw</span>
         </a>
-        <p class="hero-cta-hint">Desde 40€/mes · Cancela cuando quieras</p>
       </div>
     </div>
-    <div class="hero-visual" data-animate="fade-up">
-      <p class="hero-visual-text">
-        Tu agente puede gestionar emails, navegar la web, organizar tu calendario y ejecutar tareas. Todo solo.
-      </p>
+    <div class="hero-right" data-animate="fade-up">
+      <div class="phone-glow"></div>
+      <div class="phone-frame">
+        <div class="phone-notch"></div>
+        <div class="phone-status">
+          <span class="phone-time">9:41</span>
+          <span class="phone-icons">● ● ●</span>
+        </div>
+        <div class="phone-header">
+          <div class="phone-avatar">🤖</div>
+          <div class="phone-header-info">
+            <span class="phone-header-name">TribuBot</span>
+            <span class="phone-header-status">en línea</span>
+          </div>
+        </div>
+        <div class="phone-messages">
+          <div class="chat-bubble chat-incoming">
+            <span>📧 3 emails importantes. El de María necesita respuesta urgente.</span>
+          </div>
+          <div class="typing-indicator">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-bubble chat-incoming msg-2">
+            <span>✅ Post de LinkedIn publicado</span>
+          </div>
+          <div class="typing-indicator typing-2">
+            <span></span><span></span><span></span>
+          </div>
+          <div class="chat-bubble chat-incoming msg-3">
+            <span>📊 Resumen del día listo</span>
+          </div>
+        </div>
+        <div class="phone-input">
+          <span class="phone-input-placeholder">Mensaje...</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ═══════ INCLUDES ═══════ -->
+<!-- ═══════ BLOQUE 2: EL PROBLEMA ═══════ -->
+<section class="section section-problem" id="problema">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <h2 class="section-title">Tu negocio depende 100% de ti. Y eso tiene techo.</h2>
+    </div>
+    <div class="problem-text" data-animate="fade-up">
+      <p>Piensa en tu día de ayer.</p>
+      <p>Abriste los emails uno por uno. Respondiste clientes por WhatsApp. Publicaste algo en redes. Buscaste info para un proyecto. Preparaste una factura. Miraste el calendario. Contestaste un mensaje más. Y otro. Y otro.</p>
+      <p>Todo eso lo hiciste tú. Manualmente. A mano.</p>
+      <p>El problema no es que trabajes mucho. Es que <strong>no puedes trabajar más</strong>. Tu día tiene 24 horas y ya las usas todas. Si quieres facturar el doble, necesitas el doble de tiempo. Y ese tiempo no existe.</p>
+      <p>La IA está ahí fuera. Todo el mundo habla de ella. Pero cuando intentas usarla de verdad, te encuentras con lo mismo: ChatGPT te da respuestas bonitas, pero no hace nada por ti. No abre tu email. No contesta a tus clientes. No publica mientras duermes.</p>
+      <p>Hay un salto entre "usar ChatGPT" y "tener un sistema que trabaja por ti". Y casi nadie te explica cómo darlo.</p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ BLOQUE 3: QUÉ ES OPENCLAW ═══════ -->
+<section class="section section-openclaw" id="openclaw">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-badge">🌐 Open Source</span>
+      <h2 class="section-title">OpenClaw: el proyecto open source que está cambiando las reglas</h2>
+    </div>
+    <div class="openclaw-text" data-animate="fade-up">
+      <p>OpenClaw es el proyecto de agentes IA más grande del mundo. Más de 247.000 estrellas en GitHub. Gratuito. Open source. Cualquiera puede usarlo.</p>
+      <p class="openclaw-clarify">Pero no es ChatGPT. No es una app que abres y le preguntas cosas.</p>
+      <p>OpenClaw es un sistema que instalas en tu servidor (cuesta 5€/mes, lo mismo que un café) y que se conecta con tus herramientas reales:</p>
+    </div>
+    <div class="openclaw-tools" data-animate="stagger">
+      <div class="glass-card tool-card">
+        <span class="tool-icon">📧</span>
+        <h3>Emails</h3>
+        <p>Los lee, los clasifica, te prioriza lo importante.</p>
+      </div>
+      <div class="glass-card tool-card">
+        <span class="tool-icon">💬</span>
+        <h3>WhatsApp</h3>
+        <p>Responde a tus clientes con contexto, no con respuestas genéricas.</p>
+      </div>
+      <div class="glass-card tool-card">
+        <span class="tool-icon">📱</span>
+        <h3>Redes sociales</h3>
+        <p>Publica con tu voz y tu estilo.</p>
+      </div>
+      <div class="glass-card tool-card">
+        <span class="tool-icon">📅</span>
+        <h3>Calendario</h3>
+        <p>Organiza tu semana.</p>
+      </div>
+      <div class="glass-card tool-card">
+        <span class="tool-icon">📄</span>
+        <h3>Documentos</h3>
+        <p>Investiga, resume, genera informes.</p>
+      </div>
+    </div>
+    <div class="openclaw-247" data-animate="fade-up">
+      <p>Y lo hace <strong>24/7</strong>. Fines de semana incluidos.</p>
+      <p class="openclaw-pivot">El problema: OpenClaw es gratis y abierto, pero montarlo bien cuesta tiempo, pruebas y dolores de cabeza. <strong>Ahí es donde entra TribuClaw.</strong></p>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ BLOQUE 4: UN DÍA CON TU AGENTE ═══════ -->
+<section class="section section-timeline" id="timeline">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-badge">⏰ Timeline</span>
+      <h2 class="section-title">Así se ve un día con tu agente IA funcionando</h2>
+    </div>
+    <div class="timeline-table" data-animate="stagger">
+      <div class="timeline-row glass-card">
+        <span class="timeline-time">08:00</span>
+        <p class="timeline-desc">Revisa tus emails overnight. Te prepara un resumen con solo los que necesitan respuesta. El resto ya está archivado.</p>
+      </div>
+      <div class="timeline-row glass-card">
+        <span class="timeline-time">09:00</span>
+        <p class="timeline-desc">Publica en tus redes sociales con tu tono y tu estilo. No es un post genérico — suena a ti.</p>
+      </div>
+      <div class="timeline-row glass-card">
+        <span class="timeline-time">11:00</span>
+        <p class="timeline-desc">Un cliente escribe por WhatsApp. Tu agente responde con contexto: tiene acceso a tu historial, tus precios, tus servicios.</p>
+      </div>
+      <div class="timeline-row glass-card">
+        <span class="timeline-time">14:00</span>
+        <p class="timeline-desc">Investiga tendencias de tu sector y te prepara un breve con lo relevante.</p>
+      </div>
+      <div class="timeline-row glass-card">
+        <span class="timeline-time">17:00</span>
+        <p class="timeline-desc">Te envía un resumen del día: qué se hizo, qué queda pendiente, qué necesitas decidir tú.</p>
+      </div>
+      <div class="timeline-row glass-card">
+        <span class="timeline-time">23:00</span>
+        <p class="timeline-desc">Sigue trabajando. Procesa lo que ha ido llegando. Prepara el día siguiente. Tú ya duermes.</p>
+      </div>
+    </div>
+    <p class="timeline-note" data-animate="fade-up">Esto no es ciencia ficción. Es lo que hace OpenClaw. Y en TribuClaw te enseñamos paso a paso a montarlo.</p>
+  </div>
+</section>
+
+<!-- ═══════ CTA INTERMEDIO 1 (después de bloque 4) ═══════ -->
+<section class="section section-cta-mid">
+  <div class="container">
+    <div class="cta-mid-inner" data-animate="fade-up">
+      <h2 class="cta-mid-title">¿Quieres que esto sea tu día a día?</h2>
+      <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+        <span>Entrar a TribuClaw</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ BLOQUE 5: QUÉ INCLUYE ═══════ -->
 <section class="section section-includes" id="incluye">
   <div class="container">
     <div class="section-header" data-animate="fade-up">
       <span class="section-badge">📦 Todo lo que incluye</span>
-      <h2 class="section-title">Una membresía. Todo incluido.</h2>
-      <p class="section-sub">Formación, herramientas, soporte y comunidad. Todo lo que necesitas para que la IA trabaje por ti.</p>
+      <h2 class="section-title">TribuClaw no es un curso más. Es todo lo que necesitas para tener tu agente funcionando.</h2>
     </div>
     <div class="includes-grid" data-animate="stagger">
-      <div class="glass-card include-card include-lg">
-        <h3>Curso completo</h3>
-        <p>De cero a tu primer agente funcionando. Sin experiencia técnica necesaria. Vídeos en español, paso a paso.</p>
+      <div class="glass-card include-card">
+        <span class="include-icon">🧠</span>
+        <h3>Curso completo en español</h3>
+        <p>De cero a tener tu sistema montado y funcionando. Sin conocimientos técnicos previos. Paso a paso, en vídeo, en tu idioma.</p>
       </div>
       <div class="glass-card include-card">
+        <span class="include-icon">🎯</span>
         <h3>Casos de uso semanales</h3>
-        <p>Ejemplos reales para tu negocio cada semana.</p>
+        <p>Cada semana publicamos un caso de uso real. No teoría: cosas que nuestros agentes hacen HOY. Para que lo repliques en tu negocio.</p>
       </div>
       <div class="glass-card include-card">
+        <span class="include-icon">💬</span>
         <h3>Soporte 24/7</h3>
-        <p>TribuBot responde al instante. Y si no puede, Álvaro está detrás.</p>
+        <p>TribuBot (nuestro bot de soporte) responde tus dudas al instante. Y si no puede, Álvaro te responde personalmente.</p>
       </div>
       <div class="glass-card include-card">
+        <span class="include-icon">📺</span>
         <h3>Directos semanales</h3>
-        <p>Cada miércoles a las 19:00. Preguntas en vivo con Álvaro.</p>
+        <p>Cada miércoles a las 19:00 (hora peninsular) hacemos un directo en comunidad. Resolvemos dudas en vivo, mostramos novedades, compartimos avances.</p>
+      </div>
+      <div class="glass-card include-card">
+        <span class="include-icon">👥</span>
+        <h3>Comunidad de 98 personas</h3>
+        <p>No estás solo. Hay 98 personas dentro haciendo exactamente lo mismo que tú. Comparten avances, se ayudan, comparan resultados.</p>
+      </div>
+      <div class="glass-card include-card">
+        <span class="include-icon">⚙️</span>
+        <h3>TribuClaw App</h3>
+        <p>Panel de control para gestionar tu agente sin tocar código. Crear, configurar y monitorizar desde una interfaz sencilla.</p>
       </div>
     </div>
   </div>
@@ -116,13 +285,70 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <div class="section-divider"></div>
 
-<!-- ═══════ SOCIAL PROOF (estático) ═══════ -->
+<!-- ═══════ BLOQUE 6: COMPARATIVA ═══════ -->
+<section class="section section-compare" id="comparativa">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-badge">⚖️ Comparativa</span>
+      <h2 class="section-title">Lo que pasa si intentas hacerlo solo</h2>
+    </div>
+    <div class="compare-table" data-animate="fade-up">
+      <div class="compare-row compare-header">
+        <span class="compare-col compare-col-solo">Por tu cuenta</span>
+        <span class="compare-col compare-col-tribu">Con TribuClaw</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-col compare-col-solo">Googlear tutoriales en inglés que no se aplican a tu caso</span>
+        <span class="compare-col compare-col-tribu">Curso en español, paso a paso, pensado para tu negocio</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-col compare-col-solo">Preguntarle a ChatGPT y recibir respuestas genéricas</span>
+        <span class="compare-col compare-col-tribu">Casos de uso semanales reales y replicables</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-col compare-col-solo">Probar y error durante semanas (o meses)</span>
+        <span class="compare-col compare-col-tribu">Tu sistema funcionando desde la primera semana</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-col compare-col-solo">Nadie a quien preguntar cuando algo falla</span>
+        <span class="compare-col compare-col-tribu">Soporte 24/7 + comunidad activa</span>
+      </div>
+      <div class="compare-row">
+        <span class="compare-col compare-col-solo">Actualizarte solo de lo que cambia en IA</span>
+        <span class="compare-col compare-col-tribu">Directos semanales con las novedades</span>
+      </div>
+    </div>
+    <div class="compare-price" data-animate="fade-up">
+      <p class="compare-price-label">¿Cuánto cuesta?</p>
+      <p class="compare-price-line">TribuClaw: <strong>35€/mes</strong></p>
+      <p class="compare-price-line">Tu servidor: <strong>5€/mes</strong></p>
+      <p class="compare-price-total">Total: <strong>40€/mes</strong></p>
+      <p class="compare-price-note">Menos que Netflix + Spotify + HBO. Y esto no te entretiene. Te libera horas.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════ CTA INTERMEDIO 2 (después de bloque 6) ═══════ -->
+<section class="section section-cta-mid">
+  <div class="container">
+    <div class="cta-mid-inner" data-animate="fade-up">
+      <h2 class="cta-mid-title">Deja de hacerlo todo a mano</h2>
+      <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+        <span>Entrar a TribuClaw</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ BLOQUE 7: PROOF ═══════ -->
 <section class="section section-proof" id="proof">
   <div class="container">
     <div class="section-header" data-animate="fade-up">
       <span class="section-badge">⭐ 4.9/5 en Whop</span>
-      <h2 class="section-title">Lo que dicen los miembros</h2>
-      <p class="section-sub">98 miembros. Agentes activos. Tareas ejecutándose mientras lees esto.</p>
+      <h2 class="section-title">Lo que dicen los que ya están dentro</h2>
+      <p class="section-sub">98 miembros. 4,9 de 5. Datos reales de Whop, verificables por cualquiera.</p>
     </div>
     <div class="proof-stats" data-animate="stagger">
       <div class="proof-stat">
@@ -141,6 +367,17 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
     <div class="reviews-static" data-animate="stagger">
       <div class="glass-card review-card">
         <div class="review-stars">★★★★★</div>
+        <p class="review-quote">"Comunidad joven pero con muchísimo potencial. Contenido fresco, de actualidad, en español..."</p>
+        <div class="review-author">
+          <div class="review-avatar">SC</div>
+          <div>
+            <span class="review-name">SergioCR</span>
+            <span class="review-role">Miembro de TribuClaw</span>
+          </div>
+        </div>
+      </div>
+      <div class="glass-card review-card">
+        <div class="review-stars">★★★★★</div>
         <p class="review-quote">"Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw."</p>
         <div class="review-author">
           <div class="review-avatar">AB</div>
@@ -152,78 +389,202 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
       </div>
       <div class="glass-card review-card">
         <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"En menos de una semana ya tenía mi primer agente funcionando. Increíble."</p>
+        <p class="review-quote">"Perfecto!!!"</p>
         <div class="review-author">
-          <div class="review-avatar">AR</div>
+          <div class="review-avatar">E</div>
           <div>
-            <span class="review-name">Alvaro R.</span>
+            <span class="review-name">Edu</span>
             <span class="review-role">Miembro de TribuClaw</span>
           </div>
         </div>
       </div>
-      <div class="glass-card review-card">
-        <div class="review-stars">★★★★★</div>
-        <p class="review-quote">"El soporte es de otra galaxia. Responden a cualquier hora."</p>
-        <div class="review-author">
-          <div class="review-avatar">M</div>
-          <div>
-            <span class="review-name">Maria</span>
-            <span class="review-role">Miembro de TribuClaw</span>
+    </div>
+    <p class="proof-closing" data-animate="fade-up">Llevamos 2 meses. El proyecto crece cada semana. Y los que entraron primero ya tienen sus agentes funcionando.</p>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ BLOQUE 7.5: TRIBUCLAW APP ═══════ -->
+<section class="section section-app" id="app">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-badge">🚀 TribuClaw App</span>
+      <h2 class="section-title">Tu centro de control</h2>
+      <p class="section-sub">Gestiona tus agentes sin tocar código. Crea, configura y monitoriza todo desde una interfaz pensada para que cualquiera pueda usarla.</p>
+    </div>
+    <div class="app-mockup" data-animate="fade-up">
+      <div class="app-dashboard glass-card">
+        <div class="app-sidebar">
+          <div class="app-sidebar-logo">⚡ TribuClaw</div>
+          <nav class="app-sidebar-nav">
+            <a class="app-sidebar-item active">👥 Agentes</a>
+            <a class="app-sidebar-item">📋 Tareas</a>
+            <a class="app-sidebar-item">💬 Mensajes</a>
+            <a class="app-sidebar-item">📊 Analytics</a>
+            <a class="app-sidebar-item">⚙️ Configuración</a>
+            <a class="app-sidebar-item">🌐 Comunidad</a>
+          </nav>
+          <div class="app-sidebar-user">
+            <div class="app-sidebar-avatar">ÁC</div>
+            <span>Álvaro</span>
+          </div>
+        </div>
+        <div class="app-main">
+          <div class="app-main-header">
+            <h3>Panel general</h3>
+            <span class="app-status-dot"></span> Todo operativo
+          </div>
+          <div class="app-cards">
+            <div class="app-card">
+              <span class="app-card-icon">🤖</span>
+              <span class="app-card-value">3</span>
+              <span class="app-card-label">Agentes activos</span>
+            </div>
+            <div class="app-card">
+              <span class="app-card-icon">✅</span>
+              <span class="app-card-value">12</span>
+              <span class="app-card-label">Tareas hoy</span>
+            </div>
+            <div class="app-card">
+              <span class="app-card-icon">💬</span>
+              <span class="app-card-value">47</span>
+              <span class="app-card-label">Mensajes</span>
+            </div>
+            <div class="app-card">
+              <span class="app-card-icon">📈</span>
+              <span class="app-card-value">98%</span>
+              <span class="app-card-label">Uptime</span>
+            </div>
+          </div>
+          <div class="app-activity">
+            <div class="app-activity-item">
+              <span class="app-activity-dot green"></span>
+              <span>Email bot procesó 23 emails</span>
+              <span class="app-activity-time">hace 2m</span>
+            </div>
+            <div class="app-activity-item">
+              <span class="app-activity-dot green"></span>
+              <span>LinkedIn bot publicó post</span>
+              <span class="app-activity-time">hace 15m</span>
+            </div>
+            <div class="app-activity-item">
+              <span class="app-activity-dot blue"></span>
+              <span>WhatsApp bot respondió 4 clientes</span>
+              <span class="app-activity-time">hace 1h</span>
+            </div>
           </div>
         </div>
       </div>
+    </div>
+    <div class="app-cta" data-animate="fade-up">
+      <p class="app-coming">Próximamente: registro gratuito para empezar a explorar</p>
+      <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+        <span>Entrar a TribuClaw</span>
+      </a>
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ═══════ PRICING ═══════ -->
+<!-- ═══════ BLOQUE 8: PRICING ═══════ -->
 <section class="section section-pricing" id="precio">
   <div class="container">
     <div class="section-header" data-animate="fade-up">
       <span class="section-badge">💰 Precio transparente</span>
-      <h2 class="section-title">¿Cuánto cuesta montar tu equipo de IA?</h2>
-      <p class="section-sub">Menos de lo que te gastas en café al mes.</p>
+      <h2 class="section-title">40€/mes. Sin permanencia. Sin letra pequeña.</h2>
     </div>
     <div class="pricing-card glass-card" data-animate="fade-up">
-      <div class="pricing-badge">Plan completo</div>
-      <div class="pricing-main">
-        <div class="pricing-items">
-          <div class="pricing-item">
-            <span class="pricing-item-label">TribuClaw</span>
-            <span class="pricing-item-value">35€/mes</span>
-          </div>
-          <div class="pricing-item">
-            <span class="pricing-item-label">VPS (Hetzner)</span>
-            <span class="pricing-item-value">desde 5€/mes</span>
-          </div>
+      <div class="pricing-items">
+        <div class="pricing-item">
+          <span class="pricing-item-label">TribuClaw (comunidad + curso + soporte)</span>
+          <span class="pricing-item-value">35€/mes</span>
         </div>
-        <div class="pricing-total">
-          <span class="pricing-total-label">Total</span>
-          <span class="pricing-total-value">desde 40€/mes</span>
+        <div class="pricing-item">
+          <span class="pricing-item-label">Servidor para tu agente</span>
+          <span class="pricing-item-value">5€/mes</span>
         </div>
       </div>
+      <div class="pricing-total">
+        <span class="pricing-total-label">Total</span>
+        <span class="pricing-total-value">40€/mes</span>
+      </div>
       <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener" style="width:100%;text-align:center;">
-        <span>Unirme a TribuClaw</span>
+        <span>Entrar a TribuClaw</span>
       </a>
-      <p class="pricing-note">98 miembros · 4.9/5 en Whop · Sin permanencia</p>
+      <p class="pricing-note">Entras cuando quieres. Sales cuando quieres. Sin permanencia, sin contratos, sin trampas.</p>
     </div>
   </div>
 </section>
 
 <div class="section-divider"></div>
 
-<!-- ═══════ CTA FINAL ═══════ -->
+<!-- ═══════ BLOQUE 9: FAQ ═══════ -->
+<section class="section section-faq" id="faq">
+  <div class="container">
+    <div class="section-header" data-animate="fade-up">
+      <span class="section-badge">❓ Preguntas frecuentes</span>
+      <h2 class="section-title">Resolvemos tus dudas</h2>
+    </div>
+    <div class="faq-list" data-animate="stagger">
+      <details class="faq-item glass-card">
+        <summary>¿Necesito saber programar?</summary>
+        <p>No. El curso está pensado para gente sin conocimientos técnicos.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿En cuánto tiempo tengo mi agente funcionando?</summary>
+        <p>La mayoría lo tienen montado en la primera semana.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿Puedo cancelar cuando quiera?</summary>
+        <p>Sí. Sin permanencia. Entras y sales cuando quieras.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿Qué necesito para empezar?</summary>
+        <p>Solo un ordenador y conexión a internet. Te guiamos con lo demás.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿El servidor de 5€/mes es obligatorio?</summary>
+        <p>Sí, es donde vive tu agente. Te enseñamos a montarlo en el curso.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿Esto funciona para mi negocio?</summary>
+        <p>Si gestionas emails, clientes o redes sociales de forma manual, sí. Funciona.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿OpenClaw es de pago?</summary>
+        <p>No. OpenClaw es 100% gratuito y open source. TribuClaw es la comunidad que te enseña a montarlo y sacarle provecho.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿Puedo tener más de un agente?</summary>
+        <p>Sí. Te enseñamos a configurarlos y gestionarlos.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿Mis datos están seguros?</summary>
+        <p>100%. Tu servidor, tus datos. Nada pasa por terceros.</p>
+      </details>
+      <details class="faq-item glass-card">
+        <summary>¿Qué pasa si cancelo?</summary>
+        <p>Tu agente sigue funcionando. Pierdes acceso a comunidad y updates.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ═══════ BLOQUE 10: CIERRE ═══════ -->
 <section class="section section-cta-final">
   <div class="container">
     <div class="cta-final-inner" data-animate="fade-up">
-      <h2 class="cta-final-title"><span class="gradient-text">En 6 meses, tener un agente va a ser lo normal.</span></h2>
-      <p class="cta-final-sub">Puedes entrar ahora o cuando todo el mundo lo esté haciendo.</p>
+      <h2 class="cta-final-title"><span class="gradient-text">En 6 meses, tener un agente IA va a ser lo normal.</span></h2>
+      <p class="cta-final-sub">Dentro de 6 meses, tener un agente IA gestionando tu negocio va a ser tan normal como tener una web o un email. La diferencia es quién entra ahora y quién llega cuando todo el mundo ya lo hace.</p>
+      <p class="cta-final-sub">No necesitas esperar a que madure la tecnología. Ya está madura. Ya funciona. Ya la usamos nosotros y los 98 miembros de TribuClaw.</p>
       <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
-        <span>Unirme a TribuClaw</span>
+        <span>Entrar a TribuClaw</span>
       </a>
-      <p class="cta-final-hint">Desde 40€/mes · Cancela cuando quieras</p>
+      <p class="cta-final-hint">Puedes seguir haciendo todo manual. O puedes entrar hoy.</p>
     </div>
   </div>
 </section>
@@ -232,7 +593,7 @@ import { SITE_TITLE, SITE_URL, WHOP_URL } from '../consts';
 
 <Footer />
 
-<script>
+<script type="module">
 // ═══════ GSAP ANIMATIONS ═══════
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
@@ -244,15 +605,13 @@ const heroBadge = document.querySelector('.hero-badge');
 const heroHeadline = document.querySelector('.hero-headline');
 const heroSub = document.querySelector('.hero-sub');
 const heroCta = document.querySelector('.hero-cta');
-const heroVisual = document.querySelector('.hero-visual');
 
 const heroTl = gsap.timeline({ delay: 0.3 });
 heroTl
   .from(heroBadge, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' })
   .from(heroHeadline, { opacity: 0, y: 30, duration: 0.7, ease: 'power2.out' }, '-=0.3')
   .from(heroSub, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-  .from(heroCta, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3')
-  .from(heroVisual, { opacity: 0, y: 30, duration: 0.6, ease: 'power2.out' }, '-=0.3');
+  .from(heroCta, { opacity: 0, y: 20, duration: 0.6, ease: 'power2.out' }, '-=0.3');
 
 // ─── Section headers: fade up ───
 gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach(el => {
@@ -296,22 +655,45 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 6rem 0 4rem;
+  padding: 6rem 1.5rem 4rem;
   overflow: hidden;
+  background: linear-gradient(180deg, #0a0a0a 0%, #111318 50%, var(--bg) 100%);
+}
+
+.hero-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+}
+
+.hero-glow {
+  position: absolute;
+  top: 10%;
+  left: -10%;
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(ellipse, rgba(233,69,96,0.08) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-inner {
   position: relative;
   z-index: 1;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
   align-items: center;
-  width: 100%;
 }
 
-.hero-content {
-  text-align: center;
+.hero-left {
+  max-width: 600px;
 }
 
 .hero-badge {
@@ -329,51 +711,212 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
 }
 
 .hero-headline {
-  font-size: clamp(2.2rem, 6vw, 3.8rem);
+  font-size: clamp(2rem, 5vw, 3.2rem);
   font-weight: 900;
   letter-spacing: -0.04em;
-  line-height: 1.08;
+  line-height: 1.1;
   margin-bottom: 1.25rem;
+  text-shadow: 0 0 60px rgba(233,69,96,0.15);
 }
 
 .hero-sub {
   color: var(--text-muted);
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   line-height: 1.7;
   margin-bottom: 2rem;
-  max-width: 520px;
-  margin-left: auto;
-  margin-right: auto;
+  max-width: 500px;
 }
 
 .hero-cta {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   gap: 0.75rem;
 }
 
-.hero-cta-hint {
-  color: rgba(250,250,250,0.35);
-  font-size: 0.8rem;
+/* ═══════ PHONE MOCKUP ═══════ */
+.hero-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  perspective: 1000px;
 }
 
-.hero-visual {
-  max-width: 560px;
+.phone-glow {
+  position: absolute;
+  width: 280px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(233,69,96,0.2) 0%, rgba(233,69,96,0.05) 40%, transparent 70%);
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.phone-frame {
+  position: relative;
+  z-index: 1;
+  width: 280px;
+  height: 560px;
+  background: #1a1a2e;
+  border-radius: 36px;
+  border: 3px solid #2a2a3e;
+  box-shadow: 0 25px 60px rgba(0,0,0,0.5), 0 0 80px rgba(233,69,96,0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transform: rotateY(-5deg);
+  transition: transform 0.6s ease;
+}
+
+.phone-notch {
+  width: 120px;
+  height: 28px;
+  background: #1a1a2e;
+  border-radius: 0 0 18px 18px;
   margin: 0 auto;
-  width: 100%;
-  padding: 2rem;
-  background: rgba(255,255,255,0.02);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  text-align: center;
+  position: relative;
+  z-index: 2;
 }
 
-.hero-visual-text {
-  color: var(--text-muted);
-  font-size: 1rem;
-  line-height: 1.7;
-  margin: 0;
+.phone-status {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.25rem 1.25rem;
+  font-size: 0.7rem;
+  color: rgba(255,255,255,0.6);
+  font-weight: 600;
+  margin-top: -0.5rem;
+}
+
+.phone-icons {
+  font-size: 0.5rem;
+  letter-spacing: 2px;
+  color: rgba(255,255,255,0.5);
+}
+
+.phone-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.6rem 1rem;
+  background: rgba(233,69,96,0.08);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.phone-avatar {
+  font-size: 1.3rem;
+}
+
+.phone-header-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.phone-header-name {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.phone-header-status {
+  font-size: 0.65rem;
+  color: #4ade80;
+}
+
+.phone-messages {
+  flex: 1;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  overflow: hidden;
+}
+
+.chat-bubble {
+  background: #2a2a3e;
+  border-radius: 16px 16px 16px 4px;
+  padding: 0.65rem 0.85rem;
+  max-width: 85%;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.45;
+  opacity: 0;
+  transform: translateY(8px);
+  animation: bubbleIn 0.4s ease forwards;
+}
+
+.chat-bubble.msg-2 {
+  animation-delay: 3s;
+}
+
+.chat-bubble.msg-3 {
+  animation-delay: 5.5s;
+}
+
+@keyframes bubbleIn {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.typing-indicator {
+  display: flex;
+  gap: 4px;
+  padding: 0.6rem 0.85rem;
+  max-width: 50px;
+  opacity: 0;
+}
+
+.typing-indicator span {
+  width: 6px;
+  height: 6px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 50%;
+  animation: typingDot 1.4s ease-in-out infinite;
+}
+
+.typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+.typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+
+@keyframes typingDot {
+  0%, 60%, 100% { opacity: 0.3; transform: scale(0.8); }
+  30% { opacity: 1; transform: scale(1.1); }
+}
+
+.typing-indicator {
+  animation: typingShow 0.3s ease forwards 0.3s;
+}
+.typing-2 {
+  animation: typingShow2 0.3s ease forwards 3.8s;
+}
+
+@keyframes typingShow {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+@keyframes typingShow2 {
+  0% { opacity: 0; }
+  30% { opacity: 1; }
+  80% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.phone-input {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  display: flex;
+  align-items: center;
+}
+
+.phone-input-placeholder {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.25);
+  background: rgba(255,255,255,0.04);
+  padding: 0.5rem 0.75rem;
+  border-radius: 20px;
+  flex: 1;
 }
 
 /* ═══════ SECTIONS ═══════ */
@@ -383,24 +926,221 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   overflow: hidden;
 }
 
-/* ═══════ INCLUDES SECTION ═══════ */
-.section-includes {
+.section-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-badge {
+  display: inline-block;
+  background: rgba(233,69,96,0.08);
+  border: 1px solid rgba(233,69,96,0.2);
+  color: var(--accent);
+  padding: 0.3rem 0.8rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-weight: 900;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin-bottom: 0.75rem;
+}
+
+.section-sub {
+  color: var(--text-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+/* ═══════ BLOQUE 2: PROBLEMA ═══════ */
+.section-problem {
+  background: var(--bg-alt);
+}
+
+.problem-text {
+  max-width: 680px;
+  margin: 0 auto;
+}
+.problem-text p {
+  color: rgba(250,250,250,0.75);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.problem-text p:last-child {
+  margin-bottom: 0;
+}
+.problem-text strong {
+  color: #fafafa;
+}
+
+/* ═══════ BLOQUE 3: OPENCLAW ═══════ */
+.section-openclaw {
   background: var(--bg);
+}
+
+.openclaw-text {
+  max-width: 680px;
+  margin: 0 auto 2.5rem;
+}
+.openclaw-text p {
+  color: rgba(250,250,250,0.75);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+.openclaw-text p:last-child {
+  margin-bottom: 0;
+}
+.openclaw-clarify {
+  font-size: 1.15rem !important;
+  color: #fafafa !important;
+  font-weight: 700;
+}
+
+.openclaw-tools {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+}
+
+.tool-card {
+  padding: 1.25rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+.tool-icon {
+  font-size: 1.5rem;
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+.tool-card h3 {
+  font-size: 1rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+}
+.tool-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: 0;
+}
+
+.openclaw-247 {
+  max-width: 680px;
+  margin: 0 auto;
+  text-align: center;
+}
+.openclaw-247 p {
+  color: rgba(250,250,250,0.75);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  margin-bottom: 0.75rem;
+}
+.openclaw-247 strong {
+  color: #fafafa;
+}
+.openclaw-pivot {
+  font-size: 1.1rem !important;
+}
+
+/* ═══════ BLOQUE 4: TIMELINE ═══════ */
+.section-timeline {
+  background: var(--bg-alt);
+}
+
+.timeline-table {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timeline-row {
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.timeline-time {
+  font-size: 1.1rem;
+  font-weight: 900;
+  color: var(--accent);
+  min-width: 60px;
+  flex-shrink: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+.timeline-desc {
+  color: rgba(250,250,250,0.8);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.timeline-note {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 1rem;
+  font-style: italic;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* ═══════ CTA INTERMEDIO ═══════ */
+.section-cta-mid {
+  background: var(--bg);
+  padding: 3.5rem 0;
+}
+
+.cta-mid-inner {
+  text-align: center;
+  max-width: 500px;
+  margin: 0 auto;
+}
+.cta-mid-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.02em;
+}
+
+/* ═══════ BLOQUE 5: INCLUYE ═══════ */
+.section-includes {
+  background: var(--bg-alt);
 }
 
 .includes-grid {
   display: grid;
   grid-template-columns: 1fr;
   gap: 1rem;
-  position: relative;
-  z-index: 1;
+  max-width: 900px;
+  margin: 0 auto;
 }
 
 .include-card {
   padding: 1.75rem;
 }
+.include-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.75rem;
+}
 .include-card h3 {
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   font-weight: 800;
   margin-bottom: 0.5rem;
 }
@@ -411,7 +1151,72 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   margin: 0;
 }
 
-/* ═══════ SOCIAL PROOF (estático) ═══════ */
+/* ═══════ BLOQUE 6: COMPARATIVA ═══════ */
+.section-compare {
+  background: var(--bg);
+}
+
+.compare-table {
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
+}
+
+.compare-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.compare-header {
+  background: rgba(255,255,255,0.03);
+  border-radius: 8px 8px 0 0;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+.compare-col {
+  padding: 1rem 1.25rem;
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.compare-col-solo {
+  color: rgba(250,250,250,0.45);
+}
+
+.compare-col-tribu {
+  color: rgba(250,250,250,0.9);
+  font-weight: 600;
+}
+
+.compare-price {
+  text-align: center;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.compare-price-label {
+  font-size: 1.1rem;
+  font-weight: 800;
+  margin-bottom: 0.75rem;
+  color: #fafafa;
+}
+.compare-price-line {
+  color: rgba(250,250,250,0.7);
+  font-size: 0.95rem;
+  margin-bottom: 0.25rem;
+}
+.compare-price-total {
+  font-size: 1.3rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+}
+.compare-price-note {
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+
+/* ═══════ BLOQUE 7: PROOF ═══════ */
 .section-proof {
   background: var(--bg-alt);
 }
@@ -443,7 +1248,7 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   grid-template-columns: 1fr;
   gap: 1.25rem;
   max-width: 900px;
-  margin: 0 auto;
+  margin: 0 auto 2rem;
 }
 
 .review-card {
@@ -492,7 +1297,15 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   color: var(--text-muted);
 }
 
-/* ═══════ PRICING ═══════ */
+.proof-closing {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ═══════ BLOQUE 8: PRICING ═══════ */
 .section-pricing {
   background: var(--bg);
 }
@@ -505,20 +1318,6 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   position: relative;
   z-index: 1;
   border: 1px solid rgba(233,69,96,0.15);
-}
-
-.pricing-badge {
-  display: inline-block;
-  padding: 0.25rem 0.8rem;
-  border-radius: 999px;
-  font-size: 0.7rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.06em;
-  background: rgba(233,69,96,0.1);
-  color: var(--accent);
-  border: 1px solid rgba(233,69,96,0.2);
-  margin-bottom: 1.5rem;
 }
 
 .pricing-items {
@@ -537,10 +1336,12 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
 }
 .pricing-item-label {
   color: rgba(250,250,250,0.7);
+  text-align: left;
 }
 .pricing-item-value {
   font-weight: 700;
   color: #fafafa;
+  white-space: nowrap;
 }
 
 .pricing-total {
@@ -568,9 +1369,59 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   margin-top: 1rem;
 }
 
-/* ═══════ CTA FINAL ═══════ */
-.section-cta-final {
+/* ═══════ BLOQUE 9: FAQ ═══════ */
+.section-faq {
   background: var(--bg-alt);
+}
+
+.faq-list {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.faq-item {
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+.faq-item summary {
+  padding: 1.25rem 1.5rem;
+  cursor: pointer;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: rgba(250,250,250,0.9);
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.faq-item summary::after {
+  content: '+';
+  font-size: 1.2rem;
+  color: var(--accent);
+  font-weight: 300;
+  transition: transform 0.2s;
+}
+.faq-item[open] summary::after {
+  content: '−';
+}
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+.faq-item p {
+  padding: 0 1.5rem 1.25rem;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ═══════ BLOQUE 10: CIERRE ═══════ */
+.section-cta-final {
+  background: var(--bg);
   padding: 6rem 0;
 }
 
@@ -578,55 +1429,282 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   text-align: center;
   position: relative;
   z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
 }
 .cta-final-title {
   font-size: clamp(1.8rem, 5vw, 2.8rem);
   font-weight: 900;
   letter-spacing: -0.04em;
   line-height: 1.1;
-  margin-bottom: 1rem;
+  margin-bottom: 1.25rem;
 }
 .cta-final-sub {
   color: var(--text-muted);
   font-size: 1.05rem;
-  margin-bottom: 2rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.7;
 }
 .cta-final-hint {
-  color: rgba(250,250,250,0.3);
-  font-size: 0.85rem;
+  color: rgba(250,250,250,0.4);
+  font-size: 0.9rem;
   margin-top: 1.5rem;
+  font-style: italic;
+}
+
+/* ═══════ TRIBUCLAW APP ═══════ */
+.section-app {
+  background: var(--bg);
+}
+
+.app-mockup {
+  max-width: 900px;
+  margin: 0 auto 2.5rem;
+}
+
+.app-dashboard {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.06);
+  min-height: 320px;
+}
+
+.app-sidebar {
+  background: rgba(255,255,255,0.02);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-sidebar-logo {
+  font-weight: 900;
+  font-size: 0.85rem;
+  padding: 0 1rem;
+  margin-bottom: 1.25rem;
+  color: var(--accent);
+}
+
+.app-sidebar-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  flex: 1;
+}
+
+.app-sidebar-item {
+  padding: 0.55rem 1rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  cursor: default;
+  transition: all 0.2s;
+  border-left: 2px solid transparent;
+}
+
+.app-sidebar-item.active {
+  color: #fff;
+  background: rgba(233,69,96,0.08);
+  border-left-color: var(--accent);
+  font-weight: 600;
+}
+
+.app-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(255,255,255,0.06);
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.app-sidebar-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: var(--gradient);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #fff;
+}
+
+.app-main {
+  padding: 1.5rem;
+}
+
+.app-main-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 1.25rem;
+}
+
+.app-main-header h3 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #fff;
+  margin-right: auto;
+}
+
+.app-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #4ade80;
+  display: inline-block;
+}
+
+.app-cards {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.app-card {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.app-card-icon {
+  font-size: 1.2rem;
+}
+
+.app-card-value {
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.2;
+}
+
+.app-card-label {
+  font-size: 0.72rem;
+  color: rgba(255,255,255,0.4);
+}
+
+.app-activity {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.app-activity-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.78rem;
+  color: rgba(255,255,255,0.6);
+}
+
+.app-activity-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.app-activity-dot.green { background: #4ade80; }
+.app-activity-dot.blue { background: #60a5fa; }
+
+.app-activity-time {
+  margin-left: auto;
+  font-size: 0.68rem;
+  color: rgba(255,255,255,0.25);
+  flex-shrink: 0;
+}
+
+.app-cta {
+  text-align: center;
+}
+
+.app-coming {
+  color: rgba(255,255,255,0.4);
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
 }
 
 /* ═══════ RESPONSIVE ═══════ */
 @media (min-width: 640px) {
   .includes-grid { grid-template-columns: repeat(2, 1fr); }
+  .openclaw-tools { grid-template-columns: repeat(2, 1fr); }
   .reviews-static { grid-template-columns: repeat(3, 1fr); }
   .section { padding: 6rem 0; }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 768px) {
   .hero-inner {
-    grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    text-align: left;
+    grid-template-columns: 1.1fr 0.9fr;
   }
-  .hero-content { text-align: left; }
-  .hero-sub { margin-left: 0; margin-right: 0; }
-  .hero-cta { align-items: flex-start; }
-  .hero-visual { margin: 0; max-width: none; }
+  .openclaw-tools { grid-template-columns: repeat(3, 1fr); }
+  .includes-grid { grid-template-columns: repeat(2, 1fr); }
+  .app-cards { grid-template-columns: repeat(4, 1fr); }
+}
+
+@media (min-width: 1024px) {
   .section { padding: 7rem 0; }
+  .hero-inner {
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+  }
 }
 
 @media (max-width: 639px) {
-  .hero { padding: 5rem 0 3rem; min-height: auto; }
+  .hero { padding: 5rem 1rem 3rem; min-height: auto; }
   .hero-badge span { font-size: 0.7rem; padding: 0.3rem 0.7rem; }
   .hero-sub { font-size: 0.95rem; }
+  .hero-right { display: none; }
   .section { padding: 4rem 0; }
+  .section-title { font-size: 1.4rem; }
   .proof-stats { gap: 1rem; }
   .reviews-static { gap: 1rem; }
   .review-card { padding: 1.25rem; }
   .pricing-card { padding: 1.5rem; }
+  .pricing-item { flex-direction: column; align-items: flex-start; gap: 0.15rem; }
   .cta-final-title { font-size: 1.5rem; }
+  .compare-row { grid-template-columns: 1fr; }
+  .compare-col-solo { padding-bottom: 0.25rem; color: rgba(250,250,250,0.35); font-size: 0.8rem; }
+  .timeline-row { flex-direction: column; gap: 0.5rem; }
+  .timeline-time { min-width: auto; }
+  .app-dashboard {
+    grid-template-columns: 1fr;
+    min-height: auto;
+  }
+  .app-sidebar {
+    border-right: none;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    padding: 1rem 0;
+  }
+  .app-sidebar-nav {
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 0;
+  }
+  .app-sidebar-item {
+    white-space: nowrap;
+    padding: 0.4rem 0.75rem;
+    font-size: 0.72rem;
+    border-left: none;
+    border-bottom: 2px solid transparent;
+  }
+  .app-sidebar-item.active {
+    border-left-color: transparent;
+    border-bottom-color: var(--accent);
+  }
+  .app-sidebar-user { display: none; }
+  .app-cards { grid-template-columns: repeat(2, 1fr); }
+  .app-activity { display: none; }
 }
 </style>
 
