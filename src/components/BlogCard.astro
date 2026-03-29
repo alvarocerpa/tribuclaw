@@ -8,12 +8,13 @@ interface Props {
   tags?: string[];
   slug: string;
   heroImage?: string;
+  readingTime?: number;
 }
 
-const { title, description, pubDate, tags = [], slug, heroImage } = Astro.props;
+const { title, description, pubDate, tags = [], slug, heroImage, readingTime } = Astro.props;
 ---
 
-<article class="blog-card">
+<article class="blog-card glass-card">
   <a href={`/blog/${slug}/`}>
     <div class="card-image">
       <img
@@ -26,21 +27,32 @@ const { title, description, pubDate, tags = [], slug, heroImage } = Astro.props;
       />
     </div>
     <div class="card-body">
+      {tags.length > 0 && (
+        <div class="card-tags">
+          {tags.slice(0, 3).map((tag) => <span class="card-tag">{tag}</span>)}
+        </div>
+      )}
       <h3 class="card-title">{title}</h3>
       <p class="card-excerpt">{description}</p>
-      <time class="card-date"><FormattedDate date={pubDate} /></time>
+      <div class="card-meta">
+        <time class="card-date"><FormattedDate date={pubDate} /></time>
+        {readingTime && (
+          <span class="card-reading-time">{readingTime} min lectura</span>
+        )}
+      </div>
     </div>
   </a>
 </article>
 
 <style>
   .blog-card {
-    border-radius: 12px;
     overflow: hidden;
-    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
   }
   .blog-card:hover {
-    box-shadow: 0 8px 30px rgba(0,0,0,0.3);
+    transform: translateY(-3px);
+    border-color: rgba(233,69,96,0.25);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(233,69,96,0.08);
   }
   .blog-card a {
     text-decoration: none;
@@ -61,6 +73,10 @@ const { title, description, pubDate, tags = [], slug, heroImage } = Astro.props;
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s;
+  }
+  .blog-card:hover .card-image img {
+    transform: scale(1.03);
   }
 
   .card-body {
@@ -68,6 +84,25 @@ const { title, description, pubDate, tags = [], slug, heroImage } = Astro.props;
     display: flex;
     flex-direction: column;
     flex: 1;
+  }
+
+  .card-tags {
+    display: flex;
+    gap: 0.4rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.75rem;
+  }
+  .card-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.65rem;
+    font-weight: 600;
+    background: rgba(233,69,96,0.08);
+    border: 1px solid rgba(233,69,96,0.15);
+    color: #e94560;
   }
 
   .card-title {
@@ -94,9 +129,18 @@ const { title, description, pubDate, tags = [], slug, heroImage } = Astro.props;
     margin-bottom: 1rem;
   }
 
+  .card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
   .card-date {
     font-size: 0.75rem;
     color: rgba(250,250,250,0.3);
+  }
+  .card-reading-time {
+    font-size: 0.7rem;
+    color: rgba(250,250,250,0.25);
   }
 
   @media (max-width: 640px) {

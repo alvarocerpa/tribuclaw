@@ -1,16 +1,12 @@
 ---
-// membresia.astro — Redirect 301 a /
-Astro.response.status = 301;
-Astro.response.headers.set('Location', '/');
+import { WHOP_URL } from '../consts';
 ---
-<!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta http-equiv="refresh" content="0;url=/" />
-  <title>Redirigiendo...</title>
+  <meta http-equiv="refresh" content="0;url={WHOP_URL}" />
+  <link rel="canonical" href={WHOP_URL} />
 </head>
 <body>
-  <p>Redirigiendo a <a href="/">tribuclaw.com</a>...</p>
-  <script>window.location.replace('/');</script>
+  <p>Redirigiendo a <a href={WHOP_URL}>TribuClaw</a>...</p>
 </body>
 </html>

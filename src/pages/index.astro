@@ -1,41 +1,32 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { WHOP_URL } from '../consts';
 ---
 
-<!doctype html>
-<html lang="es">
-<head>
-  <BaseHead
-    title="TribuClaw — Tu agente IA personal que trabaja 24/7 por ti"
-    description="TribuClaw te enseña a montar tu propio agente IA en un servidor de 5€/mes. Sin ser programador. Un sistema real que gestiona tus emails, tus clientes y tus redes por ti."
-  />
-</head>
-<body>
-<Header />
-<main id="main-content">
+<BaseLayout
+  title="TribuClaw — Tu agente IA personal que trabaja 24/7 por ti"
+  description="TribuClaw te enseña a montar tu agente IA en un servidor de 5€/mes. Sin ser programador. Curso + App + Comunidad."
+>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- HERO -->
-  <!-- ═══════════════════════════════════════════ -->
   <section class="hero" id="hero">
     <canvas id="hero-particles"></canvas>
     <div class="hero-glow hero-glow-top"></div>
     <div class="container-hero">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="badge-pill">🦞 Agentes IA personales</span>
+          <span class="badge-pill">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 017 7c0 3-2 5.5-4 7l-1 1v3h-4v-3l-1-1c-2-1.5-4-4-4-7a7 7 0 017-7z"/><path d="M9 21h6"/></svg>
+            Agentes IA personales
+          </span>
           <h1 class="hero-headline" data-animate="headline">
             Mientras tú haces todo manual, otros ya tienen un <span class="gradient-text">agente IA trabajando 24/7</span> por ellos.
           </h1>
           <p class="hero-sub" data-animate="fade-up">
-            TribuClaw te enseña a montar tu propio agente IA en un servidor de 5€/mes. Sin ser programador. Sin frases raras. Un sistema real que gestiona tus emails, tus clientes y tus redes por ti.
+            Formación + Comunidad + App. Todo lo que necesitas para tener tu agente IA funcionando esta semana.
           </p>
           <div class="hero-cta" data-animate="cta">
             <a href={WHOP_URL} class="cta-btn cta-btn-lg hero-cta-btn" target="_blank" rel="noopener">
-              Entrar a TribuClaw →
+              Montar mi agente hoy →
             </a>
           </div>
         </div>
@@ -53,292 +44,226 @@ import { WHOP_URL } from '../consts';
                 <span>LIVE</span>
               </div>
             </div>
-            <div class="console-body" id="console-body">
-              <div class="console-line" data-delay="0">🦞 Kimo &gt; Analizando métricas de la semana...</div>
-              <div class="console-line" data-delay="800">📊 Data &gt; Revenue +23% vs semana anterior</div>
-              <div class="console-line" data-delay="1600">🎨 Mika &gt; Generando thumbnail para el blog...</div>
-              <div class="console-line" data-delay="2400">✍️ Pluma &gt; Redactando post de LinkedIn...</div>
-              <div class="console-line" data-delay="3200">🤖 Mao &gt; Desplegando nueva feature en producción</div>
-              <div class="console-line" data-delay="4000">⚡ Sistema &gt; 5 agentes activos · 847 tareas completadas hoy</div>
-            </div>
-            <div class="console-cursor">▊</div>
+            <div class="console-body" id="console-body"></div>
+            <div class="console-cursor" id="console-cursor">█</div>
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- EL PROBLEMA -->
-  <!-- ═══════════════════════════════════════════ -->
   <section class="section section-problema" data-animate="fade-up">
     <div class="container">
       <div class="section-header">
         <span class="section-badge">El problema</span>
         <h2 class="section-title">Tu negocio depende 100% de ti. Y eso tiene techo.</h2>
       </div>
-      <div class="problema-text">
-        <p>
-          Piensa en tu día de ayer. Abriste los emails uno por uno. Respondiste clientes por WhatsApp. Publicaste algo en redes. Buscaste info para un proyecto. Preparaste una factura. Miraste el calendario. Contestaste un mensaje más. Y otro. Y otro.
-        </p>
-        <p>
-          Todo eso lo hiciste tú. Manualmente. A mano.
-        </p>
-        <p>
-          El problema no es que trabajes mucho. Es que <strong>no puedes trabajar más</strong>. Tu día tiene 24 horas y ya las usas todas. Si quieres facturar el doble, necesitas el doble de tiempo. Y ese tiempo no existe.
-        </p>
-        <p>
-          La IA está ahí fuera. Todo el mundo habla de ella. Pero cuando intentas usarla de verdad, te encuentras con lo mismo: ChatGPT te da respuestas bonitas, pero no hace nada por ti. No abre tu email. No contesta a tus clientes. No publica mientras duermes.
-        </p>
-        <p>
-          Hay un salto entre "usar ChatGPT" y "tener un sistema que trabaja por ti". Y casi nadie te explica cómo darlo.
-        </p>
+      <div class="problema-cards">
+        <div class="problema-card glass-card">
+          <div class="problema-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <p>Abres emails uno por uno. Respondes clientes por WhatsApp. Publicas en redes. Preparas facturas. Todo manual.</p>
+        </div>
+        <div class="problema-card glass-card">
+          <div class="problema-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <p>Tu día tiene 24 horas y ya las usas todas. Si quieres facturar el doble, necesitas el doble de tiempo. <strong>Y ese tiempo no existe.</strong></p>
+        </div>
+        <div class="problema-card glass-card">
+          <div class="problema-icon-wrap">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <p>ChatGPT te da respuestas bonitas, pero no hace nada por ti. Hay un salto entre "usar ChatGPT" y "tener un sistema que trabaja por ti". Casi nadie te explica cómo darlo.</p>
+        </div>
       </div>
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <linearGradient id="gradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e94560"/>
+            <stop offset="100%" stop-color="#ff6b6b"/>
+          </linearGradient>
+        </defs>
+      </svg>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- ¿QUÉ ES OPENCLAW? -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="section section-openclaw" id="que-es" data-animate="fade-up">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Open Source</span>
-        <h2 class="section-title">OpenClaw: el proyecto open source que está cambiando las reglas</h2>
-      </div>
-
-      <p class="openclaw-intro">
-        OpenClaw es el proyecto de agentes IA más grande del mundo. Más de <strong>247.000 estrellas en GitHub</strong>. Gratuito. Open source. Cualquiera puede usarlo.
-      </p>
-      <p class="openclaw-intro">
-        Pero no es ChatGPT. No es una app que abres y le preguntas cosas. OpenClaw es un sistema que instalas en tu servidor (cuesta 5€/mes) y que se conecta con tus herramientas reales:
-      </p>
-
-      <!-- Stats -->
-      <div class="stats-row" data-animate="stagger">
-        <div class="stat-item">
-          <span class="stat-value" data-target="247000" data-suffix="K+" data-prefix="">0</span>
-          <span class="stat-label">GitHub Stars</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value" data-target="47.7" data-suffix="K+" data-prefix="">0</span>
-          <span class="stat-label">Forks</span>
-        </div>
-        <div class="stat-item">
-          <span class="stat-value" data-target="167000" data-suffix="K+" data-prefix="">0</span>
-          <span class="stat-label">Builders</span>
-        </div>
-      </div>
-
-      <!-- 3 Cards -->
-      <div class="openclaw-cards" data-animate="stagger">
-        <div class="oc-card">
-          <div class="oc-card-icon">⚡</div>
-          <h3>Ejecuta, no chatea</h3>
-          <p>No es un chatbot. Es un agente que toma decisiones, ejecuta tareas y trabaja sin supervisión.</p>
-        </div>
-        <div class="oc-card">
-          <div class="oc-card-icon">🖥️</div>
-          <h3>Tu servidor, tu control</h3>
-          <p>Lo instalas en tu propio VPS por 5€/mes. Tú tienes el control total. Sin depender de terceros.</p>
-        </div>
-        <div class="oc-card">
-          <div class="oc-card-icon">🤖</div>
-          <h3>Multi-agente</h3>
-          <p>Varios agentes especializados que colaboran entre sí. Cada uno experto en su área, coordinados por un jefe.</p>
-        </div>
-      </div>
-
-      <div class="openclaw-cta">
-        <p>El problema: OpenClaw es gratis y abierto, pero montarlo bien cuesta tiempo, pruebas y dolores de cabeza. Ahí es donde entra <strong>TribuClaw</strong>.</p>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- UN DÍA CON TU AGENTE -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="section section-timeline" id="timeline">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <span class="section-badge">Así funciona</span>
-        <h2 class="section-title">Así se ve un día con tu agente IA funcionando</h2>
-      </div>
-      <div class="timeline-wrapper" data-animate="fade-up">
-        <div class="timeline-track">
-          <div class="timeline-progress" id="timeline-progress"></div>
-        </div>
-        <div class="timeline-item" data-animate="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-time">08:00</div>
-          <div class="timeline-title">Revisa tus emails overnight</div>
-          <div class="timeline-desc">Te prepara un resumen con solo los que necesitan respuesta. El resto ya está archivado.</div>
-        </div>
-        <div class="timeline-item" data-animate="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-time">09:00</div>
-          <div class="timeline-title">Publica en tus redes sociales</div>
-          <div class="timeline-desc">Con tu tono y tu estilo. No es un post genérico — suena a ti.</div>
-        </div>
-        <div class="timeline-item" data-animate="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-time">11:00</div>
-          <div class="timeline-title">Responde clientes por WhatsApp</div>
-          <div class="timeline-desc">Con contexto: tiene acceso a tu historial, tus precios, tus servicios.</div>
-        </div>
-        <div class="timeline-item" data-animate="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-time">14:00</div>
-          <div class="timeline-title">Investiga tendencias de tu sector</div>
-          <div class="timeline-desc">Te prepara un breve con lo relevante. Mientras tú almorzamos.</div>
-        </div>
-        <div class="timeline-item" data-animate="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-time">17:00</div>
-          <div class="timeline-title">Resumen del día</div>
-          <div class="timeline-desc">Qué se hizo, qué queda pendiente, qué necesitas decidir tú.</div>
-        </div>
-        <div class="timeline-item" data-animate="timeline-item">
-          <div class="timeline-dot"></div>
-          <div class="timeline-time">23:00</div>
-          <div class="timeline-title">Sigue trabajando</div>
-          <div class="timeline-desc">Procesa lo que ha ido llegando. Prepara el día siguiente. Tú ya duermes.</div>
-        </div>
-      </div>
-      <div class="timeline-cta" data-animate="fade-up">
-        <p>Esto no es ciencia ficción. Es lo que hace OpenClaw. Y en TribuClaw te enseñamos paso a paso a montarlo.</p>
-        <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">Entrar a TribuClaw →</a>
-      </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- QUÉ INCLUYE -->
-  <!-- ═══════════════════════════════════════════ -->
   <section class="section section-incluye" id="incluye">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-badge">Todo incluido</span>
-        <h2 class="section-title">TribuClaw no es un curso más.<br/>Es todo lo que necesitas.</h2>
+        <h2 class="section-title">Curso. Directos. Comunidad.<br/>Y una App que gestiona tu agente sin tocar código.</h2>
       </div>
+      <p class="openclaw-bridge" data-animate="fade-up">
+        <strong>OpenClaw es gratis. Montarlo bien, no tanto.</strong> Por eso existe TribuClaw: todo lo que necesitas para que tu agente funcione desde la semana 1.
+      </p>
       <div class="bento-grid" data-animate="stagger">
-        <div class="bento-item bento-wide">
-          <div class="bento-icon">🧠</div>
+        <div class="bento-item glass-card">
+          <div class="bento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+          </div>
           <h3>Curso completo en español</h3>
           <p>De cero a tener tu sistema montado y funcionando. Sin conocimientos técnicos previos. Paso a paso, en vídeo, en tu idioma.</p>
         </div>
-        <div class="bento-item">
-          <div class="bento-icon">🎯</div>
-          <h3>Casos de uso semanales</h3>
-          <p>Cada semana un caso real. No teoría: cosas que nuestros agentes hacen HOY.</p>
-        </div>
-        <div class="bento-item">
-          <div class="bento-icon">💬</div>
-          <h3>Soporte 24/7</h3>
-          <p>TribuBot responde al instante. Y si no puede, Álvaro te responde personalmente.</p>
-        </div>
-        <div class="bento-item">
-          <div class="bento-icon">📺</div>
+        <div class="bento-item glass-card">
+          <div class="bento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          </div>
           <h3>Directos semanales</h3>
           <p>Cada miércoles a las 19:00. Dudas en vivo, novedades, avances compartidos.</p>
         </div>
-        <div class="bento-item bento-wide">
-          <div class="bento-icon">⚙️</div>
-          <h3>TribuClaw App</h3>
-          <p>Panel de control para gestionar tu agente sin tocar código. Crear, configurar y monitorizar desde una interfaz sencilla.</p>
+        <div class="bento-item glass-card">
+          <div class="bento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+          </div>
+          <h3>Soporte 24/7</h3>
+          <p>TribuBot responde al instante. Y si no puede, Álvaro te responde personalmente.</p>
         </div>
-        <div class="bento-item">
-          <div class="bento-icon">👥</div>
+        <div class="bento-item glass-card">
+          <div class="bento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
           <h3>Comunidad de 98 personas</h3>
           <p>Gente haciendo lo mismo que tú. Comparten avances, se ayudan, comparan resultados.</p>
         </div>
+        <div class="bento-item glass-card">
+          <div class="bento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+          </div>
+          <h3>Casos de uso semanales</h3>
+          <p>Cada semana un caso real. No teoría: cosas que nuestros agentes hacen HOY.</p>
+        </div>
+        <div class="bento-item glass-card">
+          <div class="bento-icon">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Actualización continua</h3>
+          <p>La IA avanza cada semana. El contenido se actualiza al mismo ritmo. Siempre al día.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- COMPARATIVA -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="section section-comparativa" data-animate="fade-up">
+  <section class="section section-app" id="app" data-animate="fade-up">
     <div class="container">
       <div class="section-header">
-        <span class="section-badge">Comparativa</span>
-        <h2 class="section-title">Lo que pasa si intentas hacerlo solo</h2>
+        <span class="section-badge">La App</span>
+        <h2 class="section-title">La TribuClaw App: tu agente con interfaz gráfica</h2>
+        <p class="section-sub">OpenClaw es increíble, pero funciona por terminal. La TribuClaw App es el panel de control que nadie te da.</p>
       </div>
-      <div class="compare-table-wrap">
-        <table class="compare-table">
-          <thead>
-            <tr>
-              <th>Por tu cuenta</th>
-              <th>Con TribuClaw</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Googlear tutoriales en inglés que no se aplican a tu caso</td>
-              <td>Curso en español, paso a paso, pensado para tu negocio</td>
-            </tr>
-            <tr>
-              <td>Preguntarle a ChatGPT y recibir respuestas genéricas</td>
-              <td>Casos de uso semanales reales y replicables</td>
-            </tr>
-            <tr>
-              <td>Probar y error durante semanas (o meses)</td>
-              <td>Tu sistema funcionando desde la primera semana</td>
-            </tr>
-            <tr>
-              <td>Nadie a quien preguntar cuando algo falla</td>
-              <td>Soporte 24/7 + comunidad activa</td>
-            </tr>
-            <tr>
-              <td>Actualizarte solo de lo que cambia en IA</td>
-              <td>Directos semanales con las novedades</td>
-            </tr>
-          </tbody>
-        </table>
+      <p class="app-intro">Nadie quiere configurar su agente IA escribiendo comandos en una terminal oscura. Por eso creamos la TribuClaw App: una interfaz visual donde ves, creas y controlas tus agentes sin tocar código.</p>
+      <div class="app-features" data-animate="stagger">
+        <div class="app-feature glass-card">
+          <div class="app-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+          </div>
+          <h3>Creación visual</h3>
+          <p>Crea agentes nuevos con unos clics. Elige modelo, conecta herramientas, define personalidad. Sin tocar JSON, sin terminal.</p>
+        </div>
+        <div class="app-feature glass-card">
+          <div class="app-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
+          </div>
+          <h3>Monitorización en tiempo real</h3>
+          <p>Ve qué están haciendo tus agentes ahora mismo. Tareas completadas, errores, logs. Todo en un dashboard limpio.</p>
+        </div>
+        <div class="app-feature glass-card">
+          <div class="app-feature-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
+          <h3>Deploy automático</h3>
+          <p>Configura tu agente desde la App y despliégalo en tu servidor con un botón. Sin SSH, sin SSH keys, sin dolores de cabeza.</p>
+        </div>
       </div>
-      <div class="comparativa-cta" data-animate="fade-up">
-        <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">Entrar a TribuClaw →</a>
+      <div class="app-mockup" data-animate="fade-up">
+        <div class="app-mockup-window">
+          <div class="app-mockup-titlebar">
+            <div class="app-mockup-dots">
+              <span></span><span></span><span></span>
+            </div>
+            <span class="app-mockup-title">TribuClaw App — Dashboard</span>
+          </div>
+          <div class="app-mockup-body">
+            <div class="app-mockup-sidebar">
+              <div class="app-sidebar-item active">Agentes</div>
+              <div class="app-sidebar-item">Tareas</div>
+              <div class="app-sidebar-item">Config</div>
+              <div class="app-sidebar-item">Logs</div>
+            </div>
+            <div class="app-mockup-main">
+              <div class="app-mockup-header-row">
+                <span class="app-mockup-status-dot"></span>
+                <span>Kimo — Activo</span>
+                <span class="app-mockup-badge">5 tareas</span>
+              </div>
+              <div class="app-mockup-cards">
+                <div class="app-mockup-stat">
+                  <span class="stat-value">847</span>
+                  <span class="stat-label">Tareas hoy</span>
+                </div>
+                <div class="app-mockup-stat">
+                  <span class="stat-value">99.9%</span>
+                  <span class="stat-label">Uptime</span>
+                </div>
+                <div class="app-mockup-stat">
+                  <span class="stat-value">42ms</span>
+                  <span class="stat-label">Latencia</span>
+                </div>
+              </div>
+              <div class="app-mockup-log">
+                <div class="mock-log-line"><span class="log-time">14:23</span> Email respondido ✓</div>
+                <div class="mock-log-line"><span class="log-time">14:21</span> Post publicado en LinkedIn ✓</div>
+                <div class="mock-log-line"><span class="log-time">14:18</span> Factura generada ✓</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="app-cta" data-animate="fade-up">
+        <p>La App está incluida en tu membresía de TribuClaw. No es un extra. Es el núcleo.</p>
+        <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">Ver la TribuClaw App →</a>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- SOCIAL PROOF -->
-  <!-- ═══════════════════════════════════════════ -->
   <section class="section section-proof" id="proof">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-badge">Social Proof</span>
-        <h2 class="section-title">Lo que dicen los que ya están dentro</h2>
+        <h2 class="section-title">98 personas ya no hacen todo solas</h2>
       </div>
-
-      <!-- Counters -->
       <div class="proof-counters" data-animate="stagger">
         <div class="proof-counter">
           <span class="proof-counter-value" data-target="98" data-suffix="+">0</span>
           <span class="proof-counter-label">Miembros</span>
         </div>
         <div class="proof-counter">
-          <span class="proof-counter-value" data-target="4.9" data-suffix="/5">0</span>
+          <span class="proof-counter-value" data-target="4.8" data-suffix="/5">0</span>
           <span class="proof-counter-label">Valoración media</span>
         </div>
       </div>
-
-      <!-- Testimonials -->
       <div class="testimonials-grid" data-animate="stagger">
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Comunidad joven pero con muchísimo potencial. Contenido fresco, de actualidad, en español..."</p>
+        <div class="testimonial-card glass-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">La App me cambió la vida. Antes tenía que entrar por terminal, ahora todo visual.</p>
+          <div class="testimonial-author">
+            <div class="t-avatar">JG</div>
+            <div>
+              <div class="t-name">Jorge García</div>
+              <div class="t-stars">★★★★★</div>
+            </div>
+          </div>
+        </div>
+        <div class="testimonial-card glass-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Comunidad joven pero con muchísimo potencial. Contenido fresco, de actualidad, en español...</p>
           <div class="testimonial-author">
             <div class="t-avatar">SC</div>
             <div>
@@ -347,8 +272,9 @@ import { WHOP_URL } from '../consts';
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw."</p>
+        <div class="testimonial-card glass-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw.</p>
           <div class="testimonial-author">
             <div class="t-avatar">AB</div>
             <div>
@@ -357,42 +283,79 @@ import { WHOP_URL } from '../consts';
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">"Perfecto!!!"</p>
+        <div class="testimonial-card glass-card">
+          <div class="testimonial-quote">"</div>
+          <p class="testimonial-text">En la primera semana ya tenía mi agente funcionando. El curso es directo al grano.</p>
           <div class="testimonial-author">
-            <div class="t-avatar">E</div>
+            <div class="t-avatar">ML</div>
             <div>
-              <div class="t-name">Edu</div>
+              <div class="t-name">María López</div>
               <div class="t-stars">★★★★★</div>
             </div>
           </div>
         </div>
-        <div class="testimonial-card">
-          <p class="testimonial-text">Llevamos 2 meses. El proyecto crece cada semana. Los que entraron primero ya tienen sus agentes funcionando.</p>
-          <div class="testimonial-author">
-            <div class="t-avatar">TC</div>
-            <div>
-              <div class="t-name">TribuClaw Team</div>
-              <div class="t-stars">★★★★★</div>
-            </div>
+      </div>
+      <div class="compare-section" data-animate="fade-up">
+        <h3 class="compare-heading">Lo que pasa si intentas hacerlo solo</h3>
+        <div class="compare-grid">
+          <div class="compare-col compare-bad glass-card">
+            <h4>Solo</h4>
+            <ul>
+              <li class="cross-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Googlear tutoriales en inglés
+              </li>
+              <li class="cross-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                ChatGPT con respuestas genéricas
+              </li>
+              <li class="cross-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Semanas de prueba y error
+              </li>
+              <li class="cross-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                Nadie a quien preguntar
+              </li>
+            </ul>
+          </div>
+          <div class="compare-col compare-good glass-card">
+            <h4>Con TribuClaw</h4>
+            <ul>
+              <li class="check-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Curso en español paso a paso
+              </li>
+              <li class="check-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Casos de uso reales semanales
+              </li>
+              <li class="check-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Funcionando desde la semana 1
+              </li>
+              <li class="check-item">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Soporte 24/7 + App incluida
+              </li>
+            </ul>
           </div>
         </div>
+      </div>
+      <div class="proof-cta" style="text-align:center; margin-top:2.5rem;">
+        <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">Empezar a automatizar →</a>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- PRICING -->
-  <!-- ═══════════════════════════════════════════ -->
   <section class="section section-pricing" id="pricing" data-animate="fade-up">
     <div class="container">
       <div class="section-header">
         <span class="section-badge">Precio</span>
         <h2 class="section-title">40€/mes. Sin permanencia. Sin letra pequeña.</h2>
       </div>
-
       <div class="pricing-card pricing-card-glow">
         <div class="pricing-header">
           <h3>TribuClaw</h3>
@@ -400,7 +363,7 @@ import { WHOP_URL } from '../consts';
         </div>
         <div class="pricing-rows">
           <div class="pricing-row">
-            <span>TribuClaw (comunidad + curso + soporte)</span>
+            <span>TribuClaw (comunidad + curso + soporte + App)</span>
             <span class="pricing-amount">35€/mes</span>
           </div>
           <div class="pricing-row">
@@ -416,21 +379,8 @@ import { WHOP_URL } from '../consts';
         <p class="pricing-note-sm">Menos que Netflix + Spotify + HBO. Y esto no te entretiene. Te libera horas.</p>
         <a href={WHOP_URL} class="cta-btn cta-btn-lg pricing-cta" target="_blank" rel="noopener">Entrar a TribuClaw →</a>
       </div>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- FAQ -->
-  <!-- ═══════════════════════════════════════════ -->
-  <section class="section section-faq" id="faq">
-    <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <span class="section-badge">FAQ</span>
-        <h2 class="section-title">Preguntas frecuentes</h2>
-      </div>
       <div class="faq-list" data-animate="fade-up">
+        <h3 class="faq-heading">Preguntas frecuentes</h3>
         <details class="faq-item">
           <summary>¿Necesito saber programar?</summary>
           <p>No. El curso está pensado para gente sin conocimientos técnicos.</p>
@@ -459,13 +409,26 @@ import { WHOP_URL } from '../consts';
           <summary>¿OpenClaw es de pago?</summary>
           <p>No. OpenClaw es 100% gratuito y open source. TribuClaw es la comunidad que te enseña a montarlo y sacarle provecho.</p>
         </details>
+        <details class="faq-item">
+          <summary>¿Qué diferencia a TribuClaw de YouTube?</summary>
+          <p>YouTube te da información suelta sin contexto. TribuClaw es un sistema completo: curso estructurado, casos reales semanales, soporte 24/7, comunidad que te ayuda y una App que gestiona tu agente. No es contenido, es resultado.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Y si ya uso ChatGPT?</summary>
+          <p>ChatGPT es un chatbot. Lo usas, le preguntas, te responde. Un agente IA toma decisiones, ejecuta tareas y trabaja sin supervisión. Es el salto de "preguntar" a "automatizar".</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Qué es la TribuClaw App?</summary>
+          <p>Es el panel de control visual para tu agente. Creas, configuras y monitorizas tus agentes desde una interfaz sin tocar código. Incluida en tu membresía.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Puedo usar la App en móvil?</summary>
+          <p>Sí, la TribuClaw App es responsive. Puedes monitorizar y gestionar tus agentes desde cualquier dispositivo.</p>
+        </details>
       </div>
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════════════ -->
-  <!-- CTA FINAL -->
-  <!-- ═══════════════════════════════════════════ -->
   <section class="section section-cta-final" data-animate="fade-up">
     <div class="container">
       <div class="cta-final-inner">
@@ -476,64 +439,64 @@ import { WHOP_URL } from '../consts';
     </div>
   </section>
 
-</main>
-<Footer />
+</BaseLayout>
 
-<!-- ═══════════════════════════════════════════ -->
-<!-- SCRIPTS -->
-<!-- ═══════════════════════════════════════════ -->
 <script>
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import Lenis from '@studio-freight/lenis';
 gsap.registerPlugin(ScrollTrigger);
 
-// ── Smooth Scroll (Lenis) ──
-import Lenis from '@studio-freight/lenis';
-const lenis = new Lenis({ duration: 1.2, easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)) });
-function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
-requestAnimationFrame(raf);
-lenis.on('scroll', ScrollTrigger.update);
-gsap.ticker.add((time) => lenis.raf(time * 1000));
-gsap.ticker.lagSmoothing(0);
-
-// ── Hero entrance animations ──
-gsap.from('[data-animate="headline"]', { opacity: 0, y: 30, duration: 0.8, delay: 0.2, ease: 'power2.out' });
-gsap.from('[data-animate="fade-up"]', {
-  scrollTrigger: { trigger: '[data-animate="fade-up"]', start: 'top 85%', once: true },
-  opacity: 0, y: 30, duration: 0.7, ease: 'power2.out'
-});
-gsap.from('[data-animate="cta"]', { opacity: 0, scale: 0.95, duration: 0.6, delay: 0.6, ease: 'power2.out' });
-gsap.from('[data-animate="console"]', { opacity: 0, x: 50, duration: 1, delay: 0.3, ease: 'power2.out' });
-
-// ── Stagger animations ──
-gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container => {
-  gsap.from(container.children, {
-    scrollTrigger: { trigger: container, start: 'top 85%', once: true },
-    opacity: 0, y: 25, duration: 0.6, stagger: 0.1, ease: 'power2.out'
+// Lenis: only init if BaseLayout hasn't already
+if (!(window as any).__lenisInit) {
+  (window as any).__lenisInit = true;
+  const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
   });
-});
+  lenis.on('scroll', ScrollTrigger.update);
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
+  gsap.ticker.lagSmoothing(0);
+  (window as any).__lenis = lenis;
+}
 
-// ── Timeline scroll animation ──
-const timelineSection = document.querySelector('.section-timeline');
-const timelineProgress = document.getElementById('timeline-progress');
-if (timelineSection && timelineProgress) {
-  ScrollTrigger.create({
-    trigger: timelineSection,
-    start: 'top 80%',
-    end: 'bottom 20%',
-    onUpdate: (self) => {
-      timelineProgress.style.height = (self.progress * 100) + '%';
+// Hero headline text reveal
+const headline = document.querySelector('.hero-headline');
+if (headline) {
+  const walk = document.createTreeWalker(headline, NodeFilter.SHOW_TEXT, null);
+  const textNodes: Text[] = [];
+  let n: Node | null;
+  while ((n = walk.nextNode())) textNodes.push(n as Text);
+  for (const tn of textNodes) {
+    const frag = document.createDocumentFragment();
+    for (const char of tn.textContent || '') {
+      if (char === ' ') {
+        frag.appendChild(document.createTextNode(' '));
+      } else {
+        const span = document.createElement('span');
+        span.className = 'char';
+        span.textContent = char;
+        frag.appendChild(span);
+      }
     }
+    tn.parentNode!.replaceChild(frag, tn);
+  }
+  gsap.from('.hero-headline .char', {
+    opacity: 0.05,
+    y: 20,
+    duration: 0.4,
+    stagger: 0.015,
+    ease: 'power3.out',
+    delay: 0.3
   });
 }
-gsap.utils.toArray<HTMLElement>('[data-animate="timeline-item"]').forEach(item => {
-  gsap.from(item, {
-    scrollTrigger: { trigger: item, start: 'top 85%', once: true },
-    opacity: 0, x: -20, duration: 0.6, ease: 'power2.out'
-  });
-});
 
-// ── Counter animation ──
+
+// Home-specific animations
+gsap.from('[data-animate="cta"]', { opacity: 0, scale: 0.95, duration: 0.6, delay: 0.8, ease: 'power2.out' });
+gsap.from('[data-animate="console"]', { opacity: 0, x: 50, duration: 1, delay: 0.3, ease: 'power2.out' });
+
+// Counter animation
 function animateCounter(el: HTMLElement, target: number, suffix: string) {
   const start = performance.now();
   const duration = 2000;
@@ -541,13 +504,9 @@ function animateCounter(el: HTMLElement, target: number, suffix: string) {
   function update(timestamp: number) {
     const progress = Math.min((timestamp - start) / duration, 1);
     const eased = 1 - Math.pow(1 - progress, 3);
-    if (isDecimal) {
-      el.textContent = (eased * target).toFixed(1) + suffix;
-    } else if (target >= 1000) {
-      el.textContent = Math.floor(eased * target / 1000) + 'K+';
-    } else {
-      el.textContent = Math.floor(eased * target) + suffix;
-    }
+    if (isDecimal) el.textContent = (eased * target).toFixed(1) + suffix;
+    else if (target >= 1000) el.textContent = Math.floor(eased * target / 1000) + 'K+';
+    else el.textContent = Math.floor(eased * target) + suffix;
     if (progress < 1) requestAnimationFrame(update);
     else {
       if (target >= 1000) el.textContent = Math.floor(target / 1000) + 'K+';
@@ -568,45 +527,105 @@ const counterObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { threshold: 0.5 });
-document.querySelectorAll('.stat-value, .proof-counter-value').forEach(el => counterObserver.observe(el));
+document.querySelectorAll('.proof-counter-value').forEach(el => counterObserver.observe(el));
 
-// ── Console typing effect ──
+// Console typing effect — continuous streaming terminal with cleanup
 (function initConsole() {
   const body = document.getElementById('console-body');
   if (!body) return;
-  const lines = Array.from(body.querySelectorAll('.console-line'));
-  lines.forEach(l => { (l as HTMLElement).style.opacity = '0'; });
-
-  let lineIdx = 0;
-  function showNextLine() {
-    const line = lines[lineIdx % lines.length];
-    if (!line) return;
-    line.classList.add('visible');
-    (line as HTMLElement).style.opacity = '1';
-    body.appendChild(line);
-    lineIdx++;
-    if (lineIdx % lines.length === 0) {
-      setTimeout(() => {
-        lines.forEach(l => { (l as HTMLElement).style.opacity = '0'; l.classList.remove('visible'); });
-      }, 2000);
-    }
+  let stopped = false;
+  let totalLines = 0;
+  const MAX_LINES = 8;
+  const MAX_TOTAL = 100;
+  const activeTimers: ReturnType<typeof setTimeout>[] = [];
+  const agentTasks = [
+    { agent: '🦞 Kimo', tasks: ['Analizando métricas de la semana...', 'Coordinando 5 agentes activos...', 'Revisando cola de tareas pendientes...', 'Enviando resumen diario por Telegram...', 'Priorizando tareas del sprint...'] },
+    { agent: '📊 Data', tasks: ['Revenue +23% vs semana anterior', 'Generando reporte mensual de conversión...', 'Analizando funnel de Onboarding...', 'Detectando patrón: mejores posts → 2pm-4pm', 'Actualizando dashboard de métricas...'] },
+    { agent: '🎨 Mika', tasks: ['Generando thumbnail para el blog...', 'Diseñando banner para Whop...', 'Creando variante A/B del CTA...', 'Optimizando assets para móvil...'] },
+    { agent: '✍️ Pluma', tasks: ['Redactando post de LinkedIn...', 'Editando draft del artículo semanal...', 'Generando 5 hooks para Twitter...', 'Revisando copy de la landing...'] },
+    { agent: '🤖 Mao', tasks: ['Desplegando nueva feature en producción', 'Refactorizando módulo de autenticación...', 'Fix: bug en integración con Whop API...', 'Ejecutando tests → 47/47 passing ✓'] },
+    { agent: '⚡ Sistema', tasks: ['5 agentes activos · 847 tareas completadas hoy', 'Uptime: 99.97% · Latencia: 42ms', 'Backup completado · 2.3GB comprimidos', 'SSL renovado · expira en 89 días'] },
+  ];
+  const statusSymbols = ['✓', '✓', '✓', '✓', '⟳'];
+  function getTimestamp() {
+    const now = new Date();
+    return now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
   }
-  lines.forEach((_, i) => setTimeout(() => showNextLine(), i * 800));
-  setInterval(() => {
-    if (lineIdx >= lines.length && (lineIdx - lines.length) % (lines.length + 3) === 0) {
-      lines.forEach(l => { (l as HTMLElement).style.opacity = '0'; l.classList.remove('visible'); });
-      lineIdx = 0;
-      lines.forEach((_, i) => setTimeout(() => showNextLine(), i * 800));
+  let taskIdx = 0;
+  function getNextTask() {
+    const agent = agentTasks[taskIdx % agentTasks.length];
+    const task = agent.tasks[Math.floor(Math.random() * agent.tasks.length)];
+    taskIdx++;
+    return { agent: agent.agent, task };
+  }
+  function typeLine(text: string, el: HTMLElement, callback: () => void) {
+    let i = 0;
+    const speed = 18 + Math.random() * 12;
+    function typeChar() {
+      if (stopped || !body.isConnected) return;
+      if (i < text.length) {
+        el.textContent = text.substring(0, i + 1);
+        i++;
+        const t = setTimeout(typeChar, speed);
+        activeTimers.push(t);
+      } else {
+        callback();
+      }
     }
-  }, 1000);
+    typeChar();
+  }
+  function addLine() {
+    if (stopped || !body.isConnected) return;
+    if (totalLines >= MAX_TOTAL) {
+      body.innerHTML = '';
+      totalLines = 0;
+    }
+    totalLines++;
+    const { agent, task } = getNextTask();
+    const line = document.createElement('div');
+    line.className = 'console-line';
+    const ts = document.createElement('span');
+    ts.className = 'console-ts';
+    ts.textContent = getTimestamp();
+    const content = document.createElement('span');
+    content.className = 'console-content';
+    line.appendChild(ts);
+    line.appendChild(content);
+    body.appendChild(line);
+    // Remove old lines to keep max
+    while (body.children.length > MAX_LINES) {
+      const first = body.firstChild as HTMLElement;
+      first.style.opacity = '0';
+      first.style.transform = 'translateY(-8px)';
+      first.style.transition = 'opacity 0.3s, transform 0.3s';
+      setTimeout(() => { if (first.parentNode) first.remove(); }, 300);
+    }
+    body.scrollTop = body.scrollHeight;
+    const fullText = `${agent} > ${task}`;
+    typeLine(fullText, content, () => {
+      if (stopped || !body.isConnected) return;
+      // Add status symbol after typing
+      const status = document.createElement('span');
+      status.className = 'console-status';
+      status.textContent = ' ' + statusSymbols[Math.floor(Math.random() * statusSymbols.length)];
+      content.appendChild(status);
+      const t = setTimeout(addLine, 1200 + Math.random() * 1500);
+      activeTimers.push(t);
+    });
+  }
+  // Start after hero animation
+  const startTimer = setTimeout(addLine, 800);
+  activeTimers.push(startTimer);
 })();
 
-// ── Hero Particles ──
+// Hero Particles with IntersectionObserver cleanup
 (function initParticles() {
   const canvas = document.getElementById('hero-particles') as HTMLCanvasElement;
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
+  let rafId = 0;
+  let isVisible = true;
   function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
   resize();
   window.addEventListener('resize', resize);
@@ -621,6 +640,7 @@ document.querySelectorAll('.stat-value, .proof-counter-value').forEach(el => cou
     });
   }
   function draw() {
+    if (!canvas.isConnected) { cancelAnimationFrame(rafId); return; }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     for (const p of particles) {
       p.x += p.speedX; p.y += p.speedY; p.pulse += 0.02;
@@ -632,16 +652,20 @@ document.querySelectorAll('.stat-value, .proof-counter-value').forEach(el => cou
       ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
       ctx.restore();
     }
-    requestAnimationFrame(draw);
+    rafId = requestAnimationFrame(draw);
   }
-  draw();
+  rafId = requestAnimationFrame(draw);
+  // Pause/resume when canvas enters/leaves viewport
+  const obs = new IntersectionObserver(([entry]) => {
+    isVisible = entry.isIntersecting;
+    if (isVisible && canvas.isConnected) { rafId = requestAnimationFrame(draw); }
+    else { cancelAnimationFrame(rafId); }
+  }, { threshold: 0 });
+  obs.observe(canvas);
 })();
 </script>
 
 <style>
-  /* ═══════════════════════════════════════════ */
-  /* HERO */
-  /* ═══════════════════════════════════════════ */
   .hero {
     position: relative;
     min-height: 100vh;
@@ -651,74 +675,54 @@ document.querySelectorAll('.stat-value, .proof-counter-value').forEach(el => cou
     overflow: hidden;
   }
   #hero-particles {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 0;
-    opacity: 0.7;
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; opacity: 0.7;
   }
   .hero-glow {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 800px;
-    height: 600px;
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 0;
+    position: absolute; left: 50%; transform: translateX(-50%);
+    width: 800px; height: 600px; border-radius: 50%;
+    pointer-events: none; z-index: 0;
   }
   .hero-glow-top {
     top: -200px;
     background: radial-gradient(ellipse at center, rgba(233,69,96,0.1) 0%, transparent 60%);
   }
   .hero-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 3rem;
-    align-items: center;
-    position: relative;
-    z-index: 1;
+    display: grid; grid-template-columns: 1fr;
+    gap: 3rem; align-items: center;
+    position: relative; z-index: 1;
   }
-  .hero-copy {
-    max-width: 620px;
-  }
+  .hero-copy { max-width: 620px; }
   .hero-headline {
     font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    line-height: 1.1;
+    font-weight: 700; letter-spacing: -0.04em; line-height: 1.1;
     margin-bottom: 1.25rem;
   }
+  .hero-headline .char {
+    display: inline-block;
+    will-change: transform, opacity;
+  }
   .hero-sub {
-    color: var(--text-muted);
-    font-size: 1.1rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
+    color: var(--text-muted); font-size: 1.1rem;
+    line-height: 1.7; margin-bottom: 2rem;
   }
   .hero-cta-btn {
     box-shadow: 0 0 30px rgba(233,69,96,0.3);
-    font-size: 1rem;
-    padding: 1rem 2.5rem;
+    font-size: 1rem; padding: 1rem 2.5rem;
   }
-  .hero-cta-btn:hover {
-    box-shadow: 0 0 40px rgba(233,69,96,0.5);
-  }
+  .hero-cta-btn:hover { box-shadow: 0 0 40px rgba(233,69,96,0.5); }
+  .badge-pill svg { vertical-align: middle; margin-right: 4px; }
 
   /* Console */
   .hero-console { position: relative; }
   .console-window {
     background: rgba(13, 17, 23, 0.95);
     border: 1px solid rgba(233, 69, 96, 0.15);
-    border-radius: 16px;
-    overflow: hidden;
+    border-radius: 16px; overflow: hidden;
     box-shadow: 0 0 60px rgba(233, 69, 96, 0.08), 0 20px 60px rgba(0,0,0,0.6);
   }
   .console-titlebar {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+    display: flex; align-items: center; gap: 0.75rem;
     padding: 0.75rem 1rem;
     background: rgba(255,255,255,0.02);
     border-bottom: 1px solid rgba(255,255,255,0.06);
@@ -739,464 +743,363 @@ document.querySelectorAll('.stat-value, .proof-counter-value').forEach(el => cou
     50% { box-shadow: 0 0 0 4px rgba(40,202,65,0); }
   }
   .console-body {
-    padding: 1.25rem;
-    min-height: 220px;
-    font-family: 'Courier New', monospace;
-    font-size: 0.85rem;
-    line-height: 1.8;
+    padding: 1.25rem; min-height: 220px;
+    font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.8;
+    overflow-y: auto; max-height: 320px;
   }
-  .console-line {
-    opacity: 0;
-    color: rgba(250,250,250,0.7);
-    transition: opacity 0.4s;
-  }
-  .console-line.visible {
-    animation: typeIn 0.3s ease-out;
-  }
+  .console-line { color: rgba(250,250,250,0.85); font-size: 0.82rem; line-height: 1.7; padding: 2px 0; animation: lineIn 0.3s ease-out; }
+  .console-line .console-ts { color: rgba(250,250,250,0.25); margin-right: 8px; font-size: 0.72rem; }
+  .console-line .console-status { color: #4ade80; font-weight: 700; }
+  @keyframes lineIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
   @keyframes typeIn {
     from { opacity: 0; transform: translateX(-5px); }
     to { opacity: 1; transform: translateX(0); }
   }
   .console-cursor {
-    font-family: 'Courier New', monospace;
-    color: var(--accent);
-    padding: 0 1.25rem 1rem;
-    animation: blink 1s step-end infinite;
+    font-family: 'Courier New', monospace; color: var(--accent);
+    padding: 0 1.25rem 1rem; animation: blink 1s step-end infinite;
   }
-  @keyframes blink {
-    50% { opacity: 0; }
-  }
+  @keyframes blink { 50% { opacity: 0; } }
 
-  /* ═══════════════════════════════════════════ */
-  /* SECTIONS */
-  /* ═══════════════════════════════════════════ */
-  .section {
-    padding: 5rem 0;
-    position: relative;
-  }
-  .section-problema { background: var(--bg); }
-  .section-openclaw { background: var(--bg-alt); }
-  .section-timeline { background: var(--bg); }
-  .section-incluye { background: var(--bg-alt); }
-  .section-comparativa { background: var(--bg); }
-  .section-proof { background: var(--bg-alt); }
-  .section-pricing { background: var(--bg); }
-  .section-faq { background: var(--bg-alt); }
-  .section-cta-final {
+  /* Sections */
+  .section { padding: 5rem 0; position: relative; }
+  .section-problema {
     background: var(--bg);
-    padding: 8rem 0;
-    position: relative;
-    overflow: hidden;
+    background-image: radial-gradient(ellipse at 30% 50%, rgba(233,69,96,0.03) 0%, transparent 50%);
+  }
+  .section-incluye {
+    background: var(--bg-alt);
+    background-image: radial-gradient(ellipse at 70% 50%, rgba(233,69,96,0.04) 0%, transparent 50%);
+  }
+  .section-app {
+    background: var(--bg);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(233,69,96,0.05) 0%, transparent 50%);
+  }
+  .section-proof { background: var(--bg-alt); }
+  .section-pricing {
+    background: var(--bg);
+    background-image: radial-gradient(ellipse at 50% 70%, rgba(233,69,96,0.03) 0%, transparent 50%);
+  }
+  .section-cta-final {
+    background: var(--bg); padding: 8rem 0;
+    position: relative; overflow: hidden;
   }
   .section-cta-final::before {
-    content: '';
-    position: absolute;
+    content: ''; position: absolute;
     top: -200px; left: 50%; transform: translateX(-50%);
     width: 800px; height: 600px;
     background: radial-gradient(ellipse at center, rgba(233,69,96,0.08) 0%, transparent 60%);
     pointer-events: none;
   }
 
-  .problema-text {
-    max-width: 700px;
-    margin: 0 auto;
+  /* Problema cards */
+  .problema-cards {
+    display: grid; grid-template-columns: 1fr;
+    gap: 1rem; max-width: 900px; margin: 0 auto;
   }
-  .problema-text p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    margin-bottom: 1.25rem;
+  .problema-card {
+    padding: 2rem; display: flex; align-items: flex-start; gap: 1.25rem;
+  }
+  .problema-icon-wrap { flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
+  .problema-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; word-break: break-word; overflow-wrap: break-word; }
+
+  /* OpenClaw bridge */
+  .openclaw-bridge {
+    max-width: 700px; margin: 0 auto 3rem;
+    text-align: center; color: var(--text-muted);
+    font-size: 1.05rem; line-height: 1.7;
   }
 
-  .openclaw-intro {
-    max-width: 700px;
-    margin: 0 auto 2rem;
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.8;
-    text-align: center;
-  }
-
-  /* Stats */
-  .stats-row {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2rem;
-    max-width: 600px;
-    margin: 3rem auto;
-    text-align: center;
-  }
-  .stat-value {
-    display: block;
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 900;
-    letter-spacing: -0.04em;
-    background: linear-gradient(135deg, #e94560, #ff6b6b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  .stat-label {
-    font-size: 0.85rem;
-    color: rgba(250,250,250,0.3);
-  }
-
-  /* OpenClaw cards */
-  .openclaw-cards {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 900px;
-    margin: 0 auto 2rem;
-  }
-  .oc-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .oc-card:hover {
-    border-color: rgba(233,69,96,0.2);
-    transform: translateY(-3px);
-  }
-  .oc-card-icon { font-size: 2rem; margin-bottom: 1rem; }
-  .oc-card h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-  .oc-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; }
-
-  .openclaw-cta {
-    max-width: 700px;
-    margin: 0 auto;
-    text-align: center;
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-
-  /* ═══════════════════════════════════════════ */
-  /* TIMELINE */
-  /* ═══════════════════════════════════════════ */
-  .timeline-wrapper {
-    max-width: 700px;
-    margin: 3rem auto 0;
-    position: relative;
-    padding-left: 3rem;
-  }
-  .timeline-track {
-    position: absolute;
-    left: 0; top: 0; bottom: 0;
-    width: 2px;
-    background: rgba(255,255,255,0.06);
-  }
-  .timeline-progress {
-    position: absolute;
-    left: 0; top: 0;
-    width: 2px; height: 0%;
-    background: linear-gradient(to bottom, #e94560, #ff6b6b);
-    transition: height 0.1s ease-out;
-    box-shadow: 0 0 8px rgba(233,69,96,0.5);
-  }
-  .timeline-item {
-    position: relative;
-    padding: 0 0 2.5rem 1.5rem;
-  }
-  .timeline-dot {
-    position: absolute;
-    left: -3rem; top: 0.3rem;
-    width: 12px; height: 12px;
-    border-radius: 50%;
-    background: #21262d;
-    border: 2px solid rgba(255,255,255,0.1);
-    transform: translateX(-50%) translateX(1px);
-    transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
-    z-index: 1;
-  }
-  .timeline-item:last-child .timeline-dot {
-    background: #e94560;
-    border-color: #e94560;
-    box-shadow: 0 0 12px rgba(233,69,96,0.6);
-  }
-  .timeline-time {
-    font-size: 0.75rem;
-    font-weight: 700;
-    color: var(--accent);
-    letter-spacing: 0.05em;
-    margin-bottom: 0.3rem;
-  }
-  .timeline-title {
-    font-size: 1.1rem;
-    font-weight: 800;
-    color: #fff;
-    margin-bottom: 0.4rem;
-  }
-  .timeline-desc {
-    font-size: 0.9rem;
-    color: rgba(250,250,250,0.4);
-    line-height: 1.6;
-  }
-  .timeline-cta {
-    text-align: center;
-    margin-top: 2rem;
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.7;
-  }
-  .timeline-cta .cta-btn { margin-top: 1rem; }
-
-  /* ═══════════════════════════════════════════ */
-  /* BENTO GRID */
-  /* ═══════════════════════════════════════════ */
+  /* Bento grid */
   .bento-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 900px;
-    margin: 0 auto;
+    display: grid; grid-template-columns: 1fr;
+    gap: 1rem; max-width: 900px; margin: 0 auto;
   }
-  .bento-item {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 2rem;
-    transition: border-color 0.3s, transform 0.3s;
-  }
-  .bento-item:hover {
-    border-color: rgba(233,69,96,0.2);
-    transform: translateY(-3px);
-  }
-  .bento-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .bento-item { padding: 2rem; }
+  .bento-icon { margin-bottom: 1rem; }
   .bento-item h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-  .bento-item p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; }
+  .bento-item p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; word-break: break-word; overflow-wrap: break-word; }
 
-  /* ═══════════════════════════════════════════ */
-  /* COMPARATIVA TABLE */
-  /* ═══════════════════════════════════════════ */
-  .compare-table-wrap {
-    max-width: 800px;
-    margin: 0 auto 2rem;
-    overflow-x: auto;
+  /* App section */
+  .app-intro {
+    max-width: 700px; margin: 0 auto 2.5rem;
+    text-align: center; color: var(--text-muted);
+    font-size: 1.05rem; line-height: 1.7;
   }
-  .compare-table {
-    width: 100%;
-    border-collapse: collapse;
-    display: table;
+  .app-features {
+    display: grid; grid-template-columns: 1fr;
+    gap: 1.25rem; max-width: 900px; margin: 0 auto 2.5rem;
   }
-  .compare-table th {
-    background: var(--bg-alt);
-    color: #fff;
-    font-weight: 700;
-    padding: 1rem;
-    font-size: 0.9rem;
+  .app-feature { padding: 2.5rem 2rem; text-align: center; }
+  .app-feature-icon { margin-bottom: 1.25rem; display: flex; justify-content: center; }
+  .app-feature h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
+  .app-feature p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; word-break: break-word; overflow-wrap: break-word; }
+  .app-cta {
+    text-align: center; color: var(--text-muted);
+    font-size: 1.05rem; line-height: 1.7;
   }
-  .compare-table th:last-child {
-    color: var(--accent);
-  }
-  .compare-table td {
-    padding: 1rem;
-    font-size: 0.9rem;
-    color: var(--text-muted);
-    border-color: var(--border);
-    line-height: 1.5;
-  }
-  .compare-table td:last-child {
-    color: rgba(250,250,250,0.7);
-  }
-  .comparativa-cta { text-align: center; }
+  .app-cta .cta-btn { margin-top: 1rem; }
 
-  /* ═══════════════════════════════════════════ */
-  /* SOCIAL PROOF */
-  /* ═══════════════════════════════════════════ */
+  /* Social Proof */
   .proof-counters {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    max-width: 400px;
-    margin: 0 auto 3rem;
-    text-align: center;
+    display: grid; grid-template-columns: repeat(2, 1fr);
+    gap: 2rem; max-width: 400px; margin: 0 auto 3rem; text-align: center;
   }
   .proof-counter-value {
-    display: block;
-    font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 900;
-    letter-spacing: -0.04em;
+    display: block; font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700; letter-spacing: -0.04em;
     background: linear-gradient(135deg, #e94560, #ff6b6b);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
   }
-  .proof-counter-label {
-    font-size: 0.85rem;
-    color: rgba(250,250,250,0.3);
-  }
+  .proof-counter-label { font-size: 0.85rem; color: rgba(250,250,250,0.3); }
+
+  /* Testimonials */
   .testimonials-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1rem;
-    max-width: 800px;
-    margin: 0 auto;
+    display: grid; grid-template-columns: 1fr;
+    gap: 1rem; max-width: 800px; margin: 0 auto 3rem;
   }
   .testimonial-card {
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 12px;
-    padding: 1.5rem;
-    transition: border-color 0.3s, transform 0.3s;
+    padding: 2rem 2rem 2rem 3rem; position: relative;
   }
-  .testimonial-card:hover {
-    border-color: rgba(233,69,96,0.2);
-    transform: translateY(-3px);
+  .testimonial-quote {
+    position: absolute; top: 0.5rem; left: 1rem;
+    font-size: 4rem; font-family: 'Space Grotesk', serif;
+    color: rgba(233, 69, 96, 0.25); line-height: 1; pointer-events: none;
   }
   .testimonial-text {
-    color: rgba(250,250,250,0.6);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    font-style: italic;
+    color: rgba(250,250,250,0.6); font-size: 0.95rem;
+    line-height: 1.6; margin-bottom: 1rem; font-style: italic;
+    word-break: break-word; overflow-wrap: break-word;
   }
-  .testimonial-author {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
+  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
   .t-avatar {
-    width: 32px; height: 32px;
-    border-radius: 50%;
-    background: var(--gradient);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem; font-weight: 700;
-    flex-shrink: 0;
-    color: #fff;
+    width: 32px; height: 32px; border-radius: 50%;
+    background: var(--gradient); display: flex; align-items: center; justify-content: center;
+    font-size: 0.7rem; font-weight: 700; flex-shrink: 0; color: #fff;
   }
   .t-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
   .t-stars { font-size: 0.7rem; color: #f59e0b; }
 
-  /* ═══════════════════════════════════════════ */
-  /* PRICING */
-  /* ═══════════════════════════════════════════ */
-  .pricing-card {
-    max-width: 480px;
-    margin: 0 auto;
-    background: rgba(22, 27, 34, 1);
-    border-radius: 20px;
-    padding: 2.5rem 2rem;
+  /* Compare section */
+  .compare-section { max-width: 800px; margin: 0 auto; }
+  .compare-heading {
+    text-align: center; font-size: 1.1rem;
+    color: var(--text-muted); margin-bottom: 1.5rem;
+  }
+  .compare-grid {
+    display: grid; grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .compare-col { padding: 2rem; }
+  .compare-col h4 {
+    font-size: 1.1rem; margin-bottom: 1rem;
     text-align: center;
-    position: relative;
-    z-index: 1;
+  }
+  .compare-bad h4 { color: rgba(250,250,250,0.5); }
+  .compare-good h4 { color: #4ade80; }
+  .compare-col ul { list-style: none; padding: 0; margin: 0; }
+  .cross-item, .check-item {
+    display: flex; align-items: center; gap: 0.75rem;
+    padding: 0.5rem 0; font-size: 0.9rem; color: var(--text-muted);
+  }
+
+  /* Pricing */
+  .pricing-card {
+    max-width: 480px; margin: 0 auto 3rem;
+    background: rgba(22, 27, 34, 1);
+    border-radius: 20px; padding: 2.5rem 2rem;
+    text-align: center; position: relative; z-index: 1;
   }
   .pricing-header { margin-bottom: 2rem; }
   .pricing-header h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .pricing-tag {
-    color: var(--accent);
-    font-size: 0.85rem;
-    font-weight: 600;
-  }
+  .pricing-tag { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
   .pricing-rows { margin-bottom: 2rem; }
   .pricing-row {
-    display: flex;
-    justify-content: space-between;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--border);
-    font-size: 0.95rem;
-    color: rgba(250,250,250,0.6);
+    display: flex; justify-content: space-between;
+    padding: 0.75rem 0; border-bottom: 1px solid var(--border);
+    font-size: 0.95rem; color: rgba(250,250,250,0.6);
   }
   .pricing-row:last-child { border-bottom: none; }
   .pricing-amount { font-weight: 700; color: #fff; }
   .pricing-total {
-    padding-top: 1rem;
-    margin-top: 0.5rem;
+    padding-top: 1rem; margin-top: 0.5rem;
     border-top: 2px solid rgba(233,69,96,0.2) !important;
     font-weight: 700;
   }
-  .pricing-amount-total {
-    font-size: 1.25rem;
-    font-weight: 900;
-    color: var(--accent);
-  }
-  .pricing-note {
-    color: rgba(250,250,250,0.5);
-    font-size: 0.9rem;
-    margin-bottom: 0.5rem;
-  }
-  .pricing-note-sm {
-    color: rgba(250,250,250,0.3);
-    font-size: 0.8rem;
-    margin-bottom: 1.5rem;
-  }
+  .pricing-amount-total { font-size: 1.25rem; font-weight: 900; color: var(--accent); }
+  .pricing-note { color: rgba(250,250,250,0.5); font-size: 0.9rem; margin-bottom: 0.5rem; }
+  .pricing-note-sm { color: rgba(250,250,250,0.3); font-size: 0.8rem; margin-bottom: 1.5rem; }
   .pricing-cta { width: 100%; justify-content: center; }
 
-  /* ═══════════════════════════════════════════ */
   /* FAQ */
-  /* ═══════════════════════════════════════════ */
-  .faq-list {
-    max-width: 700px;
-    margin: 0 auto;
+  .faq-heading {
+    font-size: 1.3rem; margin-bottom: 1.5rem; text-align: center;
+    color: rgba(250,250,250,0.7);
   }
-  .faq-item {
-    border-bottom: 1px solid var(--border);
-  }
+  .faq-list { max-width: 700px; margin: 0 auto; }
+  .faq-item { border-bottom: 1px solid var(--border); }
   .faq-item summary {
-    padding: 1.25rem 0;
-    font-weight: 700;
-    font-size: 1rem;
-    cursor: pointer;
-    color: #fff;
-    list-style: none;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 1.25rem 0; font-weight: 700; font-size: 1rem;
+    cursor: pointer; color: #fff; list-style: none;
+    display: flex; justify-content: space-between; align-items: center;
   }
   .faq-item summary::after {
-    content: '+';
-    font-size: 1.25rem;
-    color: var(--accent);
+    content: '+'; font-size: 1.25rem; color: var(--accent);
     transition: transform 0.3s;
   }
-  .faq-item[open] summary::after {
-    transform: rotate(45deg);
-  }
+  .faq-item[open] summary::after { transform: rotate(45deg); }
   .faq-item p {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.7;
-    padding-bottom: 1.25rem;
-    margin: 0;
+    color: var(--text-muted); font-size: 0.95rem;
+    line-height: 1.7; padding-bottom: 1.25rem; margin: 0;
   }
 
-  /* ═══════════════════════════════════════════ */
-  /* CTA FINAL */
-  /* ═══════════════════════════════════════════ */
+  /* CTA Final */
   .cta-final-inner {
-    text-align: center;
-    max-width: 600px;
-    margin: 0 auto;
-    position: relative;
-    z-index: 1;
+    text-align: center; max-width: 600px;
+    margin: 0 auto; position: relative; z-index: 1;
   }
-  .cta-final-inner h2 {
-    font-size: clamp(1.8rem, 4vw, 2.5rem);
-    margin-bottom: 1rem;
-  }
-  .cta-final-inner p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-    line-height: 1.7;
-    margin-bottom: 2rem;
-  }
+  .cta-final-inner h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
+  .cta-final-inner p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
   .cta-final-btn {
     box-shadow: 0 0 40px rgba(233,69,96,0.3);
-    font-size: 1.1rem;
-    padding: 1.1rem 3rem;
+    font-size: 1.1rem; padding: 1.1rem 3rem;
   }
 
-  /* ═══════════════════════════════════════════ */
-  /* RESPONSIVE */
-  /* ═══════════════════════════════════════════ */
+  /* App Mockup */
+  .app-mockup {
+    max-width: 700px;
+    margin: 2.5rem auto;
+  }
+  .app-mockup-window {
+    background: rgba(13, 17, 23, 0.95);
+    border: 1px solid rgba(233, 69, 96, 0.12);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(233,69,96,0.05);
+  }
+  .app-mockup-titlebar {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+    background: rgba(255,255,255,0.02);
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+  .app-mockup-dots {
+    display: flex;
+    gap: 5px;
+  }
+  .app-mockup-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+  }
+  .app-mockup-dots span:nth-child(1) { background: #ff5f57; }
+  .app-mockup-dots span:nth-child(2) { background: #ffbd2e; }
+  .app-mockup-dots span:nth-child(3) { background: #28ca41; }
+  .app-mockup-title {
+    flex: 1;
+    font-size: 0.7rem;
+    color: rgba(250,250,250,0.25);
+    text-align: center;
+  }
+  .app-mockup-body {
+    display: grid;
+    grid-template-columns: 120px 1fr;
+    min-height: 220px;
+  }
+  .app-mockup-sidebar {
+    background: rgba(255,255,255,0.02);
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 0.75rem 0;
+  }
+  .app-sidebar-item {
+    padding: 0.5rem 1rem;
+    font-size: 0.75rem;
+    color: rgba(250,250,250,0.35);
+    cursor: default;
+  }
+  .app-sidebar-item.active {
+    color: #e94560;
+    background: rgba(233,69,96,0.08);
+    border-right: 2px solid #e94560;
+    font-weight: 600;
+  }
+  .app-mockup-main {
+    padding: 1rem 1.25rem;
+  }
+  .app-mockup-header-row {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 1rem;
+  }
+  .app-mockup-status-dot {
+    width: 8px;
+    height: 8px;
+    background: #4ade80;
+    border-radius: 50%;
+    box-shadow: 0 0 6px rgba(74,222,128,0.5);
+  }
+  .app-mockup-badge {
+    margin-left: auto;
+    background: rgba(233,69,96,0.15);
+    color: #e94560;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 0.2rem 0.6rem;
+    border-radius: 20px;
+  }
+  .app-mockup-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+  }
+  .app-mockup-stat {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 0.6rem 0.75rem;
+    text-align: center;
+  }
+  .stat-value {
+    display: block;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #fff;
+  }
+  .stat-label {
+    font-size: 0.65rem;
+    color: rgba(250,250,250,0.3);
+  }
+  .app-mockup-log {
+    background: rgba(0,0,0,0.2);
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+    font-family: 'Courier New', monospace;
+    font-size: 0.72rem;
+  }
+  .mock-log-line {
+    color: rgba(250,250,250,0.5);
+    padding: 0.2rem 0;
+  }
+  .log-time {
+    color: rgba(250,250,250,0.2);
+    margin-right: 0.5rem;
+  }
+
+  /* Responsive */
   @media (min-width: 768px) {
     .hero-grid { grid-template-columns: 55fr 45fr; gap: 4rem; }
-    .openclaw-cards { grid-template-columns: repeat(3, 1fr); }
-    .bento-grid { grid-template-columns: repeat(2, 1fr); }
-    .bento-wide { grid-column: span 2; }
+    .bento-grid { grid-template-columns: repeat(3, 1fr); }
+    .app-features { grid-template-columns: repeat(3, 1fr); }
+    .problema-cards { grid-template-columns: repeat(3, 1fr); }
     .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
+    .compare-grid { grid-template-columns: 1fr 1fr; }
   }
 
   @media (max-width: 767px) {
@@ -1206,19 +1109,10 @@ document.querySelectorAll('.stat-value, .proof-counter-value').forEach(el => cou
     .section { padding: 3.5rem 0; }
     .section-cta-final { padding: 5rem 0; }
     .console-body { min-height: 180px; font-size: 0.75rem; }
-    .stats-row { gap: 1rem; }
-    .stat-value { font-size: clamp(1.5rem, 4vw, 2rem); }
-    .timeline-wrapper { padding-left: 2rem; }
-    .timeline-dot { left: -2rem; width: 10px; height: 10px; }
     .pricing-card { padding: 2rem 1.5rem; }
-    .proof-counters { gap: 1rem; }
-    .proof-counter-value { font-size: clamp(1.5rem, 4vw, 2rem); }
   }
 
   @media (max-width: 480px) {
     .hero-console { display: none; }
   }
 </style>
-
-</body>
-</html>

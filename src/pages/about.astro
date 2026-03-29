@@ -1,24 +1,18 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { WHOP_URL } from '../consts';
 ---
 
-<!doctype html>
-<html lang="es">
-<head>
-  <BaseHead
-    title="Sobre TribuClaw — La comunidad que te prepara para la era de los agentes IA"
-    description="TribuClaw es donde la gente que va a dominar la próxima década aprende a crear agentes IA autónomos. En español, desde cero, con una comunidad que te acompaña."
-  />
-</head>
-<body>
-<Header />
-<main id="main-content">
+<BaseLayout
+  title="Sobre TribuClaw — La comunidad que te prepara para la era de los agentes IA"
+  description="TribuClaw es donde la gente que va a dominar la próxima década aprende a crear agentes IA autónomos. En español, desde cero, con una comunidad que te acompaña."
+>
 
-  <!-- Hero -->
+  <!-- Hero with particles + glows -->
   <section class="about-hero">
+    <canvas id="about-particles"></canvas>
+    <div class="glow-orb glow-orb-red" style="width:500px;height:500px;top:-150px;left:10%;"></div>
+    <div class="glow-orb glow-orb-blue" style="width:400px;height:400px;bottom:-100px;right:5%;"></div>
     <div class="container">
       <div class="about-hero-inner" data-animate="fade-up">
         <img src="/images/logo-icon.webp" alt="TribuClaw" class="about-logo" />
@@ -32,132 +26,302 @@ import { WHOP_URL } from '../consts';
     </div>
   </section>
 
-  <!-- Content -->
-  <div class="about-content container">
+  <div class="section-divider"></div>
 
-    <!-- Story -->
-    <section class="about-section" data-animate="fade-up">
-      <h2>El mundo está cambiando. La mayoría no se ha dado cuenta.</h2>
-      <p>
-        Hay personas que ya tienen una inteligencia artificial trabajando para ellas.
-        No hablamos de pedirle cosas a ChatGPT. Hablamos de un <strong>agente autónomo</strong> que gestiona
-        su negocio, responde sus clientes, analiza oportunidades y toma decisiones. Solo.
-        Mientras duermen.
-      </p>
-      <p>
-        Esta tecnología ya existe. Ya es accesible. Pero el 99% de la gente no lo sabe
-        porque todo el conocimiento está en inglés, enterrado en repositorios de GitHub
-        y foros técnicos.
-      </p>
-      <p>
-        <strong>TribuClaw nació para romper esa barrera.</strong> Para que cualquier persona,
-        sin importar su nivel técnico, pueda tener su propio agente IA funcionando.
-        En español. Con una comunidad que le acompañe.
-      </p>
-    </section>
+  <!-- Stats counters -->
+  <section class="about-stats">
+    <div class="container">
+      <div class="stats-grid" data-animate="stagger">
+        <div class="stat-card glass-card">
+          <span class="stat-value" data-target="98" data-suffix="+">0</span>
+          <span class="stat-label">Miembros activos</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-value" data-target="4.8" data-suffix="/5">0</span>
+          <span class="stat-label">Valoración media</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-value" data-target="24" data-suffix="/7">0</span>
+          <span class="stat-label">Soporte continuo</span>
+        </div>
+        <div class="stat-card glass-card">
+          <span class="stat-value" data-target="1" data-suffix=" semana">0</span>
+          <span class="stat-label">Para tener tu agente listo</span>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    <!-- Values -->
-    <section class="about-section" data-animate="fade-up">
-      <h2>Qué vas a conseguir aquí</h2>
+  <div class="section-divider"></div>
+
+  <!-- Story -->
+  <section class="about-section" data-animate="fade-up">
+    <div class="container">
+      <div class="about-section-inner">
+        <span class="section-badge">La historia</span>
+        <h2>El mundo está cambiando. La mayoría no se ha dado cuenta.</h2>
+        <div class="story-highlight glass-card">
+          <p>
+            Hay personas que ya tienen una inteligencia artificial trabajando para ellas.
+            No hablamos de pedirle cosas a ChatGPT. Hablamos de un <strong>agente autónomo</strong> que gestiona
+            su negocio, responde sus clientes, analiza oportunidades y toma decisiones. Solo.
+            Mientras duermen.
+          </p>
+        </div>
+        <p>
+          Esta tecnología ya existe. Ya es accesible. Pero el 99% de la gente no lo sabe
+          porque todo el conocimiento está en inglés, enterrado en repositorios de GitHub
+          y foros técnicos.
+        </p>
+        <p>
+          <strong>TribuClaw nació para romper esa barrera.</strong> Para que cualquier persona,
+          sin importar su nivel técnico, pueda tener su propio agente IA funcionando.
+          En español. Con una comunidad que le acompañe.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- How it works — Steps -->
+  <section class="about-section about-steps-section">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-badge">Cómo funciona</span>
+        <h2 class="section-title">De cero a agente IA en 3 pasos</h2>
+      </div>
+      <div class="steps-grid" data-animate="stagger">
+        <div class="step-card glass-card">
+          <div class="step-number">1</div>
+          <h3>Te enseñas los fundamentos</h3>
+          <p>Curso en español, paso a paso. Sin jerga técnica. Desde montar tu servidor hasta conectar tu primer agente.</p>
+        </div>
+        <div class="step-card glass-card">
+          <div class="step-number">2</div>
+          <h3>Configuras con la App</h3>
+          <p>Sin tocar código. La TribuClaw App te da una interfaz visual para crear, conectar y monitorizar tu agente.</p>
+        </div>
+        <div class="step-card glass-card">
+          <div class="step-number">3</div>
+          <h3>Tu agente trabaja por ti</h3>
+          <p>Emails, clientes, redes sociales, facturas. Tu agente se encarga. Tú te enfocas en lo que importa.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Values with glass cards -->
+  <section class="about-section about-values-section">
+    <div class="container">
+      <div class="glow-orb glow-orb-red" style="width:400px;height:400px;top:10%;right:-10%;"></div>
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-badge">Lo que vas a conseguir</span>
+        <h2 class="section-title">Tu ventaja competitiva empieza aquí</h2>
+      </div>
       <div class="values-grid" data-animate="stagger">
-        <div class="value-card">
+        <div class="value-card glass-card">
+          <div class="value-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+          </div>
           <h3>Tu agente IA funcionando</h3>
           <p>No teoría. Sales de aquí con un agente real, conectado a tu vida y tu negocio, ejecutando tareas por ti.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card glass-card">
+          <div class="value-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 017 7c0 3-2 5.5-4 7l-1 1v3h-4v-3l-1-1c-2-1.5-4-4-4-7a7 7 0 017-7z"/><path d="M9 21h6"/></svg>
+          </div>
           <h3>Ventaja de primer jugador</h3>
           <p>Los que aprenden esto ahora tendrán años de ventaja. Esta oleada no espera a nadie.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card glass-card">
+          <div class="value-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+          </div>
           <h3>Gente que piensa como tú</h3>
           <p>Emprendedores, creadores y visionarios que entienden que la IA no es una moda. Es el nuevo estándar.</p>
         </div>
-        <div class="value-card">
+        <div class="value-card glass-card">
+          <div class="value-icon-wrap">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+          </div>
           <h3>Nuevas formas de generar ingresos</h3>
           <p>La IA autónoma abre modelos de negocio que hace un año no existían. Aquí aprendes a monetizarlos.</p>
         </div>
       </div>
-    </section>
+      <svg width="0" height="0" style="position:absolute">
+        <defs>
+          <linearGradient id="gradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#e94560"/>
+            <stop offset="100%" stop-color="#ff6b6b"/>
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  </section>
 
-    <!-- Mission -->
-    <section class="about-section" data-animate="fade-up">
-      <h2>Nuestra misión</h2>
-      <p>
-        <strong>Democratizar los agentes IA en español.</strong> Que nadie se quede fuera por no saber inglés.
-        Que la barrera de entrada sea la curiosidad, no el código. Que tener un agente IA
-        trabajando por ti sea tan normal como tener un email.
-      </p>
-      <p>
-        Creemos que la IA autónoma es la revolución más importante de esta década.
-        Y queremos que la comunidad hispanohablante no sea la última en enterarse.
-      </p>
-    </section>
+  <div class="section-divider"></div>
 
-    <!-- Founder (sin glass-card) -->
-    <section class="about-section" data-animate="fade-up">
-      <h2>Quién está detrás</h2>
-      <div class="founder">
-        <div class="founder-avatar">AC</div>
-        <div class="founder-info">
-          <h3>Álvaro Cerpa</h3>
-          <div class="founder-role">Fundador de TribuClaw · Emprendedor Digital</div>
-          <p>
-            Emprendedor que lleva años construyendo negocios digitales. Cuando configuró su propio
-            agente IA y vio cómo transformaba por completo su forma de trabajar, supo que
-            esto iba a cambiarlo todo. Creó TribuClaw porque necesitaba existir: un espacio en español,
-            sin humo, donde cualquiera pudiera acceder a esta tecnología y construir su ventaja.
-          </p>
-          <a href="https://www.linkedin.com/in/alvaro-cerpa/" target="_blank" rel="noopener noreferrer" class="founder-link">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#fafafa"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-            linkedin.com/in/alvaro-cerpa
-          </a>
+  <!-- Mission -->
+  <section class="about-section" data-animate="fade-up">
+    <div class="container">
+      <div class="about-section-inner">
+        <span class="section-badge">Misión</span>
+        <h2>Democratizar los agentes IA en español</h2>
+        <p>
+          Que nadie se quede fuera por no saber inglés.
+          Que la barrera de entrada sea la curiosidad, no el código. Que tener un agente IA
+          trabajando por ti sea tan normal como tener un email.
+        </p>
+        <p>
+          Creemos que la IA autónoma es la revolución más importante de esta década.
+          Y queremos que la comunidad hispanohablante no sea la última en enterarse.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Founder -->
+  <section class="about-section" data-animate="fade-up">
+    <div class="container">
+      <div class="about-section-inner">
+        <span class="section-badge">Fundador</span>
+        <h2>Quién está detrás</h2>
+        <div class="founder glass-card">
+          <div class="founder-avatar-wrap">
+            <div class="founder-avatar">AC</div>
+            <div class="founder-avatar-glow"></div>
+          </div>
+          <div class="founder-info">
+            <h3>Álvaro Cerpa</h3>
+            <div class="founder-role">Fundador de TribuClaw · Emprendedor Digital</div>
+            <p>
+              Emprendedor que lleva años construyendo negocios digitales. Cuando configuró su propio
+              agente IA y vio cómo transformaba por completo su forma de trabajar, supo que
+              esto iba a cambiarlo todo. Creó TribuClaw porque necesitaba existir: un espacio en español,
+              sin humo, donde cualquiera pudiera acceder a esta tecnología y construir su ventaja.
+            </p>
+            <a href="https://www.linkedin.com/in/alvaro-cerpa/" target="_blank" rel="noopener noreferrer" class="founder-link">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#fafafa"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+              linkedin.com/in/alvaro-cerpa
+            </a>
+          </div>
         </div>
       </div>
-    </section>
-
-  </div>
+    </div>
+  </section>
 
   <!-- CTA -->
-  <section class="about-cta">
+  <section class="about-cta" data-animate="fade-up">
     <div class="container">
-      <div class="about-cta-inner" data-animate="fade-up">
+      <div class="about-cta-inner glass-card">
+        <div class="glow-orb glow-orb-red" style="width:300px;height:300px;top:-100px;right:-50px;"></div>
+        <div class="glow-orb glow-orb-blue" style="width:200px;height:200px;bottom:-50px;left:-50px;"></div>
         <h2>La oleada no va a esperar</h2>
         <p>Dentro de un año, desearás haber empezado hoy. Este es el momento.</p>
         <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
-          <span>Entrar a TribuClaw</span>
+          <span>Entrar a TribuClaw →</span>
         </a>
       </div>
     </div>
   </section>
 
-</main>
-<Footer />
+</BaseLayout>
 
 <script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach(el => {
-  gsap.from(el, {
-    scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-    opacity: 0, y: 30, duration: 0.7, ease: 'power2.out',
+// Counter animation
+function animateCounter(el: HTMLElement, target: number, suffix: string) {
+  const start = performance.now();
+  const duration = 2000;
+  const isDecimal = String(target).includes('.');
+  function update(timestamp: number) {
+    const progress = Math.min((timestamp - start) / duration, 1);
+    const eased = 1 - Math.pow(1 - progress, 3);
+    if (isDecimal) el.textContent = (eased * target).toFixed(1) + suffix;
+    else el.textContent = Math.floor(eased * target) + suffix;
+    if (progress < 1) requestAnimationFrame(update);
+    else {
+      if (isDecimal) el.textContent = target.toFixed(1) + suffix;
+      else el.textContent = target + suffix;
+    }
+  }
+  requestAnimationFrame(update);
+}
+const counterObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const el = entry.target as HTMLElement;
+      const target = parseFloat(el.dataset.target || '0');
+      const suffix = el.dataset.suffix || '';
+      animateCounter(el, target, suffix);
+      counterObserver.unobserve(el);
+    }
   });
-});
+}, { threshold: 0.5 });
+document.querySelectorAll('.stat-value[data-target]').forEach(el => counterObserver.observe(el));
 
-gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container => {
-  gsap.from(container.children, {
-    scrollTrigger: { trigger: container, start: 'top 85%', once: true },
-    opacity: 0, y: 25, duration: 0.6, stagger: 0.1, ease: 'power2.out',
-  });
-});
+// Particles with IntersectionObserver cleanup
+(function initParticles() {
+  const canvas = document.getElementById('about-particles') as HTMLCanvasElement;
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+  let rafId = 0;
+  let isVisible = true;
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+  const COUNT = window.innerWidth < 768 ? 20 : 40;
+  const COLORS = ['#e94560', '#ff6b6b', '#ffffff', '#4a90d9'];
+  const particles: {x:number;y:number;size:number;speedX:number;speedY:number;opacity:number;color:string;pulse:number}[] = [];
+  for (let i = 0; i < COUNT; i++) {
+    particles.push({
+      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+      size: Math.random() * 1.5 + 0.5, speedX: (Math.random() - 0.5) * 0.25, speedY: (Math.random() - 0.5) * 0.25,
+      opacity: Math.random() * 0.35 + 0.1, color: COLORS[Math.floor(Math.random() * COLORS.length)], pulse: Math.random() * Math.PI * 2
+    });
+  }
+  function draw() {
+    if (!canvas.isConnected) { cancelAnimationFrame(rafId); return; }
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    for (const p of particles) {
+      p.x += p.speedX; p.y += p.speedY; p.pulse += 0.02;
+      if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+      ctx.save();
+      ctx.globalAlpha = 0.1 + Math.sin(p.pulse) * 0.2 + 0.2;
+      ctx.fillStyle = p.color; ctx.shadowBlur = 6; ctx.shadowColor = p.color;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+      ctx.restore();
+    }
+    rafId = requestAnimationFrame(draw);
+  }
+  rafId = requestAnimationFrame(draw);
+  const obs = new IntersectionObserver(([entry]) => {
+    isVisible = entry.isIntersecting;
+    if (isVisible && canvas.isConnected) { rafId = requestAnimationFrame(draw); }
+    else { cancelAnimationFrame(rafId); }
+  }, { threshold: 0 });
+  obs.observe(canvas);
+})();
 </script>
 
 <style>
   .about-hero {
-    padding: 7rem 0 3rem;
     position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
     overflow: hidden;
+  }
+  #about-particles {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 0; opacity: 0.6;
   }
   .about-hero-inner {
     text-align: center;
@@ -170,90 +334,206 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
     width: 80px;
     height: 80px;
     margin-bottom: 1.5rem;
+    border-radius: 20px;
+    box-shadow: 0 8px 32px rgba(233,69,96,0.15);
   }
   .about-hero h1 {
-    font-size: clamp(2rem, 5vw, 2.8rem);
+    font-size: clamp(2rem, 5vw, 3rem);
     margin-bottom: 0.75rem;
   }
   .about-lead {
     color: var(--text-muted);
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.7;
   }
 
-  .about-content {
-    padding: 0 1.5rem 3rem;
+  /* Stats */
+  .about-stats {
+    padding: 3rem 0;
+  }
+  .stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  .stat-card {
+    padding: 1.75rem 1.25rem;
+    text-align: center;
+  }
+  .stat-value {
+    display: block;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.25rem;
+  }
+  .stat-label {
+    font-size: 0.8rem;
+    color: rgba(250,250,250,0.35);
+    font-weight: 500;
+  }
+
+  /* Sections */
+  .about-section {
+    padding: 5rem 0;
+    position: relative;
+  }
+  .about-section-inner {
     max-width: 760px;
     margin: 0 auto;
   }
-
-  .about-section {
-    margin-bottom: 3.5rem;
-  }
   .about-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 1rem;
-    padding-bottom: 0.5rem;
-    border-bottom: 1px solid var(--border);
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    margin-bottom: 1.5rem;
   }
   .about-section p {
     color: var(--text-muted);
     line-height: 1.75;
     margin-bottom: 1rem;
+    font-size: 1.02rem;
+  }
+  .story-highlight {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid rgba(233,69,96,0.4);
+  }
+  .story-highlight p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.8;
   }
 
-  /* Values grid (sin emojis, sin glass-card) */
+  /* Steps section */
+  .about-steps-section {
+    background: var(--bg-alt);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(233,69,96,0.04) 0%, transparent 50%);
+  }
+  .steps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .step-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+    position: relative;
+  }
+  .step-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(233,69,96,0.15), rgba(233,69,96,0.05));
+    border: 1px solid rgba(233,69,96,0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1.25rem;
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #e94560;
+    font-family: 'Space Grotesk', sans-serif;
+  }
+  .step-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+  .step-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Values section */
+  .about-values-section {
+    background: var(--bg);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(233,69,96,0.03) 0%, transparent 50%);
+    position: relative;
+    overflow: hidden;
+  }
   .values-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 1rem;
-    margin: 1.5rem 0;
+    max-width: 900px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
   .value-card {
-    padding: 1.5rem;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    padding: 2rem;
+  }
+  .value-icon-wrap {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: rgba(233,69,96,0.06);
+    border: 1px solid rgba(233,69,96,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.25rem;
   }
   .value-card h3 {
-    font-size: 1rem;
-    margin-bottom: 0.4rem;
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
   }
   .value-card p {
     color: var(--text-muted);
-    font-size: 0.88rem;
-    line-height: 1.5;
+    font-size: 0.95rem;
+    line-height: 1.6;
     margin: 0;
+    word-break: break-word;
+    overflow-wrap: break-word;
   }
 
-  /* Founder (sin glass-card) */
+  /* Founder */
   .founder {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
     align-items: flex-start;
-    padding: 2rem;
-    margin: 1.5rem 0;
-    background: rgba(255,255,255,0.02);
-    border: 1px solid var(--border);
-    border-radius: 12px;
+    padding: 2.5rem;
+    margin-top: 1.5rem;
+    position: relative;
+    overflow: visible;
+  }
+  .founder-avatar-wrap {
+    position: relative;
+    flex-shrink: 0;
   }
   .founder-avatar {
-    width: 64px;
-    height: 64px;
+    width: 88px;
+    height: 88px;
     border-radius: 50%;
     background: var(--gradient);
     display: flex;
     align-items: center;
     justify-content: center;
-    flex-shrink: 0;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
     font-weight: 700;
     color: #fff;
+    position: relative;
+    z-index: 1;
+  }
+  .founder-avatar-glow {
+    position: absolute;
+    inset: -20px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(233,69,96,0.2) 0%, transparent 70%);
+    pointer-events: none;
   }
   .founder-info { flex: 1; }
-  .founder-info h3 { font-size: 1.1rem; margin-bottom: 0.25rem; }
-  .founder-role { color: #e94560; font-size: 0.85rem; margin-bottom: 0.5rem; display: block; }
-  .founder-info p { color: var(--text-muted); font-size: 0.92rem; line-height: 1.6; margin: 0 0 0.75rem; }
+  .founder-info h3 { font-size: 1.3rem; margin-bottom: 0.25rem; }
+  .founder-role { color: #e94560; font-size: 0.85rem; margin-bottom: 1rem; display: block; font-weight: 600; }
+  .founder-info p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin: 0 0 1rem; }
   .founder-link {
     display: inline-flex;
     align-items: center;
@@ -268,10 +548,9 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
 
   /* CTA */
   .about-cta {
-    padding: 5rem 0;
+    padding: 6rem 0 5rem;
     position: relative;
     overflow: hidden;
-    background: var(--bg-alt);
   }
   .about-cta-inner {
     text-align: center;
@@ -279,33 +558,41 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
     z-index: 1;
     max-width: 600px;
     margin: 0 auto;
+    padding: 4rem 2.5rem;
+    overflow: hidden;
   }
   .about-cta h2 {
-    font-size: clamp(1.8rem, 4vw, 2.4rem);
-    margin-bottom: 0.5rem;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    margin-bottom: 0.75rem;
   }
   .about-cta p {
     color: var(--text-muted);
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.05rem;
   }
 
-  @media (min-width: 640px) {
+  @media (min-width: 768px) {
     .values-grid { grid-template-columns: repeat(2, 1fr); }
+    .steps-grid { grid-template-columns: repeat(3, 1fr); }
+    .stats-grid { grid-template-columns: repeat(4, 1fr); }
   }
 
   @media (max-width: 640px) {
-    .about-hero { padding: 5rem 0 2rem; }
-    .about-hero h1 { font-size: 1.8rem; }
+    .about-hero { padding: 6rem 0 2.5rem; min-height: auto; }
+    .about-hero h1 { font-size: 1.9rem; }
     .about-lead { font-size: 1rem; }
-    .about-logo { width: 60px; height: 60px; }
-    .about-content { padding: 0 1.25rem 2rem; }
-    .about-section h2 { font-size: 1.25rem; }
-    .about-section { margin-bottom: 2.5rem; }
-    .founder { flex-direction: column; align-items: center; text-align: center; }
-    .about-cta { padding: 3rem 0; }
+    .about-logo { width: 64px; height: 64px; border-radius: 16px; }
+    .about-section { padding: 3rem 0; }
+    .about-section h2 { font-size: 1.3rem; }
+    .founder {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 2rem;
+    }
+    .about-cta { padding: 4rem 0 3rem; }
+    .about-cta-inner { padding: 2.5rem 1.5rem; }
     .about-cta h2 { font-size: 1.5rem; }
+    .step-card { padding: 2rem 1.5rem; }
   }
 </style>
-
-</body>
-</html>

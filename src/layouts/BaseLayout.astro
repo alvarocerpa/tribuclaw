@@ -1,0 +1,81 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+}
+
+const { title, description, image, type } = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+<head>
+  <BaseHead title={title} description={description} image={image} type={type} />
+</head>
+<body>
+  <Header />
+  <main id="main-content">
+    <slot />
+  </main>
+  <Footer />
+
+  <!-- Page fade-in -->
+  <style>
+    body {
+      animation: pageIn 0.4s ease-out;
+    }
+    @keyframes pageIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+  </style>
+
+  <!-- Shared Lenis + GSAP ScrollTrigger + generic animations -->
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Prevent double initialization (home page also inits GSAP)
+    if (!(window as any).__lenisInit) {
+      (window as any).__lenisInit = true;
+
+      import('@studio-freight/lenis').then(({ default: Lenis }) => {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        });
+
+        lenis.on('scroll', ScrollTrigger.update);
+        gsap.ticker.add((time) => lenis.raf(time * 1000));
+        gsap.ticker.lagSmoothing(0);
+
+        // Store for other scripts
+        (window as any).__lenis = lenis;
+      });
+    }
+
+    // Generic fade-up
+    gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach(el => {
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power2.out',
+      });
+    });
+
+    // Generic stagger
+    gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container => {
+      gsap.from(container.children, {
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        opacity: 0, y: 25, duration: 0.6, stagger: 0.1, ease: 'power2.out',
+      });
+    });
+  </script>
+</body>
+</html>

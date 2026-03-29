@@ -1,7 +1,5 @@
 ---
-import BaseHead from '../../components/BaseHead.astro';
-import Footer from '../../components/Footer.astro';
-import Header from '../../components/Header.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 import { SITE_TITLE, WHOP_URL } from '../../consts';
@@ -29,49 +27,55 @@ const featured = posts[0];
 const rest = posts.slice(1);
 ---
 
-<!doctype html>
-<html lang="es">
-<head>
-  <BaseHead
-    title={`Blog | ${SITE_TITLE} — Guías y tutoriales de agentes IA`}
-    description="Artículos, guías y tutoriales sobre agentes IA personales, automatización con inteligencia artificial y cómo emprender con IA. Todo en español."
-  />
-</head>
-<body>
-<Header />
-<main id="main-content">
+<BaseLayout
+  title={`Blog | ${SITE_TITLE} — Guías y tutoriales de agentes IA`}
+  description="Artículos, guías y tutoriales sobre agentes IA personales, automatización con inteligencia artificial y cómo emprender con IA. Todo en español."
+>
 
-  <!-- Hero — clean, no glow, no badge -->
+  <!-- Hero -->
   <section class="blog-hero">
+    <div class="glow-orb glow-orb-red" style="width:600px;height:600px;top:-200px;left:20%;"></div>
+    <div class="glow-orb glow-orb-blue" style="width:400px;height:400px;bottom:-100px;right:10%;"></div>
     <div class="container">
       <div class="blog-hero-inner" data-animate="fade-up">
+        <span class="badge-pill">📝 Blog</span>
         <h1>Blog</h1>
         <p class="blog-hero-sub">Guías, tutoriales y estrategias sobre agentes IA personales, automatización y emprendimiento con IA.</p>
       </div>
     </div>
   </section>
 
-  <!-- Featured post — simplified horizontal card -->
+  <!-- Featured post -->
   {featured && (
     <section class="featured-section container" data-animate="fade-up">
-      <div class="featured-card">
+      <div class="featured-card glass-card featured-glow">
         <a href={`/blog/${featured.id}/`}>
           <div class="featured-img">
             <img src={heroImages[featured.id] || featured.data.heroImage || '/images/og-default.jpg'} alt={featured.data.title} width="600" height="338" fetchpriority="high" />
           </div>
           <div class="featured-body">
+            <div class="featured-badge">
+              <span class="badge-pill" style="margin-bottom:0;font-size:0.65rem;padding:0.25rem 0.6rem;">⭐ Destacado</span>
+            </div>
             <h2>{featured.data.title}</h2>
             <p class="featured-excerpt">{featured.data.description}</p>
-            <span class="featured-meta">
+            <div class="featured-meta">
               <time datetime={featured.data.pubDate.toISOString()}>
                 {featured.data.pubDate.toLocaleDateString('es-ES', { year: 'numeric', month: 'short', day: 'numeric' })}
               </time>
-            </span>
+              {featured.data.tags && featured.data.tags.length > 0 && (
+                <div class="featured-tags">
+                  {featured.data.tags.slice(0, 3).map((tag: string) => <span class="blog-tag">{tag}</span>)}
+                </div>
+              )}
+            </div>
           </div>
         </a>
       </div>
     </section>
   )}
+
+  <div class="section-divider"></div>
 
   <!-- Posts grid -->
   <section class="posts-section container">
@@ -84,48 +88,36 @@ const rest = posts.slice(1);
           tags={post.data.tags}
           slug={post.id}
           heroImage={heroImages[post.id] || post.data.heroImage}
+          readingTime={Math.max(3, Math.ceil((post.body || '').split(/\s+/).length / 200))}
         />
       ))}
     </div>
   </section>
 
-  <!-- CTA — moved to bottom, minimal -->
-  <section class="blog-cta-section container">
-    <p class="blog-cta-text">¿Listo para crear tu agente IA? <a href={WHOP_URL} target="_blank">Únete a TribuClaw →</a></p>
+  <!-- CTA -->
+  <section class="blog-cta-section container" data-animate="fade-up">
+    <div class="blog-cta-inner glass-card">
+      <div class="glow-orb glow-orb-red" style="width:200px;height:200px;top:-60px;right:-40px;"></div>
+      <h3>¿Listo para crear tu agente IA?</h3>
+      <p>Curso + App + Comunidad. Todo en español.</p>
+      <a href={WHOP_URL} target="_blank" class="cta-btn">Únete a TribuClaw →</a>
+    </div>
   </section>
 
-</main>
-<Footer />
-
-<script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
-
-gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach(el => {
-  gsap.from(el, {
-    scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-    opacity: 0, y: 20, duration: 0.6, ease: 'power2.out',
-  });
-});
-
-gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container => {
-  gsap.from(container.children, {
-    scrollTrigger: { trigger: container, start: 'top 85%', once: true },
-    opacity: 0, y: 15, duration: 0.5, stagger: 0.06, ease: 'power2.out',
-  });
-});
-</script>
+</BaseLayout>
 
 <style>
-  /* Hero — clean */
   .blog-hero {
-    padding: 6rem 0 3rem;
+    padding: 7rem 0 3rem;
+    position: relative;
+    overflow: hidden;
   }
   .blog-hero-inner {
     text-align: center;
     max-width: 600px;
     margin: 0 auto;
+    position: relative;
+    z-index: 1;
   }
   .blog-hero h1 {
     font-size: clamp(2rem, 5vw, 3rem);
@@ -139,82 +131,88 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
     line-height: 1.7;
   }
 
-  /* Featured — simplified */
-  .featured-section {
-    margin-bottom: 3rem;
-  }
-  .featured-card {
-    overflow: hidden;
-    border-radius: 12px;
-  }
+  /* Featured */
+  .featured-section { margin-bottom: 1rem; }
+  .featured-card { overflow: hidden; }
   .featured-card a {
-    text-decoration: none;
-    color: inherit;
-    display: grid;
-    grid-template-columns: 1fr;
+    text-decoration: none; color: inherit;
+    display: grid; grid-template-columns: 1fr;
     transition: box-shadow 0.3s ease;
   }
   .featured-card:hover { box-shadow: 0 8px 30px rgba(0,0,0,0.3); }
   .featured-card a:hover { text-decoration: none; color: inherit; }
+  .featured-glow {
+    border-color: rgba(233,69,96,0.2);
+    box-shadow: 0 0 40px rgba(233,69,96,0.06), 0 8px 32px rgba(0,0,0,0.3);
+  }
+  .featured-glow:hover {
+    border-color: rgba(233,69,96,0.35);
+    box-shadow: 0 0 50px rgba(233,69,96,0.1), 0 12px 40px rgba(0,0,0,0.4);
+  }
   .featured-img {
-    background: var(--bg-alt);
-    overflow: hidden;
-    aspect-ratio: 16/9;
-    max-height: 350px;
+    background: var(--bg-alt); overflow: hidden;
+    aspect-ratio: 16/9; max-height: 350px;
   }
-  .featured-img img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-  .featured-body {
-    padding: 1.5rem;
-  }
+  .featured-img img { width: 100%; height: 100%; object-fit: cover; }
+  .featured-body { padding: 2rem; }
+  .featured-badge { margin-bottom: 0.75rem; }
   .featured-body h2 {
-    font-size: 1.35rem;
-    line-height: 1.25;
-    margin-bottom: 0.5rem;
-    transition: color 0.2s;
-    font-weight: 800;
+    font-size: 1.35rem; line-height: 1.25; margin-bottom: 0.5rem;
+    transition: color 0.2s; font-weight: 800;
   }
   .featured-card:hover .featured-body h2 { color: var(--accent); }
   .featured-excerpt {
-    color: var(--text-muted);
-    font-size: 0.9rem;
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
+    color: var(--text-muted); font-size: 0.9rem; line-height: 1.6;
+    margin-bottom: 1rem;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
   }
   .featured-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
     color: rgba(250,250,250,0.3);
     font-size: 0.8rem;
   }
-
-  /* Posts grid — max 2 columns */
-  .posts-section {
-    margin-bottom: 4rem;
+  .featured-tags {
+    display: flex;
+    gap: 0.4rem;
   }
-  .posts-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
-
-  /* Bottom CTA */
-  .blog-cta-section {
-    padding-bottom: 5rem;
-    text-align: center;
-  }
-  .blog-cta-text {
-    font-size: 1.1rem;
-    color: rgba(250,250,250,0.5);
-  }
-  .blog-cta-text a {
-    color: var(--accent);
+  .blog-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.2rem 0.6rem;
+    border-radius: 100px;
+    font-size: 0.65rem;
     font-weight: 600;
+    background: rgba(233,69,96,0.08);
+    border: 1px solid rgba(233,69,96,0.15);
+    color: #e94560;
+  }
+
+  .posts-section { margin-bottom: 4rem; }
+  .posts-grid { display: grid; grid-template-columns: 1fr; gap: 1.25rem; }
+
+  /* CTA section */
+  .blog-cta-section { padding-bottom: 5rem; text-align: center; }
+  .blog-cta-inner {
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .blog-cta-inner h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    position: relative;
+    z-index: 1;
+  }
+  .blog-cta-inner p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+    z-index: 1;
   }
 
   @media (min-width: 640px) {
@@ -226,12 +224,9 @@ gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container =>
   }
 
   @media (max-width: 639px) {
-    .blog-hero { padding: 4rem 0 2rem; }
+    .blog-hero { padding: 5rem 0 2rem; }
     .blog-hero h1 { font-size: 1.8rem; }
     .featured-body { padding: 1.25rem; }
     .featured-body h2 { font-size: 1.2rem; }
   }
 </style>
-
-</body>
-</html>

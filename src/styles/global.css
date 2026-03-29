@@ -60,8 +60,9 @@ img, svg {
 h1, h2, h3, h4, h5, h6 {
 	color: #fff;
 	line-height: 1.2;
-	font-weight: 900;
+	font-weight: 700;
 	letter-spacing: -0.03em;
+	font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 p {
@@ -176,17 +177,20 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 
 /* ─── GLASS CARD ─── */
 .glass-card {
-	background: rgba(255,255,255,0.03);
-	border: 1px solid var(--border);
-	border-radius: 12px;
+	background: rgba(255,255,255,0.05);
+	backdrop-filter: blur(16px);
+	-webkit-backdrop-filter: blur(16px);
+	border: 1px solid rgba(255,255,255,0.1);
+	border-radius: 16px;
 	position: relative;
 	overflow: hidden;
-	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-	transition: transform 0.3s ease, border-color 0.3s;
+	box-shadow: 0 8px 32px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.05);
+	transition: transform 0.3s ease, border-color 0.3s, box-shadow 0.3s;
 }
 .glass-card:hover {
-	transform: translateY(-2px);
-	border-color: rgba(233,69,96,0.2);
+	transform: translateY(-3px);
+	border-color: rgba(233,69,96,0.25);
+	box-shadow: 0 12px 40px rgba(0,0,0,0.4), 0 0 20px rgba(233,69,96,0.08), inset 0 1px 0 rgba(255,255,255,0.08);
 }
 
 /* ─── GRADIENT TEXT ─── */
@@ -310,6 +314,18 @@ a:focus-visible, button:focus-visible, summary:focus-visible {
 	box-shadow: 0 12px 40px rgba(233,69,96,0.12);
 	border-color: rgba(233,69,96,0.3);
 }
+
+/* ─── GLOW ORB ─── */
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.15;
+  pointer-events: none;
+  z-index: 0;
+}
+.glow-orb-red { background: #e94560; }
+.glow-orb-blue { background: #4a90d9; }
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 640px) {

@@ -1,9 +1,7 @@
 ---
 import type { CollectionEntry } from 'astro:content';
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import FormattedDate from '../components/FormattedDate.astro';
-import Header from '../components/Header.astro';
 import RelatedPosts from '../components/RelatedPosts.astro';
 import { WHOP_URL, SITE_URL } from '../consts';
 
@@ -13,10 +11,17 @@ const { title, description, pubDate, updatedDate, heroImage, author, tags, faq }
 const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
 ---
 
-<html lang="es">
-<head>
-  <BaseHead title={`${title} | TribuClaw`} description={description} type="article" />
-  {heroImage && <link rel="preload" href={heroImage} as="image" type={heroImage.endsWith('.webp') ? 'image/webp' : heroImage.endsWith('.avif') ? 'image/avif' : 'image/jpeg'} />}
+<BaseLayout
+  title={`${title} | TribuClaw`}
+  description={description}
+  type="article"
+>
+  {heroImage && <link rel="preload" href={heroImage} as="image" type={heroImage.endsWith('.webp') ? 'image/webp' : heroImage.endsWith('.avif') ? 'image/avif' : 'image/jpeg'} slot="head" />}
+
+  <!-- Reading progress bar -->
+  <div id="reading-progress" class="reading-progress"></div>
+
+  <!-- Structured data -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "Article",
@@ -54,18 +59,216 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
       { "@type": "ListItem", "position": 3, "name": title, "item": articleUrl }
     ]
   })} />
+
+  <!-- Article -->
+  <article class="blog-article">
+
+    <!-- Hero header -->
+    <section class="blog-hero-header">
+      <div class="blog-hero-bg"></div>
+      <div class="glow-orb glow-orb-red" style="width:500px;height:500px;top:-200px;left:15%;"></div>
+      <div class="glow-orb glow-orb-blue" style="width:300px;height:300px;bottom:-80px;right:10%;"></div>
+      <div class="container">
+        <div class="blog-hero-content">
+          <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Inicio</a>
+            <span class="meta-sep">›</span>
+            <a href="/blog/">Blog</a>
+            <span class="meta-sep">›</span>
+            <span class="breadcrumb-current">{title}</span>
+          </nav>
+          <h1 data-animate="fade-up">{title}</h1>
+          <div class="meta-inline" data-animate="fade-up">
+            <span>{author || 'Álvaro Cerpa'}</span>
+            <span class="meta-sep">·</span>
+            <span><FormattedDate date={pubDate} /></span>
+            {updatedDate && (
+              <>
+                <span class="meta-sep">·</span>
+                <span>Actualizado: <FormattedDate date={updatedDate} /></span>
+              </>
+            )}
+          </div>
+          {tags && tags.length > 0 && (
+            <div class="tags" data-animate="fade-up">
+              {tags.map((tag: string) => <span class="tag">{tag}</span>)}
+            </div>
+          )}
+        </div>
+      </div>
+    </section>
+
+    <!-- Content area with optional TOC sidebar -->
+    <div class="blog-content-area">
+      <div class="container">
+        <div class="blog-layout">
+          <!-- Main content -->
+          <div class="blog-main">
+            {heroImage && (
+              <img src={heroImage} alt={title} class="hero-img" width="768" height="403" fetchpriority="high" decoding="async" loading="eager" />
+            )}
+
+            <div class="prose">
+              <div class="blog-cta-banner blog-cta-mid1">
+                <div class="blog-cta-inner">
+                  <span class="blog-cta-emoji">🦞</span>
+                  <div class="blog-cta-text-wrap">
+                    <strong>¿Quieres montar tu propio agente IA?</strong>
+                    <p>En TribuClaw te enseñamos paso a paso. Curso + App + Comunidad.</p>
+                  </div>
+                  <a href={WHOP_URL} target="_blank" rel="noopener" class="blog-cta-btn">Unirme →</a>
+                </div>
+              </div>
+              <slot />
+              <div class="blog-cta-banner blog-cta-mid2">
+                <div class="blog-cta-inner">
+                  <span class="blog-cta-emoji">⚡</span>
+                  <div class="blog-cta-text-wrap">
+                    <strong>Tu agente IA puede estar funcionando esta semana</strong>
+                    <p>Sin programar. Sin inglés. Con soporte 24/7.</p>
+                  </div>
+                  <a href={WHOP_URL} target="_blank" rel="noopener" class="blog-cta-btn">Empezar hoy →</a>
+                </div>
+              </div>
+
+              {faq && faq.length > 0 && (
+                <section class="faq-section">
+                  <h2>Preguntas frecuentes</h2>
+                  {faq.map((f: {q: string; a: string}) => (
+                    <div class="faq-item">
+                      <h3>{f.q}</h3>
+                      <p>{f.a}</p>
+                    </div>
+                  ))}
+                </section>
+              )}
+
+              <div class="author-line">
+                Escrito por <a href="https://www.linkedin.com/in/alvaro-cerpa/" target="_blank" rel="noopener noreferrer">Álvaro Cerpa</a> · Fundador de TribuClaw
+              </div>
+
+              <p class="cta-inline">
+                ¿Listo para tener tu propio agente IA? <a href={WHOP_URL} target="_blank">Únete a TribuClaw →</a>
+              </p>
+
+              <div class="newsletter-capture glass-card">
+                <h3>Recibe tips semanales sobre agentes IA</h3>
+                <form class="nl-form" action="https://formspree.io/f/placeholder" method="POST">
+                  <input type="email" name="email" placeholder="tu@email.com" required aria-label="Email" />
+                  <button type="submit" class="nl-btn">Suscribirse</button>
+                </form>
+              </div>
+
+              <RelatedPosts currentTags={tags || []} currentId={Astro.url.pathname.split('/').filter(Boolean).pop() || ''} />
+            </div>
+          </div>
+
+          <!-- TOC sidebar (desktop only) -->
+          <aside class="blog-toc" id="blog-toc">
+            <div class="toc-inner">
+              <h4>En este artículo</h4>
+              <nav id="toc-nav"></nav>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+
+  </article>
+
+  <!-- Reading progress + TOC script -->
+  <script>
+    // Reading progress bar
+    const progressBar = document.getElementById('reading-progress');
+    if (progressBar) {
+      window.addEventListener('scroll', () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const scrolled = window.scrollY;
+        const progress = Math.min((scrolled / docHeight) * 100, 100);
+        progressBar.style.width = progress + '%';
+      }, { passive: true });
+    }
+
+    // Build TOC from headings
+    const prose = document.querySelector('.prose');
+    const tocNav = document.getElementById('toc-nav');
+    const tocAside = document.getElementById('blog-toc');
+    if (prose && tocNav && tocAside) {
+      const headings = prose.querySelectorAll('h2, h3');
+      if (headings.length > 2) {
+        const links: HTMLAnchorElement[] = [];
+        headings.forEach((h, i) => {
+          const id = 'heading-' + i;
+          h.id = id;
+          const a = document.createElement('a');
+          a.href = '#' + id;
+          a.textContent = h.textContent || '';
+          a.className = h.tagName === 'H3' ? 'toc-h3' : 'toc-h2';
+          tocNav.appendChild(a);
+          links.push(a);
+        });
+
+        // Active tracking
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              links.forEach(l => l.classList.remove('active'));
+              const activeLink = tocNav.querySelector(`a[href="#${entry.target.id}"]`);
+              if (activeLink) activeLink.classList.add('active');
+            }
+          });
+        }, { rootMargin: '-20% 0px -80% 0px' });
+        headings.forEach(h => observer.observe(h));
+      } else {
+        tocAside.style.display = 'none';
+      }
+    }
+  </script>
+
   <style>
-    .prose {
-      width: 768px;
-      max-width: calc(100% - 2rem);
+    /* Reading progress bar */
+    .reading-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: var(--gradient);
+      z-index: 200;
+      transition: width 0.1s linear;
+    }
+
+    /* Hero header */
+    .blog-hero-header {
+      position: relative;
+      padding: 7rem 0 3rem;
+      overflow: hidden;
+    }
+    .blog-hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse at 30% 20%, rgba(233,69,96,0.1) 0%, transparent 60%),
+        radial-gradient(ellipse at 70% 80%, rgba(233,69,96,0.06) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(74,141,217,0.04) 0%, transparent 40%);
+      pointer-events: none;
+    }
+    .blog-hero-content {
+      max-width: 768px;
       margin: 0 auto;
-      padding: 2rem 1rem;
+      position: relative;
+      z-index: 1;
+    }
+    .blog-hero-header h1 {
+      font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin: 0 0 1rem 0;
+      color: #fff;
     }
 
-    .article-header {
-      margin-bottom: 3rem;
-    }
-
+    /* Breadcrumb */
     .breadcrumb {
       font-size: 0.8rem;
       color: rgba(250,250,250,0.25);
@@ -80,15 +283,7 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
     }
     .breadcrumb a:hover { color: var(--accent); }
     .breadcrumb span { color: rgba(250,250,250,0.2); }
-
-    .article-header h1 {
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 900;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-      margin: 0 0 1rem 0;
-      color: #fff;
-    }
+    .breadcrumb-current { color: rgba(250,250,250,0.35) !important; }
 
     .meta-inline {
       display: flex;
@@ -96,30 +291,51 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
       gap: 0.5rem;
       color: rgba(250,250,250,0.35);
       font-size: 0.875rem;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
     }
     .meta-sep { color: rgba(250,250,250,0.15); }
-
-    .hero-img {
-      width: 100%;
-      border-radius: 12px;
-      margin-top: 2rem;
-      margin-bottom: 1rem;
-    }
 
     .tags {
       display: flex;
       gap: 0.4rem;
       flex-wrap: wrap;
-      margin-top: 1.5rem;
     }
     .tag {
-      color: rgba(250,250,250,0.4);
-      font-size: 0.75rem;
-      font-weight: 500;
+      display: inline-flex;
+      align-items: center;
+      padding: 0.2rem 0.6rem;
+      border-radius: 100px;
+      font-size: 0.65rem;
+      font-weight: 600;
+      background: rgba(233,69,96,0.08);
+      border: 1px solid rgba(233,69,96,0.15);
+      color: #e94560;
     }
 
-    /* Blog body typography */
+    /* Content layout */
+    .blog-content-area {
+      padding: 0 0 4rem;
+    }
+    .blog-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+    .blog-main {
+      max-width: 768px;
+      margin: 0 auto;
+    }
+    .hero-img {
+      width: 100%;
+      border-radius: 12px;
+      margin-bottom: 2rem;
+    }
+
+    /* Prose */
+    .prose {
+      padding: 0 1rem;
+    }
     .prose :global(p) {
       font-size: 1.0625rem;
       line-height: 1.8;
@@ -156,39 +372,21 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
       color: rgba(250,250,250,0.5);
       font-size: 1.0625rem;
     }
-    .prose :global(pre) {
-      margin: 2rem 0;
-    }
-    .prose :global(img) {
-      border-radius: 8px;
-      margin: 2rem 0;
-    }
+    .prose :global(pre) { margin: 2rem 0; }
+    .prose :global(img) { border-radius: 8px; margin: 2rem 0; }
 
-    /* FAQ section */
+    /* FAQ */
     .faq-section {
       margin-top: 4rem;
       padding-top: 2rem;
       border-top: 1px solid var(--border);
     }
-    .faq-section h2 {
-      font-size: 1.4rem;
-      margin-bottom: 2rem;
-      font-weight: 800;
-    }
+    .faq-section h2 { font-size: 1.4rem; margin-bottom: 2rem; font-weight: 800; }
     .faq-item { margin-bottom: 2rem; }
-    .faq-item h3 {
-      font-size: 1.05rem;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      font-weight: 600;
-    }
-    .faq-item p {
-      color: var(--text-muted);
-      font-size: 1rem;
-      line-height: 1.7;
-    }
+    .faq-item h3 { font-size: 1.05rem; color: #fff; margin-bottom: 0.5rem; font-weight: 600; }
+    .faq-item p { color: var(--text-muted); font-size: 1rem; line-height: 1.7; }
 
-    /* Author — minimal inline */
+    /* Author */
     .author-line {
       margin-top: 3rem;
       padding-top: 2rem;
@@ -196,97 +394,137 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
       font-size: 0.9rem;
       color: rgba(250,250,250,0.4);
     }
-    .author-line a {
-      color: rgba(250,250,250,0.6);
-      text-decoration: none;
-    }
+    .author-line a { color: rgba(250,250,250,0.6); text-decoration: none; }
     .author-line a:hover { color: var(--accent); }
 
-    /* Bottom CTA — clean inline */
+    /* CTA inline */
     .cta-inline {
       margin-top: 2rem;
       font-size: 1.05rem;
       line-height: 1.7;
       color: rgba(250,250,250,0.6);
     }
-    .cta-inline a {
-      color: var(--accent);
-      font-weight: 600;
-      text-decoration: none;
-      transition: color 0.2s;
-    }
+    .cta-inline a { color: var(--accent); font-weight: 600; text-decoration: none; transition: color 0.2s; }
     .cta-inline a:hover { color: var(--accent-light); }
 
+    /* Newsletter */
+    .newsletter-capture {
+      margin-top: 3rem;
+      padding: 2rem;
+      text-align: center;
+    }
+    .newsletter-capture h3 { font-size: 1rem; margin-bottom: 1rem; color: rgba(250,250,250,0.8); }
+    .nl-form { display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto; }
+    .nl-form input {
+      flex: 1;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 8px;
+      padding: 0.6rem 0.75rem;
+      color: #fff;
+      font-size: 0.85rem;
+      outline: none;
+    }
+    .nl-form input::placeholder { color: rgba(250,250,250,0.3); }
+    .nl-form input:focus { border-color: rgba(233,69,96,0.4); }
+    .nl-btn {
+      background: #e94560; border: none; border-radius: 8px;
+      padding: 0.6rem 1.25rem; color: #fff; font-weight: 600;
+      font-size: 0.85rem; cursor: pointer; transition: background 0.2s;
+    }
+    .nl-btn:hover { background: #d13a53; }
+
+    /* Blog CTA banners */
+    .blog-cta-banner {
+      margin: 3rem 0;
+      padding: 1.5rem;
+      background: rgba(255,255,255,0.02);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(233,69,96,0.12);
+      border-radius: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .blog-cta-banner::before {
+      content: '';
+      position: absolute;
+      top: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle, rgba(233,69,96,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .blog-cta-inner { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
+    .blog-cta-emoji { font-size: 2rem; flex-shrink: 0; }
+    .blog-cta-text-wrap { flex: 1; min-width: 200px; }
+    .blog-cta-text-wrap strong { display: block; color: #fff; font-size: 0.95rem; margin-bottom: 0.25rem; }
+    .blog-cta-text-wrap p { color: rgba(250,250,250,0.5); font-size: 0.85rem; margin: 0; line-height: 1.5; }
+    .blog-cta-btn {
+      display: inline-flex; align-items: center;
+      background: #e94560; color: #fff; font-weight: 700; font-size: 0.85rem;
+      padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none;
+      flex-shrink: 0; transition: background 0.2s, transform 0.2s;
+    }
+    .blog-cta-btn:hover { background: #d13a53; transform: translateY(-1px); text-decoration: none; color: #fff; }
+
+    /* TOC sidebar */
+    .blog-toc {
+      display: none;
+    }
+    @media (min-width: 1024px) {
+      .blog-layout {
+        grid-template-columns: 1fr 200px;
+      }
+      .blog-main {
+        max-width: none;
+      }
+      .blog-toc {
+        display: block;
+        position: sticky;
+        top: 80px;
+        max-height: calc(100vh - 100px);
+        overflow-y: auto;
+      }
+      .toc-inner {
+        padding: 0.75rem 0;
+      }
+      .toc-inner h4 {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: rgba(250,250,250,0.3);
+        margin-bottom: 0.75rem;
+        font-weight: 700;
+      }
+      .toc-inner nav {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+      }
+      .toc-inner a {
+        color: rgba(250,250,250,0.35);
+        font-size: 0.78rem;
+        text-decoration: none;
+        line-height: 1.4;
+        transition: color 0.2s;
+        padding: 0.15rem 0;
+      }
+      .toc-inner a.toc-h3 {
+        padding-left: 0.75rem;
+      }
+      .toc-inner a:hover { color: var(--accent); }
+      .toc-inner a.active {
+        color: var(--accent);
+        font-weight: 600;
+      }
+    }
+
     @media (max-width: 640px) {
-      .prose { padding: 1.5rem 1.25rem; }
-      .article-header h1 { font-size: 1.75rem; }
+      .blog-hero-header { padding: 5.5rem 0 2rem; }
+      .blog-hero-header h1 { font-size: 1.75rem; }
+      .prose { padding: 0; }
     }
   </style>
-</head>
 
-<body>
-  <Header />
-  <main id="main-content">
-    <article class="prose">
-        <!-- Breadcrumbs -->
-        <nav class="breadcrumb" aria-label="Breadcrumb">
-          <a href="/">Inicio</a>
-          <span class="meta-sep">›</span>
-          <a href="/blog/">Blog</a>
-          <span class="meta-sep">›</span>
-          <span>{title}</span>
-        </nav>
-
-        <div class="article-header">
-          <h1>{title}</h1>
-          <div class="meta-inline">
-            <span>{author || 'Álvaro Cerpa'}</span>
-            <span class="meta-sep">·</span>
-            <span><FormattedDate date={pubDate} /></span>
-            {updatedDate && (
-              <>
-                <span class="meta-sep">·</span>
-                <span>Actualizado: <FormattedDate date={updatedDate} /></span>
-              </>
-            )}
-          </div>
-          {heroImage && (
-            <img src={heroImage} alt={title} class="hero-img" width="768" height="403" fetchpriority="high" decoding="async" loading="eager" />
-          )}
-          {tags && tags.length > 0 && (
-            <div class="tags">
-              {tags.map((tag: string) => <span class="tag">{tag}</span>)}
-            </div>
-          )}
-        </div>
-
-        <slot />
-
-        {faq && faq.length > 0 && (
-          <section class="faq-section">
-            <h2>Preguntas frecuentes</h2>
-            {faq.map((f: {q: string; a: string}) => (
-              <div class="faq-item">
-                <h3>{f.q}</h3>
-                <p>{f.a}</p>
-              </div>
-            ))}
-          </section>
-        )}
-
-        <!-- Author — minimal -->
-        <div class="author-line">
-          Escrito por <a href="https://www.linkedin.com/in/alvaro-cerpa/" target="_blank" rel="noopener noreferrer">Álvaro Cerpa</a> · Fundador de TribuClaw
-        </div>
-
-        <!-- Bottom CTA — clean inline -->
-        <p class="cta-inline">
-          ¿Listo para tener tu propio agente IA? <a href={WHOP_URL} target="_blank">Únete a TribuClaw →</a>
-        </p>
-
-        <RelatedPosts currentTags={tags || []} currentId={Astro.url.pathname.split('/').filter(Boolean).pop() || ''} />
-    </article>
-  </main>
-  <Footer />
-</body>
-</html>
+</BaseLayout>
