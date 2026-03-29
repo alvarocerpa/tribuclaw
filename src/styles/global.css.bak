@@ -1,13 +1,15 @@
 :root {
-	--accent: #e94560;
-	--accent-light: #ff6b6b;
-	--accent-dark: #c23152;
-	--bg: #0d1117;
-	--bg-alt: #161b22;
-	--text: #fafafa;
-	--text-muted: rgba(250,250,250,0.5);
-	--border: rgba(255,255,255,0.08);
-	--gradient: linear-gradient(124deg, #e94560, #ff6b6b);
+	--accent: #7C3AED;
+	--accent-light: #8B5CF6;
+	--accent-cyan: #06B6D4;
+	--bg: #050505;
+	--bg-alt: #0F0F0F;
+	--bg-tertiary: #1A1A2E;
+	--text: #F5F5F5;
+	--text-muted: rgba(245,245,245,0.5);
+	--border: rgba(255,255,255,0.06);
+	--border-hover: rgba(124,58,237,0.3);
+	--gradient: linear-gradient(135deg, #7C3AED, #06B6D4);
 }
 
 *, *::before, *::after {
@@ -137,11 +139,8 @@ th {
 	white-space: nowrap;
 }
 
-/* ─── DOT GRID BACKGROUND ─── */
-.dot-bg {
-	background-image: radial-gradient(circle, rgba(255,255,255,0.02) 0%, rgba(255,255,255,0.02) 1.5px, transparent 1.5px);
-	background-size: 20px 20px;
-}
+/* ─── DOT GRID BACKGROUND (REMOVED - minimalismo) ─── */
+/* .dot-bg eliminado - fondo plano */
 
 /* ─── BADGE ─── */
 .badge-pill {
@@ -158,13 +157,8 @@ th {
 	border: 1px solid rgba(233,69,96,0.2);
 }
 
-/* ─── SECTION GLOW ─── */
-.section-glow {
-	position: absolute;
-	pointer-events: none;
-	border-radius: 50%;
-	z-index: 0;
-}
+/* ─── SECTION GLOW (REMOVIDO - minimalismo) ─── */
+/* .section-glow eliminado - sin glows decorativos */
 
 /* ─── CONTAINER ─── */
 .container {
@@ -181,22 +175,19 @@ th {
 	width: 100%;
 }
 
-/* ─── GLASS CARD ─── */
+/* ─── GLASS CARD (SIMPLIFICADO) ─── */
 .glass-card {
 	background: rgba(255,255,255,0.03);
-	backdrop-filter: blur(20px);
-	-webkit-backdrop-filter: blur(20px);
 	border: 1px solid var(--border);
-	border-radius: 20px;
+	border-radius: 12px;
 	position: relative;
 	overflow: hidden;
-	box-shadow: inset 0 1px 0 rgba(255,255,255,0.03);
-	transition: transform 0.4s cubic-bezier(.23,1,.32,1), border-color 0.4s, box-shadow 0.5s;
+	box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+	transition: transform 0.3s ease, border-color 0.3s;
 }
 .glass-card:hover {
-	transform: translateY(-3px);
-	border-color: rgba(255,255,255,0.15);
-	box-shadow: 0 0 0 1px rgba(233,69,96,0.08), 0 20px 60px rgba(0,0,0,0.3), 0 0 60px rgba(233,69,96,0.04);
+	transform: translateY(-2px);
+	border-color: rgba(255,255,255,0.12);
 }
 
 /* ─── GRADIENT TEXT ─── */
@@ -215,37 +206,28 @@ th {
 	background: var(--gradient);
 	color: #fff;
 	font-family: 'Inter', sans-serif;
-	font-weight: 800;
+	font-weight: 700;
 	font-size: 0.85rem;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.01em;
 	padding: 0.85rem 2rem;
-	border-radius: 14px;
+	border-radius: 12px;
 	border: none;
 	text-decoration: none;
 	cursor: pointer;
-	transition: transform 0.3s, box-shadow 0.3s;
-	position: relative;
-	overflow: hidden;
+	transition: transform 0.2s, box-shadow 0.3s;
 	white-space: nowrap;
+	box-shadow: 0 0 20px rgba(124, 58, 237, 0.25);
 }
 .cta-btn:hover {
-	transform: translateY(-2px);
-	box-shadow: 0 0 30px rgba(233,69,96,0.4), 0 0 60px rgba(233,69,96,0.15);
+	transform: translateY(-1px) scale(1.02);
+	box-shadow: 0 0 30px rgba(124, 58, 237, 0.4);
 	text-decoration: none;
 	color: #fff;
-}
-.cta-btn::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background: linear-gradient(124deg, rgba(255,255,255,0.15), transparent 50%);
-	pointer-events: none;
 }
 .cta-btn-lg {
 	font-size: 0.95rem;
 	padding: 1rem 2.5rem;
-	border-radius: 16px;
+	border-radius: 12px;
 }
 
 /* ─── SECTION HEADER ─── */
@@ -283,12 +265,65 @@ th {
 	line-height: 1.7;
 }
 
-/* ─── DIVIDER ─── */
+/* ─── DIVIDER (violet→cyan gradient) ─── */
 .section-divider {
 	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
+	background: linear-gradient(90deg, transparent, var(--accent) 30%, var(--accent-cyan) 70%, transparent);
 	max-width: 800px;
 	margin: 0 auto;
+	opacity: 0.4;
+}
+
+/* ─── BLOG OVERRIDES ─── */
+/* These only apply when body has no dot-bg (blog pages are clean) */
+body:not(.dot-bg) {
+	background: var(--bg);
+	background-image: none;
+}
+
+body:not(.dot-bg) .section-glow {
+	display: none;
+}
+
+/* ─── PRICING CARD GLOW ─── */
+.pricing-card-glow {
+	border: 1px solid rgba(124,58,237,0.25);
+	box-shadow:
+		0 0 30px rgba(124,58,237,0.08),
+		0 0 60px rgba(124,58,237,0.04);
+	animation: pricingGlow 3s ease-in-out infinite alternate;
+}
+@keyframes pricingGlow {
+	0% {
+		box-shadow:
+			0 0 30px rgba(124,58,237,0.08),
+			0 0 60px rgba(124,58,237,0.04);
+		border-color: rgba(124,58,237,0.25);
+	}
+	100% {
+		box-shadow:
+			0 0 40px rgba(124,58,237,0.15),
+			0 0 80px rgba(124,58,237,0.08),
+			0 0 120px rgba(6,182,212,0.04);
+		border-color: rgba(124,58,237,0.4);
+	}
+}
+.pricing-card-glow:hover {
+	box-shadow:
+		0 0 50px rgba(124,58,237,0.2),
+		0 0 100px rgba(124,58,237,0.1),
+		0 0 150px rgba(6,182,212,0.06);
+	border-color: rgba(124,58,237,0.5);
+}
+
+/* ─── FEATURE CARD HOVER ─── */
+.feature-card-hover {
+	transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
+}
+.feature-card-hover:hover {
+	transform: translateY(-4px) scale(1.01);
+	box-shadow: 0 12px 40px rgba(124,58,237,0.12);
+	border-color: rgba(124,58,237,0.3);
 }
 
 /* ─── RESPONSIVE ─── */

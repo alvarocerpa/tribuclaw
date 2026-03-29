@@ -1,0 +1,94 @@
+---
+import '../styles/global.css';
+import { SITE_TITLE, SITE_URL } from '../consts';
+
+interface Props {
+  title: string;
+  description: string;
+  image?: string;
+  type?: string;
+}
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const { title, description, image = '/images/og-default.jpg', type = 'website' } = Astro.props;
+const ogImagePath = image.endsWith('.svg') ? image.replace('.svg', '.jpg') : image;
+const ogImage = new URL(ogImagePath, Astro.site).href;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+
+<!-- Favicons -->
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="manifest" href="/site.webmanifest" />
+<meta name="theme-color" content="#0d1117" />
+
+<!-- Sitemap & RSS -->
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
+
+<!-- Fonts: non-blocking load with FOIT fallback prevention -->
+<link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" /></noscript>
+
+<!-- Canonical -->
+<link rel="canonical" href={canonicalURL} />
+
+<!-- Primary SEO -->
+<title>{title}</title>
+<meta name="title" content={title} />
+<meta name="description" content={description} />
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+<meta name="author" content="Alvaro Cerpa" />
+<meta name="publisher" content="TribuClaw" />
+<meta name="language" content="es" />
+
+<!-- Open Graph -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalURL} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={ogImage} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content={title} />
+<meta property="og:site_name" content="TribuClaw" />
+<meta property="og:locale" content="es_ES" />
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={canonicalURL} />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImage} />
+
+<!-- Organization Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "TribuClaw",
+  "url": SITE_URL,
+  "logo": SITE_URL + "/images/logo-icon.webp",
+  "description": "La comunidad en español de agentes IA personales",
+  "sameAs": ["https://whop.com/tribu-claw/tribu-claw/"]
+})} />
+
+<!-- WebSite Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "TribuClaw",
+  "url": SITE_URL,
+  "description": "La comunidad en español que te enseña a crear tu agente IA personal",
+  "inLanguage": "es",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": SITE_URL + "/blog/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+})} />

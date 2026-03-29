@@ -1,13 +1,14 @@
 :root {
 	--accent: #e94560;
 	--accent-light: #ff6b6b;
-	--accent-dark: #c23152;
 	--bg: #0d1117;
 	--bg-alt: #161b22;
+	--bg-tertiary: #21262d;
 	--text: #fafafa;
 	--text-muted: rgba(250,250,250,0.5);
 	--border: rgba(255,255,255,0.08);
-	--gradient: linear-gradient(124deg, #e94560, #ff6b6b);
+	--border-hover: rgba(233,69,96,0.3);
+	--gradient: linear-gradient(135deg, #e94560, #ff6b6b);
 }
 
 *, *::before, *::after {
@@ -18,7 +19,7 @@
 
 html {
 	overflow-x: hidden;
-	scroll-behavior: smooth;
+	scroll-behavior: auto;
 	scroll-padding-top: 80px;
 }
 
@@ -127,6 +128,12 @@ th {
 	font-weight: 700;
 }
 
+/* ─── Accessibility: Focus States ─── */
+a:focus-visible, button:focus-visible, summary:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 2px;
+}
+
 /* ─── Utility ─── */
 .sr-only {
 	position: absolute !important;
@@ -136,9 +143,6 @@ th {
 	clip-path: inset(50%);
 	white-space: nowrap;
 }
-
-/* ─── DOT GRID BACKGROUND (REMOVED - minimalismo) ─── */
-/* .dot-bg eliminado - fondo plano */
 
 /* ─── BADGE ─── */
 .badge-pill {
@@ -155,9 +159,6 @@ th {
 	border: 1px solid rgba(233,69,96,0.2);
 }
 
-/* ─── SECTION GLOW (REMOVIDO - minimalismo) ─── */
-/* .section-glow eliminado - sin glows decorativos */
-
 /* ─── CONTAINER ─── */
 .container {
 	max-width: 1200px;
@@ -173,7 +174,7 @@ th {
 	width: 100%;
 }
 
-/* ─── GLASS CARD (SIMPLIFICADO) ─── */
+/* ─── GLASS CARD ─── */
 .glass-card {
 	background: rgba(255,255,255,0.03);
 	border: 1px solid var(--border);
@@ -185,7 +186,7 @@ th {
 }
 .glass-card:hover {
 	transform: translateY(-2px);
-	border-color: rgba(255,255,255,0.12);
+	border-color: rgba(233,69,96,0.2);
 }
 
 /* ─── GRADIENT TEXT ─── */
@@ -201,24 +202,24 @@ th {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
-	background: var(--accent);
+	background: var(--gradient);
 	color: #fff;
 	font-family: 'Inter', sans-serif;
-	font-weight: 800;
+	font-weight: 700;
 	font-size: 0.85rem;
-	text-transform: uppercase;
-	letter-spacing: 0.04em;
+	letter-spacing: 0.01em;
 	padding: 0.85rem 2rem;
-	border-radius: 10px;
+	border-radius: 12px;
 	border: none;
 	text-decoration: none;
 	cursor: pointer;
-	transition: background 0.2s, transform 0.2s;
+	transition: transform 0.2s, box-shadow 0.3s;
 	white-space: nowrap;
+	box-shadow: 0 0 20px rgba(233, 69, 96, 0.25);
 }
 .cta-btn:hover {
-	background: var(--accent-dark);
-	transform: translateY(-1px);
+	transform: translateY(-1px) scale(1.02);
+	box-shadow: 0 0 30px rgba(233, 69, 96, 0.4);
 	text-decoration: none;
 	color: #fff;
 }
@@ -266,20 +267,48 @@ th {
 /* ─── DIVIDER ─── */
 .section-divider {
 	height: 1px;
-	background: linear-gradient(90deg, transparent, rgba(255,255,255,0.06), transparent);
-	max-width: 800px;
+	background: linear-gradient(90deg, transparent, rgba(233,69,96,0.3), transparent);
+	max-width: 600px;
 	margin: 0 auto;
 }
 
-/* ─── BLOG OVERRIDES ─── */
-/* These only apply when body has no dot-bg (blog pages are clean) */
-body:not(.dot-bg) {
-	background: var(--bg);
-	background-image: none;
+/* ─── PRICING CARD GLOW ─── */
+.pricing-card-glow {
+	border: 1px solid rgba(233,69,96,0.25);
+	box-shadow:
+		0 0 30px rgba(233,69,96,0.08),
+		0 0 60px rgba(233,69,96,0.04);
+	animation: pricingGlow 3s ease-in-out infinite alternate;
+}
+@keyframes pricingGlow {
+	0% {
+		box-shadow:
+			0 0 30px rgba(233,69,96,0.08),
+			0 0 60px rgba(233,69,96,0.04);
+		border-color: rgba(233,69,96,0.25);
+	}
+	100% {
+		box-shadow:
+			0 0 40px rgba(233,69,96,0.15),
+			0 0 80px rgba(233,69,96,0.08);
+		border-color: rgba(233,69,96,0.4);
+	}
+}
+.pricing-card-glow:hover {
+	box-shadow:
+		0 0 50px rgba(233,69,96,0.2),
+		0 0 100px rgba(233,69,96,0.1);
+	border-color: rgba(233,69,96,0.5);
 }
 
-body:not(.dot-bg) .section-glow {
-	display: none;
+/* ─── FEATURE CARD HOVER ─── */
+.feature-card-hover {
+	transition: transform 0.25s ease-out, box-shadow 0.25s ease-out, border-color 0.25s ease-out;
+}
+.feature-card-hover:hover {
+	transform: translateY(-4px) scale(1.01);
+	box-shadow: 0 12px 40px rgba(233,69,96,0.12);
+	border-color: rgba(233,69,96,0.3);
 }
 
 /* ─── RESPONSIVE ─── */
