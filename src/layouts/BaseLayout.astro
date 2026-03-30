@@ -36,30 +36,11 @@ const { title, description, image, type } = Astro.props;
     }
   </style>
 
-  <!-- Shared Lenis + GSAP ScrollTrigger + generic animations -->
+  <!-- GSAP ScrollTrigger + generic animations (no Lenis — native scroll) -->
   <script>
     import { gsap } from 'gsap';
     import { ScrollTrigger } from 'gsap/ScrollTrigger';
     gsap.registerPlugin(ScrollTrigger);
-
-    // Prevent double initialization (home page also inits GSAP)
-    if (!(window as any).__lenisInit) {
-      (window as any).__lenisInit = true;
-
-      import('@studio-freight/lenis').then(({ default: Lenis }) => {
-        const lenis = new Lenis({
-          duration: 1.2,
-          easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        });
-
-        lenis.on('scroll', ScrollTrigger.update);
-        gsap.ticker.add((time) => lenis.raf(time * 1000));
-        gsap.ticker.lagSmoothing(0);
-
-        // Store for other scripts
-        (window as any).__lenis = lenis;
-      });
-    }
 
     // Generic fade-up
     gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach(el => {

@@ -3738,3 +3738,139 @@ Indexando artículos...
 ✅ Indexación completada
 [Sat Mar 21 06:49:18 PM UTC 2026] ── PIPELINE COMPLETADO ──────────────────────────
 AUTOPUBLISH_DONE
+[Mon Mar 30 06:33:51 AM UTC 2026] ── AUTOPUBLISH DEPLOY INICIADO ──────────────────
+[Mon Mar 30 06:33:51 AM UTC 2026] Build Astro...
+06:33:53 [content] Syncing content
+06:33:53 [content] Synced content
+06:33:53 [types] Generated 457ms
+06:33:53 [build] output: "static"
+06:33:53 [build] mode: "static"
+06:33:53 [build] directory: /home/claw1/.openclaw/workspace/tribuclaw-web/dist/
+06:33:53 [build] Collecting build info...
+06:33:53 [build] ✓ Completed in 482ms.
+06:33:53 [build] Building static entrypoints...
+06:33:58 [vite] ✓ built in 4.40s
+06:33:58 [build] ✓ Completed in 4.44s.
+
+ building client (vite) 
+06:33:58 [vite] transforming...
+06:33:58 [vite] ✓ 10 modules transformed.
+06:33:58 [vite] rendering chunks...
+06:33:58 [vite] computing gzip size...
+06:33:58 [vite] dist/_astro/BaseLayout.astro_astro_type_script_index_0_lang.CMVYPdQS.js    0.43 kB │ gzip:  0.25 kB
+06:33:58 [vite] dist/_astro/index.astro_astro_type_script_index_0_lang.CtknXu-t.js         5.77 kB │ gzip:  2.58 kB
+06:33:58 [vite] dist/_astro/ScrollTrigger.C0eCJjti.js                                    114.40 kB │ gzip: 45.32 kB
+06:33:58 [vite] ✓ built in 485ms
+
+ generating static routes 
+06:33:58 ▶ src/pages/about.astro
+06:33:58   └─ /about/index.html (+6ms) 
+06:33:58 ▶ src/pages/blog/index.astro
+06:33:58   └─ /blog/index.html (+26ms) 
+06:33:58 ▶ src/pages/blog/[...slug].astro
+06:33:58   ├─ /blog/agente-ia-que-gestiona-tu-whatsapp/index.html (+14ms) 
+06:33:58   ├─ /blog/agente-ia-redes-sociales/index.html (+5ms) 
+06:33:58   ├─ /blog/agente-ia-personal-vs-chatgpt-diferencias/index.html (+7ms) 
+06:33:58   ├─ /blog/agente-ia-propio-vs-chatgpt-mejora-continua/index.html (+8ms) 
+06:33:58   ├─ /blog/5-cosas-que-mi-agente-ia-hace-por-mi/index.html (+5ms) 
+06:33:58   ├─ /blog/automatizar-clips-virales-openclaw/index.html (+5ms) 
+06:33:58   ├─ /blog/automatizar-atencion-cliente-ia/index.html (+6ms) 
+06:33:58   ├─ /blog/automatizar-emails-con-ia-sin-perder-el-toque-humano/index.html (+9ms) 
+06:33:58   ├─ /blog/automatizar-calendario-con-ia/index.html (+4ms) 
+06:33:58   ├─ /blog/automatizar-instagram-con-ia/index.html (+3ms) 
+06:33:58   ├─ /blog/automatizar-linkedin-con-ia/index.html (+5ms) 
+06:33:58   ├─ /blog/automatizar-telegram-con-agente-ia/index.html (+4ms) 
+06:33:58   ├─ /blog/automatizar-ventas-con-ia/index.html (+3ms) 
+06:33:58   ├─ /blog/cuanto-cuesta-agente-ia-propio/index.html (+4ms) 
+06:33:58   ├─ /blog/ganar-dinero-con-ia-formas-reales/index.html (+8ms) 
+06:33:58   ├─ /blog/automatizar-whatsapp-con-ia-guia-completa/index.html (+5ms) 
+06:33:58   ├─ /blog/como-crear-tu-propio-agente-ia-desde-cero/index.html (+6ms) 
+06:33:58   ├─ /blog/historia-nombre-openclaw/index.html (+3ms) 
+06:33:58   ├─ /blog/herramientas-ia-para-emprendedores-2026/index.html (+5ms) 
+06:33:58   ├─ /blog/hyperagent-vs-openclaw-comparativa/index.html (+3ms) 
+06:33:58   ├─ /blog/ia-para-agencias-marketing/index.html (+8ms) 
+06:33:58   ├─ /blog/ia-para-ecommerce/index.html (+3ms) 
+06:33:58   ├─ /blog/ia-para-coaches/index.html (+3ms) 
+06:33:58   ├─ /blog/ia-para-infoproductores/index.html (+5ms) 
+06:33:58   ├─ /blog/instalar-openclaw-en-vps-paso-a-paso/index.html (+9ms) 
+06:33:58   ├─ /blog/openclaw-apple-watch-agente-ia-muneca/index.html (+4ms) 
+06:33:58   ├─ /blog/montar-agencia-automatizacion-ia/index.html (+4ms) 
+06:33:58   ├─ /blog/openclaw-tutorial-espanol/index.html (+6ms) 
+06:33:58   ├─ /blog/openclaw-que-es-guia-completa-espanol/index.html (+10ms) 
+06:33:58   ├─ /blog/openclaw-conectar-whatsapp-tutorial/index.html (+4ms) 
+06:33:58   ├─ /blog/openclaw-vs-make/index.html (+3ms) 
+06:33:58   ├─ /blog/openclaw-vs-zapier/index.html (+5ms) 
+06:33:58   ├─ /blog/reducir-coste-agente-ia/index.html (+3ms) 
+06:33:58   ├─ /blog/openclaw-vs-n8n/index.html (+3ms) 
+06:33:58   ├─ /blog/verdad-operar-empresa-con-ia/index.html (+4ms) 
+06:33:58   ├─ /blog/que-es-un-agente-ia-personal/index.html (+5ms) 
+06:33:58   ├─ /blog/openclaw-2026-2-21-actualizacion/index.html (+3ms) 
+06:33:58   ├─ /blog/agente-ia-que-lee-emails-por-ti/index.html (+4ms) 
+06:33:58   ├─ /blog/agente-ia-con-memoria-permanente/index.html (+8ms) 
+06:33:58   ├─ /blog/instalar-openclaw-sin-programar/index.html (+5ms) 
+06:33:58   ├─ /blog/openclaw-vs-chatgpt-vs-copilot-comparativa/index.html (+4ms) 
+06:33:58   ├─ /blog/11-hacks-openclaw-nivel-agi/index.html (+3ms) 
+06:33:58   ├─ /blog/openclaw-skills-que-son-como-instalar/index.html (+5ms) 
+06:33:58   ├─ /blog/openclaw-memoria-como-funciona/index.html (+7ms) 
+06:33:58   ├─ /blog/automatizar-negocio-con-ia-guia-completa/index.html (+6ms) 
+06:33:58   ├─ /blog/openclaw-vs-chatgpt-diferencias-reales/index.html (+6ms) 
+06:33:58   ├─ /blog/ideas-negocio-con-ia/index.html (+4ms) 
+06:33:58   ├─ /blog/openclaw-requisitos-que-necesitas/index.html (+7ms) 
+06:33:58   ├─ /blog/ia-para-abogados-automatizar-despacho/index.html (+4ms) 
+06:33:58   └─ /blog/openclaw-seguridad-guia-completa/index.html (+4ms) 
+06:33:58 ▶ src/pages/membresia.astro
+06:33:58   └─ /membresia/index.html (+1ms) 
+06:33:58 λ src/pages/rss.xml.js
+06:33:58   └─ /rss.xml (+7ms) 
+06:33:58 ▶ src/pages/index.astro
+06:33:58   └─ /index.html (+1ms) 
+06:33:58 ✓ Completed in 334ms.
+
+06:33:58 [@astrojs/sitemap] `sitemap-index.xml` created at `dist`
+06:33:58 [build] 54 page(s) built in 5.81s
+06:33:58 [build] Complete!
+[Mon Mar 30 06:33:59 AM UTC 2026] Build OK.
+[Mon Mar 30 06:33:59 AM UTC 2026] Deploy a Cloudflare Pages...
+
+ ⛅️ wrangler 4.71.0 (update available 4.78.0)
+─────────────────────────────────────────────
+Uploading... (195/251)
+Uploading... (214/251)
+Uploading... (233/251)
+Uploading... (251/251)
+✨ Success! Uploaded 56 files (195 already uploaded) (0.56 sec)
+
+✨ Uploading _headers
+🌎 Deploying...
+✨ Deployment complete! Take a peek over at https://72684f86.tribuclaw.pages.dev
+[Mon Mar 30 06:34:11 AM UTC 2026] Deploy OK. Blog actualizado en tribuclaw.com
+[Mon Mar 30 06:34:11 AM UTC 2026] Indexación Google...
+Indexando páginas principales...
+✓ https://tribuclaw.com/
+✓ https://tribuclaw.com/about/
+✓ https://tribuclaw.com/blog/
+✓ https://tribuclaw.com/evento/
+Indexando artículos...
+✓ https://tribuclaw.com/
+✓ https://tribuclaw.com/about/
+✓ https://tribuclaw.com/blog/
+✓ https://tribuclaw.com/blog/5-cosas-que-mi-agente-ia-hace-por-mi/
+✓ https://tribuclaw.com/blog/11-hacks-openclaw-nivel-agi/
+✓ https://tribuclaw.com/blog/agente-ia-con-memoria-permanente/
+✓ https://tribuclaw.com/blog/agente-ia-personal-vs-chatgpt-diferencias/
+✓ https://tribuclaw.com/blog/agente-ia-propio-vs-chatgpt-mejora-continua/
+✓ https://tribuclaw.com/blog/agente-ia-que-gestiona-tu-whatsapp/
+✓ https://tribuclaw.com/blog/agente-ia-que-lee-emails-por-ti/
+✓ https://tribuclaw.com/blog/agente-ia-redes-sociales/
+✓ https://tribuclaw.com/blog/automatizar-atencion-cliente-ia/
+✓ https://tribuclaw.com/blog/automatizar-calendario-con-ia/
+✓ https://tribuclaw.com/blog/automatizar-clips-virales-openclaw/
+✓ https://tribuclaw.com/blog/automatizar-emails-con-ia-sin-perder-el-toque-humano/
+✓ https://tribuclaw.com/blog/automatizar-instagram-con-ia/
+✓ https://tribuclaw.com/blog/automatizar-linkedin-con-ia/
+✓ https://tribuclaw.com/blog/automatizar-negocio-con-ia-guia-completa/
+✓ https://tribuclaw.com/blog/automatizar-telegram-con-agente-ia/
+✓ https://tribuclaw.com/blog/automatizar-ventas-con-ia/
+✅ Indexación completada
+[Mon Mar 30 06:34:13 AM UTC 2026] ── PIPELINE COMPLETADO ──────────────────────────
+AUTOPUBLISH_DONE

@@ -95,7 +95,7 @@ import { WHOP_URL } from '../consts';
     <div class="container">
       <div class="section-header" data-animate="fade-up">
         <span class="section-badge">Todo incluido</span>
-        <h2 class="section-title">Curso. Directos. Comunidad.<br/>Y una App que gestiona tu agente sin tocar código.</h2>
+        <h2 class="section-title">Curso. Directos. Comunidad.<br/> Y una App que gestiona tu agente sin tocar código.</h2>
       </div>
       <p class="openclaw-bridge" data-animate="fade-up">
         <strong>OpenClaw es gratis. Montarlo bien, no tanto.</strong> Por eso existe TribuClaw: todo lo que necesitas para que tu agente funcione desde la semana 1.
@@ -439,26 +439,45 @@ import { WHOP_URL } from '../consts';
     </div>
   </section>
 
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "TribuClaw",
+    "url": "https://tribuclaw.com",
+    "logo": "https://tribuclaw.com/images/logo-icon.webp",
+    "description": "Tu agente IA personal. La comunidad en español que te enseña a crear, configurar y dominar tu propia inteligencia artificial.",
+    "founder": {
+      "@type": "Person",
+      "name": "Álvaro Cerpa"
+    }
+  })} />
+
+  <!-- Structured Data: FAQPage -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      { "@type": "Question", "name": "¿Necesito saber programar?", "acceptedAnswer": { "@type": "Answer", "text": "No. El curso está pensado para gente sin conocimientos técnicos." } },
+      { "@type": "Question", "name": "¿En cuánto tiempo tengo mi agente funcionando?", "acceptedAnswer": { "@type": "Answer", "text": "La mayoría lo tienen montado en la primera semana." } },
+      { "@type": "Question", "name": "¿Puedo cancelar cuando quiera?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Sin permanencia. Entras y sales cuando quieras." } },
+      { "@type": "Question", "name": "¿Qué necesito para empezar?", "acceptedAnswer": { "@type": "Answer", "text": "Solo un ordenador y conexión a internet. Te guiamos con lo demás." } },
+      { "@type": "Question", "name": "¿El servidor de 5€/mes es obligatorio?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, es donde vive tu agente. Te enseñamos a montarlo en el curso." } },
+      { "@type": "Question", "name": "¿Esto funciona para mi negocio?", "acceptedAnswer": { "@type": "Answer", "text": "Si gestionas emails, clientes o redes sociales de forma manual, sí. Funciona." } },
+      { "@type": "Question", "name": "¿OpenClaw es de pago?", "acceptedAnswer": { "@type": "Answer", "text": "No. OpenClaw es 100% gratuito y open source. TribuClaw es la comunidad que te enseña a montarlo y sacarle provecho." } },
+      { "@type": "Question", "name": "¿Qué diferencia a TribuClaw de YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube te da información suelta sin contexto. TribuClaw es un sistema completo: curso estructurado, casos reales semanales, soporte 24/7, comunidad que te ayuda y una App que gestiona tu agente. No es contenido, es resultado." } },
+      { "@type": "Question", "name": "¿Y si ya uso ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "ChatGPT es un chatbot. Lo usas, le preguntas, te responde. Un agente IA toma decisiones, ejecuta tareas y trabaja sin supervisión. Es el salto de preguntar a automatizar." } },
+      { "@type": "Question", "name": "¿Qué es la TribuClaw App?", "acceptedAnswer": { "@type": "Answer", "text": "Es el panel de control visual para tu agente. Creas, configuras y monitorizas tus agentes desde una interfaz sin tocar código. Incluida en tu membresía." } },
+      { "@type": "Question", "name": "¿Puedo usar la App en móvil?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, la TribuClaw App es responsive. Puedes monitorizar y gestionar tus agentes desde cualquier dispositivo." } }
+    ]
+  })} />
+
 </BaseLayout>
 
 <script>
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import Lenis from '@studio-freight/lenis';
 gsap.registerPlugin(ScrollTrigger);
-
-// Lenis: only init if BaseLayout hasn't already
-if (!(window as any).__lenisInit) {
-  (window as any).__lenisInit = true;
-  const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t: number) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-  });
-  lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => lenis.raf(time * 1000));
-  gsap.ticker.lagSmoothing(0);
-  (window as any).__lenis = lenis;
-}
 
 // Hero headline text reveal
 const headline = document.querySelector('.hero-headline');
@@ -516,152 +535,184 @@ function animateCounter(el: HTMLElement, target: number, suffix: string) {
   }
   requestAnimationFrame(update);
 }
+// Set counter values immediately as fallback, then animate if visible
+document.querySelectorAll('.proof-counter-value').forEach(el => {
+  const htmlEl = el as HTMLElement;
+  const target = parseFloat(htmlEl.dataset.target || '0');
+  const suffix = htmlEl.dataset.suffix || '';
+  // Set final value immediately as fallback
+  const isDecimal = String(target).includes('.');
+  if (isDecimal) htmlEl.textContent = target.toFixed(1) + suffix;
+  else htmlEl.textContent = target + suffix;
+});
 const counterObserver = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const el = entry.target as HTMLElement;
       const target = parseFloat(el.dataset.target || '0');
       const suffix = el.dataset.suffix || '';
+      // Reset to 0 for animation
+      el.textContent = '0';
       animateCounter(el, target, suffix);
       counterObserver.unobserve(el);
     }
   });
-}, { threshold: 0.5 });
+}, { threshold: 0.3 });
 document.querySelectorAll('.proof-counter-value').forEach(el => counterObserver.observe(el));
 
-// Console typing effect — continuous streaming terminal with cleanup
+// Console typing effect — continuous streaming terminal with proper cleanup
 (function initConsole() {
-  const body = document.getElementById('console-body');
-  if (!body) return;
-  let stopped = false;
-  let totalLines = 0;
-  const MAX_LINES = 8;
-  const MAX_TOTAL = 100;
-  const activeTimers: ReturnType<typeof setTimeout>[] = [];
-  const agentTasks = [
-    { agent: '🦞 Kimo', tasks: ['Analizando métricas de la semana...', 'Coordinando 5 agentes activos...', 'Revisando cola de tareas pendientes...', 'Enviando resumen diario por Telegram...', 'Priorizando tareas del sprint...'] },
-    { agent: '📊 Data', tasks: ['Revenue +23% vs semana anterior', 'Generando reporte mensual de conversión...', 'Analizando funnel de Onboarding...', 'Detectando patrón: mejores posts → 2pm-4pm', 'Actualizando dashboard de métricas...'] },
-    { agent: '🎨 Mika', tasks: ['Generando thumbnail para el blog...', 'Diseñando banner para Whop...', 'Creando variante A/B del CTA...', 'Optimizando assets para móvil...'] },
-    { agent: '✍️ Pluma', tasks: ['Redactando post de LinkedIn...', 'Editando draft del artículo semanal...', 'Generando 5 hooks para Twitter...', 'Revisando copy de la landing...'] },
-    { agent: '🤖 Mao', tasks: ['Desplegando nueva feature en producción', 'Refactorizando módulo de autenticación...', 'Fix: bug en integración con Whop API...', 'Ejecutando tests → 47/47 passing ✓'] },
-    { agent: '⚡ Sistema', tasks: ['5 agentes activos · 847 tareas completadas hoy', 'Uptime: 99.97% · Latencia: 42ms', 'Backup completado · 2.3GB comprimidos', 'SSL renovado · expira en 89 días'] },
-  ];
-  const statusSymbols = ['✓', '✓', '✓', '✓', '⟳'];
-  function getTimestamp() {
-    const now = new Date();
-    return now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-  }
-  let taskIdx = 0;
-  function getNextTask() {
-    const agent = agentTasks[taskIdx % agentTasks.length];
-    const task = agent.tasks[Math.floor(Math.random() * agent.tasks.length)];
-    taskIdx++;
-    return { agent: agent.agent, task };
-  }
-  function typeLine(text: string, el: HTMLElement, callback: () => void) {
-    let i = 0;
-    const speed = 18 + Math.random() * 12;
-    function typeChar() {
-      if (stopped || !body.isConnected) return;
-      if (i < text.length) {
-        el.textContent = text.substring(0, i + 1);
-        i++;
-        const t = setTimeout(typeChar, speed);
-        activeTimers.push(t);
-      } else {
-        callback();
+  try {
+    const body = document.getElementById('console-body');
+    if (!body) return;
+    let destroyed = false;
+    let totalLines = 0;
+    const MAX_LINES = 8;
+    const BATCH_SIZE = 50;
+    const PAUSE_DURATION = 5000;
+    let currentTimer: ReturnType<typeof setTimeout> | null = null;
+    let typeTimer: ReturnType<typeof setTimeout> | null = null;
+    const agentTasks = [
+      { agent: '🦞 Kimo', tasks: ['Analizando métricas de la semana...', 'Coordinando 5 agentes activos...', 'Revisando cola de tareas pendientes...', 'Enviando resumen diario por Telegram...', 'Priorizando tareas del sprint...'] },
+      { agent: '📊 Data', tasks: ['Revenue +23% vs semana anterior', 'Generando reporte mensual de conversión...', 'Analizando funnel de Onboarding...', 'Detectando patrón: mejores posts → 2pm-4pm', 'Actualizando dashboard de métricas...'] },
+      { agent: '🎨 Mika', tasks: ['Generando thumbnail para el blog...', 'Diseñando banner para Whop...', 'Creando variante A/B del CTA...', 'Optimizando assets para móvil...'] },
+      { agent: '✍️ Pluma', tasks: ['Redactando post de LinkedIn...', 'Editando draft del artículo semanal...', 'Generando 5 hooks para Twitter...', 'Revisando copy de la landing...'] },
+      { agent: '🤖 Mao', tasks: ['Desplegando nueva feature en producción', 'Refactorizando módulo de autenticación...', 'Fix: bug en integración con Whop API...', 'Ejecutando tests → 47/47 passing ✓'] },
+      { agent: '⚡ Sistema', tasks: ['5 agentes activos · 847 tareas completadas hoy', 'Uptime: 99.97% · Latencia: 42ms', 'Backup completado · 2.3GB comprimidos', 'SSL renovado · expira en 89 días'] },
+    ];
+    const statusSymbols = ['✓', '✓', '✓', '✓', '⟳'];
+    function getTimestamp() {
+      const now = new Date();
+      return now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    }
+    let taskIdx = 0;
+    function getNextTask() {
+      const agent = agentTasks[taskIdx % agentTasks.length];
+      const task = agent.tasks[Math.floor(Math.random() * agent.tasks.length)];
+      taskIdx++;
+      return { agent: agent.agent, task };
+    }
+    function clearTimers() {
+      if (currentTimer) { clearTimeout(currentTimer); currentTimer = null; }
+      if (typeTimer) { clearTimeout(typeTimer); typeTimer = null; }
+    }
+    function typeLine(text: string, el: HTMLElement, callback: () => void) {
+      let i = 0;
+      const speed = 18 + Math.random() * 12;
+      function typeChar() {
+        if (destroyed || !body.isConnected) { clearTimers(); return; }
+        if (i < text.length) {
+          el.textContent = text.substring(0, i + 1);
+          i++;
+          typeTimer = setTimeout(typeChar, speed);
+        } else {
+          typeTimer = null;
+          callback();
+        }
       }
+      typeChar();
     }
-    typeChar();
-  }
-  function addLine() {
-    if (stopped || !body.isConnected) return;
-    if (totalLines >= MAX_TOTAL) {
-      body.innerHTML = '';
-      totalLines = 0;
+    function addLine() {
+      if (destroyed || !body.isConnected) { clearTimers(); return; }
+      if (totalLines >= BATCH_SIZE) {
+        clearTimers();
+        currentTimer = setTimeout(() => {
+          if (destroyed || !body.isConnected) return;
+          body.innerHTML = '';
+          totalLines = 0;
+          addLine();
+        }, PAUSE_DURATION);
+        return;
+      }
+      totalLines++;
+      const { agent, task } = getNextTask();
+      const line = document.createElement('div');
+      line.className = 'console-line';
+      const ts = document.createElement('span');
+      ts.className = 'console-ts';
+      ts.textContent = getTimestamp();
+      const content = document.createElement('span');
+      content.className = 'console-content';
+      line.appendChild(ts);
+      line.appendChild(content);
+      body.appendChild(line);
+      // Remove old lines
+      while (body.children.length > MAX_LINES) {
+        body.removeChild(body.firstChild!);
+      }
+      body.scrollTop = body.scrollHeight;
+      const fullText = `${agent} > ${task}`;
+      typeLine(fullText, content, () => {
+        if (destroyed || !body.isConnected) return;
+        const status = document.createElement('span');
+        status.className = 'console-status';
+        status.textContent = ' ' + statusSymbols[Math.floor(Math.random() * statusSymbols.length)];
+        content.appendChild(status);
+        currentTimer = setTimeout(addLine, 1200 + Math.random() * 1500);
+      });
     }
-    totalLines++;
-    const { agent, task } = getNextTask();
-    const line = document.createElement('div');
-    line.className = 'console-line';
-    const ts = document.createElement('span');
-    ts.className = 'console-ts';
-    ts.textContent = getTimestamp();
-    const content = document.createElement('span');
-    content.className = 'console-content';
-    line.appendChild(ts);
-    line.appendChild(content);
-    body.appendChild(line);
-    // Remove old lines to keep max
-    while (body.children.length > MAX_LINES) {
-      const first = body.firstChild as HTMLElement;
-      first.style.opacity = '0';
-      first.style.transform = 'translateY(-8px)';
-      first.style.transition = 'opacity 0.3s, transform 0.3s';
-      setTimeout(() => { if (first.parentNode) first.remove(); }, 300);
-    }
-    body.scrollTop = body.scrollHeight;
-    const fullText = `${agent} > ${task}`;
-    typeLine(fullText, content, () => {
-      if (stopped || !body.isConnected) return;
-      // Add status symbol after typing
-      const status = document.createElement('span');
-      status.className = 'console-status';
-      status.textContent = ' ' + statusSymbols[Math.floor(Math.random() * statusSymbols.length)];
-      content.appendChild(status);
-      const t = setTimeout(addLine, 1200 + Math.random() * 1500);
-      activeTimers.push(t);
+    // Cleanup when section leaves viewport
+    const obs = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) {
+        destroyed = true;
+        clearTimers();
+        obs.disconnect();
+      }
     });
+    const heroSection = document.getElementById('hero');
+    if (heroSection) obs.observe(heroSection);
+    // Start
+    currentTimer = setTimeout(addLine, 800);
+  } catch (e) {
+    console.warn('Console effect failed gracefully:', e);
   }
-  // Start after hero animation
-  const startTimer = setTimeout(addLine, 800);
-  activeTimers.push(startTimer);
 })();
 
 // Hero Particles with IntersectionObserver cleanup
 (function initParticles() {
-  const canvas = document.getElementById('hero-particles') as HTMLCanvasElement;
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-  if (!ctx) return;
-  let rafId = 0;
-  let isVisible = true;
-  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
-  resize();
-  window.addEventListener('resize', resize);
-  const COUNT = window.innerWidth < 768 ? 25 : 50;
-  const COLORS = ['#e94560', '#ff6b6b', '#ffffff'];
-  const particles: {x:number;y:number;size:number;speedX:number;speedY:number;opacity:number;color:string;pulse:number}[] = [];
-  for (let i = 0; i < COUNT; i++) {
-    particles.push({
-      x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-      size: Math.random() * 1.5 + 0.5, speedX: (Math.random() - 0.5) * 0.3, speedY: (Math.random() - 0.5) * 0.3,
-      opacity: Math.random() * 0.4 + 0.1, color: COLORS[Math.floor(Math.random() * COLORS.length)], pulse: Math.random() * Math.PI * 2
-    });
-  }
-  function draw() {
-    if (!canvas.isConnected) { cancelAnimationFrame(rafId); return; }
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    for (const p of particles) {
-      p.x += p.speedX; p.y += p.speedY; p.pulse += 0.02;
-      if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-      if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-      ctx.save();
-      ctx.globalAlpha = 0.1 + Math.sin(p.pulse) * 0.2 + 0.2;
-      ctx.fillStyle = p.color; ctx.shadowBlur = 6; ctx.shadowColor = p.color;
-      ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-      ctx.restore();
+  try {
+    const canvas = document.getElementById('hero-particles') as HTMLCanvasElement;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    let rafId = 0;
+    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+    resize();
+    window.addEventListener('resize', resize);
+    const COUNT = window.innerWidth < 768 ? 25 : 50;
+    const COLORS = ['#e94560', '#ff6b6b', '#ffffff'];
+    const particles: {x:number;y:number;size:number;speedX:number;speedY:number;opacity:number;color:string;pulse:number}[] = [];
+    for (let i = 0; i < COUNT; i++) {
+      particles.push({
+        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
+        size: Math.random() * 1.5 + 0.5, speedX: (Math.random() - 0.5) * 0.3, speedY: (Math.random() - 0.5) * 0.3,
+        opacity: Math.random() * 0.4 + 0.1, color: COLORS[Math.floor(Math.random() * COLORS.length)], pulse: Math.random() * Math.PI * 2
+      });
+    }
+    function draw() {
+      if (!canvas.isConnected) { cancelAnimationFrame(rafId); return; }
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (const p of particles) {
+        p.x += p.speedX; p.y += p.speedY; p.pulse += 0.02;
+        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
+        ctx.save();
+        ctx.globalAlpha = 0.1 + Math.sin(p.pulse) * 0.2 + 0.2;
+        ctx.fillStyle = p.color; ctx.shadowBlur = 6; ctx.shadowColor = p.color;
+        ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
+        ctx.restore();
+      }
+      rafId = requestAnimationFrame(draw);
     }
     rafId = requestAnimationFrame(draw);
+    const obs = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting && canvas.isConnected) { rafId = requestAnimationFrame(draw); }
+      else { cancelAnimationFrame(rafId); }
+    }, { threshold: 0 });
+    obs.observe(canvas);
+  } catch (e) {
+    console.warn('Particles failed gracefully:', e);
   }
-  rafId = requestAnimationFrame(draw);
-  // Pause/resume when canvas enters/leaves viewport
-  const obs = new IntersectionObserver(([entry]) => {
-    isVisible = entry.isIntersecting;
-    if (isVisible && canvas.isConnected) { rafId = requestAnimationFrame(draw); }
-    else { cancelAnimationFrame(rafId); }
-  }, { threshold: 0 });
-  obs.observe(canvas);
 })();
 </script>
 
