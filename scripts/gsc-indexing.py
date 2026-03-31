@@ -22,13 +22,23 @@ from googleapiclient.errors import HttpError
 # Configuración
 SERVICE_ACCOUNT_FILE = os.path.expanduser('~/.openclaw/secrets/gsc-service-account.json')
 PROPERTY_URL = 'sc-domain:tribuclaw.com'
-SCOPES = ['https://www.googleapis.com/auth/webmasters']
+SCOPES = [
+    'https://www.googleapis.com/auth/webmasters',
+    'https://www.googleapis.com/auth/indexing',
+]
 
-def get_service():
-    """Autentica con Service Account y devuelve el servicio de GSC"""
-    credentials = service_account.Credentials.from_service_account_file(
+def get_credentials():
+    """Autentica con Service Account y devuelve las credenciales"""
+    return service_account.Credentials.from_service_account_file(
         SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+
+def get_gsc_service(credentials):
+    """Devuelve el servicio de Google Search Console"""
     return build('searchconsole', 'v1', credentials=credentials)
+
+def get_indexing_service(credentials):
+    """Devuelve el servicio de Google Indexing API"""
+    return build('indexing', 'v3', credentials=credentials)
 
 def get_sitemap_urls():
     """Extrae URLs del sitemap local"""
@@ -70,12 +80,10 @@ def check_indexing_status(service, url):
     except HttpError as e:
         return {'url': url, 'error': str(e)}
 
-def request_indexing(service, url):
-    """Solicita indexación de una URL"""
+def request_indexing(indexing_service, url):
+    """Solicita indexación de una URL via Google Indexing API"""
     try:
-        # La API de indexación directa no está disponible públicamente
-        # Usamos el método de notificación de actualización
-        request = service.urlNotifications().publish(
+        request = indexing_service.urlNotifications().publish(
             body={
                 'url': url,
                 'type': 'URL_UPDATED'
@@ -89,7 +97,7 @@ def request_indexing(service, url):
 def submit_sitemap(service):
     """Reenvía el sitemap a Google"""
     try:
-        sitemap_url = f"{PROPERTY_URL}/sitemap-index.xml"
+        sitemap_url = "https://tribuclaw.com/sitemap-index.xml"
         request = service.sitemaps().submit(
             siteUrl=PROPERTY_URL,
             feedpath=sitemap_url
@@ -107,7 +115,9 @@ def main():
     args = parser.parse_args()
     
     print("Conectando con Google Search Console...")
-    service = get_service()
+    credentials = get_credentials()
+    gsc_service = get_gsc_service(credentials)
+    indexing_service = get_indexing_service(credentials)
     
     # Obtener URLs
     if args.url:
@@ -122,7 +132,7 @@ def main():
     print(f"Procesando {len(urls)} URLs...\n")
     
     if args.sitemap:
-        result = submit_sitemap(service)
+        result = submit_sitemap(gsc_service)
         print(f"Reenvío de sitemap: {result}")
         return
     
@@ -130,7 +140,7 @@ def main():
     
     for url in urls:
         if args.submit:
-            result = request_indexing(service, url)
+            result = request_indexing(indexing_service, url)
             if 'error' in result:
                 print(f"❌ {url}: {result['error']}")
                 results['errors'] += 1
@@ -138,7 +148,7 @@ def main():
                 print(f"✓ {url}: Indexación solicitada")
                 results['indexed'] += 1
         else:
-            result = check_indexing_status(service, url)
+            result = check_indexing_status(gsc_service, url)
             if 'error' in result:
                 print(f"❌ {url}: {result['error']}")
                 results['errors'] += 1

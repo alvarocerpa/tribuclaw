@@ -151,13 +151,6 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
                 ¿Listo para tener tu propio agente IA? <a href={WHOP_URL} target="_blank">Únete a TribuClaw →</a>
               </p>
 
-              <div class="newsletter-capture glass-card">
-                <h3>Recibe tips semanales sobre agentes IA</h3>
-                <form class="nl-form" action="https://formspree.io/f/placeholder" method="POST">
-                  <input type="email" name="email" placeholder="tu@email.com" required aria-label="Email" />
-                  <button type="submit" class="nl-btn">Suscribirse</button>
-                </form>
-              </div>
 
               <RelatedPosts currentTags={tags || []} currentId={Astro.url.pathname.split('/').filter(Boolean).pop() || ''} />
             </div>
@@ -406,33 +399,6 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
     }
     .cta-inline a { color: var(--accent); font-weight: 600; text-decoration: none; transition: color 0.2s; }
     .cta-inline a:hover { color: var(--accent-light); }
-
-    /* Newsletter */
-    .newsletter-capture {
-      margin-top: 3rem;
-      padding: 2rem;
-      text-align: center;
-    }
-    .newsletter-capture h3 { font-size: 1rem; margin-bottom: 1rem; color: rgba(250,250,250,0.8); }
-    .nl-form { display: flex; gap: 0.5rem; max-width: 400px; margin: 0 auto; }
-    .nl-form input {
-      flex: 1;
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 8px;
-      padding: 0.6rem 0.75rem;
-      color: #fff;
-      font-size: 0.85rem;
-      outline: none;
-    }
-    .nl-form input::placeholder { color: rgba(250,250,250,0.3); }
-    .nl-form input:focus { border-color: rgba(233,69,96,0.4); }
-    .nl-btn {
-      background: #e94560; border: none; border-radius: 8px;
-      padding: 0.6rem 1.25rem; color: #fff; font-weight: 600;
-      font-size: 0.85rem; cursor: pointer; transition: background 0.2s;
-    }
-    .nl-btn:hover { background: #d13a53; }
 
     /* Blog CTA banners */
     .blog-cta-banner {
