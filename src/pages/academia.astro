@@ -1,0 +1,274 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { WHOP_URL, SITE_URL } from '../consts';
+---
+
+<BaseLayout
+  title="Academia TribuClaw — Aprende a montar Agentes de IA desde cero"
+  description="La primera academia en español sobre agentes autónomos de IA. Construye agentes reales con OpenClaw desde el día uno. Sin ser dev. 35€/mes."
+>
+
+  <!-- Hero -->
+  <section class="academia-hero">
+    <div class="glow-orb glow-orb-red" style="width:500px;height:500px;top:-150px;left:10%;"></div>
+    <div class="glow-orb glow-orb-blue" style="width:400px;height:400px;bottom:-100px;right:5%;"></div>
+    <div class="container">
+      <div class="academia-hero-inner" data-animate="fade-up">
+        <span class="badge-pill">🎓 Academia</span>
+        <h1>Aprende a montar agentes de IA que <span class="gradient-text">trabajan por ti</span></h1>
+        <p class="academia-lead">
+          No es otro cursito de teoría. En la Academia TribuClaw construyes agentes reales con OpenClaw
+          desde el día uno, a tu ritmo, con proyectos que puedes usar ya mismo.
+        </p>
+        <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+          <span>Empezar ahora — 35€/mes</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Niveles -->
+  <section class="academia-section" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Niveles</span>
+        <h2 class="section-title">Tres niveles. Un objetivo: que construyas cosas de verdad.</h2>
+      </div>
+      <div class="niveles-grid" data-animate="stagger">
+        <div class="nivel-card glass-card">
+          <span class="nivel-dot nivel-green">🟢</span>
+          <h3>Principiante</h3>
+          <p>Desde cero, sin código. Aprende los conceptos básicos de agentes IA y monta tu primer agente con interfaces visuales.</p>
+        </div>
+        <div class="nivel-card glass-card">
+          <span class="nivel-dot nivel-yellow">🟡</span>
+          <h3>Intermedio</h3>
+          <p>Encadena agentes, automatiza flujos de trabajo y conecta múltiples herramientas para crear sistemas completos.</p>
+        </div>
+        <div class="nivel-card glass-card">
+          <span class="nivel-dot nivel-red">🔴</span>
+          <h3>Avanzado</h3>
+          <p>Despliegues complejos, integración con APIs, agentes que toman decisiones basadas en datos reales.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Cómo aprendes -->
+  <section class="academia-section academia-how-section" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Metodología</span>
+        <h2 class="section-title">Cómo aprendes aquí</h2>
+      </div>
+      <div class="how-grid" data-animate="stagger">
+        <div class="how-card glass-card">
+          <div class="how-icon">🛠️</div>
+          <h3>Proyectos reales</h3>
+          <p>No ejercicios de relleno. Cada módulo termina con un agente funcional que puedes usar en tu día a día.</p>
+        </div>
+        <div class="how-card glass-card">
+          <div class="how-icon">⏱️</div>
+          <h3>A tu ritmo</h3>
+          <p>Sin horarios, sin presión. Avanzas cuando puedas, pausas cuando necesites. El contenido no se va.</p>
+        </div>
+        <div class="how-card glass-card">
+          <div class="how-icon">👥</div>
+          <h3>Comunidad incluida</h3>
+          <p>No aprendes solo. Tienes acceso a la comunidad de TribuClaw para dudas, feedback y compartir avances.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Pricing -->
+  <section class="academia-section" data-animate="fade-up">
+    <div class="container">
+      <div class="pricing-box glass-card">
+        <div class="pricing-inner">
+          <span class="section-badge">Precio simple</span>
+          <h2>35€ al mes o 195€ al año</h2>
+          <p class="pricing-note">Te ahorras casi 5 meses con el plan anual. Cancelas cuando quieras.</p>
+          <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+            <span>Empezar ahora →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final dark -->
+  <section class="academia-cta-dark" data-animate="fade-up">
+    <div class="container">
+      <div class="cta-dark-inner">
+        <h2>¿Sigues viendo tutoriales que no llevan a ningún sitio?</h2>
+        <p>Da el paso. Construye tu primer agente esta semana y decide tú si vale la pena.</p>
+        <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+          <span>Empezar ahora — 35€/mes</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .academia-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+    overflow: hidden;
+  }
+  .academia-hero-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .academia-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  .academia-lead {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  /* Sections */
+  .academia-section {
+    padding: 5rem 0;
+    position: relative;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-header .section-title {
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+  }
+
+  /* Niveles */
+  .niveles-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .nivel-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .nivel-dot {
+    display: inline-block;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .nivel-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.75rem;
+  }
+  .nivel-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* How section */
+  .academia-how-section {
+    background: var(--bg-alt);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(233,69,96,0.04) 0%, transparent 50%);
+  }
+  .how-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .how-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .how-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .how-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  .how-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Pricing */
+  .pricing-box {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 3rem 2.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .pricing-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .pricing-box h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin: 1rem 0 0.75rem;
+  }
+  .pricing-note {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  /* CTA dark */
+  .academia-cta-dark {
+    padding: 6rem 0 5rem;
+    background: var(--bg-alt);
+  }
+  .cta-dark-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .cta-dark-inner h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
+  .cta-dark-inner p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .niveles-grid { grid-template-columns: repeat(3, 1fr); }
+    .how-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .academia-hero { padding: 6rem 0 2.5rem; min-height: auto; }
+    .academia-hero h1 { font-size: 1.9rem; }
+    .academia-section { padding: 3rem 0; }
+    .academia-cta-dark { padding: 4rem 0 3rem; }
+  }
+</style>

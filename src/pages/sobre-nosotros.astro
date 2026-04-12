@@ -1,0 +1,254 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { WHOP_URL, SITE_URL } from '../consts';
+---
+
+<BaseLayout
+  title="Sobre TribuClaw — Quién está detrás y por qué existe"
+  description="Conoce la historia de TribuClaw. Una comunidad nacida de la necesidad real de aprender agentes de IA en español, sin humo ni promesas vacías."
+>
+
+  <!-- Hero -->
+  <section class="sobre-hero">
+    <div class="glow-orb glow-orb-red" style="width:500px;height:500px;top:-150px;left:10%;"></div>
+    <div class="glow-orb glow-orb-blue" style="width:400px;height:400px;bottom:-100px;right:5%;"></div>
+    <div class="container">
+      <div class="sobre-hero-inner" data-animate="fade-up">
+        <span class="badge-pill">📋 Nuestra historia</span>
+        <h1>La historia de <span class="gradient-text">TribuClaw</span></h1>
+        <p class="sobre-lead">
+          No empezó como un negocio. Empezó como un "vaya, esto cambia todo" y la necesidad de
+          compartirlo con alguien que no me mirara raro.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Quién está detrás -->
+  <section class="sobre-section" data-animate="fade-up">
+    <div class="container">
+      <div class="sobre-section-inner">
+        <span class="section-badge">Fundador</span>
+        <h2>¿Quién está detrás?</h2>
+        <p>
+          Me llamo Álvaro. Llevo años montando proyectos, algunos bien, otros mal, la mayoría
+          aprendiendo de los errores. Soy de los que prefiere hacerlo antes de hablar de hacerlo.
+        </p>
+        <p>
+          Un día descubrí OpenClaw y algo hizo clic. Vi que la IA no era solo para preguntar cosas en
+          un chat: podía construir agentes autónomos que trabajasen por mí. Me devolvió la ilusión
+          por los proyectos propios.
+        </p>
+        <p>
+          Ahora dedico mi tiempo a esto. A aprender, a construir, y a enseñar a otros a hacer lo
+          mismo sin bullshit ni promesas vacías.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Por qué existe -->
+  <section class="sobre-section sobre-why-section" data-animate="fade-up">
+    <div class="container">
+      <div class="sobre-section-inner">
+        <span class="section-badge">El porqué</span>
+        <h2>Por qué existe TribuClaw</h2>
+        <div class="story-highlight glass-card">
+          <p>
+            Cuando empecé con OpenClaw, busqué un sitio donde aprender de verdad. Un sitio donde no
+            te vendieran humo con "la IA va a cambiar tu vida en 30 días" pero sin enseñarte a
+            encender el ordenador.
+          </p>
+        </div>
+        <p>
+          No lo encontré. Todo lo que veía era o demasiado técnico para alguien sin base de
+          programación, o tan superficial que al final no aprendías nada útil.
+        </p>
+        <p>
+          <strong>Así que lo creé.</strong> TribuClaw es el sitio donde yo habría querido estar cuando
+          empecé. Comunidad, formación práctica, proyectos reales y cero tonterías.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Valores -->
+  <section class="sobre-section sobre-valores-section" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Valores</span>
+        <h2 class="section-title">Lo que nos define</h2>
+      </div>
+      <div class="valores-grid" data-animate="stagger">
+        <div class="valor-card glass-card">
+          <div class="valor-icon">🚫</div>
+          <h3>Sin promesas de ingresos</h3>
+          <p>No te vamos a decir que vas a ganar 10.000€ en un mes. Te vamos a enseñar a construir cosas que funcionan. Lo que hagas con ellas es cosa tuya.</p>
+        </div>
+        <div class="valor-card glass-card">
+          <div class="valor-icon">🛠️</div>
+          <h3>Práctico, no teórico</h3>
+          <p>Cero relleno. Cada cosa que aprendas la vas a poner en práctica. Si no se puede usar, no se enseña.</p>
+        </div>
+        <div class="valor-card glass-card">
+          <div class="valor-icon">🤝</div>
+          <h3>Gente real</h3>
+          <p>Sin bots, sin fake engagement. Personas de verdad compartiendo lo que aprenden, con sus errores y sus aciertos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final dark -->
+  <section class="sobre-cta-dark" data-animate="fade-up">
+    <div class="container">
+      <div class="cta-dark-inner">
+        <h2>¿Quieres ver cómo es por dentro?</h2>
+        <p>Entra, mira, y decide. Si no es tu sitio, pues nada. Sin compromiso.</p>
+        <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+          <span>Entrar a TribuClaw →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .sobre-hero {
+    position: relative;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+    overflow: hidden;
+  }
+  .sobre-hero-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .sobre-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  .sobre-lead {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  /* Sections */
+  .sobre-section {
+    padding: 5rem 0;
+    position: relative;
+  }
+  .sobre-section-inner {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+  .sobre-section h2 {
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+    margin-bottom: 1.5rem;
+  }
+  .sobre-section p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 1rem;
+    font-size: 1.02rem;
+  }
+  .story-highlight {
+    padding: 2rem;
+    margin-bottom: 1.5rem;
+    border-left: 3px solid rgba(233,69,96,0.4);
+  }
+  .story-highlight p {
+    margin: 0;
+    font-size: 1.05rem;
+    line-height: 1.8;
+  }
+
+  /* Why section */
+  .sobre-why-section {
+    background: var(--bg-alt);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(233,69,96,0.04) 0%, transparent 50%);
+  }
+
+  /* Valores */
+  .sobre-valores-section {
+    position: relative;
+    overflow: hidden;
+  }
+  .valores-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .valor-card {
+    padding: 2.5rem 2rem;
+    text-align: center;
+  }
+  .valor-icon {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  .valor-card h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+  }
+  .valor-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* CTA dark */
+  .sobre-cta-dark {
+    padding: 6rem 0 5rem;
+    background: var(--bg-alt);
+  }
+  .cta-dark-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .cta-dark-inner h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
+  .cta-dark-inner p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-header .section-title {
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+  }
+
+  @media (min-width: 768px) {
+    .valores-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .sobre-hero { padding: 6rem 0 2.5rem; min-height: auto; }
+    .sobre-hero h1 { font-size: 1.9rem; }
+    .sobre-section { padding: 3rem 0; }
+    .sobre-cta-dark { padding: 4rem 0 3rem; }
+  }
+</style>

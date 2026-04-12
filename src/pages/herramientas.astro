@@ -1,0 +1,207 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { WHOP_URL, SITE_URL } from '../consts';
+---
+
+<BaseLayout
+  title="Herramientas para Agentes de IA — Las que usamos y recomendamos"
+  description="Las herramientas que usamos día a día en TribuClaw para construir agentes autónomos de IA. OpenClaw, Whop, Cursor, Claude, Supabase y más."
+>
+
+  <!-- Hero -->
+  <section class="tools-hero">
+    <div class="glow-orb glow-orb-red" style="width:500px;height:500px;top:-150px;left:10%;"></div>
+    <div class="glow-orb glow-orb-blue" style="width:400px;height:400px;bottom:-100px;right:5%;"></div>
+    <div class="container">
+      <div class="tools-hero-inner" data-animate="fade-up">
+        <span class="badge-pill">🔧 Herramientas</span>
+        <h1>Las herramientas que usamos <span class="gradient-text">(y recomendamos)</span></h1>
+        <p class="tools-lead">
+          No son todas las que hay, pero sí las que de verdad usamos día a día en TribuClaw.
+          Cada una está probada, y cada una tiene un propósito claro.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Herramientas -->
+  <section class="tools-section" data-animate="fade-up">
+    <div class="container">
+      <div class="tools-grid" data-animate="stagger">
+        <div class="tool-card glass-card">
+          <div class="tool-header">
+            <h3>OpenClaw <span class="tool-star">⭐</span></h3>
+            <span class="tool-badge">Principal</span>
+          </div>
+          <p>El framework para construir agentes autónomos de IA. El núcleo de todo lo que hacemos en TribuClaw.</p>
+          <a href="https://openclaw.com" target="_blank" rel="noopener" class="tool-link">openclaw.com →</a>
+        </div>
+        <div class="tool-card glass-card">
+          <div class="tool-header">
+            <h3>Whop</h3>
+          </div>
+          <p>La plataforma donde vive TribuClaw. Vender membresías, gestionar comunidad, todo en un sitio.</p>
+          <a href="https://whop.com" target="_blank" rel="noopener" class="tool-link">whop.com →</a>
+        </div>
+        <div class="tool-card glass-card">
+          <div class="tool-header">
+            <h3>Cursor</h3>
+          </div>
+          <p>Editor de código potenciado con IA. Como VS Code pero con un asistente integrado que realmente entiende tu proyecto.</p>
+          <a href="https://cursor.com" target="_blank" rel="noopener" class="tool-link">cursor.com →</a>
+        </div>
+        <div class="tool-card glass-card">
+          <div class="tool-header">
+            <h3>Claude (Anthropic)</h3>
+          </div>
+          <p>Modelo de IA para agentes. Buena redacción, razonamiento sólido y excelente para tareas complejas.</p>
+          <a href="https://claude.ai" target="_blank" rel="noopener" class="tool-link">claude.ai →</a>
+        </div>
+        <div class="tool-card glass-card">
+          <div class="tool-header">
+            <h3>Supabase</h3>
+          </div>
+          <p>Base de datos y backend como servicio. Para dar memoria persistente a tus agentes y almacenar datos.</p>
+          <a href="https://supabase.com" target="_blank" rel="noopener" class="tool-link">supabase.com →</a>
+        </div>
+        <div class="tool-card glass-card">
+          <div class="tool-header">
+            <h3>Vercel</h3>
+          </div>
+          <p>Hosting para proyectos web. Deploy automático desde Git. Rápido, sencillo y con CDN global.</p>
+          <a href="https://vercel.com" target="_blank" rel="noopener" class="tool-link">vercel.com →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA final dark -->
+  <section class="tools-cta-dark" data-animate="fade-up">
+    <div class="container">
+      <div class="cta-dark-inner">
+        <h2>Saber cuáles son es el primer paso. Saber usarlas, es lo que marca la diferencia.</h2>
+        <p>Aprende a dominar cada una de estas herramientas en la Academia TribuClaw.</p>
+        <a href="/academia" class="cta-btn cta-btn-lg">
+          <span>Ir a la Academia →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  .tools-hero {
+    position: relative;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    padding: 8rem 0 4rem;
+    overflow: hidden;
+  }
+  .tools-hero-inner {
+    text-align: center;
+    max-width: 700px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .tools-hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    margin-bottom: 1rem;
+  }
+  .tools-lead {
+    color: var(--text-muted);
+    font-size: 1.15rem;
+    line-height: 1.7;
+  }
+
+  /* Tools section */
+  .tools-section {
+    padding: 5rem 0;
+    position: relative;
+  }
+  .tools-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .tool-card {
+    padding: 2rem 2rem 1.75rem;
+    border-left: 3px solid rgba(233,69,96,0.5);
+  }
+  .tool-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .tool-header h3 {
+    font-size: 1.15rem;
+    margin: 0;
+  }
+  .tool-star {
+    font-size: 0.9rem;
+  }
+  .tool-badge {
+    background: rgba(233,69,96,0.12);
+    color: var(--accent);
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.75rem;
+    border-radius: 999px;
+    border: 1px solid rgba(233,69,96,0.2);
+  }
+  .tool-card p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 0.75rem;
+  }
+  .tool-link {
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity 0.2s;
+  }
+  .tool-link:hover {
+    opacity: 0.8;
+  }
+
+  /* CTA dark */
+  .tools-cta-dark {
+    padding: 6rem 0 5rem;
+    background: var(--bg-alt);
+  }
+  .cta-dark-inner {
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .cta-dark-inner h2 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+    margin-bottom: 0.75rem;
+  }
+  .cta-dark-inner p {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-bottom: 2rem;
+  }
+
+  @media (min-width: 768px) {
+    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 640px) {
+    .tools-hero { padding: 6rem 0 2.5rem; min-height: auto; }
+    .tools-hero h1 { font-size: 1.9rem; }
+    .tools-section { padding: 3rem 0; }
+    .tools-cta-dark { padding: 4rem 0 3rem; }
+  }
+</style>
