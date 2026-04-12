@@ -154,8 +154,8 @@ import { WHOP_URL } from '../consts';
       <svg width="0" height="0" style="position:absolute">
         <defs>
           <linearGradient id="gradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#e94560"/>
-            <stop offset="100%" stop-color="#ff6b6b"/>
+            <stop offset="0%" stop-color="var(--accent)"/>
+            <stop offset="100%" stop-color="var(--accent-light)"/>
           </linearGradient>
         </defs>
       </svg>
@@ -291,7 +291,7 @@ document.querySelectorAll('.stat-value[data-target]').forEach(el => counterObser
   resize();
   window.addEventListener('resize', resize);
   const COUNT = window.innerWidth < 768 ? 20 : 40;
-  const COLORS = ['#e94560', '#ff6b6b', '#ffffff', '#4a90d9'];
+  const COLORS = ['var(--accent)', 'var(--accent-light)', '#ffffff', 'var(--accent-light)'];
   const particles: {x:number;y:number;size:number;speedX:number;speedY:number;opacity:number;color:string;pulse:number}[] = [];
   for (let i = 0; i < COUNT; i++) {
     particles.push({
@@ -382,7 +382,7 @@ document.querySelectorAll('.stat-value[data-target]').forEach(el => counterObser
     font-size: clamp(1.8rem, 4vw, 2.5rem);
     font-weight: 800;
     letter-spacing: -0.04em;
-    background: linear-gradient(135deg, #e94560, #ff6b6b);
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -453,7 +453,7 @@ document.querySelectorAll('.stat-value[data-target]').forEach(el => counterObser
     margin: 0 auto 1.25rem;
     font-size: 1.4rem;
     font-weight: 800;
-    color: #e94560;
+    color: var(--accent);
     font-family: 'Space Grotesk', sans-serif;
   }
   .step-card h3 {
@@ -547,7 +547,7 @@ document.querySelectorAll('.stat-value[data-target]').forEach(el => counterObser
   }
   .founder-info { flex: 1; }
   .founder-info h3 { font-size: 1.3rem; margin-bottom: 0.25rem; }
-  .founder-role { color: #e94560; font-size: 0.85rem; margin-bottom: 1rem; display: block; font-weight: 600; }
+  .founder-role { color: var(--accent); font-size: 0.85rem; margin-bottom: 1rem; display: block; font-weight: 600; }
   .founder-info p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.7; margin: 0 0 1rem; }
   .founder-link {
     display: inline-flex;

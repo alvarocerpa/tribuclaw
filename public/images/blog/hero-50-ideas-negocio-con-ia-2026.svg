@@ -1,0 +1,104 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="accentGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#e94560;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#c23152;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow3">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge>
+        <feMerge in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="630" fill="#050505" />
+
+  <!-- Grid pattern -->
+  <pattern id="grid3" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1a1a1a" stroke-width="0.5"/>
+  </pattern>
+  <rect width="1200" height="630" fill="url(#grid3)" opacity="0.3" />
+
+  <!-- Accent left bar -->
+  <rect x="0" y="0" width="8" height="630" fill="url(#accentGrad3)" />
+
+  <!-- Top right accent -->
+  <path d="M 1200 0 L 1000 0 L 1200 200 Z" fill="#e94560" opacity="0.08" />
+
+  <!-- Content area -->
+  <g transform="translate(80, 120)">
+    <!-- Lightbulb + ideas illustration -->
+    <g transform="translate(30, 10)">
+      <!-- Big number 50 -->
+      <text x="100" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="100" fill="#e94560" font-weight="800" text-anchor="middle" opacity="0.15">50</text>
+
+      <!-- Lightbulb -->
+      <g transform="translate(60, 15)">
+        <path d="M 40 0 C 15 0 0 20 0 40 C 0 55 12 65 20 75 L 20 90 L 60 90 L 60 75 C 68 65 80 55 80 40 C 80 20 65 0 40 0 Z" fill="none" stroke="#e94560" stroke-width="2.5" filter="url(#glow3)" />
+        <line x1="25" y1="90" x2="25" y2="100" stroke="#e94560" stroke-width="2" />
+        <line x1="55" y1="90" x2="55" y2="100" stroke="#e94560" stroke-width="2" />
+        <line x1="22" y1="100" x2="58" y2="100" stroke="#e94560" stroke-width="2" />
+        <!-- Filament -->
+        <path d="M 32 60 Q 40 40 48 60" fill="none" stroke="#e94560" stroke-width="1.5" opacity="0.7" />
+
+        <!-- Light rays -->
+        <line x1="40" y1="-15" x2="40" y2="-25" stroke="#e94560" stroke-width="2" opacity="0.5" />
+        <line x1="65" y1="-5" x2="75" y2="-15" stroke="#e94560" stroke-width="2" opacity="0.4" />
+        <line x1="15" y1="-5" x2="5" y2="-15" stroke="#e94560" stroke-width="2" opacity="0.4" />
+      </g>
+
+      <!-- Small idea cards scattered -->
+      <g transform="translate(0, 130)">
+        <rect x="0" y="0" width="55" height="30" rx="4" fill="#0a0a0a" stroke="#e94560" stroke-width="1" opacity="0.5" />
+        <text x="27" y="20" font-family="system-ui, sans-serif" font-size="9" fill="#e94560" text-anchor="middle" opacity="0.5">Chatbot</text>
+
+        <rect x="60" y="5" width="55" height="30" rx="4" fill="#0a0a0a" stroke="#e94560" stroke-width="1" opacity="0.6" />
+        <text x="87" y="25" font-family="system-ui, sans-serif" font-size="9" fill="#e94560" text-anchor="middle" opacity="0.6">SaaS IA</text>
+
+        <rect x="120" y="0" width="55" height="30" rx="4" fill="#0a0a0a" stroke="#e94560" stroke-width="1" opacity="0.4" />
+        <text x="147" y="20" font-family="system-ui, sans-serif" font-size="9" fill="#e94560" text-anchor="middle" opacity="0.4">Agency</text>
+
+        <rect x="30" y="38" width="55" height="30" rx="4" fill="#0a0a0a" stroke="#e94560" stroke-width="1" opacity="0.3" />
+        <text x="57" y="58" font-family="system-ui, sans-serif" font-size="9" fill="#e94560" text-anchor="middle" opacity="0.3">Curso</text>
+
+        <rect x="95" y="40" width="55" height="30" rx="4" fill="#0a0a0a" stroke="#e94560" stroke-width="1" opacity="0.35" />
+        <text x="122" y="60" font-family="system-ui, sans-serif" font-size="9" fill="#e94560" text-anchor="middle" opacity="0.35">Auto</text>
+      </g>
+    </g>
+
+    <!-- Title -->
+    <text x="300" y="50" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#e0e0e0" font-weight="700">50 Ideas de Negocio</text>
+    <text x="300" y="90" font-family="system-ui, -apple-system, sans-serif" font-size="36" fill="#e94560" font-weight="700">con IA en 2026</text>
+
+    <!-- Subtitle -->
+    <text x="300" y="130" font-family="system-ui, -apple-system, sans-serif" font-size="17" fill="#888">
+      Ideas reales, con nivel de dificultad y potencial de ingresos
+    </text>
+
+    <!-- Category tag -->
+    <rect x="300" y="155" width="160" height="30" rx="4" fill="#e94560" opacity="0.2" />
+    <text x="380" y="176" font-family="system-ui, -apple-system, sans-serif" font-size="13" fill="#e94560" text-anchor="middle" font-weight="600">EMPRENDER CON IA</text>
+
+    <!-- Highlight bullets -->
+    <g transform="translate(300, 210)">
+      <circle cx="0" cy="0" r="3" fill="#e94560" />
+      <text x="15" y="4" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Servicios a negocios locales</text>
+
+      <circle cx="0" cy="25" r="3" fill="#e94560" />
+      <text x="15" y="29" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Productos escalables con IA</text>
+
+      <circle cx="0" cy="50" r="3" fill="#e94560" />
+      <text x="15" y="54" font-family="system-ui, -apple-system, sans-serif" font-size="14" fill="#888">Desde 50 euros/mes de inversion</text>
+    </g>
+  </g>
+
+  <!-- Bottom decoration -->
+  <line x1="0" y1="600" x2="1200" y2="600" stroke="#1a1a1a" stroke-width="1" />
+  <rect x="0" y="620" width="1200" height="10" fill="#0a0a0a" />
+  <circle cx="1150" cy="580" r="4" fill="#e94560" opacity="0.6" />
+  <circle cx="1165" cy="580" r="3" fill="#e94560" opacity="0.4" />
+  <circle cx="1178" cy="580" r="2" fill="#e94560" opacity="0.3" />
+</svg>

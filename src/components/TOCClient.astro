@@ -155,12 +155,12 @@ const { postTitle }: Props = Astro.props;
     border: none;
     cursor: pointer;
     padding: 0.5rem;
-    color: #484f58;
+    color: var(--text-tertiary);
     transition: color 0.2s;
   }
 
   .toc-toggle:hover {
-    color: #e94560;
+    color: var(--accent);
   }
 
   .toc-list {
@@ -181,7 +181,7 @@ const { postTitle }: Props = Astro.props;
   .toc-link {
     display: block;
     text-decoration: none;
-    color: #8b949e;
+    color: var(--text-muted);
     font-size: 0.85rem;
     line-height: 1.6;
     padding: 0.5rem;
@@ -190,12 +190,12 @@ const { postTitle }: Props = Astro.props;
   }
 
   .toc-link:hover {
-    color: #e94560;
+    color: var(--accent);
     background: rgba(233, 69, 96, 0.05);
   }
 
   .toc-link.active {
-    color: #e94560;
+    color: var(--accent);
     background: rgba(233, 69, 96, 0.1);
     font-weight: 500;
   }
@@ -215,7 +215,7 @@ const { postTitle }: Props = Astro.props;
   }
 
   .toc-sidebar::-webkit-scrollbar-thumb:hover {
-    background: #484f58;
+    background: var(--text-tertiary);
   }
 
   /* Responsive */

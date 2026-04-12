@@ -31,7 +31,11 @@ Zapier tiene integraciones nativas con más de 6.000 aplicaciones. Eso es enorme
 
 Para automatizaciones predecibles y mecánicas, Zapier es probablemente la herramienta más rápida de configurar. Su punto fuerte es la amplitud de integraciones, no la profundidad del razonamiento.
 
+Un ejemplo típico: cuando alguien rellena un formulario de Typeform, Zapier crea un contacto en HubSpot, manda un email de bienvenida desde Gmail y avisa al equipo por Slack. Todo sin programar. Cinco minutos de configuración y funciona para siempre.
+
 Las limitaciones son claras también: sin lógica condicional compleja, sin memoria entre ejecuciones, sin capacidad de interpretar contexto abierto. Es una cadena de trigger-action muy buena, pero solo eso.
+
+Si un lead te escribe "tengo una duda sobre el precio, pero también me pregunto si esto funciona para mi caso particular que es un poco raro", Zapier no sabe qué hacer con eso. No puede interpretar, no puede adaptar la respuesta al contexto. Solo puede ejecutar lo que le programaste.
 
 ## OpenClaw: lo que hace diferente
 
@@ -40,6 +44,34 @@ OpenClaw no es un conector de apps. Es un agente que razona.
 Cuando le dices "gestiona mi email", no ejecuta un flujo fijo — lee los emails, evalúa cuáles son urgentes según el contexto que conoce de ti, redacta respuestas adaptadas a cada caso y te avisa solo de lo que necesita tu atención.
 
 Eso no se puede hacer en Zapier porque requiere interpretación y criterio en cada caso, no un flujo predefinido.
+
+Otro ejemplo real: un cliente escribe pidiendo reembolso. OpenClaw lee el mensaje, comprueba el historial de compras, verifica si está dentro del plazo de devolución, redacta una respuesta empática con la solución y te notifica si hay algo que requiere tu decisión. Todo sin que tú hayas tocado nada.
+
+Zapier, en ese escenario, podría detectar el email y crear un ticket. Pero no puede leer el contenido, evaluar el caso y responder con criterio.
+
+## Casos reales: cuándo brilla cada uno
+
+### Caso 1: Onboarding de nuevos clientes
+
+Imagina que tienes un SaaS y quieres automatizar el onboarding.
+
+**Con Zapier:** cuando se registra un usuario → se añade a Mailchimp → se envía secuencia de 5 emails → se crea tarea en Asana para el equipo de soporte. Funciona, es predecible, es exactamente lo que Zapier hace bien.
+
+**Con OpenClaw:** cuando se registra un usuario → el agente analiza de dónde viene, qué plan eligió, si tiene preguntas en el chat → adapta los mensajes de onboarding al contexto del usuario → si detecta que alguien está confundido, interviene proactivamente → te avisa si ve patrones de churn.
+
+El caso 1 es mecánico. El caso 2 requiere razonamiento.
+
+### Caso 2: Gestión de redes sociales
+
+**Con Zapier:** cuando publicas en el blog → se comparte automáticamente en Twitter y LinkedIn. Perfecto, útil, simple.
+
+**Con OpenClaw:** el agente lee tu post, genera un hilo adaptado a Twitter con el tono correcto, prepara una versión para LinkedIn más profesional, programa la publicación en el horario óptimo según tu audiencia, y monitoriza las respuestas para interactuar con los comentarios interesantes.
+
+### Caso 3: Reportes semanales
+
+**Con Zapier:** cada lunes → recopila datos de Google Analytics → envía email con los números. Cumple.
+
+**Con OpenClaw:** cada lunes → recopila datos de Analytics, Stripe, CRM y redes → analiza tendencias → destaca anomalías ("el tráfico bajó un 30%, parece que es por la caída en este post concreto") → sugiere acciones → te manda un resumen ejecutivo con las decisiones que necesitas tomar.
 
 <CTA text="Monta tu agente con TribuClaw" subtitle="Guía completa en español para tener OpenClaw funcionando desde cero." />
 
@@ -55,6 +87,32 @@ Eso no se puede hacer en Zapier porque requiere interpretación y criterio en ca
 | **Curva de entrada** | Media | Baja |
 | **Tareas predecibles** | Funciona bien | Excelente |
 | **Tareas complejas** | Excelente | No aplica |
+| **Toma de decisiones** | Sí, basada en contexto | No, solo ejecuta reglas |
+| **Personalización** | Se adapta a cada caso | Misma respuesta siempre |
+
+La fila más importante de esta tabla es "razonamiento propio". Esa es la diferencia que lo cambia todo. Zapier ejecuta. OpenClaw piensa y ejecuta.
+
+## Cómo combinarlos (si quieres lo mejor de los dos)
+
+La combinación más potente que he visto es usar Zapier como capa de integración y OpenClaw como cerebro.
+
+Ejemplo: Zapier detecta que llega un pago en Stripe. Crea un webhook que avisa a OpenClaw. OpenClaw recibe la notificación, mira quién es el cliente, qué ha comprado, decide qué onboarding necesita, envía el email personalizado, crea las tareas en el proyecto y te avisa si hay algo que revisar.
+
+Zapier hace la fontanería. OpenClaw toma las decisiones. Es una combinación brutal porque cada uno hace lo que mejor se le da.
+
+La conexión es técnica pero sencilla: webhooks de un lado a otro. No necesitas nada especial, solo configurar los endpoints.
+
+## ¿Cuándo tiene sentido cambiar de Zapier a OpenClaw?
+
+Si estás usando Zapier para cosas simples (notificaciones, sincronización de datos, automatizaciones de un solo paso) y estás contento, no hay razón para cambiar.
+
+Pero si te encuentras en alguna de estas situaciones, merece la pena considerar OpenClaw:
+
+**Tus automatizaciones necesitan decisiones contextuales.** Si la respuesta correcta depende del contenido de un mensaje, del historial del cliente o de factores que cambian cada vez, necesitas un agente.
+
+**Estás pagando más de 100$ al mes en Zapier.** El coste de Zapier escala con el número de tareas. Un negocio que crece ve cómo la factura sube sin parar. OpenClaw en self-hosting tiene un coste fijo del servidor más el uso de modelos, que es mucho más predecible.
+
+**Necesitas que algo "piense" antes de actuar.** Si alguna vez has dicho "ojalá Zapier pudiera leer esto y decidir qué hacer", ese es exactamente el caso de uso de OpenClaw.
 
 ## Mi recomendación
 
@@ -63,5 +121,7 @@ Si tienes necesidades de integración entre apps específicas con flujos muy pre
 Si quieres un asistente que trabaje contigo, que entienda contexto y que tome decisiones: OpenClaw.
 
 Si tu negocio crece, probablemente acabes usando los dos: Zapier para la fontanería mecánica entre apps, OpenClaw para la inteligencia que rodea todo eso.
+
+No es una decisión de "uno u otro". Es saber qué herramienta usar para cada tipo de problema. Y tener claro que las tareas que requieren criterio necesitan un agente, no un trigger.
 
 <CTA text="Empieza con OpenClaw en TribuClaw" subtitle="La comunidad en español para dominar los agentes IA personales." />

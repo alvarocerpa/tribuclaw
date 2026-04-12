@@ -23,18 +23,18 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
 <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
 <link rel="manifest" href="/site.webmanifest" />
-<meta name="theme-color" content="#050505" />
+<meta name="theme-color" content="#0A0A0B" />
 
 <!-- Sitemap & RSS -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <link rel="alternate" type="application/rss+xml" title={SITE_TITLE} href={new URL('rss.xml', Astro.site)} />
 
-<!-- Fonts: Space Grotesk (headings) + Inter (body) -->
+<!-- Fonts: Space Grotesk + Inter + JetBrains Mono -->
 <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" />
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" /></noscript>
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" />
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" /></noscript>
 
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
@@ -74,8 +74,12 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
   "name": "TribuClaw",
   "url": SITE_URL,
   "logo": SITE_URL + "/images/logo-icon.webp",
-  "description": "La comunidad en español de agentes IA personales",
-  "sameAs": ["https://whop.com/tribu-claw/tribu-claw/"]
+  "description": "La academia de agentes autónomos en español. Aprende a crear agentes de IA que trabajen por ti 24/7.",
+  "sameAs": [
+    "https://whop.com/tribu-claw/tribu-claw/",
+    "https://x.com/tribuclaw",
+    "https://www.youtube.com/@tribuclaw"
+  ]
 })} />
 
 <!-- WebSite Schema -->
@@ -84,7 +88,7 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
   "@type": "WebSite",
   "name": "TribuClaw",
   "url": SITE_URL,
-  "description": "La comunidad en español que te enseña a crear tu agente IA personal",
+  "description": "La academia en español sobre agentes autónomos. Aprende a crear agentes de IA que trabajen por ti.",
   "inLanguage": "es",
   "potentialAction": {
     "@type": "SearchAction",

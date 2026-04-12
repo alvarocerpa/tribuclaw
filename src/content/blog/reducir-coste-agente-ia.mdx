@@ -55,6 +55,8 @@ Coste: entre 10 y 20 dólares por millón de tokens.
 
 Usando esta distribución, el coste mensual de modelos cae entre un 70 y un 85% respecto a usar un solo modelo caro para todo.
 
+**Cálculo real:** Si procesas 5 millones de tokens al mes y usas solo Claude Sonnet a 3$ por millón de input, pagas 15$ solo de input. Si el 80% de esos tokens van a DeepSeek V3 a 0,14$/millón, el 15% a Sonnet y el 5% a Opus, tu coste baja a unos 3,50$. Es decir, de 15$ a 3,50$ cambiando la distribución de modelos. Mismas tareas, mismos resultados.
+
 <CTA text="Monta tu agente optimizado con TribuClaw" subtitle="Aprende a configurar el modelo justo para cada tarea. En español." />
 
 ## Configuración práctica en OpenClaw
@@ -68,6 +70,24 @@ La configuración que tengo:
 - Redacción de posts y análisis: Claude Sonnet
 - Decisiones críticas o trabajo complejo: Claude Opus (reservado para momentos puntuales)
 
+**El truco que más ahorra:** Asigna el modelo más barato como modelo por defecto y pon instrucciones en tu SOUL.md para que el agente escale al modelo adecuado cuando la tarea lo requiera. Así, el 80% de las interacciones usan el modelo barato automáticamente sin que tú tengas que pensar en ello.
+
+## Comparativa de precios reales (marzo 2026)
+
+Para que te hagas una idea de la diferencia de precios por millón de tokens de input:
+
+| Modelo | Precio/millón input | Mejor para |
+|--------|---------------------|------------|
+| DeepSeek V3 | 0,14$ | Rutina, clasificación, resúmenes |
+| Qwen 2.5 | 0,15$ | Similar a DeepSeek, buena alternativa |
+| Claude Haiku | 0,25$ | Conversación, tareas rápidas de calidad |
+| GPT-4o Mini | 0,15$ | Alternativa barata de OpenAI |
+| Claude Sonnet | 3$ | Redacción, análisis, decisiones con contexto |
+| GPT-4o | 2,50$ | Similar a Sonnet |
+| Claude Opus | 15$ | Trabajo complejo, decisiones críticas |
+
+La diferencia entre el más barato y el más caro es de 100x. Si usas Opus para todo lo que podrías hacer con DeepSeek, estás tirando dinero.
+
 ## Otras formas de reducir el coste
 
 **Controla el contexto.** El coste depende de cuántos tokens procesa el modelo en cada llamada. Un contexto muy largo (historial enorme de conversación) multiplica el coste. OpenClaw tiene opciones para comprimir el contexto sin perder lo esencial.
@@ -78,6 +98,8 @@ La configuración que tengo:
 
 **Compara precios regularmente.** El mercado de modelos evoluciona muy rápido. Un modelo que era caro hace seis meses puede ser hoy la mejor opción calidad-precio. Vale la pena revisar el landscape cada dos o tres meses.
 
+**Mide el retorno.** No solo mires lo que gastas. Mide lo que ahorras en tiempo. Si tu agente te ahorra 2 horas al día y cuesta 20€/mes, estás pagando 0,33€ por hora de trabajo delegado. Es el empleado más barato que vas a tener.
+
 ## El resultado de optimizar
 
 Antes de optimizar: 55-65€/mes.
@@ -86,5 +108,13 @@ Después de optimizar: 15-22€/mes.
 Mismo agente. Mismas tareas. Mismos resultados. La diferencia está en usar el modelo correcto para cada caso en lugar de uno solo para todo.
 
 La optimización toma una tarde de configuración. El ahorro dura para siempre.
+
+## FAQ práctica
+
+**"¿Voy a notar que uso un modelo más barato?"** En las tareas rutinarias, no. DeepSeek V3 y Claude Haiku hacen resúmenes, clasificaciones y respuestas simples tan bien como modelos 20 veces más caros. Donde sí notas la diferencia es en tareas complejas de redacción creativa o análisis profundo, y para eso sigues usando el modelo potente.
+
+**"¿Y si necesito cambiar de modelo a mitad de conversación?"** Puedes. En OpenClaw puedes decirle al agente "usa Claude Opus para esta tarea" y cambia solo para esa interacción. No hay que tocar la configuración.
+
+**"¿OpenRouter añade latencia?"** Unos milisegundos. En la práctica, no lo notas. La latencia la marca el modelo que usas, no el intermediario.
 
 <CTA text="Aprende en TribuClaw" subtitle="La comunidad donde aprendes a tener un agente IA potente y económico." />

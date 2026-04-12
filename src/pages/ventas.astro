@@ -260,7 +260,7 @@ import { WHOP_URL } from '../consts';
 <style>
   /* ===== BASE ===== */
   :global(main) {
-    background: #0a0a0f;
+    background: var(--bg);
   }
 
   .ventas-hero,
@@ -268,7 +268,7 @@ import { WHOP_URL } from '../consts';
     max-width: 900px;
     margin: 0 auto;
     padding: 4rem 1.5rem;
-    color: #e8e8ed;
+    color: var(--text);
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     line-height: 1.75;
   }
@@ -295,7 +295,7 @@ import { WHOP_URL } from '../consts';
     font-size: 1.125rem;
     max-width: 680px;
     margin: 0 auto 2.5rem;
-    color: #b0b0ba;
+    color: var(--text-muted);
   }
 
   h2 {
@@ -315,7 +315,7 @@ import { WHOP_URL } from '../consts';
   .cta-btn {
     display: inline-block;
     padding: 1rem 2.5rem;
-    background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+    background: linear-gradient(135deg, var(--accent), var(--accent-light));
     color: #fff;
     font-weight: 700;
     font-size: 1.1rem;
@@ -351,7 +351,7 @@ import { WHOP_URL } from '../consts';
     content: '→';
     position: absolute;
     left: 0;
-    color: #8b5cf6;
+    color: var(--accent);
     font-weight: bold;
   }
 
@@ -365,7 +365,7 @@ import { WHOP_URL } from '../consts';
     padding: 1.25rem 1.5rem;
     margin-bottom: 0.75rem;
     background: rgba(139, 92, 246, 0.06);
-    border-left: 3px solid #8b5cf6;
+    border-left: 3px solid var(--accent);
     border-radius: 0 8px 8px 0;
   }
 
@@ -387,7 +387,7 @@ import { WHOP_URL } from '../consts';
     border-bottom: 1px solid rgba(255,255,255,0.08);
   }
   .ventas-table th {
-    color: #8b5cf6;
+    color: var(--accent);
     font-weight: 700;
     text-transform: uppercase;
     font-size: 0.8rem;
@@ -400,14 +400,14 @@ import { WHOP_URL } from '../consts';
     color: #888;
   }
   .ventas-table--compare td:last-child {
-    color: #e8e8ed;
+    color: var(--text);
   }
   .ventas-table--pricing td:last-child {
     text-align: right;
     white-space: nowrap;
   }
   .pricing-row-total {
-    border-top: 2px solid #8b5cf6;
+    border-top: 2px solid var(--accent);
   }
   .pricing-row-total td {
     padding-top: 1.25rem;
@@ -415,7 +415,7 @@ import { WHOP_URL } from '../consts';
 
   .ventas-note {
     margin-top: 1rem;
-    color: #b0b0ba;
+    color: var(--text-muted);
   }
 
   /* ===== PRICING BOX ===== */
@@ -434,11 +434,11 @@ import { WHOP_URL } from '../consts';
     margin-top: 0.75rem;
   }
   .pricing-total strong {
-    color: #8b5cf6;
+    color: var(--accent);
   }
   .pricing-note {
     margin-top: 1rem;
-    color: #b0b0ba;
+    color: var(--text-muted);
     font-size: 0.95rem;
   }
 
@@ -463,7 +463,7 @@ import { WHOP_URL } from '../consts';
     border-radius: 10px;
     padding: 1.25rem 1.5rem;
     margin: 0;
-    border-left: 3px solid #8b5cf6;
+    border-left: 3px solid var(--accent);
   }
   .testimonial p {
     margin-bottom: 0.5rem;
@@ -471,7 +471,7 @@ import { WHOP_URL } from '../consts';
   }
   .testimonial cite {
     font-size: 0.85rem;
-    color: #8b5cf6;
+    color: var(--accent);
     font-style: normal;
   }
 
@@ -487,7 +487,7 @@ import { WHOP_URL } from '../consts';
     padding: 1.25rem 0;
     cursor: pointer;
     font-weight: 600;
-    color: #e8e8ed;
+    color: var(--text);
     list-style: none;
     display: flex;
     justify-content: space-between;
@@ -496,7 +496,7 @@ import { WHOP_URL } from '../consts';
   .faq summary::after {
     content: '+';
     font-size: 1.25rem;
-    color: #8b5cf6;
+    color: var(--accent);
     flex-shrink: 0;
     margin-left: 1rem;
   }
@@ -504,11 +504,11 @@ import { WHOP_URL } from '../consts';
     content: '−';
   }
   .faq summary:hover {
-    color: #8b5cf6;
+    color: var(--accent);
   }
   .faq details p {
     padding: 0 0 1.25rem;
-    color: #b0b0ba;
+    color: var(--text-muted);
     margin: 0;
   }
 

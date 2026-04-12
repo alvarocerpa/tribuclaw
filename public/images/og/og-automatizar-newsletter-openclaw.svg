@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#1e3a5f"/>
+      <stop offset="100%" style="stop-color:#6366f1"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <text x="80" y="200" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="700" fill="white">NEWSLETTER</text>
+  <text x="80" y="290" font-family="system-ui,-apple-system,sans-serif" font-size="56" font-weight="700" fill="#a5b4fc">AUTOMÁTICA CON OPENCLAW</text>
+  <rect x="80" y="480" width="120" height="4" rx="2" fill="#a5b4fc"/>
+  <text x="80" y="530" font-family="system-ui,-apple-system,sans-serif" font-size="28" font-weight="600" fill="rgba(255,255,255,0.7)">TRIBUCLAW</text>
+  <text x="80" y="570" font-family="system-ui,-apple-system,sans-serif" font-size="22" fill="rgba(255,255,255,0.5)">tribuclaw.com</text>
+</svg>

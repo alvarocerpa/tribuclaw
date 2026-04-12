@@ -29,11 +29,23 @@ Antes de instalar nada, asegúrate de tener:
 
 **Un VPS con Ubuntu 22.04 o superior.** Recomiendo Hetzner (CX22, 3,79€/mes) para empezar. Es el equilibrio perfecto entre precio y rendimiento. DigitalOcean y Contabo también funcionan bien.
 
+Si no has usado nunca un VPS, no te asustes. Es básicamente un ordenador en la nube al que accedes por terminal. Hetzner tiene un panel donde creas el servidor en dos clics y te da la IP y la contraseña.
+
 **Una API key de un modelo de IA.** Anthropic (Claude) es la mejor opción. Regístrate en console.anthropic.com, añade créditos (5 dólares son suficientes para empezar) y genera tu clave.
+
+¿Qué modelo elegir? Para empezar, Claude Sonnet es el equilibrio entre calidad y precio. Si quieres ir más barato, Claude Haiku funciona sorprendentemente bien para tareas rutinarias. También puedes usar OpenRouter para acceder a docenas de modelos con una sola API key.
 
 **Una cuenta de Telegram.** Es el canal principal para comunicarte con tu agente. Necesitas crear un bot con @BotFather y guardar el token.
 
+¿Por qué Telegram y no otra cosa? Porque Telegram tiene la API más abierta y rápida para bots. WhatsApp Business API requiere verificación y tiene costes. Telegram es instantáneo y gratuito.
+
 **Node.js 20 o superior** en el servidor. Si usas Ubuntu, se instala en dos comandos.
+
+**Un terminal.** En Mac usa la Terminal que viene por defecto. En Windows, Windows Terminal o PowerShell. No necesitas nada más.
+
+Presupuesto total para empezar: 4€ del servidor + 5$ de la API key de Anthropic. Menos de 10 euros para tener tu agente funcionando.
+
+Coste total para empezar: 3,79€ del servidor + 5$ de créditos de modelo. Menos de 10 euros para tener un agente IA personal funcionando.
 
 ## Instalación paso a paso
 
@@ -72,6 +84,18 @@ openclaw gateway start
 
 El gateway es el proceso que mantiene la conexión entre tu agente y tus canales de comunicación. En producción lo conviertes en un servicio del sistema para que arranque automáticamente.
 
+Para hacerlo persistente (que arranque solo al reiniciar el servidor), ejecuta:
+
+```bash
+openclaw gateway install
+```
+
+Esto crea un servicio de systemd. Puedes comprobar el estado con `openclaw gateway status`.
+
+### Paso 6: Verificar que funciona
+
+Manda un mensaje a tu bot de Telegram. Si responde, todo está correcto. Si no responde, revisa los logs con `openclaw gateway logs` para ver qué falla. Los errores más comunes son API key incorrecta o token de Telegram mal copiado.
+
 <CTA text="Completa tu instalación con TribuClaw" subtitle="Guías paso a paso, comunidad activa y soporte en español." />
 
 ## Personalizar tu agente
@@ -80,11 +104,21 @@ La instalación base es funcional, pero el valor real viene de personalizar el a
 
 **SOUL.md** — La personalidad de tu agente. Aquí defines cómo habla, qué valores tiene, cómo responde cuando comete errores. Es el documento más importante para que tu agente suene natural.
 
+Ejemplo de SOUL.md para un agente de soporte técnico: "Eres un técnico de soporte paciente y directo. Explicas las cosas paso a paso sin dar nada por asumido. Si el usuario no entiende algo, lo explicas de otra forma, no repites lo mismo. Nunca usas jerga técnica sin explicarla primero."
+
 **USER.md** — Información sobre ti. Nombre, negocio, preferencias, contexto. Cuanto más sepa de ti, mejor te servirá.
 
 **MEMORY.md** — El cerebro permanente. Aquí va el conocimiento destilado que quieres que recuerde siempre: decisiones tomadas, preferencias importantes, proyectos activos.
 
 **HEARTBEAT.md** — Qué hace el agente cuando tú no le estás hablando. Checks automáticos, tareas recurrentes, monitorización.
+
+### Ejemplo de personalización que marca la diferencia
+
+Sin personalización, tu agente responde igual que cualquier otro agente genérico. Con personalización, responde como alguien que te conoce.
+
+Diferencia real: sin USER.md, si le preguntas "recuérdame que mañana tengo reunión con el cliente importante", te pide aclaración. Con USER.md que dice "tienes un negocio de marketing digital con clientes de sector inmobiliario", el agente sabe que "cliente importante" probablemente se refiere a uno de tus clientes de mayor facturación y lo asocia automáticamente.
+
+La personalización no es un extra. Es lo que separa un agente útil de un chatbot genérico. Dedica al menos 30 minutos a escribir tus archivos de personalización. Te va a ahorrar horas de interacciones frustrantes.
 
 ## Conectar Telegram
 
@@ -101,5 +135,25 @@ A partir de ese momento, todo lo que mandes al bot llega a tu agente. Y todo lo 
 Las primeras 24-48 horas son de aprendizaje mutuo. El agente procesa las instrucciones que le has dado y empieza a construir su modelo de cómo trabajas. Cuéntale cosas de tu negocio, cuéntale qué tareas quieres que gestione, prueba distintas formas de pedirle cosas.
 
 Cuanto más lo uses al principio, más rápido aprende y mejor funciona.
+
+### Consejos para exprimir los primeros días
+
+**Dile cómo trabajas.** "Normalmente reviso el email por la mañana, las reuniones las prefiero por la tarde, y los viernes hago revisión semanal." Ese contexto hace que el agente organice mejor las tareas.
+
+**Pídele cosas variadas.** No solo preguntas simples. Pídele que redacte un email, que te resuma un documento, que te proponga ideas para un proyecto. Así descubres qué hace bien y qué necesita ajustes.
+
+**Corrígelo cuando se equivoque.** Si responde con un tono que no te gusta o hace algo diferente a lo que esperabas, díselo. El agente aprende de las correcciones y no repite el error.
+
+**Revisa los archivos de memoria.** Después de un par de días, mira MEMORY.md. Verás cómo el agente ha ido construyendo su conocimiento sobre ti. Si algo está mal, corrígelo directamente en el archivo.
+
+## Problemas comunes y soluciones
+
+**"El bot no responde en Telegram."** Comprueba que el token del bot es correcto con `openclaw gateway status`. Revisa que el gateway está corriendo. Si acabas de crear el bot, espera un par de minutos.
+
+**"Las respuestas son lentas."** Depende del modelo que uses. Claude Haiku responde en 1-2 segundos. Claude Sonnet en 3-5 segundos. Si necesitas más velocidad, cambia a un modelo más ligero para las interacciones cotidianas.
+
+**"El agente no recuerda lo que le dije ayer."** Revisa que MEMORY.md existe y que el agente tiene permiso para escribir en él. La memoria persistente depende de que el agente pueda actualizar sus archivos.
+
+**"El coste es más alto de lo esperado."** Revisa qué modelo estás usando por defecto. Si usas Claude Opus para todo, el coste sube rápido. Cambia a Sonnet o Haiku para las tareas rutinarias y reserva Opus para las complejas.
 
 <CTA text="Únete a TribuClaw" subtitle="La comunidad donde resolvemos dudas de instalación y configuración en español." />

@@ -1,0 +1,190 @@
+---
+title: "Cómo montar un equipo de 10 agentes IA por 0€ al mes"
+description: "La arquitectura completa de mi equipo de agentes IA: 7 agentes especializados con modelos gratuitos (GLM-5, ZAI) que trabajan 24/7 sin coste. Con diagrama del flujo y configuración paso a paso."
+heroImage: "/images/blog/hero-equipo-10-agentes-ia-gratis.svg"
+pubDate: 2026-04-03
+author: "Alvaro Cerpa"
+pillar: "automatizacion"
+tags: ["agentes ia", "openclaw", "gratis", "automatización", "multi-agente"]
+keywords: ["agentes ia gratis", "openclaw configuracion", "equipo multi-agente", "agentes ia sin coste", "GLM-5"]
+faq:
+  - q: "¿De verdad puedo tener agentes IA funcionando sin pagar nada?"
+    a: "Sí. Modelos como GLM-5 y los modelos de ZAI tienen capas gratuitas generosas. OpenClaw es open source. Solo necesitas un VPS básico (5€/mes) o incluso un ordenador viejo en casa. Los modelos en sí cuestan 0€."
+  - q: "¿Los modelos gratuitos son lo suficientemente buenos para tareas reales?"
+    a: "GLM-5 escribe mejor que muchos modelos de pago. Los modelos ZAI compiten con GPT-4 en varias tareas. No son 'gratis porque son malos', son gratis porque la competencia en IA está brutal y los proveedores quieren cuota de mercado."
+  - q: "¿Cuántos agentes puedo tener corriendo a la vez?"
+    a: "OpenClaw no tiene límite de agentes por licencia. El límite es tu hardware. En un VPS de 5€ con 2GB de RAM puedes tener 5-7 agentes sin problema. Más si usas modelos con respuestas cortas."
+  - q: "¿Necesito un equipo técnico para montar esto?"
+    a: "No. Cada agente se configura con un archivo de texto (SOUL.md) donde le describes su personalidad y tarea. Si sabes escribir instrucciones claras, puedes montar el equipo. En TribuClaw lo hacemos paso a paso."
+---
+
+Si te dijera que puedes tener un equipo de 7 personas trabajando para ti 24/7 sin pagar un sueldo, dirías que es una estafa. Pero si te digo que son 7 agentes de IA con modelos gratuitos montados en un servidor que cuesta lo mismo que un café al día, la cosa cambia.
+
+Llevo meses funcionando así. Y no estoy hablando de ChatGPT con un par de prompts bonitos. Hablo de 7 agentes especializados, cada uno con su rol, su personalidad y su memoria. Coordinados por un agente jefe que reparte el trabajo.
+
+Esto es lo que tengo montado. Y esto es cómo puedes montarlo tú.
+
+---
+
+## El equipo
+
+Mi equipo se llama así: Kimo, Mao, Pluma, Mika, Mei, Data y Rex. Cada uno tiene un trabajo específico.
+
+```
+         ┌─────────────────────────┐
+         │       KIMO (CEO)        │
+         │   Coordina y delega     │
+         └──────────┬──────────────┘
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+   ┌────┴───┐ ┌────┴───┐ ┌────┴───┐
+   │  MAO   │ │ PLUMA  │ │  REX   │
+   │ Código │ │  Copy  │ │  SEO   │
+   └────────┘ └────────┘ └────────┘
+        │           │
+   ┌────┴───┐ ┌────┴───┐ ┌────────┐
+   │ MIKA   │ │  MEI   │ │  DATA  │
+   │Diseño  │ │ Admin  │ │Datos   │
+   └────────┘ └────────┘ └────────┘
+```
+
+**Kimo (CEO / Coordinador):** Recibe mis peticiones, decide quién hace qué, supervisa la calidad. Modelo: GLM-5.
+
+**Mao (Código):** Escribe código, revisa PRs, mantiene el repo. Modelo: GLM-5 Turbo.
+
+**Pluma (Copy):** Escribe posts, emails, landing pages. Todo lo que sea palabras, pasa por ella. Modelo: GLM-5.1.
+
+**Mika (Diseño):** Genera miniaturas, imágenes para posts, assets visuales. Modelo: Gemini.
+
+**Mei (Admin):** Gestiona tareas, organiza el tablero (Paperclip), mantiene el orden. Modelo: GLM-5.
+
+**Data (Analítica):** Analiza métricas, SEO, rendimiento. Modelo: ZAI.
+
+**Rex (SEO):** Optimiza posts, posiciona en Google, vigila rankings. Modelo: ZAI.
+
+---
+
+## El flujo de trabajo
+
+Cuando quiero algo, le hablo a Kimo. Nunca a los demás directamente. Así funciona:
+
+**1. Yo le digo a Kimo:** "Necesito un post sobre automatización con agentes IA para el blog."
+
+**2. Kimo delega:**
+- Pluma: escribe el post
+- Rex: optimiza SEO (título, meta description, keywords)
+- Mika: genera la miniatura
+
+**3. Cada agente ejecuta su parte.** Pluma escribe, Rex optimiza lo que Pluma escribió, Mika genera la imagen.
+
+**4. Kimo reúne todo y me lo presenta.** Yo reviso, apruebo o pido cambios.
+
+**5. Si hay cambios, Kimo los delega al agente correspondiente.**
+
+Yo solo interactúo con Kimo. El resto del equipo trabaja entre ellos sin que yo toque nada.
+
+---
+
+## Los modelos (y por qué son gratis)
+
+La clave de todo esto son los modelos de IA. Y sí, hay modelos potentes que cuestan 0€.
+
+**GLM-5 (Zhipu AI):** Mi modelo principal para copy, coordinación y tareas generales. Competitivo con GPT-4 en español. Capa gratuita generosa.
+
+**GLM-5 Turbo:** Versión más rápida de GLM-5. Ideal para tareas de código y respuestas cortas.
+
+**GLM-5.1:** El último modelo de Zhipu. Lo uso para Pluma porque escribe mejor que la mayoría de modelos de pago en español.
+
+**ZAI (Zhipu):** Para análisis de datos y SEO. Rápido y barato.
+
+**Gemini (Google):** Para generación de imágenes a través de Mika. Tiene capa gratuita.
+
+¿Por qué estos modelos son gratis? Porque la guerra de IA está que arde. Cada proveedor quiere que uses su modelo. Y mientras compiten, nosotros nos beneficiamos.
+
+---
+
+## Qué necesitas para montarlo
+
+**Hardware:**
+- Un VPS con Ubuntu 24, 2GB de RAM mínimo (5€/mes en Hetzner)
+- O tu propio ordenador si no te importa que dependa de que esté encendido
+
+**Software:**
+- OpenClaw (gratis, open source)
+- API keys de los modelos gratuitos (registro en Zhipu AI, Google AI Studio)
+
+**Tiempo:**
+- Instalar OpenClaw: 30 minutos
+- Configurar el primer agente: 20 minutos
+- Montar el equipo completo: 2-3 horas
+
+**Conocimiento:**
+- Saber abrir una terminal y ejecutar comandos básicos
+- Poder escribir instrucciones claras en un archivo de texto
+
+Eso es todo. No necesitas Docker, no necesitas Kubernetes, no necesitas ser desarrollador.
+
+---
+
+## Configuración de cada agente
+
+Cada agente tiene un archivo `SOUL.md` que define quién es y qué hace. Aquí va un ejemplo real:
+
+**Kimo (CEO):**
+```
+Eres Kimo, el coordinador del equipo.
+Recibes peticiones de Álvaro y decides qué agente las ejecuta.
+Delegas con contexto completo — no asumas que el otro agente sabe nada.
+Revisas la calidad antes de entregar.
+Si algo no está bien, lo devuelves con feedback concreto.
+```
+
+**Pluma (Copy):**
+```
+Eres Pluma, la copywriter.
+Escribes en voz de Álvaro: directo, sin hype, sin jerga.
+Prohibido: "en el mundo actual", guiones largos, párrafos de relleno.
+Cada texto tiene hook, desarrollo y cierre con intención.
+Si el briefing está flojo, preguntas antes de escribir.
+```
+
+Así de simple. Un archivo de texto con las reglas del agente. No es código, es lenguaje natural.
+
+---
+
+## El coste real
+
+Desglose mensual:
+
+| Concepto | Coste |
+|----------|-------|
+| VPS Hetzner (2GB RAM) | 5€ |
+| Modelos IA (GLM-5, ZAI) | 0€ |
+| OpenClaw | 0€ |
+| Gemini (imágenes) | 0€ |
+| **Total** | **5€/mes** |
+
+5 euros al mes por un equipo de 7 agentes trabajando 24/7. Menos de lo que cuesta una suscripción de Netflix.
+
+Y si ya tienes un ordenador que dejar encendido, el coste es literalmente 0€.
+
+---
+
+## Esto no es teoría
+
+No estoy vendiendo humo. Este equipo existe, funciona y produce resultados reales:
+
+- Posts de blog publicados cada semana sin que yo escriba ni uno
+- Contenido de LinkedIn programado y listo para publicar
+- SEO optimizado en cada artículo
+- Código revisado y desplegado
+- Métricas analizadas sin yo mirar un dashboard
+
+Todo por 5€ al mes y un par de horas de configuración inicial.
+
+Si quieres montar algo parecido, en TribuClaw te lo enseñamos paso a paso. Desde instalar OpenClaw hasta tener tu primer equipo de agentes corriendo. Con soporte, comunidad y gente que ya lo está haciendo.
+
+**El enlace está en mi bio.**
+
+Montar un equipo de agentes IA no es futurista. Es algo que puedes hacer esta tarde. La pregunta no es si funciona, es cuándo empiezas.

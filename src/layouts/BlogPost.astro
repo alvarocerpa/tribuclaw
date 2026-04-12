@@ -302,7 +302,7 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
       font-weight: 600;
       background: rgba(233,69,96,0.08);
       border: 1px solid rgba(233,69,96,0.15);
-      color: #e94560;
+      color: var(--accent);
     }
 
     /* Content layout */
@@ -428,7 +428,7 @@ const articleUrl = new URL(Astro.url.pathname, Astro.site).href;
     .blog-cta-text-wrap p { color: rgba(250,250,250,0.5); font-size: 0.85rem; margin: 0; line-height: 1.5; }
     .blog-cta-btn {
       display: inline-flex; align-items: center;
-      background: #e94560; color: #fff; font-weight: 700; font-size: 0.85rem;
+      background: var(--accent); color: #fff; font-weight: 700; font-size: 0.85rem;
       padding: 0.6rem 1.25rem; border-radius: 8px; text-decoration: none;
       flex-shrink: 0; transition: background 0.2s, transform 0.2s;
     }

@@ -1,147 +1,100 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { WHOP_URL } from '../consts';
+import { WHOP_URL, SITE_URL } from '../consts';
 ---
 
 <BaseLayout
-  title="TribuClaw — Tu agente IA personal que trabaja 24/7 por ti"
-  description="TribuClaw te enseña a montar tu agente IA en un servidor de 5€/mes. Sin ser programador. Curso + App + Comunidad."
+  title="TribuClaw Academy — Aprende a montar Agentes Autónomos de IA en Español"
+  description="La primera academia en español sobre agentes autónomos. Aprende a crear agentes de IA que trabajen por ti 24/7 con OpenClaw, Hermes y más. Sin ser programador. 35€/mes."
 >
 
+  <!-- Scroll Progress Bar -->
+  <div class="scroll-progress" id="scroll-progress"></div>
+
+  <!-- ==================== HERO ==================== -->
   <section class="hero" id="hero">
-    <canvas id="hero-particles"></canvas>
-    <div class="hero-glow hero-glow-top"></div>
-    <div class="container-hero">
+    <div class="hero-bg"></div>
+    <div class="container">
       <div class="hero-grid">
         <div class="hero-copy">
-          <span class="badge-pill">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a7 7 0 017 7c0 3-2 5.5-4 7l-1 1v3h-4v-3l-1-1c-2-1.5-4-4-4-7a7 7 0 017-7z"/><path d="M9 21h6"/></svg>
-            Agentes IA personales
+          <span class="badge-pill" data-animate="badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Academia de Agentes Autónomos
           </span>
           <h1 class="hero-headline" data-animate="headline">
-            Mientras tú haces todo manual, otros ya tienen un <span class="gradient-text">agente IA trabajando 24/7</span> por ellos.
+            Aprende a montar agentes de IA que trabajen por ti.
           </h1>
           <p class="hero-sub" data-animate="fade-up">
-            Formación + Comunidad + App. Todo lo que necesitas para tener tu agente IA funcionando esta semana.
+            La primera academia en español sobre agentes autónomos. Sin ser dev. Sin humo. Resultados desde la semana 1.
           </p>
           <div class="hero-cta" data-animate="cta">
-            <a href={WHOP_URL} class="cta-btn cta-btn-lg hero-cta-btn" target="_blank" rel="noopener">
-              Montar mi agente hoy →
+            <a href={WHOP_URL} class="cta-btn cta-btn-lg magnetic-btn" target="_blank" rel="noopener">
+              Empezar ahora — 35€/mes
             </a>
           </div>
+          <p class="hero-note" data-animate="fade-up">Sin permanencia. Cancelas cuando quieras.</p>
         </div>
-        <div class="hero-console" data-animate="console">
-          <div class="console-window">
-            <div class="console-titlebar">
-              <div class="console-dots">
+        <div class="hero-terminal" data-animate="terminal">
+          <div class="terminal-window">
+            <div class="terminal-titlebar">
+              <div class="terminal-dots">
                 <span class="dot dot-red"></span>
                 <span class="dot dot-yellow"></span>
                 <span class="dot dot-green"></span>
               </div>
-              <span class="console-title-text">TribuClaw OS — Agentes activos</span>
-              <div class="console-live">
-                <span class="live-dot"></span>
-                <span>LIVE</span>
+              <span class="terminal-title-text">terminal — bash</span>
+            </div>
+            <div class="terminal-body" id="terminal-body">
+              <div class="terminal-line" data-line>
+                <span class="terminal-prompt">$</span>
+                <span class="terminal-cmd" id="term-cmd"></span>
+                <span class="terminal-cursor" id="term-cursor">▋</span>
               </div>
             </div>
-            <div class="console-body" id="console-body"></div>
-            <div class="console-cursor" id="console-cursor">█</div>
           </div>
         </div>
       </div>
+      <div class="hero-gradient-line"></div>
     </div>
   </section>
 
-  <section class="section section-problema" data-animate="fade-up">
-    <div class="container">
-      <div class="section-header">
-        <span class="section-badge">El problema</span>
-        <h2 class="section-title">Tu negocio depende 100% de ti. Y eso tiene techo.</h2>
-      </div>
-      <div class="problema-cards">
-        <div class="problema-card glass-card">
-          <div class="problema-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          </div>
-          <p>Abres emails uno por uno. Respondes clientes por WhatsApp. Publicas en redes. Preparas facturas. Todo manual.</p>
-        </div>
-        <div class="problema-card glass-card">
-          <div class="problema-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-          </div>
-          <p>Tu día tiene 24 horas y ya las usas todas. Si quieres facturar el doble, necesitas el doble de tiempo. <strong>Y ese tiempo no existe.</strong></p>
-        </div>
-        <div class="problema-card glass-card">
-          <div class="problema-icon-wrap">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-          </div>
-          <p>ChatGPT te da respuestas bonitas, pero no hace nada por ti. Hay un salto entre "usar ChatGPT" y "tener un sistema que trabaja por ti". Casi nadie te explica cómo darlo.</p>
-        </div>
-      </div>
-      <svg width="0" height="0" style="position:absolute">
-        <defs>
-          <linearGradient id="gradIcon" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#e94560"/>
-            <stop offset="100%" stop-color="#ff6b6b"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
-  </section>
-
-  <div class="section-divider"></div>
-
-  <section class="section section-incluye" id="incluye">
+  <!-- ==================== VALUE PROP (3 pasos) ==================== -->
+  <section class="section section-value" id="como-funciona">
     <div class="container">
       <div class="section-header" data-animate="fade-up">
-        <span class="section-badge">Todo incluido</span>
-        <h2 class="section-title">Curso. Directos. Comunidad.<br/> Y una App que gestiona tu agente sin tocar código.</h2>
+        <span class="section-badge">Cómo funciona</span>
+        <h2 class="section-title">De cero a tu primer agente en tres pasos</h2>
       </div>
-      <p class="openclaw-bridge" data-animate="fade-up">
-        <strong>OpenClaw es gratis. Montarlo bien, no tanto.</strong> Por eso existe TribuClaw: todo lo que necesitas para que tu agente funcione desde la semana 1.
-      </p>
-      <div class="bento-grid" data-animate="stagger">
-        <div class="bento-item glass-card">
-          <div class="bento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
+      <div class="value-steps" data-animate="stagger">
+        <div class="value-step">
+          <div class="value-step-number">01</div>
+          <div class="value-step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg>
           </div>
-          <h3>Curso completo en español</h3>
-          <p>De cero a tener tu sistema montado y funcionando. Sin conocimientos técnicos previos. Paso a paso, en vídeo, en tu idioma.</p>
+          <h3 class="value-step-title">Aprende</h3>
+          <p class="value-step-desc">Los fundamentos de agentes autónomos. Qué son, cómo piensan, por qué no son "ChatGPT con pasos extra".</p>
         </div>
-        <div class="bento-item glass-card">
-          <div class="bento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
-          </div>
-          <h3>Directos semanales</h3>
-          <p>Cada miércoles a las 19:00. Dudas en vivo, novedades, avances compartidos.</p>
+        <div class="value-connector">
+          <div class="value-connector-line"></div>
         </div>
-        <div class="bento-item glass-card">
-          <div class="bento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>
+        <div class="value-step">
+          <div class="value-step-number">02</div>
+          <div class="value-step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
           </div>
-          <h3>Soporte 24/7</h3>
-          <p>TribuBot responde al instante. Y si no puede, Álvaro te responde personalmente.</p>
+          <h3 class="value-step-title">Configura</h3>
+          <p class="value-step-desc">Tu primer agente funcional en 8 minutos con nuestros instaladores automatizados. Sin tocar código.</p>
         </div>
-        <div class="bento-item glass-card">
-          <div class="bento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
-          </div>
-          <h3>Comunidad de 98 personas</h3>
-          <p>Gente haciendo lo mismo que tú. Comparten avances, se ayudan, comparan resultados.</p>
+        <div class="value-connector">
+          <div class="value-connector-line"></div>
         </div>
-        <div class="bento-item glass-card">
-          <div class="bento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        <div class="value-step">
+          <div class="value-step-number">03</div>
+          <div class="value-step-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
           </div>
-          <h3>Casos de uso semanales</h3>
-          <p>Cada semana un caso real. No teoría: cosas que nuestros agentes hacen HOY.</p>
-        </div>
-        <div class="bento-item glass-card">
-          <div class="bento-icon">
-            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Actualización continua</h3>
-          <p>La IA avanza cada semana. El contenido se actualiza al mismo ritmo. Siempre al día.</p>
+          <h3 class="value-step-title">Escala</h3>
+          <p class="value-step-desc">Añade más agentes, automatizaciones y memoria. Tu equipo de IA crece contigo.</p>
         </div>
       </div>
     </div>
@@ -149,1021 +102,1373 @@ import { WHOP_URL } from '../consts';
 
   <div class="section-divider"></div>
 
-  <section class="section section-app" id="app" data-animate="fade-up">
+  <!-- ==================== MÓDULOS (Bento Grid) ==================== -->
+  <section class="section section-modulos" id="modulos">
     <div class="container">
-      <div class="section-header">
-        <span class="section-badge">La App</span>
-        <h2 class="section-title">La TribuClaw App: tu agente con interfaz gráfica</h2>
-        <p class="section-sub">OpenClaw es increíble, pero funciona por terminal. La TribuClaw App es el panel de control que nadie te da.</p>
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-badge">Academia</span>
+        <h2 class="section-title">Lo que vas a aprender</h2>
+        <p class="section-sub">No es un curso grabado que nunca acabas. Es una academia viva donde aprendes a construir, configurar y desplegar agentes autónomos que trabajen por ti 24/7.</p>
       </div>
-      <p class="app-intro">Nadie quiere configurar su agente IA escribiendo comandos en una terminal oscura. Por eso creamos la TribuClaw App: una interfaz visual donde ves, creas y controlas tus agentes sin tocar código.</p>
-      <div class="app-features" data-animate="stagger">
-        <div class="app-feature glass-card">
-          <div class="app-feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-          </div>
-          <h3>Creación visual</h3>
-          <p>Crea agentes nuevos con unos clics. Elige modelo, conecta herramientas, define personalidad. Sin tocar JSON, sin terminal.</p>
-        </div>
-        <div class="app-feature glass-card">
-          <div class="app-feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 20V10"/><path d="M12 20V4"/><path d="M6 20v-6"/></svg>
-          </div>
-          <h3>Monitorización en tiempo real</h3>
-          <p>Ve qué están haciendo tus agentes ahora mismo. Tareas completadas, errores, logs. Todo en un dashboard limpio.</p>
-        </div>
-        <div class="app-feature glass-card">
-          <div class="app-feature-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradIcon)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-          </div>
-          <h3>Deploy automático</h3>
-          <p>Configura tu agente desde la App y despliégalo en tu servidor con un botón. Sin SSH, sin SSH keys, sin dolores de cabeza.</p>
-        </div>
-      </div>
-      <div class="app-mockup" data-animate="fade-up">
-        <div class="app-mockup-window">
-          <div class="app-mockup-titlebar">
-            <div class="app-mockup-dots">
-              <span></span><span></span><span></span>
-            </div>
-            <span class="app-mockup-title">TribuClaw App — Dashboard</span>
-          </div>
-          <div class="app-mockup-body">
-            <div class="app-mockup-sidebar">
-              <div class="app-sidebar-item active">Agentes</div>
-              <div class="app-sidebar-item">Tareas</div>
-              <div class="app-sidebar-item">Config</div>
-              <div class="app-sidebar-item">Logs</div>
-            </div>
-            <div class="app-mockup-main">
-              <div class="app-mockup-header-row">
-                <span class="app-mockup-status-dot"></span>
-                <span>Kimo — Activo</span>
-                <span class="app-mockup-badge">5 tareas</span>
-              </div>
-              <div class="app-mockup-cards">
-                <div class="app-mockup-stat">
-                  <span class="stat-value">847</span>
-                  <span class="stat-label">Tareas hoy</span>
-                </div>
-                <div class="app-mockup-stat">
-                  <span class="stat-value">99.9%</span>
-                  <span class="stat-label">Uptime</span>
-                </div>
-                <div class="app-mockup-stat">
-                  <span class="stat-value">42ms</span>
-                  <span class="stat-label">Latencia</span>
-                </div>
-              </div>
-              <div class="app-mockup-log">
-                <div class="mock-log-line"><span class="log-time">14:23</span> Email respondido ✓</div>
-                <div class="mock-log-line"><span class="log-time">14:21</span> Post publicado en LinkedIn ✓</div>
-                <div class="mock-log-line"><span class="log-time">14:18</span> Factura generada ✓</div>
-              </div>
-            </div>
+      <div class="bento-grid" data-animate="stagger">
+        <div class="bento-item bento-hero">
+          <span class="bento-label">Pilar 1</span>
+          <h3 class="bento-title">Fundamentos de Agentes Autónomos</h3>
+          <p class="bento-desc">Qué son, cómo piensan, por qué no son "ChatGPT con pasos extra". Entiende el modelo mental: delegar, no preguntar.</p>
+          <div class="bento-meta">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            <span>8 lecciones · 2h</span>
           </div>
         </div>
-      </div>
-      <div class="app-cta" data-animate="fade-up">
-        <p>La App está incluida en tu membresía de TribuClaw. No es un extra. Es el núcleo.</p>
-        <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">Ver la TribuClaw App →</a>
+        <div class="bento-item">
+          <span class="bento-label">Pilar 2</span>
+          <h3 class="bento-title">OpenClaw Master</h3>
+          <p class="bento-desc">La herramienta estrella. Desde instalar tu primer agente hasta montar un equipo completo con memoria, skills y personalidad.</p>
+        </div>
+        <div class="bento-item">
+          <span class="bento-label">Pilar 3</span>
+          <h3 class="bento-title">Automatizaciones Reales</h3>
+          <p class="bento-desc">Emails, contenido, atención al cliente, reportes. Casos de uso concretos que te ahorran horas desde el día uno.</p>
+        </div>
+        <div class="bento-item">
+          <span class="bento-label">Pilar 4</span>
+          <h3 class="bento-title">Herramientas del Ecosistema</h3>
+          <p class="bento-desc">Hermes, MCP servers, integraciones. El stack completo para que tus agentes hablen entre sí y con el mundo exterior.</p>
+        </div>
+        <div class="bento-item">
+          <span class="bento-label">Pilar 5</span>
+          <h3 class="bento-title">Memoria y Personalidad</h3>
+          <p class="bento-desc">Cómo dar contexto persistente a tus agentes. Que recuerden, que aprendan, que suenen como tú.</p>
+        </div>
+        <div class="bento-item">
+          <span class="bento-label">Pilar 6</span>
+          <h3 class="bento-title">Negocio con Agentes</h3>
+          <p class="bento-desc">Monetización, escalado, costes reales. Cómo vivir con productos propios potenciados por IA.</p>
+        </div>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
+  <!-- ==================== SOCIAL PROOF ==================== -->
   <section class="section section-proof" id="proof">
     <div class="container">
-      <div class="section-header" data-animate="fade-up">
-        <span class="section-badge">Social Proof</span>
-        <h2 class="section-title">98 personas ya no hacen todo solas</h2>
-      </div>
       <div class="proof-counters" data-animate="stagger">
         <div class="proof-counter">
           <span class="proof-counter-value" data-target="98" data-suffix="+">0</span>
-          <span class="proof-counter-label">Miembros</span>
+          <span class="proof-counter-label">builders activos</span>
         </div>
         <div class="proof-counter">
           <span class="proof-counter-value" data-target="4.8" data-suffix="/5">0</span>
-          <span class="proof-counter-label">Valoración media</span>
+          <span class="proof-counter-label">valoración media</span>
+        </div>
+        <div class="proof-counter">
+          <span class="proof-counter-value" data-target="8" data-suffix=" min">0</span>
+          <span class="proof-counter-label">primer agente</span>
+        </div>
+        <div class="proof-counter">
+          <span class="proof-counter-value" data-target="50" data-suffix="+">0</span>
+          <span class="proof-counter-label">lecciones</span>
         </div>
       </div>
       <div class="testimonials-grid" data-animate="stagger">
-        <div class="testimonial-card glass-card">
-          <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">La App me cambió la vida. Antes tenía que entrar por terminal, ahora todo visual.</p>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"La App me cambió la vida. Antes tenía que entrar por terminal, ahora todo visual."</p>
           <div class="testimonial-author">
             <div class="t-avatar">JG</div>
             <div>
               <div class="t-name">Jorge García</div>
-              <div class="t-stars">★★★★★</div>
+              <div class="t-role">Builder</div>
             </div>
           </div>
         </div>
-        <div class="testimonial-card glass-card">
-          <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">Comunidad joven pero con muchísimo potencial. Contenido fresco, de actualidad, en español...</p>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Comunidad joven pero con muchísimo potencial. Contenido fresco, de actualidad, en español..."</p>
           <div class="testimonial-author">
             <div class="t-avatar">SC</div>
             <div>
               <div class="t-name">SergioCR</div>
-              <div class="t-stars">★★★★★</div>
+              <div class="t-role">Builder</div>
             </div>
           </div>
         </div>
-        <div class="testimonial-card glass-card">
-          <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw.</p>
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-text">"Espectacular. Solo puedo decir esto. Gracias por el servicio que estáis dando en TribuClaw."</p>
           <div class="testimonial-author">
             <div class="t-avatar">AB</div>
             <div>
               <div class="t-name">Alberto Batlle</div>
-              <div class="t-stars">★★★★★</div>
+              <div class="t-role">Builder</div>
             </div>
           </div>
         </div>
-        <div class="testimonial-card glass-card">
-          <div class="testimonial-quote">"</div>
-          <p class="testimonial-text">En la primera semana ya tenía mi agente funcionando. El curso es directo al grano.</p>
-          <div class="testimonial-author">
-            <div class="t-avatar">ML</div>
-            <div>
-              <div class="t-name">María López</div>
-              <div class="t-stars">★★★★★</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="compare-section" data-animate="fade-up">
-        <h3 class="compare-heading">Lo que pasa si intentas hacerlo solo</h3>
-        <div class="compare-grid">
-          <div class="compare-col compare-bad glass-card">
-            <h4>Solo</h4>
-            <ul>
-              <li class="cross-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                Googlear tutoriales en inglés
-              </li>
-              <li class="cross-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                ChatGPT con respuestas genéricas
-              </li>
-              <li class="cross-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                Semanas de prueba y error
-              </li>
-              <li class="cross-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#e94560" stroke-width="2.5" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                Nadie a quien preguntar
-              </li>
-            </ul>
-          </div>
-          <div class="compare-col compare-good glass-card">
-            <h4>Con TribuClaw</h4>
-            <ul>
-              <li class="check-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Curso en español paso a paso
-              </li>
-              <li class="check-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Casos de uso reales semanales
-              </li>
-              <li class="check-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Funcionando desde la semana 1
-              </li>
-              <li class="check-item">
-                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"><polyline points="20 6 9 17 4 12"/></svg>
-                Soporte 24/7 + App incluida
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="proof-cta" style="text-align:center; margin-top:2.5rem;">
-        <a href={WHOP_URL} class="cta-btn" target="_blank" rel="noopener">Empezar a automatizar →</a>
       </div>
     </div>
   </section>
 
   <div class="section-divider"></div>
 
-  <section class="section section-pricing" id="pricing" data-animate="fade-up">
+  <!-- ==================== PRICING ==================== -->
+  <section class="section section-pricing" id="pricing">
     <div class="container">
-      <div class="section-header">
-        <span class="section-badge">Precio</span>
-        <h2 class="section-title">40€/mes. Sin permanencia. Sin letra pequeña.</h2>
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-badge">Empieza hoy</span>
+        <h2 class="section-title">Acceso completo. Sin letra pequeña.</h2>
       </div>
-      <div class="pricing-card pricing-card-glow">
-        <div class="pricing-header">
-          <h3>TribuClaw</h3>
-          <p class="pricing-tag">Todo incluido</p>
+      <div class="pricing-grid" data-animate="stagger">
+        <div class="pricing-card">
+          <div class="pricing-card-inner">
+            <h3 class="pricing-plan-name">Mensual</h3>
+            <div class="pricing-price">
+              <span class="pricing-amount">35€</span>
+              <span class="pricing-period">/mes</span>
+            </div>
+            <p class="pricing-tagline">Acceso completo a la academia. Sin letra pequeña.</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Todos los módulos y lecciones
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Directos semanales (miércoles 19:00)
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Comunidad privada en Whop
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Instaladores automatizados
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Soporte de la comunidad
+              </li>
+            </ul>
+            <a href={WHOP_URL} class="pricing-cta magnetic-btn" target="_blank" rel="noopener">
+              Empezar ahora
+            </a>
+            <p class="pricing-note">Sin permanencia. Cancelas cuando quieras.</p>
+          </div>
         </div>
-        <div class="pricing-rows">
-          <div class="pricing-row">
-            <span>TribuClaw (comunidad + curso + soporte + App)</span>
-            <span class="pricing-amount">35€/mes</span>
-          </div>
-          <div class="pricing-row">
-            <span>Servidor para tu agente</span>
-            <span class="pricing-amount">5€/mes</span>
-          </div>
-          <div class="pricing-row pricing-total">
-            <span>Total</span>
-            <span class="pricing-amount-total">40€/mes</span>
+        <div class="pricing-card pricing-card-popular">
+          <div class="pricing-popular-badge">Ahorra 225€</div>
+          <div class="pricing-card-inner">
+            <h3 class="pricing-plan-name">Anual</h3>
+            <div class="pricing-price">
+              <span class="pricing-amount">195€</span>
+              <span class="pricing-period">/año</span>
+            </div>
+            <p class="pricing-tagline">Todo lo mismo. Pagas una vez y te olvidas.</p>
+            <p class="pricing-save">7 meses gratis respecto al plan mensual</p>
+            <ul class="pricing-features">
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Todo del plan mensual
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Acceso a contenido nuevo del año
+              </li>
+              <li>
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+                Prioridad en peticiones de contenido
+              </li>
+            </ul>
+            <a href={WHOP_URL} class="pricing-cta pricing-cta-primary magnetic-btn" target="_blank" rel="noopener">
+              Empezar ahora
+            </a>
+            <p class="pricing-note">Costes adicionales: VPS ~5€/mes, IA desde ~10€/mes</p>
           </div>
         </div>
-        <p class="pricing-note">Entras cuando quieras. Sales cuando quieras. Sin permanencia, sin contratos, sin trampas.</p>
-        <p class="pricing-note-sm">Menos que Netflix + Spotify + HBO. Y esto no te entretiene. Te libera horas.</p>
-        <a href={WHOP_URL} class="cta-btn cta-btn-lg pricing-cta" target="_blank" rel="noopener">Entrar a TribuClaw →</a>
-      </div>
-      <div class="faq-list" data-animate="fade-up">
-        <h3 class="faq-heading">Preguntas frecuentes</h3>
-        <details class="faq-item">
-          <summary>¿Necesito saber programar?</summary>
-          <p>No. El curso está pensado para gente sin conocimientos técnicos.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿En cuánto tiempo tengo mi agente funcionando?</summary>
-          <p>La mayoría lo tienen montado en la primera semana.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Puedo cancelar cuando quiera?</summary>
-          <p>Sí. Sin permanencia. Entras y sales cuando quieras.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Qué necesito para empezar?</summary>
-          <p>Solo un ordenador y conexión a internet. Te guiamos con lo demás.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿El servidor de 5€/mes es obligatorio?</summary>
-          <p>Sí, es donde vive tu agente. Te enseñamos a montarlo en el curso.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Esto funciona para mi negocio?</summary>
-          <p>Si gestionas emails, clientes o redes sociales de forma manual, sí. Funciona.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿OpenClaw es de pago?</summary>
-          <p>No. OpenClaw es 100% gratuito y open source. TribuClaw es la comunidad que te enseña a montarlo y sacarle provecho.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Qué diferencia a TribuClaw de YouTube?</summary>
-          <p>YouTube te da información suelta sin contexto. TribuClaw es un sistema completo: curso estructurado, casos reales semanales, soporte 24/7, comunidad que te ayuda y una App que gestiona tu agente. No es contenido, es resultado.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Y si ya uso ChatGPT?</summary>
-          <p>ChatGPT es un chatbot. Lo usas, le preguntas, te responde. Un agente IA toma decisiones, ejecuta tareas y trabaja sin supervisión. Es el salto de "preguntar" a "automatizar".</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Qué es la TribuClaw App?</summary>
-          <p>Es el panel de control visual para tu agente. Creas, configuras y monitorizas tus agentes desde una interfaz sin tocar código. Incluida en tu membresía.</p>
-        </details>
-        <details class="faq-item">
-          <summary>¿Puedo usar la App en móvil?</summary>
-          <p>Sí, la TribuClaw App es responsive. Puedes monitorizar y gestionar tus agentes desde cualquier dispositivo.</p>
-        </details>
       </div>
     </div>
   </section>
 
-  <section class="section section-cta-final" data-animate="fade-up">
+  <div class="section-divider"></div>
+
+  <!-- ==================== FAQ ==================== -->
+  <section class="section section-faq" id="faq">
     <div class="container">
-      <div class="cta-final-inner">
-        <h2>En 6 meses, tener un agente IA va a ser lo normal.</h2>
-        <p>La diferencia es quién entra ahora y quién llega cuando todo el mundo ya lo hace. No necesitas esperar a que madure la tecnología. Ya está madura. Ya funciona. Ya la usamos nosotros y los 98 miembros de TribuClaw.</p>
-        <a href={WHOP_URL} class="cta-btn cta-btn-lg cta-final-btn" target="_blank" rel="noopener">Entrar a TribuClaw →</a>
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-badge">FAQ</span>
+        <h2 class="section-title">Preguntas frecuentes</h2>
+      </div>
+      <div class="faq-grid">
+        <div class="faq-col" data-animate="stagger">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Necesito saber programar?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>No. Yo monté mi equipo de agentes sin saber codear. OpenClaw se configura con archivos de texto y una interfaz clara. Si sabes escribir instrucciones, puedes montar un agente.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Qué es exactamente un agente autónomo?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>No es ChatGPT con un prompt largo. Un agente autónomo tiene memoria, herramientas, personalidad y capacidad de ejecutar tareas sin que tú estés ahí. La diferencia entre preguntar y delegar.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Cuánto cuesta mantener los agentes funcionando?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>La membresía de TribuClaw es 35€/mes. Los costes de infraestructura son aparte: un VPS (~5€/mes) y las cuentas de modelos de IA según uso (desde ~10€/mes). Total estimado: ~50€/mes para un setup completo.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿OpenClaw es la única herramienta que enseñas?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>No. OpenClaw es la estrella, pero la academia cubre todo el ecosistema: Hermes, MCP servers, integraciones con APIs, automatizaciones. Aprendes el sistema, no solo una herramienta.</p>
+            </div>
+          </div>
+        </div>
+        <div class="faq-col" data-animate="stagger">
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Puedo cancelar cuando quiera?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Sí. Sin permanencia, sin letra pequeña. Cancelas y te vas. Aunque dudo que quieras hacerlo una vez veas lo que tus agentes pueden hacer por ti.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Hay soporte si me atasco?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Directos semanales los miércoles a las 19:00, comunidad en Whop con 100+ miembros ejecutando, y siéntete libre de preguntar. No te dejamos solo con un PDF.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Es para empresas o para particulares?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Para cualquiera que quiera automatizar su trabajo. Freelancers, emprendedores, pequeños equipos. Si haces tareas repetitivas que un agente podría hacer, esto es para ti.</p>
+            </div>
+          </div>
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              <span>¿Cuánto tiempo tardaré en tener mi primer agente?</span>
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">
+              <p>Nuestros instaladores automatizados te dan un agente funcional en 8 minutos. De ahí a afinarlo y sacarle partido real: una o dos semanas de juego con él. No meses. Semanas.</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- Structured Data: Organization -->
-  <script type="application/ld+json" set:html={JSON.stringify({
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "TribuClaw",
-    "url": "https://tribuclaw.com",
-    "logo": "https://tribuclaw.com/images/logo-icon.webp",
-    "description": "Tu agente IA personal. La comunidad en español que te enseña a crear, configurar y dominar tu propia inteligencia artificial.",
-    "founder": {
-      "@type": "Person",
-      "name": "Álvaro Cerpa"
-    }
-  })} />
+  <div class="section-divider"></div>
 
-  <!-- Structured Data: FAQPage -->
+  <!-- ==================== CTA FINAL ==================== -->
+  <section class="section section-cta-final" id="cta-final">
+    <div class="container">
+      <div class="cta-final-content" data-animate="fade-up">
+        <h2 class="cta-final-headline">Tu próximo agente podría estar trabajando mañana a esta hora.</h2>
+        <p class="cta-final-text">No necesitas saber programar. No necesitas un equipo grande. Necesitas empezar.</p>
+        <a href={WHOP_URL} class="cta-btn cta-btn-lg cta-btn-final magnetic-btn" target="_blank" rel="noopener">
+          Empezar ahora
+        </a>
+        <p class="cta-final-note">Sin permanencia · 35€/mes · Comunidad de 98+ builders</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Schema -->
   <script type="application/ld+json" set:html={JSON.stringify({
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "mainEntity": [
-      { "@type": "Question", "name": "¿Necesito saber programar?", "acceptedAnswer": { "@type": "Answer", "text": "No. El curso está pensado para gente sin conocimientos técnicos." } },
-      { "@type": "Question", "name": "¿En cuánto tiempo tengo mi agente funcionando?", "acceptedAnswer": { "@type": "Answer", "text": "La mayoría lo tienen montado en la primera semana." } },
-      { "@type": "Question", "name": "¿Puedo cancelar cuando quiera?", "acceptedAnswer": { "@type": "Answer", "text": "Sí. Sin permanencia. Entras y sales cuando quieras." } },
-      { "@type": "Question", "name": "¿Qué necesito para empezar?", "acceptedAnswer": { "@type": "Answer", "text": "Solo un ordenador y conexión a internet. Te guiamos con lo demás." } },
-      { "@type": "Question", "name": "¿El servidor de 5€/mes es obligatorio?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, es donde vive tu agente. Te enseñamos a montarlo en el curso." } },
-      { "@type": "Question", "name": "¿Esto funciona para mi negocio?", "acceptedAnswer": { "@type": "Answer", "text": "Si gestionas emails, clientes o redes sociales de forma manual, sí. Funciona." } },
-      { "@type": "Question", "name": "¿OpenClaw es de pago?", "acceptedAnswer": { "@type": "Answer", "text": "No. OpenClaw es 100% gratuito y open source. TribuClaw es la comunidad que te enseña a montarlo y sacarle provecho." } },
-      { "@type": "Question", "name": "¿Qué diferencia a TribuClaw de YouTube?", "acceptedAnswer": { "@type": "Answer", "text": "YouTube te da información suelta sin contexto. TribuClaw es un sistema completo: curso estructurado, casos reales semanales, soporte 24/7, comunidad que te ayuda y una App que gestiona tu agente. No es contenido, es resultado." } },
-      { "@type": "Question", "name": "¿Y si ya uso ChatGPT?", "acceptedAnswer": { "@type": "Answer", "text": "ChatGPT es un chatbot. Lo usas, le preguntas, te responde. Un agente IA toma decisiones, ejecuta tareas y trabaja sin supervisión. Es el salto de preguntar a automatizar." } },
-      { "@type": "Question", "name": "¿Qué es la TribuClaw App?", "acceptedAnswer": { "@type": "Answer", "text": "Es el panel de control visual para tu agente. Creas, configuras y monitorizas tus agentes desde una interfaz sin tocar código. Incluida en tu membresía." } },
-      { "@type": "Question", "name": "¿Puedo usar la App en móvil?", "acceptedAnswer": { "@type": "Answer", "text": "Sí, la TribuClaw App es responsive. Puedes monitorizar y gestionar tus agentes desde cualquier dispositivo." } }
+      {
+        "@type": "Question",
+        "name": "¿Necesito saber programar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. Yo monté mi equipo de agentes sin saber codear. OpenClaw se configura con archivos de texto y una interfaz clara. Si sabes escribir instrucciones, puedes montar un agente."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Qué es exactamente un agente autónomo?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No es ChatGPT con un prompt largo. Un agente autónomo tiene memoria, herramientas, personalidad y capacidad de ejecutar tareas sin que tú estés ahí. La diferencia entre preguntar y delegar."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto cuesta mantener los agentes funcionando?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "La membresía de TribuClaw es 35€/mes. Los costes de infraestructura son aparte: un VPS (~5€/mes) y las cuentas de modelos de IA según uso (desde ~10€/mes). Total estimado: ~50€/mes para un setup completo."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Puedo cancelar cuando quiera?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sí. Sin permanencia, sin letra pequeña. Cancelas y te vas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Hay soporte si me atasco?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Directos semanales los miércoles a las 19:00, comunidad en Whop con 100+ miembros ejecutando. No te dejamos solo con un PDF."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Es para empresas o para particulares?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para cualquiera que quiera automatizar su trabajo. Freelancers, emprendedores, pequeños equipos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿Cuánto tiempo tardaré en tener mi primer agente?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nuestros instaladores automatizados te dan un agente funcional en 8 minutos. De ahí a afinarlo: una o dos semanas."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "¿OpenClaw es la única herramienta que enseñáis?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "No. OpenClaw es la estrella, pero la academia cubre todo el ecosistema: Hermes, MCP servers, integraciones con APIs, automatizaciones."
+        }
+      }
     ]
   })} />
 
-</BaseLayout>
+  <!-- ==================== STYLES ==================== -->
+  <style>
+    /* ===== Design Tokens ===== */
+    :root {
+      --color-bg-primary: #0A0A0B;
+      --color-bg-elevated: #141416;
+      --color-bg-surface: #1C1C1F;
+      --color-accent-primary: #10B981;
+      --color-accent-secondary: #06B6D4;
+      --color-accent-gradient: linear-gradient(135deg, #10B981, #06B6D4);
+      --color-accent-glow: rgba(16, 185, 129, 0.15);
+      --color-text-primary: #F5F5F5;
+      --color-text-secondary: #A1A1AA;
+      --color-text-tertiary: #52525B;
+      --color-border: rgba(255, 255, 255, 0.06);
+      --color-border-hover: rgba(255, 255, 255, 0.12);
+      --color-border-accent: rgba(16, 185, 129, 0.3);
+      --font-display: 'Space Grotesk', sans-serif;
+      --font-body: 'Inter', sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
+      --text-hero: clamp(2.25rem, 5vw, 4.5rem);
+      --text-h2: clamp(1.75rem, 3.5vw, 2.75rem);
+      --text-h3: clamp(1.25rem, 2vw, 1.5rem);
+      --space-section: clamp(4rem, 8vw, 8rem);
+      --radius-lg: 12px;
+      --radius-md: 8px;
+      --container-max: 1200px;
+      --container-padding: clamp(1rem, 3vw, 2rem);
+      --nav-height: 64px;
+      --glass-bg: rgba(20, 20, 22, 0.8);
+      --glass-blur: 12px;
+    }
 
-<script>
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 var(--container-padding);
+    }
 
-// Hero headline text reveal
-const headline = document.querySelector('.hero-headline');
-if (headline) {
-  const walk = document.createTreeWalker(headline, NodeFilter.SHOW_TEXT, null);
-  const textNodes: Text[] = [];
-  let n: Node | null;
-  while ((n = walk.nextNode())) textNodes.push(n as Text);
-  for (const tn of textNodes) {
-    const frag = document.createDocumentFragment();
-    for (const char of tn.textContent || '') {
-      if (char === ' ') {
-        frag.appendChild(document.createTextNode(' '));
-      } else {
-        const span = document.createElement('span');
-        span.className = 'char';
-        span.textContent = char;
-        frag.appendChild(span);
+    .section {
+      padding: var(--space-section) 0;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+
+    .section-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent-primary);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.2);
+      padding: 0.35rem 0.85rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+
+    .section-title {
+      font-family: var(--font-display);
+      font-size: var(--text-h2);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .section-sub {
+      font-size: 1.0625rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .section-divider {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--color-border-hover), transparent);
+      max-width: var(--container-max);
+      margin: 0 auto;
+    }
+
+    /* ===== Scroll Progress ===== */
+    .scroll-progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 2px;
+      background: var(--color-accent-gradient);
+      z-index: 9999;
+      transition: none;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: calc(var(--nav-height) + 2rem) 0 3rem;
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 80% 60% at 20% 40%, rgba(16, 185, 129, 0.04) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 50% at 80% 60%, rgba(6, 182, 212, 0.03) 0%, transparent 60%);
+      animation: meshMove 20s ease-in-out infinite alternate;
+    }
+
+    @keyframes meshMove {
+      0% { background-position: 0% 0%, 100% 100%; }
+      100% { background-position: 100% 100%, 0% 0%; }
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      color: var(--color-accent-secondary);
+      background: rgba(6, 182, 212, 0.08);
+      border: 1px solid rgba(6, 182, 212, 0.2);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: var(--text-hero);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      margin-bottom: 1.25rem;
+      max-width: 600px;
+    }
+
+    .hero-sub {
+      font-size: 1.125rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      max-width: 520px;
+    }
+
+    .hero-cta {
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-note {
+      font-size: 0.8125rem;
+      color: var(--color-text-tertiary);
+    }
+
+    .hero-gradient-line {
+      position: absolute;
+      bottom: 0;
+      left: var(--container-padding);
+      right: var(--container-padding);
+      height: 1px;
+      background: linear-gradient(90deg, var(--color-accent-primary), var(--color-accent-secondary));
+      opacity: 0.3;
+    }
+
+    /* ===== CTA Button ===== */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 0.85rem 2rem;
+      border-radius: var(--radius-md);
+      text-decoration: none;
+      transition: transform 0.2s, box-shadow 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+
+    .cta-btn-lg {
+      padding: 1rem 2.5rem;
+      font-size: 1.05rem;
+    }
+
+    .cta-btn,
+    .pricing-cta-primary {
+      background: var(--color-accent-gradient);
+      color: #fff;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+      color: #fff;
+      text-decoration: none;
+    }
+
+    /* ===== Terminal ===== */
+    .hero-terminal {
+      position: relative;
+      z-index: 2;
+    }
+
+    .terminal-window {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.4);
+    }
+
+    .terminal-titlebar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 1rem;
+      border-bottom: 1px solid var(--color-border);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+    }
+
+    .dot-red { background: #ff5f57; }
+    .dot-yellow { background: #febc2e; }
+    .dot-green { background: #28c840; }
+
+    .terminal-title-text {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+    }
+
+    .terminal-body {
+      padding: 1.25rem 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.875rem;
+      line-height: 1.8;
+      color: var(--color-text-secondary);
+      min-height: 220px;
+    }
+
+    .terminal-line {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+    }
+
+    .terminal-prompt {
+      color: var(--color-accent-primary);
+      user-select: none;
+    }
+
+    .terminal-cmd {
+      color: var(--color-text-primary);
+    }
+
+    .terminal-cursor {
+      animation: blink 1s step-end infinite;
+      color: var(--color-accent-primary);
+    }
+
+    .terminal-output {
+      color: var(--color-text-tertiary);
+      padding-left: 1.25rem;
+    }
+
+    .terminal-output .success { color: var(--color-accent-primary); }
+    .terminal-output .info { color: var(--color-accent-secondary); }
+
+    @keyframes blink {
+      50% { opacity: 0; }
+    }
+
+    /* ===== VALUE STEPS ===== */
+    .value-steps {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+    }
+
+    .value-step {
+      text-align: center;
+      max-width: 320px;
+      padding: 2rem 1.5rem;
+    }
+
+    .value-step-number {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+      margin-bottom: 0.75rem;
+      letter-spacing: 0.1em;
+    }
+
+    .value-step-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      background: rgba(16, 185, 129, 0.08);
+      border: 1px solid rgba(16, 185, 129, 0.15);
+      color: var(--color-accent-primary);
+      margin-bottom: 1rem;
+    }
+
+    .value-step-title {
+      font-family: var(--font-display);
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .value-step-desc {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .value-connector {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+
+    .value-connector-line {
+      width: 2px;
+      height: 32px;
+      background: linear-gradient(180deg, var(--color-accent-primary), var(--color-accent-secondary));
+      opacity: 0.4;
+      border-radius: 1px;
+    }
+
+    /* ===== BENTO GRID ===== */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .bento-item {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    }
+
+    .bento-item:hover {
+      border-color: var(--color-border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .bento-hero {
+      background: linear-gradient(135deg, rgba(16, 185, 129, 0.06), rgba(6, 182, 212, 0.04));
+      border-color: rgba(16, 185, 129, 0.15);
+    }
+
+    .bento-label {
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--color-accent-primary);
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .bento-title {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+    }
+
+    .bento-desc {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    .bento-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      margin-top: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--color-text-tertiary);
+    }
+
+    /* ===== SOCIAL PROOF ===== */
+    .proof-counters {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .proof-counter {
+      padding: 1.5rem;
+    }
+
+    .proof-counter-value {
+      display: block;
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1;
+      margin-bottom: 0.25rem;
+    }
+
+    .proof-counter-label {
+      font-size: 0.875rem;
+      color: var(--color-text-tertiary);
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+
+    .testimonial-card {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .testimonial-card:hover {
+      border-color: var(--color-border-accent);
+      transform: translateY(-2px);
+    }
+
+    .testimonial-stars {
+      color: #facc15;
+      font-size: 0.875rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .testimonial-text {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      font-style: italic;
+      margin-bottom: 1.25rem;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .t-avatar {
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background: var(--color-accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: #fff;
+      flex-shrink: 0;
+    }
+
+    .t-name {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .t-role {
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+    }
+
+    /* ===== PRICING ===== */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      position: relative;
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .pricing-card-popular {
+      border-color: var(--color-border-accent);
+    }
+
+    .pricing-card-popular::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--radius-lg);
+      padding: 1px;
+      background: conic-gradient(from 0deg, var(--color-accent-primary), var(--color-accent-secondary), var(--color-accent-primary));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      mask-composite: exclude;
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      animation: borderSpin 4s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes borderSpin {
+      to { filter: hue-rotate(360deg); }
+    }
+
+    .pricing-popular-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.6875rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--color-accent-primary);
+      background: rgba(16, 185, 129, 0.1);
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+    }
+
+    .pricing-card-inner {
+      padding: 2rem;
+    }
+
+    .pricing-plan-name {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-price {
+      display: flex;
+      align-items: baseline;
+      gap: 0.25rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .pricing-amount {
+      font-family: var(--font-display);
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .pricing-period {
+      font-size: 1rem;
+      color: var(--color-text-tertiary);
+    }
+
+    .pricing-tagline {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    .pricing-save {
+      font-family: var(--font-mono);
+      font-size: 0.8125rem;
+      color: var(--color-accent-primary);
+      margin-bottom: 1.25rem;
+    }
+
+    .pricing-features {
+      list-style: none;
+      padding: 0;
+      margin: 1.25rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+
+    .pricing-features li {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+    }
+
+    .pricing-features li svg {
+      flex-shrink: 0;
+      color: var(--color-accent-primary);
+    }
+
+    .pricing-cta {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: 0.85rem 1.5rem;
+      border-radius: var(--radius-md);
+      font-family: var(--font-body);
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      background: transparent;
+      border: 1px solid var(--color-border);
+      color: var(--color-text-primary);
+      cursor: pointer;
+      transition: border-color 0.2s, background 0.2s, transform 0.2s;
+    }
+
+    .pricing-cta:hover {
+      border-color: var(--color-border-hover);
+      background: rgba(255, 255, 255, 0.03);
+      transform: translateY(-2px);
+      text-decoration: none;
+      color: var(--color-text-primary);
+    }
+
+    .pricing-cta-primary {
+      background: var(--color-accent-gradient) !important;
+      border: none !important;
+      color: #fff !important;
+    }
+
+    .pricing-cta-primary:hover {
+      box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3);
+      color: #fff !important;
+    }
+
+    .pricing-note {
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+
+    /* ===== FAQ ===== */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .faq-col {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--color-border);
+    }
+
+    .faq-question {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 1.25rem 0;
+      background: none;
+      border: none;
+      color: var(--color-text-primary);
+      font-family: var(--font-body);
+      font-size: 0.9375rem;
+      font-weight: 600;
+      text-align: left;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .faq-question:hover {
+      color: var(--color-accent-primary);
+    }
+
+    .faq-question[aria-expanded="true"] {
+      color: var(--color-accent-primary);
+    }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--color-text-tertiary);
+    }
+
+    .faq-question[aria-expanded="true"] .faq-chevron {
+      transform: rotate(180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .faq-answer p {
+      padding-bottom: 1.25rem;
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ===== CTA FINAL ===== */
+    .section-cta-final {
+      text-align: center;
+    }
+
+    .cta-final-content {
+      max-width: 640px;
+      margin: 0 auto;
+    }
+
+    .cta-final-headline {
+      font-family: var(--font-display);
+      font-size: var(--text-h2);
+      font-weight: 700;
+      color: var(--color-text-primary);
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      margin-bottom: 1rem;
+    }
+
+    .cta-final-text {
+      font-size: 1.0625rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .cta-btn-final {
+      margin-bottom: 1rem;
+    }
+
+    .cta-final-note {
+      font-size: 0.8125rem;
+      color: var(--color-text-tertiary);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (min-width: 640px) {
+      .proof-counters {
+        grid-template-columns: repeat(4, 1fr);
+      }
+
+      .testimonials-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .faq-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
     }
-    tn.parentNode!.replaceChild(frag, tn);
-  }
-  gsap.from('.hero-headline .char', {
-    opacity: 0.05,
-    y: 20,
-    duration: 0.4,
-    stagger: 0.015,
-    ease: 'power3.out',
-    delay: 0.3
-  });
-}
 
+    @media (min-width: 768px) {
+      .hero-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 4rem;
+      }
 
-// Home-specific animations
-gsap.from('[data-animate="cta"]', { opacity: 0, scale: 0.95, duration: 0.6, delay: 0.8, ease: 'power2.out' });
-gsap.from('[data-animate="console"]', { opacity: 0, x: 50, duration: 1, delay: 0.3, ease: 'power2.out' });
+      .value-steps {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 0;
+      }
 
-// Counter animation
-function animateCounter(el: HTMLElement, target: number, suffix: string) {
-  const start = performance.now();
-  const duration = 2000;
-  const isDecimal = String(target).includes('.');
-  function update(timestamp: number) {
-    const progress = Math.min((timestamp - start) / duration, 1);
-    const eased = 1 - Math.pow(1 - progress, 3);
-    if (isDecimal) el.textContent = (eased * target).toFixed(1) + suffix;
-    else if (target >= 1000) el.textContent = Math.floor(eased * target / 1000) + 'K+';
-    else el.textContent = Math.floor(eased * target) + suffix;
-    if (progress < 1) requestAnimationFrame(update);
-    else {
-      if (target >= 1000) el.textContent = Math.floor(target / 1000) + 'K+';
-      else if (isDecimal) el.textContent = target.toFixed(1) + suffix;
-      else el.textContent = target + suffix;
+      .value-connector {
+        padding-top: 3rem;
+      }
+
+      .value-connector-line {
+        width: 60px;
+        height: 2px;
+      }
+
+      .bento-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .bento-hero {
+        grid-column: span 2;
+      }
     }
-  }
-  requestAnimationFrame(update);
-}
-// Set counter values immediately as fallback, then animate if visible
-document.querySelectorAll('.proof-counter-value').forEach(el => {
-  const htmlEl = el as HTMLElement;
-  const target = parseFloat(htmlEl.dataset.target || '0');
-  const suffix = htmlEl.dataset.suffix || '';
-  // Set final value immediately as fallback
-  const isDecimal = String(target).includes('.');
-  if (isDecimal) htmlEl.textContent = target.toFixed(1) + suffix;
-  else htmlEl.textContent = target + suffix;
-});
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      const el = entry.target as HTMLElement;
+  </style>
+
+  <!-- ==================== SCRIPTS ==================== -->
+  <script>
+    import { gsap } from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+    gsap.registerPlugin(ScrollTrigger);
+
+    // ===== Scroll Progress Bar =====
+    const progressBar = document.getElementById('scroll-progress');
+    if (progressBar) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.scrollY;
+        const height = document.documentElement.scrollHeight - window.innerHeight;
+        progressBar.style.width = `${(scrolled / height) * 100}%`;
+      }, { passive: true });
+    }
+
+    // ===== Hero entrance =====
+    const heroTl = gsap.timeline({ defaults: { ease: 'power2.out' } });
+    heroTl
+      .from('[data-animate="badge"]', { opacity: 0, y: -10, duration: 0.5 })
+      .from('.hero-headline', { opacity: 0, y: 20, duration: 0.7 }, '-=0.2')
+      .from('[data-animate="fade-up"]', { opacity: 0, y: 15, duration: 0.5, stagger: 0.15 }, '-=0.3')
+      .from('[data-animate="cta"]', { opacity: 0, scale: 0.95, duration: 0.4 }, '-=0.2')
+      .from('[data-animate="terminal"]', { opacity: 0, x: 30, duration: 0.6 }, '-=0.3');
+
+    // ===== Scroll reveals =====
+    gsap.utils.toArray<HTMLElement>('[data-animate="fade-up"]').forEach(el => {
+      if (el.closest('.hero')) return;
+      gsap.from(el, {
+        scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        opacity: 0, y: 30, duration: 0.7, ease: 'power2.out',
+      });
+    });
+
+    gsap.utils.toArray<HTMLElement>('[data-animate="stagger"]').forEach(container => {
+      gsap.from(container.children, {
+        scrollTrigger: { trigger: container, start: 'top 85%', once: true },
+        opacity: 0, y: 25, duration: 0.6, stagger: 0.1, ease: 'power2.out',
+      });
+    });
+
+    // ===== Counter animation =====
+    gsap.utils.toArray<HTMLElement>('.proof-counter-value').forEach(el => {
       const target = parseFloat(el.dataset.target || '0');
       const suffix = el.dataset.suffix || '';
-      // Reset to 0 for animation
-      el.textContent = '0';
-      animateCounter(el, target, suffix);
-      counterObserver.unobserve(el);
-    }
-  });
-}, { threshold: 0.3 });
-document.querySelectorAll('.proof-counter-value').forEach(el => counterObserver.observe(el));
-
-// Console typing effect — continuous streaming terminal with proper cleanup
-(function initConsole() {
-  try {
-    const body = document.getElementById('console-body');
-    if (!body) return;
-    let destroyed = false;
-    let totalLines = 0;
-    const MAX_LINES = 8;
-    const BATCH_SIZE = 50;
-    const PAUSE_DURATION = 5000;
-    let currentTimer: ReturnType<typeof setTimeout> | null = null;
-    let typeTimer: ReturnType<typeof setTimeout> | null = null;
-    const agentTasks = [
-      { agent: '🦞 Kimo', tasks: ['Analizando métricas de la semana...', 'Coordinando 5 agentes activos...', 'Revisando cola de tareas pendientes...', 'Enviando resumen diario por Telegram...', 'Priorizando tareas del sprint...'] },
-      { agent: '📊 Data', tasks: ['Revenue +23% vs semana anterior', 'Generando reporte mensual de conversión...', 'Analizando funnel de Onboarding...', 'Detectando patrón: mejores posts → 2pm-4pm', 'Actualizando dashboard de métricas...'] },
-      { agent: '🎨 Mika', tasks: ['Generando thumbnail para el blog...', 'Diseñando banner para Whop...', 'Creando variante A/B del CTA...', 'Optimizando assets para móvil...'] },
-      { agent: '✍️ Pluma', tasks: ['Redactando post de LinkedIn...', 'Editando draft del artículo semanal...', 'Generando 5 hooks para Twitter...', 'Revisando copy de la landing...'] },
-      { agent: '🤖 Mao', tasks: ['Desplegando nueva feature en producción', 'Refactorizando módulo de autenticación...', 'Fix: bug en integración con Whop API...', 'Ejecutando tests → 47/47 passing ✓'] },
-      { agent: '⚡ Sistema', tasks: ['5 agentes activos · 847 tareas completadas hoy', 'Uptime: 99.97% · Latencia: 42ms', 'Backup completado · 2.3GB comprimidos', 'SSL renovado · expira en 89 días'] },
-    ];
-    const statusSymbols = ['✓', '✓', '✓', '✓', '⟳'];
-    function getTimestamp() {
-      const now = new Date();
-      return now.toLocaleTimeString('es-ES', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    }
-    let taskIdx = 0;
-    function getNextTask() {
-      const agent = agentTasks[taskIdx % agentTasks.length];
-      const task = agent.tasks[Math.floor(Math.random() * agent.tasks.length)];
-      taskIdx++;
-      return { agent: agent.agent, task };
-    }
-    function clearTimers() {
-      if (currentTimer) { clearTimeout(currentTimer); currentTimer = null; }
-      if (typeTimer) { clearTimeout(typeTimer); typeTimer = null; }
-    }
-    function typeLine(text: string, el: HTMLElement, callback: () => void) {
-      let i = 0;
-      const speed = 18 + Math.random() * 12;
-      function typeChar() {
-        if (destroyed || !body.isConnected) { clearTimers(); return; }
-        if (i < text.length) {
-          el.textContent = text.substring(0, i + 1);
-          i++;
-          typeTimer = setTimeout(typeChar, speed);
-        } else {
-          typeTimer = null;
-          callback();
+      const isDecimal = target % 1 !== 0;
+      ScrollTrigger.create({
+        trigger: el,
+        start: 'top 85%',
+        once: true,
+        onEnter: () => {
+          const obj = { val: 0 };
+          gsap.to(obj, {
+            val: target,
+            duration: 2,
+            ease: 'power2.out',
+            snap: isDecimal ? { val: 0.1 } : { val: 1 },
+            onUpdate: () => {
+              el.textContent = (isDecimal ? obj.val.toFixed(1) : Math.round(obj.val)) + suffix;
+            }
+          });
         }
-      }
-      typeChar();
-    }
-    function addLine() {
-      if (destroyed || !body.isConnected) { clearTimers(); return; }
-      if (totalLines >= BATCH_SIZE) {
-        clearTimers();
-        currentTimer = setTimeout(() => {
-          if (destroyed || !body.isConnected) return;
-          body.innerHTML = '';
-          totalLines = 0;
-          addLine();
-        }, PAUSE_DURATION);
-        return;
-      }
-      totalLines++;
-      const { agent, task } = getNextTask();
-      const line = document.createElement('div');
-      line.className = 'console-line';
-      const ts = document.createElement('span');
-      ts.className = 'console-ts';
-      ts.textContent = getTimestamp();
-      const content = document.createElement('span');
-      content.className = 'console-content';
-      line.appendChild(ts);
-      line.appendChild(content);
-      body.appendChild(line);
-      // Remove old lines
-      while (body.children.length > MAX_LINES) {
-        body.removeChild(body.firstChild!);
-      }
-      body.scrollTop = body.scrollHeight;
-      const fullText = `${agent} > ${task}`;
-      typeLine(fullText, content, () => {
-        if (destroyed || !body.isConnected) return;
-        const status = document.createElement('span');
-        status.className = 'console-status';
-        status.textContent = ' ' + statusSymbols[Math.floor(Math.random() * statusSymbols.length)];
-        content.appendChild(status);
-        currentTimer = setTimeout(addLine, 1200 + Math.random() * 1500);
       });
-    }
-    // Cleanup when section leaves viewport
-    const obs = new IntersectionObserver(([entry]) => {
-      if (!entry.isIntersecting) {
-        destroyed = true;
-        clearTimers();
-        obs.disconnect();
-      }
     });
-    const heroSection = document.getElementById('hero');
-    if (heroSection) obs.observe(heroSection);
-    // Start
-    currentTimer = setTimeout(addLine, 800);
-  } catch (e) {
-    console.warn('Console effect failed gracefully:', e);
-  }
-})();
 
-// Hero Particles with IntersectionObserver cleanup
-(function initParticles() {
-  try {
-    const canvas = document.getElementById('hero-particles') as HTMLCanvasElement;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-    let rafId = 0;
-    function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
-    resize();
-    window.addEventListener('resize', resize);
-    const COUNT = window.innerWidth < 768 ? 25 : 50;
-    const COLORS = ['#e94560', '#ff6b6b', '#ffffff'];
-    const particles: {x:number;y:number;size:number;speedX:number;speedY:number;opacity:number;color:string;pulse:number}[] = [];
-    for (let i = 0; i < COUNT; i++) {
-      particles.push({
-        x: Math.random() * canvas.width, y: Math.random() * canvas.height,
-        size: Math.random() * 1.5 + 0.5, speedX: (Math.random() - 0.5) * 0.3, speedY: (Math.random() - 0.5) * 0.3,
-        opacity: Math.random() * 0.4 + 0.1, color: COLORS[Math.floor(Math.random() * COLORS.length)], pulse: Math.random() * Math.PI * 2
+    // ===== Terminal typing effect =====
+    const termCmd = document.getElementById('term-cmd');
+    const termCursor = document.getElementById('term-cursor');
+    const termBody = document.getElementById('terminal-body');
+
+    const termLines = [
+      { cmd: 'openclaw install kimo', outputs: ['Instalando agente "kimo"...', 'Configurando memoria...', '<span class="success">✓ Agente instalado en 8 minutos</span>'] },
+      { cmd: 'openclaw skill add email-reader', outputs: ['Conectando Gmail...', 'Sincronizando bandeja...', '<span class="success">✓ 47 emails procesados</span>'] },
+      { cmd: 'openclaw deploy --agent kimo', outputs: ['Compilando skills...', 'Desplegando en VPS...', '<span class="info">→ Kimo está LIVE. Trabajando 24/7.</span>'] },
+    ];
+
+    async function typeText(el: HTMLElement, text: string, speed = 40): Promise<void> {
+      for (let i = 0; i < text.length; i++) {
+        el.textContent += text[i];
+        await new Promise(r => setTimeout(r, speed));
+      }
+    }
+
+    async function runTerminal(): Promise<void> {
+      if (!termCmd || !termCursor || !termBody) return;
+
+      for (const line of termLines) {
+        // Clear previous
+        termBody.innerHTML = '';
+        const lineEl = document.createElement('div');
+        lineEl.className = 'terminal-line';
+        lineEl.innerHTML = `<span class="terminal-prompt">$</span><span class="terminal-cmd" id="term-cmd"></span><span class="terminal-cursor" id="term-cursor">▋</span>`;
+        termBody.appendChild(lineEl);
+
+        const cmdEl = lineEl.querySelector('#term-cmd') as HTMLElement;
+        const curEl = lineEl.querySelector('#term-cursor') as HTMLElement;
+
+        await typeText(cmdEl, line.cmd, 45);
+        await new Promise(r => setTimeout(r, 300));
+        curEl.style.display = 'none';
+
+        for (const output of line.outputs) {
+          await new Promise(r => setTimeout(r, 400));
+          const outEl = document.createElement('div');
+          outEl.className = 'terminal-output';
+          outEl.innerHTML = output;
+          termBody.appendChild(outEl);
+        }
+
+        await new Promise(r => setTimeout(r, 2000));
+      }
+
+      // Loop
+      await new Promise(r => setTimeout(r, 1500));
+      runTerminal();
+    }
+
+    // Start terminal after hero animation
+    setTimeout(runTerminal, 1200);
+
+    // ===== FAQ Accordion =====
+    document.querySelectorAll('.faq-question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        const answer = btn.nextElementSibling as HTMLElement;
+
+        // Close all
+        document.querySelectorAll('.faq-question').forEach(b => {
+          b.setAttribute('aria-expanded', 'false');
+          const a = b.nextElementSibling as HTMLElement;
+          if (a) a.style.maxHeight = '0';
+        });
+
+        if (!expanded) {
+          btn.setAttribute('aria-expanded', 'true');
+          answer.style.maxHeight = answer.scrollHeight + 'px';
+        }
+      });
+    });
+
+    // ===== Magnetic Buttons (desktop only) =====
+    if (window.matchMedia('(min-width: 768px)').matches) {
+      document.querySelectorAll<HTMLElement>('.magnetic-btn').forEach(btn => {
+        btn.addEventListener('mousemove', (e: Event) => {
+          const ev = e as MouseEvent;
+          const rect = btn.getBoundingClientRect();
+          const x = ev.clientX - rect.left - rect.width / 2;
+          const y = ev.clientY - rect.top - rect.height / 2;
+          btn.style.transform = `translate(${x * 0.15}px, ${y * 0.15}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+          btn.style.transform = '';
+        });
       });
     }
-    function draw() {
-      if (!canvas.isConnected) { cancelAnimationFrame(rafId); return; }
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      for (const p of particles) {
-        p.x += p.speedX; p.y += p.speedY; p.pulse += 0.02;
-        if (p.x < 0) p.x = canvas.width; if (p.x > canvas.width) p.x = 0;
-        if (p.y < 0) p.y = canvas.height; if (p.y > canvas.height) p.y = 0;
-        ctx.save();
-        ctx.globalAlpha = 0.1 + Math.sin(p.pulse) * 0.2 + 0.2;
-        ctx.fillStyle = p.color; ctx.shadowBlur = 6; ctx.shadowColor = p.color;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2); ctx.fill();
-        ctx.restore();
-      }
-      rafId = requestAnimationFrame(draw);
-    }
-    rafId = requestAnimationFrame(draw);
-    const obs = new IntersectionObserver(([entry]) => {
-      if (entry.isIntersecting && canvas.isConnected) { rafId = requestAnimationFrame(draw); }
-      else { cancelAnimationFrame(rafId); }
-    }, { threshold: 0 });
-    obs.observe(canvas);
-  } catch (e) {
-    console.warn('Particles failed gracefully:', e);
-  }
-})();
-</script>
+  </script>
 
-<style>
-  .hero {
-    position: relative;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 7rem 0 5rem;
-    overflow: hidden;
-  }
-  #hero-particles {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 0; opacity: 0.7;
-  }
-  .hero-glow {
-    position: absolute; left: 50%; transform: translateX(-50%);
-    width: 800px; height: 600px; border-radius: 50%;
-    pointer-events: none; z-index: 0;
-  }
-  .hero-glow-top {
-    top: -200px;
-    background: radial-gradient(ellipse at center, rgba(233,69,96,0.1) 0%, transparent 60%);
-  }
-  .hero-grid {
-    display: grid; grid-template-columns: 1fr;
-    gap: 3rem; align-items: center;
-    position: relative; z-index: 1;
-  }
-  .hero-copy { max-width: 620px; }
-  .hero-headline {
-    font-size: clamp(2rem, 5vw, 3.2rem);
-    font-weight: 700; letter-spacing: -0.04em; line-height: 1.1;
-    margin-bottom: 1.25rem;
-  }
-  .hero-headline .char {
-    display: inline-block;
-    will-change: transform, opacity;
-  }
-  .hero-sub {
-    color: var(--text-muted); font-size: 1.1rem;
-    line-height: 1.7; margin-bottom: 2rem;
-  }
-  .hero-cta-btn {
-    box-shadow: 0 0 30px rgba(233,69,96,0.3);
-    font-size: 1rem; padding: 1rem 2.5rem;
-  }
-  .hero-cta-btn:hover { box-shadow: 0 0 40px rgba(233,69,96,0.5); }
-  .badge-pill svg { vertical-align: middle; margin-right: 4px; }
-
-  /* Console */
-  .hero-console { position: relative; }
-  .console-window {
-    background: rgba(13, 17, 23, 0.95);
-    border: 1px solid rgba(233, 69, 96, 0.15);
-    border-radius: 16px; overflow: hidden;
-    box-shadow: 0 0 60px rgba(233, 69, 96, 0.08), 0 20px 60px rgba(0,0,0,0.6);
-  }
-  .console-titlebar {
-    display: flex; align-items: center; gap: 0.75rem;
-    padding: 0.75rem 1rem;
-    background: rgba(255,255,255,0.02);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .console-dots { display: flex; gap: 6px; }
-  .dot { width: 10px; height: 10px; border-radius: 50%; }
-  .dot-red { background: #ff5f57; }
-  .dot-yellow { background: #ffbd2e; }
-  .dot-green { background: #28ca41; }
-  .console-title-text { flex: 1; font-size: 0.75rem; color: rgba(250,250,250,0.3); text-align: center; }
-  .console-live { display: flex; align-items: center; gap: 5px; font-size: 0.65rem; font-weight: 700; color: #28ca41; letter-spacing: 0.05em; }
-  .live-dot {
-    width: 6px; height: 6px; background: #28ca41; border-radius: 50%;
-    animation: livePulse 1.5s ease-in-out infinite;
-  }
-  @keyframes livePulse {
-    0%, 100% { box-shadow: 0 0 0 0 rgba(40,202,65,0.5); }
-    50% { box-shadow: 0 0 0 4px rgba(40,202,65,0); }
-  }
-  .console-body {
-    padding: 1.25rem; min-height: 220px;
-    font-family: 'Courier New', monospace; font-size: 0.85rem; line-height: 1.8;
-    overflow-y: auto; max-height: 320px;
-  }
-  .console-line { color: rgba(250,250,250,0.85); font-size: 0.82rem; line-height: 1.7; padding: 2px 0; animation: lineIn 0.3s ease-out; }
-  .console-line .console-ts { color: rgba(250,250,250,0.25); margin-right: 8px; font-size: 0.72rem; }
-  .console-line .console-status { color: #4ade80; font-weight: 700; }
-  @keyframes lineIn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
-  @keyframes typeIn {
-    from { opacity: 0; transform: translateX(-5px); }
-    to { opacity: 1; transform: translateX(0); }
-  }
-  .console-cursor {
-    font-family: 'Courier New', monospace; color: var(--accent);
-    padding: 0 1.25rem 1rem; animation: blink 1s step-end infinite;
-  }
-  @keyframes blink { 50% { opacity: 0; } }
-
-  /* Sections */
-  .section { padding: 5rem 0; position: relative; }
-  .section-problema {
-    background: var(--bg);
-    background-image: radial-gradient(ellipse at 30% 50%, rgba(233,69,96,0.03) 0%, transparent 50%);
-  }
-  .section-incluye {
-    background: var(--bg-alt);
-    background-image: radial-gradient(ellipse at 70% 50%, rgba(233,69,96,0.04) 0%, transparent 50%);
-  }
-  .section-app {
-    background: var(--bg);
-    background-image: radial-gradient(ellipse at 50% 30%, rgba(233,69,96,0.05) 0%, transparent 50%);
-  }
-  .section-proof { background: var(--bg-alt); }
-  .section-pricing {
-    background: var(--bg);
-    background-image: radial-gradient(ellipse at 50% 70%, rgba(233,69,96,0.03) 0%, transparent 50%);
-  }
-  .section-cta-final {
-    background: var(--bg); padding: 8rem 0;
-    position: relative; overflow: hidden;
-  }
-  .section-cta-final::before {
-    content: ''; position: absolute;
-    top: -200px; left: 50%; transform: translateX(-50%);
-    width: 800px; height: 600px;
-    background: radial-gradient(ellipse at center, rgba(233,69,96,0.08) 0%, transparent 60%);
-    pointer-events: none;
-  }
-
-  /* Problema cards */
-  .problema-cards {
-    display: grid; grid-template-columns: 1fr;
-    gap: 1rem; max-width: 900px; margin: 0 auto;
-  }
-  .problema-card {
-    padding: 2rem; display: flex; align-items: flex-start; gap: 1.25rem;
-  }
-  .problema-icon-wrap { flex-shrink: 0; width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; }
-  .problema-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; word-break: break-word; overflow-wrap: break-word; }
-
-  /* OpenClaw bridge */
-  .openclaw-bridge {
-    max-width: 700px; margin: 0 auto 3rem;
-    text-align: center; color: var(--text-muted);
-    font-size: 1.05rem; line-height: 1.7;
-  }
-
-  /* Bento grid */
-  .bento-grid {
-    display: grid; grid-template-columns: 1fr;
-    gap: 1rem; max-width: 900px; margin: 0 auto;
-  }
-  .bento-item { padding: 2rem; }
-  .bento-icon { margin-bottom: 1rem; }
-  .bento-item h3 { font-size: 1.15rem; margin-bottom: 0.5rem; }
-  .bento-item p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; word-break: break-word; overflow-wrap: break-word; }
-
-  /* App section */
-  .app-intro {
-    max-width: 700px; margin: 0 auto 2.5rem;
-    text-align: center; color: var(--text-muted);
-    font-size: 1.05rem; line-height: 1.7;
-  }
-  .app-features {
-    display: grid; grid-template-columns: 1fr;
-    gap: 1.25rem; max-width: 900px; margin: 0 auto 2.5rem;
-  }
-  .app-feature { padding: 2.5rem 2rem; text-align: center; }
-  .app-feature-icon { margin-bottom: 1.25rem; display: flex; justify-content: center; }
-  .app-feature h3 { font-size: 1.2rem; margin-bottom: 0.75rem; }
-  .app-feature p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin: 0; word-break: break-word; overflow-wrap: break-word; }
-  .app-cta {
-    text-align: center; color: var(--text-muted);
-    font-size: 1.05rem; line-height: 1.7;
-  }
-  .app-cta .cta-btn { margin-top: 1rem; }
-
-  /* Social Proof */
-  .proof-counters {
-    display: grid; grid-template-columns: repeat(2, 1fr);
-    gap: 2rem; max-width: 400px; margin: 0 auto 3rem; text-align: center;
-  }
-  .proof-counter-value {
-    display: block; font-size: clamp(2rem, 5vw, 3rem);
-    font-weight: 700; letter-spacing: -0.04em;
-    background: linear-gradient(135deg, #e94560, #ff6b6b);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-  }
-  .proof-counter-label { font-size: 0.85rem; color: rgba(250,250,250,0.3); }
-
-  /* Testimonials */
-  .testimonials-grid {
-    display: grid; grid-template-columns: 1fr;
-    gap: 1rem; max-width: 800px; margin: 0 auto 3rem;
-  }
-  .testimonial-card {
-    padding: 2rem 2rem 2rem 3rem; position: relative;
-  }
-  .testimonial-quote {
-    position: absolute; top: 0.5rem; left: 1rem;
-    font-size: 4rem; font-family: 'Space Grotesk', serif;
-    color: rgba(233, 69, 96, 0.25); line-height: 1; pointer-events: none;
-  }
-  .testimonial-text {
-    color: rgba(250,250,250,0.6); font-size: 0.95rem;
-    line-height: 1.6; margin-bottom: 1rem; font-style: italic;
-    word-break: break-word; overflow-wrap: break-word;
-  }
-  .testimonial-author { display: flex; align-items: center; gap: 0.75rem; }
-  .t-avatar {
-    width: 32px; height: 32px; border-radius: 50%;
-    background: var(--gradient); display: flex; align-items: center; justify-content: center;
-    font-size: 0.7rem; font-weight: 700; flex-shrink: 0; color: #fff;
-  }
-  .t-name { font-size: 0.85rem; font-weight: 700; color: #fff; }
-  .t-stars { font-size: 0.7rem; color: #f59e0b; }
-
-  /* Compare section */
-  .compare-section { max-width: 800px; margin: 0 auto; }
-  .compare-heading {
-    text-align: center; font-size: 1.1rem;
-    color: var(--text-muted); margin-bottom: 1.5rem;
-  }
-  .compare-grid {
-    display: grid; grid-template-columns: 1fr;
-    gap: 1rem;
-  }
-  .compare-col { padding: 2rem; }
-  .compare-col h4 {
-    font-size: 1.1rem; margin-bottom: 1rem;
-    text-align: center;
-  }
-  .compare-bad h4 { color: rgba(250,250,250,0.5); }
-  .compare-good h4 { color: #4ade80; }
-  .compare-col ul { list-style: none; padding: 0; margin: 0; }
-  .cross-item, .check-item {
-    display: flex; align-items: center; gap: 0.75rem;
-    padding: 0.5rem 0; font-size: 0.9rem; color: var(--text-muted);
-  }
-
-  /* Pricing */
-  .pricing-card {
-    max-width: 480px; margin: 0 auto 3rem;
-    background: rgba(22, 27, 34, 1);
-    border-radius: 20px; padding: 2.5rem 2rem;
-    text-align: center; position: relative; z-index: 1;
-  }
-  .pricing-header { margin-bottom: 2rem; }
-  .pricing-header h3 { font-size: 1.5rem; margin-bottom: 0.5rem; }
-  .pricing-tag { color: var(--accent); font-size: 0.85rem; font-weight: 600; }
-  .pricing-rows { margin-bottom: 2rem; }
-  .pricing-row {
-    display: flex; justify-content: space-between;
-    padding: 0.75rem 0; border-bottom: 1px solid var(--border);
-    font-size: 0.95rem; color: rgba(250,250,250,0.6);
-  }
-  .pricing-row:last-child { border-bottom: none; }
-  .pricing-amount { font-weight: 700; color: #fff; }
-  .pricing-total {
-    padding-top: 1rem; margin-top: 0.5rem;
-    border-top: 2px solid rgba(233,69,96,0.2) !important;
-    font-weight: 700;
-  }
-  .pricing-amount-total { font-size: 1.25rem; font-weight: 900; color: var(--accent); }
-  .pricing-note { color: rgba(250,250,250,0.5); font-size: 0.9rem; margin-bottom: 0.5rem; }
-  .pricing-note-sm { color: rgba(250,250,250,0.3); font-size: 0.8rem; margin-bottom: 1.5rem; }
-  .pricing-cta { width: 100%; justify-content: center; }
-
-  /* FAQ */
-  .faq-heading {
-    font-size: 1.3rem; margin-bottom: 1.5rem; text-align: center;
-    color: rgba(250,250,250,0.7);
-  }
-  .faq-list { max-width: 700px; margin: 0 auto; }
-  .faq-item { border-bottom: 1px solid var(--border); }
-  .faq-item summary {
-    padding: 1.25rem 0; font-weight: 700; font-size: 1rem;
-    cursor: pointer; color: #fff; list-style: none;
-    display: flex; justify-content: space-between; align-items: center;
-  }
-  .faq-item summary::after {
-    content: '+'; font-size: 1.25rem; color: var(--accent);
-    transition: transform 0.3s;
-  }
-  .faq-item[open] summary::after { transform: rotate(45deg); }
-  .faq-item p {
-    color: var(--text-muted); font-size: 0.95rem;
-    line-height: 1.7; padding-bottom: 1.25rem; margin: 0;
-  }
-
-  /* CTA Final */
-  .cta-final-inner {
-    text-align: center; max-width: 600px;
-    margin: 0 auto; position: relative; z-index: 1;
-  }
-  .cta-final-inner h2 { font-size: clamp(1.8rem, 4vw, 2.5rem); margin-bottom: 1rem; }
-  .cta-final-inner p { color: var(--text-muted); font-size: 1.05rem; line-height: 1.7; margin-bottom: 2rem; }
-  .cta-final-btn {
-    box-shadow: 0 0 40px rgba(233,69,96,0.3);
-    font-size: 1.1rem; padding: 1.1rem 3rem;
-  }
-
-  /* App Mockup */
-  .app-mockup {
-    max-width: 700px;
-    margin: 2.5rem auto;
-  }
-  .app-mockup-window {
-    background: rgba(13, 17, 23, 0.95);
-    border: 1px solid rgba(233, 69, 96, 0.12);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 20px 60px rgba(0,0,0,0.5), 0 0 40px rgba(233,69,96,0.05);
-  }
-  .app-mockup-titlebar {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    padding: 0.65rem 1rem;
-    background: rgba(255,255,255,0.02);
-    border-bottom: 1px solid rgba(255,255,255,0.06);
-  }
-  .app-mockup-dots {
-    display: flex;
-    gap: 5px;
-  }
-  .app-mockup-dots span {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-  }
-  .app-mockup-dots span:nth-child(1) { background: #ff5f57; }
-  .app-mockup-dots span:nth-child(2) { background: #ffbd2e; }
-  .app-mockup-dots span:nth-child(3) { background: #28ca41; }
-  .app-mockup-title {
-    flex: 1;
-    font-size: 0.7rem;
-    color: rgba(250,250,250,0.25);
-    text-align: center;
-  }
-  .app-mockup-body {
-    display: grid;
-    grid-template-columns: 120px 1fr;
-    min-height: 220px;
-  }
-  .app-mockup-sidebar {
-    background: rgba(255,255,255,0.02);
-    border-right: 1px solid rgba(255,255,255,0.05);
-    padding: 0.75rem 0;
-  }
-  .app-sidebar-item {
-    padding: 0.5rem 1rem;
-    font-size: 0.75rem;
-    color: rgba(250,250,250,0.35);
-    cursor: default;
-  }
-  .app-sidebar-item.active {
-    color: #e94560;
-    background: rgba(233,69,96,0.08);
-    border-right: 2px solid #e94560;
-    font-weight: 600;
-  }
-  .app-mockup-main {
-    padding: 1rem 1.25rem;
-  }
-  .app-mockup-header-row {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-size: 0.85rem;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 1rem;
-  }
-  .app-mockup-status-dot {
-    width: 8px;
-    height: 8px;
-    background: #4ade80;
-    border-radius: 50%;
-    box-shadow: 0 0 6px rgba(74,222,128,0.5);
-  }
-  .app-mockup-badge {
-    margin-left: auto;
-    background: rgba(233,69,96,0.15);
-    color: #e94560;
-    font-size: 0.7rem;
-    font-weight: 600;
-    padding: 0.2rem 0.6rem;
-    border-radius: 20px;
-  }
-  .app-mockup-cards {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.75rem;
-    margin-bottom: 1rem;
-  }
-  .app-mockup-stat {
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-    border-radius: 8px;
-    padding: 0.6rem 0.75rem;
-    text-align: center;
-  }
-  .stat-value {
-    display: block;
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #fff;
-  }
-  .stat-label {
-    font-size: 0.65rem;
-    color: rgba(250,250,250,0.3);
-  }
-  .app-mockup-log {
-    background: rgba(0,0,0,0.2);
-    border-radius: 6px;
-    padding: 0.6rem 0.75rem;
-    font-family: 'Courier New', monospace;
-    font-size: 0.72rem;
-  }
-  .mock-log-line {
-    color: rgba(250,250,250,0.5);
-    padding: 0.2rem 0;
-  }
-  .log-time {
-    color: rgba(250,250,250,0.2);
-    margin-right: 0.5rem;
-  }
-
-  /* Responsive */
-  @media (min-width: 768px) {
-    .hero-grid { grid-template-columns: 55fr 45fr; gap: 4rem; }
-    .bento-grid { grid-template-columns: repeat(3, 1fr); }
-    .app-features { grid-template-columns: repeat(3, 1fr); }
-    .problema-cards { grid-template-columns: repeat(3, 1fr); }
-    .testimonials-grid { grid-template-columns: repeat(2, 1fr); }
-    .compare-grid { grid-template-columns: 1fr 1fr; }
-  }
-
-  @media (max-width: 767px) {
-    .hero { padding: 5rem 0 3rem; }
-    .hero-headline { font-size: clamp(1.6rem, 6vw, 2.2rem); }
-    .hero-sub { font-size: 0.95rem; }
-    .section { padding: 3.5rem 0; }
-    .section-cta-final { padding: 5rem 0; }
-    .console-body { min-height: 180px; font-size: 0.75rem; }
-    .pricing-card { padding: 2rem 1.5rem; }
-  }
-
-  @media (max-width: 480px) {
-    .hero-console { display: none; }
-  }
-</style>
+</BaseLayout>
