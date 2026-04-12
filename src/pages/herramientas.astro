@@ -14,11 +14,11 @@ import { WHOP_URL, SITE_URL } from '../consts';
     <div class="glow-orb glow-orb-blue" style="width:400px;height:400px;bottom:-100px;right:5%;"></div>
     <div class="container">
       <div class="tools-hero-inner" data-animate="fade-up">
-        <span class="badge-pill">🔧 Herramientas</span>
+        <span class="badge-pill">🛠️ Stack</span>
         <h1>Las herramientas que usamos <span class="gradient-text">(y recomendamos)</span></h1>
         <p class="tools-lead">
-          No son todas las que hay, pero sí las que de verdad usamos día a día en TribuClaw.
-          Cada una está probada, y cada una tiene un propósito claro.
+          No son todas las que hay, pero sí las que de verdad usamos día a día en TribuClaw
+          para construir, desplegar y hacer funcionar agentes autónomos de IA.
         </p>
       </div>
     </div>
@@ -26,53 +26,125 @@ import { WHOP_URL, SITE_URL } from '../consts';
 
   <div class="section-divider"></div>
 
-  <!-- Herramientas -->
+  <!-- Herramienta principal -->
   <section class="tools-section" data-animate="fade-up">
     <div class="container">
+      <div class="tool-featured glass-card">
+        <div class="tool-featured-inner">
+          <span class="badge-pill badge-featured">⭐ Principal</span>
+          <h2>OpenClaw</h2>
+          <p class="tool-tagline">El corazón de todo lo que hacemos</p>
+          <p>
+            OpenClaw es el framework que usamos para crear y gestionar agentes de IA autónomos.
+            Es open source, se instala en tu propio servidor, y te da control total sobre tus agentes:
+            desde assistants de chat hasta flujos de trabajo automatizados con múltiples modelos.
+          </p>
+          <p>
+            Sin OpenClaw, TribuClaw no existiría. Es la herramienta que nos permite montar equipos
+            de agentes que trabajan en paralelo, con memoria persistente, habilidades personalizadas
+            y conexión a cualquier API.
+          </p>
+          <a href="https://openclaw.ai" class="cta-btn" target="_blank" rel="noopener">
+            <span>Conocer OpenClaw →</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Herramientas complementarias -->
+  <section class="tools-section tools-grid-section" data-animate="fade-up">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-badge">Complementarias</span>
+        <h2 class="section-title">El ecosistema que rodea a nuestros agentes</h2>
+        <p class="section-sub">
+          Estas herramientas las usamos junto con OpenClaw para cubrir todo: desde desarrollo
+          hasta hosting, pasando por bases de datos y diseño.
+        </p>
+      </div>
       <div class="tools-grid" data-animate="stagger">
+
         <div class="tool-card glass-card">
-          <div class="tool-header">
-            <h3>OpenClaw <span class="tool-star">⭐</span></h3>
-            <span class="tool-badge">Principal</span>
-          </div>
-          <p>El framework para construir agentes autónomos de IA. El núcleo de todo lo que hacemos en TribuClaw.</p>
-          <a href="https://openclaw.com" target="_blank" rel="noopener" class="tool-link">openclaw.com →</a>
+          <div class="tool-icon">💻</div>
+          <h3>Cursor</h3>
+          <p class="tool-desc">Editor de código con IA integrada. Ideal para desarrollar y depurar habilidades (skills) para tus agentes de OpenClaw sin perder el ritmo.</p>
+          <a href="https://cursor.sh" target="_blank" rel="noopener" class="tool-link">cursor.sh →</a>
         </div>
+
         <div class="tool-card glass-card">
-          <div class="tool-header">
-            <h3>Whop</h3>
-          </div>
-          <p>La plataforma donde vive TribuClaw. Vender membresías, gestionar comunidad, todo en un sitio.</p>
-          <a href="https://whop.com" target="_blank" rel="noopener" class="tool-link">whop.com →</a>
-        </div>
-        <div class="tool-card glass-card">
-          <div class="tool-header">
-            <h3>Cursor</h3>
-          </div>
-          <p>Editor de código potenciado con IA. Como VS Code pero con un asistente integrado que realmente entiende tu proyecto.</p>
-          <a href="https://cursor.com" target="_blank" rel="noopener" class="tool-link">cursor.com →</a>
-        </div>
-        <div class="tool-card glass-card">
-          <div class="tool-header">
-            <h3>Claude (Anthropic)</h3>
-          </div>
-          <p>Modelo de IA para agentes. Buena redacción, razonamiento sólido y excelente para tareas complejas.</p>
+          <div class="tool-icon">🧠</div>
+          <h3>Claude (Anthropic)</h3>
+          <p class="tool-desc">Uno de los mejores modelos para razonamiento y escritura. Lo usamos como modelo principal para agentes que necesitan pensamiento profundo.</p>
           <a href="https://claude.ai" target="_blank" rel="noopener" class="tool-link">claude.ai →</a>
         </div>
+
         <div class="tool-card glass-card">
-          <div class="tool-header">
-            <h3>Supabase</h3>
-          </div>
-          <p>Base de datos y backend como servicio. Para dar memoria persistente a tus agentes y almacenar datos.</p>
+          <div class="tool-icon">⚡</div>
+          <h3>Gemini (Google)</h3>
+          <p class="tool-desc">Modelo de Google con ventana de contexto enorme. Perfecto para agentes que procesan documentos largos o necesitan visión multimodal.</p>
+          <a href="https://ai.google.dev" target="_blank" rel="noopener" class="tool-link">ai.google.dev →</a>
+        </div>
+
+        <div class="tool-card glass-card">
+          <div class="tool-icon">🗄️</div>
+          <h3>Supabase</h3>
+          <p class="tool-desc">Backend como servicio: base de datos PostgreSQL, auth y storage. Lo usamos para dar memoria estructurada a los agentes y guardar datos de usuarios.</p>
           <a href="https://supabase.com" target="_blank" rel="noopener" class="tool-link">supabase.com →</a>
         </div>
+
         <div class="tool-card glass-card">
-          <div class="tool-header">
-            <h3>Vercel</h3>
-          </div>
-          <p>Hosting para proyectos web. Deploy automático desde Git. Rápido, sencillo y con CDN global.</p>
-          <a href="https://vercel.com" target="_blank" rel="noopener" class="tool-link">vercel.com →</a>
+          <div class="tool-icon">🏠</div>
+          <h3>Whop</h3>
+          <p class="tool-desc">Plataforma de membresías y comunidad. Es donde vive TribuClaw: pagos, contenido exclusivo, chat de la tribu y gestión de miembros.</p>
+          <a href="https://whop.com" target="_blank" rel="noopener" class="tool-link">whop.com →</a>
         </div>
+
+        <div class="tool-card glass-card">
+          <div class="tool-icon">🐙</div>
+          <h3>GitHub</h3>
+          <p class="tool-desc">Control de versiones y colaboración. Todas nuestras skills y configuraciones de agentes viven en repos de GitHub para versionar y compartir.</p>
+          <a href="https://github.com" target="_blank" rel="noopener" class="tool-link">github.com →</a>
+        </div>
+
+        <div class="tool-card glass-card">
+          <div class="tool-icon">☁️</div>
+          <h3>Hetzner / VPS</h3>
+          <p class="tool-desc">Servidores baratos y potentes para desplegar OpenClaw. Un VPS de 5€/mes es suficiente para tener tus agentes corriendo 24/7.</p>
+          <a href="https://hetzner.com" target="_blank" rel="noopener" class="tool-link">hetzner.com →</a>
+        </div>
+
+        <div class="tool-card glass-card">
+          <div class="tool-icon">🔗</div>
+          <h3>Resend</h3>
+          <p class="tool-desc">Envío de emails transaccionales y de marketing. Lo usamos para que los agentes puedan notificar por email cuando terminan tareas.</p>
+          <a href="https://resend.com" target="_blank" rel="noopener" class="tool-link">resend.com →</a>
+        </div>
+
+        <div class="tool-card glass-card">
+          <div class="tool-icon">📊</div>
+          <h3>Postiz</h3>
+          <p class="tool-desc">Programación de posts en redes sociales. Nuestros agentes generan el contenido y Postiz se encarga de publicarlo cuando toca.</p>
+          <a href="https://postiz.com" target="_blank" rel="noopener" class="tool-link">postiz.com →</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
+  <!-- Nota honesta -->
+  <section class="tools-section tools-note-section" data-animate="fade-up">
+    <div class="container">
+      <div class="tools-note glass-card">
+        <p>
+          <strong>Nota honesta:</strong> No estamos afiliados a ninguna de estas herramientas
+          (bueno, sí a OpenClaw porque es lo nuestro). Las recomendamos porque las usamos
+          de verdad, no porque nos paguen. Si alguna deja de ser útil, la quitamos de esta lista.
+        </p>
       </div>
     </div>
   </section>
@@ -81,10 +153,10 @@ import { WHOP_URL, SITE_URL } from '../consts';
   <section class="tools-cta-dark" data-animate="fade-up">
     <div class="container">
       <div class="cta-dark-inner">
-        <h2>Saber cuáles son es el primer paso. Saber usarlas, es lo que marca la diferencia.</h2>
-        <p>Aprende a dominar cada una de estas herramientas en la Academia TribuClaw.</p>
-        <a href="/academia" class="cta-btn cta-btn-lg">
-          <span>Ir a la Academia →</span>
+        <h2>¿Quieres aprender a usarlas todas juntas?</h2>
+        <p>En TribuClaw te enseñamos a montar tu propio stack de herramientas y conectar tus agentes. Sin relleno, con proyectos reales.</p>
+        <a href={WHOP_URL} class="cta-btn cta-btn-lg" target="_blank" rel="noopener">
+          <span>Unirme a TribuClaw →</span>
         </a>
       </div>
     </div>
@@ -95,7 +167,7 @@ import { WHOP_URL, SITE_URL } from '../consts';
 <style>
   .tools-hero {
     position: relative;
-    min-height: 60vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     padding: 8rem 0 4rem;
@@ -118,10 +190,65 @@ import { WHOP_URL, SITE_URL } from '../consts';
     line-height: 1.7;
   }
 
-  /* Tools section */
+  /* Sections */
   .tools-section {
     padding: 5rem 0;
     position: relative;
+  }
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+  .section-title {
+    font-size: clamp(1.5rem, 4vw, 1.8rem);
+  }
+  .section-sub {
+    color: var(--text-muted);
+    font-size: 1.05rem;
+    margin-top: 0.75rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* Featured */
+  .tool-featured {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 2.5rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .tool-featured-inner {
+    position: relative;
+    z-index: 1;
+  }
+  .badge-featured {
+    background: rgba(233,69,96,0.15);
+    border-color: rgba(233,69,96,0.3);
+  }
+  .tool-featured h2 {
+    font-size: clamp(1.8rem, 4vw, 2.2rem);
+    margin: 0.75rem 0 0.25rem;
+  }
+  .tool-tagline {
+    color: var(--accent-red);
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+  }
+  .tool-featured p {
+    color: var(--text-muted);
+    line-height: 1.75;
+    margin-bottom: 0.75rem;
+    text-align: left;
+  }
+
+  /* Grid section */
+  .tools-grid-section {
+    background: var(--bg-alt);
+    background-image: radial-gradient(ellipse at 50% 30%, rgba(233,69,96,0.04) 0%, transparent 50%);
   }
   .tools-grid {
     display: grid;
@@ -131,47 +258,46 @@ import { WHOP_URL, SITE_URL } from '../consts';
     margin: 0 auto;
   }
   .tool-card {
-    padding: 2rem 2rem 1.75rem;
-    border-left: 3px solid rgba(233,69,96,0.5);
+    padding: 2rem 2rem;
+    position: relative;
   }
-  .tool-header {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
+  .tool-icon {
+    font-size: 2rem;
     margin-bottom: 0.75rem;
-    flex-wrap: wrap;
   }
-  .tool-header h3 {
+  .tool-card h3 {
     font-size: 1.15rem;
-    margin: 0;
+    margin-bottom: 0.5rem;
   }
-  .tool-star {
-    font-size: 0.9rem;
-  }
-  .tool-badge {
-    background: rgba(233,69,96,0.12);
-    color: var(--accent);
-    font-size: 0.75rem;
-    font-weight: 600;
-    padding: 0.25rem 0.75rem;
-    border-radius: 999px;
-    border: 1px solid rgba(233,69,96,0.2);
-  }
-  .tool-card p {
+  .tool-desc {
     color: var(--text-muted);
     font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0 0 0.75rem;
+    line-height: 1.65;
+    margin-bottom: 0.75rem;
   }
   .tool-link {
-    font-size: 0.85rem;
-    color: var(--accent);
-    text-decoration: none;
+    color: var(--accent-red);
+    font-size: 0.9rem;
     font-weight: 600;
+    text-decoration: none;
     transition: opacity 0.2s;
   }
   .tool-link:hover {
     opacity: 0.8;
+  }
+
+  /* Note */
+  .tools-note {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 2rem 2rem;
+    text-align: center;
+  }
+  .tools-note p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    margin: 0;
   }
 
   /* CTA dark */
@@ -195,7 +321,7 @@ import { WHOP_URL, SITE_URL } from '../consts';
   }
 
   @media (min-width: 768px) {
-    .tools-grid { grid-template-columns: repeat(2, 1fr); }
+    .tools-grid { grid-template-columns: repeat(3, 1fr); }
   }
 
   @media (max-width: 640px) {
