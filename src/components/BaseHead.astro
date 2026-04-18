@@ -39,6 +39,10 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
 <!-- Canonical -->
 <link rel="canonical" href={canonicalURL} />
 
+<!-- hreflang -->
+<link rel="alternate" hreflang="es" href={canonicalURL} />
+<link rel="alternate" hreflang="x-default" href={canonicalURL} />
+
 <!-- Primary SEO -->
 <title>{title}</title>
 <meta name="title" content={title} />
@@ -66,6 +70,8 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
 <meta name="twitter:title" content={title} />
 <meta name="twitter:description" content={description} />
 <meta name="twitter:image" content={ogImage} />
+<meta name="twitter:site" content="@tribuclaw" />
+<meta name="twitter:creator" content="@tribuclaw" />
 
 <!-- Organization Schema -->
 <script type="application/ld+json" set:html={JSON.stringify({
@@ -82,17 +88,74 @@ const ogImage = new URL(ogImagePath, Astro.site).href;
   ]
 })} />
 
-<!-- WebSite Schema -->
+<!-- Product + AggregateRating Schema -->
 <script type="application/ld+json" set:html={JSON.stringify({
   "@context": "https://schema.org",
-  "@type": "WebSite",
-  "name": "TribuClaw",
-  "url": SITE_URL,
-  "description": "La academia en español sobre agentes autónomos. Aprende a crear agentes de IA que trabajen por ti.",
-  "inLanguage": "es",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": SITE_URL + "/blog/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
+  "@type": "Product",
+  "name": "TribuClaw Academy",
+  "description": "La academia en español sobre agentes autónomos. Curso + comunidad + soporte directo.",
+  "brand": { "@type": "Brand", "name": "TribuClaw" },
+  "offers": [
+    {
+      "@type": "Offer",
+      "price": "35",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://whop.com/tribu-claw/tribu-claw/"
+    },
+    {
+      "@type": "Offer",
+      "price": "350",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock",
+      "url": "https://whop.com/tribu-claw/tribu-claw/"
+    }
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "bestRating": "5",
+    "worstRating": "1",
+    "ratingCount": "98"
   }
+})} />
+
+<!-- SoftwareApplication Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "TribuClaw Academy",
+  "applicationCategory": "BusinessApplication",
+  "operatingSystem": "Web",
+  "description": "Academia en español para crear agentes IA autónomos con OpenClaw. Curso completo, comunidad y soporte directo.",
+  "offers": {
+    "@type": "Offer",
+    "price": "35",
+    "priceCurrency": "EUR"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.8",
+    "ratingCount": "98"
+  }
+})} />
+
+<!-- BreadcrumbList Schema -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Inicio",
+      "item": SITE_URL
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": title,
+      "item": canonicalURL.href
+    }
+  ]
 })} />

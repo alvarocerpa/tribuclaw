@@ -4,7 +4,7 @@ import { WHOP_URL, SITE_URL } from '../consts';
 ---
 
 <BaseLayout
-  title="TribuClaw Academy — Aprende a montar Agentes Autónomos de IA en Español"
+  title="Agente IA Personal con OpenClaw — Curso + Comunidad en Español | TribuClaw"
   description="La primera academia en español sobre agentes autónomos. Aprende a crear agentes de IA que trabajen por ti 24/7 con OpenClaw, Hermes y más. Sin ser programador. 35€/mes."
 >
 
@@ -212,6 +212,47 @@ import { WHOP_URL, SITE_URL } from '../consts';
 
   <div class="section-divider"></div>
 
+  <!-- ==================== PARA QUIÉN ==================== -->
+  <section class="section section-audiencia" id="para-quien">
+    <div class="container">
+      <div class="section-header" data-animate="fade-up">
+        <span class="section-badge">Para quién es</span>
+        <h2 class="section-title">Si haces tareas repetitivas, esto es para ti</h2>
+      </div>
+      <div class="audiencia-grid" data-animate="stagger">
+        <div class="audiencia-card">
+          <div class="audiencia-icon">🚀</div>
+          <h3 class="audiencia-title">Emprendedores</h3>
+          <p class="audiencia-desc">Automatiza atención al cliente, emails y publicación de contenido. Tu agente trabaja mientras tú piensas en crecer.</p>
+        </div>
+        <div class="audiencia-card">
+          <div class="audiencia-icon">💻</div>
+          <h3 class="audiencia-title">Freelancers</h3>
+          <p class="audiencia-desc">Responde clientes, gestiona facturas y organiza tu agenda sin levantarte de la silla. Más tiempo para lo que factura.</p>
+        </div>
+        <div class="audiencia-card">
+          <div class="audiencia-icon">📊</div>
+          <h3 class="audiencia-title">Agencias y equipos</h3>
+          <p class="audiencia-desc">Despliega agentes para cada cliente. Reportes automáticos, monitorización y escalado sin contratar más gente.</p>
+        </div>
+        <div class="audiencia-card">
+          <div class="audiencia-icon">📚</div>
+          <h3 class="audiencia-title">Infoproductores</h3>
+          <p class="audiencia-desc">Contenido, email marketing y soporte de comunidad automatizados. Tu agente nunca duerme.</p>
+        </div>
+      </div>
+      <!-- CTA intermedio -->
+      <div class="cta-intermedio" data-animate="fade-up">
+        <a href={WHOP_URL} class="cta-btn cta-btn-lg magnetic-btn" target="_blank" rel="noopener">
+          Montar mi sistema esta semana →
+        </a>
+        <p class="hero-note">Desde 35€/mes. Cancela cuando quieras.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="section-divider"></div>
+
   <!-- ==================== PRICING ==================== -->
   <section class="section section-pricing" id="pricing">
     <div class="container">
@@ -257,15 +298,15 @@ import { WHOP_URL, SITE_URL } from '../consts';
           </div>
         </div>
         <div class="pricing-card pricing-card-popular">
-          <div class="pricing-popular-badge">Ahorra 225€</div>
+          <div class="pricing-popular-badge">2 meses gratis</div>
           <div class="pricing-card-inner">
             <h3 class="pricing-plan-name">Anual</h3>
             <div class="pricing-price">
-              <span class="pricing-amount">195€</span>
+              <span class="pricing-amount"><s style="color:var(--color-text-tertiary);font-size:1.25rem;font-weight:400">420€</s> 350€</span>
               <span class="pricing-period">/año</span>
             </div>
             <p class="pricing-tagline">Todo lo mismo. Pagas una vez y te olvidas.</p>
-            <p class="pricing-save">7 meses gratis respecto al plan mensual</p>
+            <p class="pricing-save">Equivale a 29,17€/mes · 2 meses gratis</p>
             <ul class="pricing-features">
               <li>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
@@ -391,7 +432,12 @@ import { WHOP_URL, SITE_URL } from '../consts';
         <a href={WHOP_URL} class="cta-btn cta-btn-lg cta-btn-final magnetic-btn" target="_blank" rel="noopener">
           Empezar ahora
         </a>
-        <p class="cta-final-note">Sin permanencia · 35€/mes · Comunidad de 98+ builders</p>
+        <div class="trust-badges">
+          <span class="trust-badge">✓ Whop Verified</span>
+          <span class="trust-badge">✓ Sin permanencia</span>
+          <span class="trust-badge">✓ OpenClaw Open Source</span>
+        </div>
+        <p class="cta-final-note">35€/mes · Precio early adopter · Subirá para nuevos miembros</p>
       </div>
     </div>
   </section>
@@ -494,7 +540,7 @@ import { WHOP_URL, SITE_URL } from '../consts';
       --space-section: clamp(4rem, 8vw, 8rem);
       --radius-lg: 12px;
       --radius-md: 8px;
-      --container-max: 1200px;
+      --container-max: 1400px;
       --container-padding: clamp(1rem, 3vw, 2rem);
       --nav-height: 64px;
       --glass-bg: rgba(20, 20, 22, 0.8);
@@ -539,6 +585,7 @@ import { WHOP_URL, SITE_URL } from '../consts';
       line-height: 1.15;
       letter-spacing: -0.03em;
       margin-bottom: 1rem;
+      text-wrap: balance;
     }
 
     .section-sub {
@@ -571,7 +618,7 @@ import { WHOP_URL, SITE_URL } from '../consts';
     /* ===== HERO ===== */
     .hero {
       position: relative;
-      min-height: 100vh;
+      min-height: 100dvh;
       display: flex;
       align-items: center;
       padding: calc(var(--nav-height) + 2rem) 0 3rem;
@@ -1264,8 +1311,66 @@ import { WHOP_URL, SITE_URL } from '../consts';
       color: var(--color-text-tertiary);
     }
 
+    .trust-badges {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 0.75rem;
+    }
+    .trust-badge {
+      font-size: 0.75rem;
+      color: var(--color-text-tertiary);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid var(--color-border);
+      padding: 0.3rem 0.75rem;
+      border-radius: 9999px;
+    }
+
+    /* ===== AUDIENCIA ===== */
+    .audiencia-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin-bottom: 3rem;
+    }
+    .audiencia-card {
+      background: var(--color-bg-elevated);
+      border: 1px solid var(--color-border);
+      border-radius: var(--radius-lg);
+      padding: 1.75rem;
+      transition: border-color 0.3s, transform 0.3s;
+    }
+    .audiencia-card:hover {
+      border-color: var(--color-border-accent);
+      transform: translateY(-2px);
+    }
+    .audiencia-icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .audiencia-title {
+      font-family: var(--font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 0.5rem;
+    }
+    .audiencia-desc {
+      font-size: 0.9375rem;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+    .cta-intermedio {
+      text-align: center;
+      padding-top: 1rem;
+    }
+
     /* ===== RESPONSIVE ===== */
     @media (min-width: 640px) {
+      .audiencia-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
       .proof-counters {
         grid-template-columns: repeat(4, 1fr);
       }
