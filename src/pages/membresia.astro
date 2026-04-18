@@ -1,3 +1,13 @@
 ---
-return Astro.redirect('/pricing');
+import { WHOP_URL } from '../consts';
 ---
+<html lang="es">
+<head>
+  <meta http-equiv="refresh" content={`0;url=${WHOP_URL}`} />
+  <meta name="robots" content="noindex" />
+  <link rel="canonical" href={WHOP_URL} />
+</head>
+<body>
+  <p>Redirigiendo a <a href={WHOP_URL}>TribuClaw</a>...</p>
+</body>
+</html>

@@ -175,17 +175,6 @@ import { WHOP_URL, SITE_URL } from '../consts';
       <div class="testimonials-grid" data-animate="stagger">
         <div class="testimonial-card">
           <div class="testimonial-stars">★★★★★</div>
-          <p class="testimonial-text">"La App me cambió la vida. Antes tenía que entrar por terminal, ahora todo visual."</p>
-          <div class="testimonial-author">
-            <div class="t-avatar">JG</div>
-            <div>
-              <div class="t-name">Jorge García</div>
-              <div class="t-role">Builder</div>
-            </div>
-          </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-stars">★★★★★</div>
           <p class="testimonial-text">"Comunidad joven pero con muchísimo potencial. Contenido fresco, de actualidad, en español..."</p>
           <div class="testimonial-author">
             <div class="t-avatar">SC</div>
@@ -512,6 +501,26 @@ import { WHOP_URL, SITE_URL } from '../consts';
         }
       }
     ]
+  })} />
+
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "TribuClaw",
+    "description": "Comunidad en español para aprender a crear agentes IA autónomos con OpenClaw.",
+    "brand": { "@type": "Brand", "name": "TribuClaw" },
+    "offers": {
+      "@type": "Offer",
+      "price": "35",
+      "priceCurrency": "EUR",
+      "availability": "https://schema.org/InStock"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "bestRating": "5",
+      "ratingCount": "98"
+    }
   })} />
 
   <!-- ==================== STYLES ==================== -->
